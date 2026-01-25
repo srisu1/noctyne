@@ -1,0 +1,337 @@
+/* Onboarding Styles - Shared across all screens */
+
+/* Import Fonts */
+@import url('fonts.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    
+    --title-font: 'Pogonia';
+    --background-color: #f5f1e8;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666;
+    --button-primary: #333;
+    --button-border: #e0e0e0;
+    --dot-inactive: #d0d0d0;
+    --dot-active: #333;
+}
+
+body {
+    font-family: var(--font-family), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+ 
+    background: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: auto;
+}
+
+.windowContainer {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--background-color);
+    position: relative;
+}
+
+/* Skip button positioned absolutely */
+.skipBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.skipBtn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+}
+
+/* Main Content Area */
+.onboardingContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 100px;
+    gap: 80px;
+    min-height: calc(100vh - 100px);
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Illustration Side */
+.illustrationSide {
+    flex: 0 0 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.illustration {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+}
+
+/* Content Side */
+.contentSide {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.onboardingTitle {
+    font-family: var(--title-font), var(--font-family), sans-serif;
+    font-size: 38px;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 28px;
+    line-height: 2.2;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.onboardingDescription {
+    font-family: var(--font-family), serif;
+    font-size: 22px;
+    color: var(--text-secondary);
+    line-height: 2.6;
+    margin-bottom: 8px;
+    text-align: center;
+    text-transform: none;
+    font-variant: normal;
+}
+
+.onboardingSubdescription {
+    font-family: var(--font-family), serif;
+    font-size: 22px;
+    color: var(--text-secondary);
+    line-height: 2.6;
+    text-align: center;
+    text-transform: none;
+    font-variant: normal;
+}
+
+/* Navigation */
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 0 80px 50px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.navBtn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.backBtn {
+    background: white;
+    border: 2px solid var(--button-border);
+    color: var(--text-secondary);
+}
+
+.backBtn:hover {
+    border-color: var(--button-primary);
+    color: var(--button-primary);
+}
+
+.backBtn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.nextBtn {
+    background: var(--button-primary);
+    border: 2px solid var(--button-primary);
+    color: white;
+}
+
+.nextBtn:hover {
+    background: #000;
+    border-color: #000;
+}
+
+/* Progress Dots */
+.progressDots {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--dot-inactive);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.dot:hover {
+    background: #999;
+}
+
+.dot.active {
+    background: var(--dot-active);
+    width: 40px;
+    border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .onboardingContent {
+        padding: 60px 60px;
+        gap: 60px;
+    }
+
+    .onboardingTitle {
+        font-size: 40px;
+    }
+
+    .onboardingDescription,
+    .onboardingSubdescription {
+        font-size: 20px;
+    }
+
+    .illustration {
+        max-width: 420px;
+    }
+}
+
+@media (max-width: 900px) {
+    .onboardingContent {
+        flex-direction: column;
+        padding: 80px 40px 20px;
+        gap: 30px;
+        min-height: calc(100vh - 120px);
+        height: auto;
+    }
+
+    .illustrationSide {
+        flex: 0 0 auto;
+    }
+
+    .illustration {
+        max-width: 280px;
+        width: 80%;
+    }
+
+    .contentSide {
+        text-align: center;
+        flex: 0 0 auto;
+    }
+
+    .onboardingTitle {
+        font-size: 28px;
+        white-space: normal;
+    }
+
+    .onboardingDescription,
+    .onboardingSubdescription {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .navigation {
+        padding: 20px 40px 40px;
+        flex-wrap: wrap;
+        position: relative;
+        margin-top: 20px;
+    }
+
+    .skipBtn {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .onboardingContent {
+        padding: 60px 20px 20px;
+        gap: 20px;
+    }
+
+    .illustration {
+        max-width: 220px;
+    }
+
+    .onboardingTitle {
+        font-size: 24px;
+    }
+
+    .onboardingDescription,
+    .onboardingSubdescription {
+        font-size: 14px;
+    }
+
+    .navigation {
+        padding: 10px 20px 30px;
+    }
+
+    .navBtn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .navBtn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .dot.active {
+        width: 28px;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.onboardingContent {
+    animation: fadeIn 0.4s ease-out;
+}

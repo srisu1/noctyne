@@ -1,0 +1,91 @@
+
+@font-face {
+    font-family: 'OnTheHill';
+    src: url('Fonts/Onthehill.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Pogonia Font Family - All Weights */
+
+/* Thin */
+@font-face {
+    font-family: 'Pogonia';
+    src: url('Fonts/Pogonia-Thin.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Extra Light */
+@font-face {
+    font-family: 'Pogonia';
+    src: url('Fonts/Pogonia-ExtraLight.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Light */
+@font-face {
+    font-family: 'Pogonia';
+    src: url('Fonts/Pogonia-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Regular */
+@font-face {
+    font-family: 'Pogonia';
+    src: url('Fonts/Pogonia-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Medium */
+@font-face {
+    font-family: 'Pogonia';
+    src: url('Fonts/Pogonia-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Semibold */
+@font-face {
+    font-family: 'Pogonia';
+    src: url('Fonts/Pogonia-Semibold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Bold */
+@font-face {
+    font-family: 'Pogonia';
+    src: url('Fonts/Pogonia-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Extra Bold */
+@font-face {
+    font-family: 'Pogonia';
+    src: url('Fonts/Pogonia-ExtraBold.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Black */
+@font-face {
+    font-family: 'Pogonia';
+    src: url('Fonts/Pogonia-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}

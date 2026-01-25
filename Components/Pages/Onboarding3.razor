@@ -1,0 +1,96 @@
+@page "/onboarding/3"
+@using MoodJournal.Services.Interfaces
+@using MoodJournal.Models
+@inject NavigationManager Navigation
+@inject IDatabaseService Database
+
+<link href="css/Fonts.css" rel="stylesheet" />
+<link href="css/Onboarding.css" rel="stylesheet" />
+
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    .windowContainer {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .onboardingContent {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 60px 100px;
+    }
+</style>
+
+<div class="windowContainer">
+    <button class="skipBtn" @onclick="SkipOnboarding">Skip</button>
+
+    <div class="onboardingContent">
+        <div class="illustrationSide">
+            <img src="assets/images/onboarding/Onboarding3.svg" alt="Character illustration" class="illustration">
+        </div>
+
+        <div class="contentSide">
+            <h1 class="onboardingTitle">A fresh start starts here</h1>
+            <p class="onboardingDescription">
+                Everything is ready for you.
+            </p>
+            <p class="onboardingSubdescription">
+                Start journaling when you're ready.
+            </p>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="navBtn backBtn" @onclick="GoBack">
+            <svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M10 13L5 8L10 3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
+        <div class="progressDots">
+            <div class="dot" @onclick="@(() => GoToSlide(1))"></div>
+            <div class="dot" @onclick="@(() => GoToSlide(2))"></div>
+            <div class="dot active" @onclick="@(() => GoToSlide(3))"></div>
+        </div>
+        
+        <button class="navBtn nextBtn" @onclick="GetStarted">
+            <svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
+@code {
+    private async Task GetStarted()
+    {
+        await Database.SetBoolSettingAsync(SettingKeys.OnboardingCompleted, true);
+        
+        // TODO: Navigate to avatar customization next
+        // For now, show a placeholder page
+        Navigation.NavigateTo("/welcome");
+    }
+
+    private void GoBack()
+    {
+        Navigation.NavigateTo("/onboarding/2");
+    }
+
+    private void GoToSlide(int slideNumber)
+    {
+        Navigation.NavigateTo($"/onboarding/{slideNumber}");
+    }
+
+    private async Task SkipOnboarding()
+    {
+        await GetStarted();
+    }
+}
