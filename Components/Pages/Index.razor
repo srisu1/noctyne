@@ -1,9 +1,68 @@
 @page "/"
+@using MoodJournal.Services.Interfaces
+@using MoodJournal.Models
+@inject IDatabaseService DatabaseService
+@inject ISecurityService SecurityService
 @inject NavigationManager Navigation
 
+@* This page only handles routing logic - no UI *@
+
 @code {
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        Navigation.NavigateTo("/onboarding/1", true);
+        try
+        {
+            bool isFirstLaunch = await DatabaseService.GetBoolSettingAsync(SettingKeys.IsFirstLaunch);
+            
+            if (isFirstLaunch)
+            {
+                // First time user - go to first onboarding page
+                Navigation.NavigateTo("/onboarding/1", true);
+                return;
+            }
+
+            // Returning user - check progress
+            bool onboardingCompleted = await DatabaseService.GetBoolSettingAsync(SettingKeys.OnboardingCompleted);
+            bool avatarCompleted = await DatabaseService.GetBoolSettingAsync(SettingKeys.AvatarCompleted);
+            bool securityCompleted = await DatabaseService.GetBoolSettingAsync(SettingKeys.SecurityCompleted);
+            
+            if (!onboardingCompleted)
+            {
+                // Onboarding not done - go to first page
+                Navigation.NavigateTo("/onboarding/1", true);
+            }
+            else if (!avatarCompleted)
+            {
+                // Onboarding done, avatar not done
+                Navigation.NavigateTo("/avatar", true);
+            }
+            else if (!securityCompleted)
+            {
+                // Avatar done, security not done
+                Navigation.NavigateTo("/security-setup", true);
+            }
+            else
+            {
+                // Everything completed - check if security is enabled
+                bool securityEnabled = await SecurityService.IsSecurityEnabledAsync();
+                
+                if (securityEnabled)
+                {
+                    // Security enabled - show PIN entry
+                    Navigation.NavigateTo("/pin-entry", true);
+                }
+                else
+                {
+                    // Security disabled/skipped - go to main app
+                    Navigation.NavigateTo("/main", true);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Index OnInitializedAsync Error: {ex.Message}");
+            // On error, default to onboarding
+            Navigation.NavigateTo("/onboarding/1", true);
+        }
     }
 }

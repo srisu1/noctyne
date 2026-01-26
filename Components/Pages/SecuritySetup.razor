@@ -1,0 +1,303 @@
+@page "/security-setup"
+@using MoodJournal.Services.Interfaces
+@using MoodJournal.Models
+@using Microsoft.JSInterop
+@inject IDatabaseService DatabaseService
+@inject ISecurityService SecurityService
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+
+
+<div class="loginContainer">
+    <!-- Close Button -->
+    <button class="closeBtn" @onclick="HandleSkipSecurity">✕</button>
+
+    <!-- Main Content -->
+    <div class="loginContent">
+        <!-- Illustration -->
+        <div class="illustrationSide">
+            <img src="Images/Login.svg" alt="Security illustration" class="illustration">
+        </div>
+
+        <!-- Form -->
+        <div class="formSide">
+            <h1 class="loginTitle">Secure Your Journal</h1>
+            <p class="loginSubtitle">Keep your thoughts safe<br>and private.</p>
+
+            <!-- Tab Switcher -->
+            <div class="tabSwitcher">
+                <button class="tabBtn @(currentMode == "pin" ? "active" : "")" @onclick='() => SwitchTab("pin")'>Pin</button>
+                <button class="tabBtn @(currentMode == "password" ? "active" : "")" @onclick='() => SwitchTab("password")'>Password</button>
+            </div>
+
+            @if (currentMode == "pin")
+            {
+                <!-- PIN Input -->
+                <div class="pinContainer">
+                    @for (int i = 0; i < 6; i++)
+                    {
+                        int index = i;
+                        <input type="text" 
+                               class="pinBox" 
+                               maxlength="1" 
+                               placeholder="*" 
+                               @bind="pinDigits[index]"
+                               @bind:event="oninput"
+                               @onkeydown="@(e => HandlePinKeyDown(e, index))"
+                               @ref="pinBoxRefs[index]" />
+                    }
+                </div>
+            }
+            else
+            {
+                <!-- Password Input -->
+                <div class="passwordContainer active">
+                    <div class="passwordWrapper">
+                        <input type="@(passwordVisible ? "text" : "password")" 
+                               class="passwordInput" 
+                               placeholder="Enter your password"
+                               @bind="passwordValue"
+                               @bind:event="oninput"
+                               @ref="passwordInputRef" />
+                        <button class="togglePassword" @onclick="TogglePasswordVisibility">
+                            @(passwordVisible ? "👁️‍🗨️" : "👁")
+                        </button>
+                    </div>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <p class="errorText">@errorMessage</p>
+            }
+            else
+            {
+                <p class="helperText">@helperText</p>
+            }
+
+            <!-- Confirm Button -->
+            <button class="confirmBtn" @onclick="HandleConfirm" disabled="@isProcessing">
+                @(isProcessing ? "PROCESSING..." : "CONFIRM")
+            </button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string currentMode = "pin";
+    private string[] pinDigits = new string[6];
+    private string passwordValue = "";
+    private bool passwordVisible = false;
+    private string helperText = "Pick a 6-digit PIN";
+    private string errorMessage = "";
+    private bool isProcessing = false;
+
+    private ElementReference[] pinBoxRefs = new ElementReference[6];
+    private ElementReference passwordInputRef;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (currentMode == "pin")
+            {
+                try
+                {
+                    await pinBoxRefs[0].FocusAsync();
+                }
+                catch { /* Focus might fail */ }
+            }
+        }
+    }
+
+    private async Task SwitchTab(string mode)
+    {
+        currentMode = mode;
+        errorMessage = "";
+        
+        if (mode == "pin")
+        {
+            helperText = "Pick a 6-digit PIN";
+            passwordValue = "";
+            Array.Clear(pinDigits, 0, pinDigits.Length);
+            
+            StateHasChanged();
+            await Task.Delay(50);
+            try
+            {
+                await pinBoxRefs[0].FocusAsync();
+            }
+            catch { /* Focus might fail */ }
+        }
+        else
+        {
+            helperText = "Create a secure password";
+            Array.Clear(pinDigits, 0, pinDigits.Length);
+            
+            StateHasChanged();
+            await Task.Delay(50);
+            try
+            {
+                await passwordInputRef.FocusAsync();
+            }
+            catch { /* Focus might fail */ }
+        }
+    }
+
+    private async Task HandlePinKeyDown(KeyboardEventArgs e, int index)
+    {
+        // Handle backspace
+        if (e.Key == "Backspace")
+        {
+            if (string.IsNullOrEmpty(pinDigits[index]) && index > 0)
+            {
+                try
+                {
+                    await pinBoxRefs[index - 1].FocusAsync();
+                }
+                catch { /* Focus might fail */ }
+            }
+        }
+        // Handle arrow keys
+        else if (e.Key == "ArrowLeft" && index > 0)
+        {
+            try
+            {
+                await pinBoxRefs[index - 1].FocusAsync();
+            }
+            catch { /* Focus might fail */ }
+        }
+        else if (e.Key == "ArrowRight" && index < 5)
+        {
+            try
+            {
+                await pinBoxRefs[index + 1].FocusAsync();
+            }
+            catch { /* Focus might fail */ }
+        }
+        // Auto-advance on digit entry
+        else if (char.IsDigit(e.Key[0]) && index < 5)
+        {
+            await Task.Delay(10);
+            try
+            {
+                await pinBoxRefs[index + 1].FocusAsync();
+            }
+            catch { /* Focus might fail */ }
+        }
+    }
+
+    private void TogglePasswordVisibility()
+    {
+        passwordVisible = !passwordVisible;
+    }
+
+    private async Task HandleConfirm()
+    {
+        errorMessage = "";
+        isProcessing = true;
+
+        try
+        {
+            if (currentMode == "pin")
+            {
+                string pin = string.Join("", pinDigits);
+
+                // Validate PIN
+                if (pin.Length != 6)
+                {
+                    errorMessage = "Please enter a complete 6-digit PIN";
+                    isProcessing = false;
+                    return;
+                }
+
+                if (!pin.All(char.IsDigit))
+                {
+                    errorMessage = "PIN must contain only numbers";
+                    isProcessing = false;
+                    return;
+                }
+
+                // Save PIN
+                bool success = await SecurityService.SetupSecurityAsync("pin", pin);
+
+                if (success)
+                {
+                    // Mark security as completed
+                    await DatabaseService.SetBoolSettingAsync(SettingKeys.SecurityCompleted, true);
+                    
+                    // Navigate to main app
+                    Navigation.NavigateTo("/main", true);
+                }
+                else
+                {
+                    errorMessage = "Failed to save PIN. Please try again.";
+                }
+            }
+            else
+            {
+                // Validate password
+                if (string.IsNullOrWhiteSpace(passwordValue))
+                {
+                    errorMessage = "Please enter a password";
+                    isProcessing = false;
+                    return;
+                }
+
+                if (passwordValue.Length < 6)
+                {
+                    errorMessage = "Password must be at least 6 characters";
+                    isProcessing = false;
+                    return;
+                }
+
+                // Save password
+                bool success = await SecurityService.SetupSecurityAsync("password", passwordValue);
+
+                if (success)
+                {
+                    // Mark security as completed
+                    await DatabaseService.SetBoolSettingAsync(SettingKeys.SecurityCompleted, true);
+                    
+                    // Navigate to main app
+                    Navigation.NavigateTo("/main", true);
+                }
+                else
+                {
+                    errorMessage = "Failed to save password. Please try again.";
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error: {ex.Message}";
+            System.Diagnostics.Debug.WriteLine($"HandleConfirm Error: {ex.Message}");
+        }
+        finally
+        {
+            isProcessing = false;
+        }
+    }
+
+    private async Task HandleSkipSecurity()
+    {
+        try
+        {
+            bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to skip security setup? Your journal will not be protected.");
+            
+            if (confirmed)
+            {
+                // Mark security as skipped
+                await DatabaseService.SetBoolSettingAsync(SettingKeys.SecurityEnabled, false);
+                await DatabaseService.SetBoolSettingAsync(SettingKeys.SecurityCompleted, true);
+                
+                // Navigate to main app
+                Navigation.NavigateTo("/main", true);
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"HandleSkipSecurity Error: {ex.Message}");
+        }
+    }
+}

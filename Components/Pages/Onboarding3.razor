@@ -74,9 +74,8 @@
     {
         await Database.SetBoolSettingAsync(SettingKeys.OnboardingCompleted, true);
         
-        // TODO: Navigate to avatar customization next
-        // For now, show a placeholder page
-        Navigation.NavigateTo("/welcome");
+        // Navigate to Avatar Customization
+        Navigation.NavigateTo("/avatar");
     }
 
     private void GoBack()

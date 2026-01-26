@@ -1,0 +1,219 @@
+/* PinEntry.razor.css - Scoped CSS for PIN Entry Page */
+
+.loginContainer[b-f4ubmhh96q] {
+    width: 100%;
+    min-height: 100vh;
+    background: #f5f1e8;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginContent[b-f4ubmhh96q] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 100px;
+    gap: 100px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    animation: fadeIn-b-f4ubmhh96q 0.4s ease-out;
+}
+
+.illustrationSide[b-f4ubmhh96q] {
+    flex: 0 0 48%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.illustration[b-f4ubmhh96q] {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+}
+
+.formSide[b-f4ubmhh96q] {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 500px;
+}
+
+.loginTitle[b-f4ubmhh96q] {
+    font-family: 'Pogonia', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.loginSubtitle[b-f4ubmhh96q] {
+    font-size: 22px;
+    color: #666;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.pinContainer[b-f4ubmhh96q] {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    justify-content: center;
+}
+
+.pinBox[b-f4ubmhh96q] {
+    width: 56px;
+    height: 70px;
+    border: 2px solid #d0d0d0;
+    border-radius: 8px;
+    font-size: 36px;
+    text-align: center;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: all 0.2s;
+}
+
+.pinBox:focus[b-f4ubmhh96q] {
+    outline: none;
+    border-color: #7ba3d4;
+    box-shadow: 0 0 0 3px rgba(123, 163, 212, 0.1);
+}
+
+.pinBox[b-f4ubmhh96q]::placeholder {
+    color: #ccc;
+}
+
+.passwordContainer[b-f4ubmhh96q] {
+    display: none;
+    width: 100%;
+    max-width: 360px;
+    margin-bottom: 20px;
+}
+
+.passwordContainer.active[b-f4ubmhh96q] {
+    display: block;
+}
+
+.passwordWrapper[b-f4ubmhh96q] {
+    position: relative;
+    width: 100%;
+}
+
+.passwordInput[b-f4ubmhh96q] {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #d0d0d0;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #1a1a1a;
+    transition: all 0.2s;
+}
+
+.passwordInput:focus[b-f4ubmhh96q] {
+    outline: none;
+    border-color: #7ba3d4;
+    box-shadow: 0 0 0 3px rgba(123, 163, 212, 0.1);
+}
+
+.helperText[b-f4ubmhh96q] {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.errorText[b-f4ubmhh96q] {
+    color: #e74c3c;
+    font-size: 18px;
+    margin-bottom: 36px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.shake[b-f4ubmhh96q] {
+    animation: shake-b-f4ubmhh96q 0.4s;
+}
+
+@keyframes shake-b-f4ubmhh96q {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.confirmBtn[b-f4ubmhh96q] {
+    padding: 18px 80px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.confirmBtn:hover[b-f4ubmhh96q] {
+    background: #000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.confirmBtn:disabled[b-f4ubmhh96q] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.forgotBtn[b-f4ubmhh96q] {
+    margin-top: 20px;
+    background: transparent;
+    border: none;
+    color: #7ba3d4;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 8px;
+}
+
+.forgotBtn:hover[b-f4ubmhh96q] {
+    color: #5a8bc4;
+}
+
+@keyframes fadeIn-b-f4ubmhh96q {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .loginContent[b-f4ubmhh96q] {
+        flex-direction: column;
+        padding: 80px 40px 40px;
+        gap: 40px;
+    }
+
+    .illustration[b-f4ubmhh96q] {
+        max-width: 320px;
+        width: 80%;
+    }
+
+    .loginTitle[b-f4ubmhh96q] {
+        font-size: 36px;
+    }
+
+    .loginSubtitle[b-f4ubmhh96q] {
+        font-size: 18px;
+    }
+}

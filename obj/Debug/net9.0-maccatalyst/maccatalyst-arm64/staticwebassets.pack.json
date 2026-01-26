@@ -1,0 +1,2049 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/scopedcss/bundle/MoodJournal.styles.css",
+      "PackagePath": "staticwebassets/MoodJournal.styles.css"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/.gitkeep",
+      "PackagePath": "staticwebassets/assets/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/expressions/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/expressions/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/expressions/angry/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/expressions/angry/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/expressions/anxious/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/expressions/anxious/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/expressions/calm/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/expressions/calm/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/expressions/excited/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/expressions/excited/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/expressions/happy/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/expressions/happy/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/expressions/neutral/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/expressions/neutral/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/expressions/sad/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/expressions/sad/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/expressions/tired/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/expressions/tired/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/female/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/basketball-cap-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/basketball-cap-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/basketball-cap-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/basketball-cap-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/basketball-cap-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/basketball-cap-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/bottomless-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/bottomless-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/boy-tie-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/boy-tie-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/boy-tie-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/boy-tie-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/boy-tie-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/boy-tie-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/circular-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/circular-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/flower-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/flower-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/flower-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/flower-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/flower-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/flower-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/french-cap-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/french-cap-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/french-cap-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/french-cap-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/french-cap-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/french-cap-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hairband1-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hairband1-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hairband1-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hairband1-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hairband1-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hairband1-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hairband2-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hairband2-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hairband2-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hairband2-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hairband2-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hairband2-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hairband3-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hairband3-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hairband3-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hairband3-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hairband3-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hairband3-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hat-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hat-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hat-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hat-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/hat-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/hat-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/heart-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/heart-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/lady-hat-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/lady-hat-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/lady-hat-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/lady-hat-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/lady-hat-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/lady-hat-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/magician-hat-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/magician-hat-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/magician-hat-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/magician-hat-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/magician-hat-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/magician-hat-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/side-bow-grren.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/side-bow-grren.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/side-bow-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/side-bow-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/side-bow-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/side-bow-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/sideways-baseball-cap-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/sideways-baseball-cap-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/sideways-baseball-cap-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/sideways-baseball-cap-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/sideways-baseball-cap-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/sideways-baseball-cap-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/square-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/square-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/star-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/star-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/straight-tie-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/straight-tie-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/straight-tie-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/straight-tie-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/straight-tie-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/straight-tie-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/stripped-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/stripped-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/sunglasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/sunglasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/winter-cap-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/winter-cap-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/accessories/winter-cap-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/accessories/winter-cap-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/base/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/female/base/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/base/Base01.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/base/Base01.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/base/Base02.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/base/Base02.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/base/Base03.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/base/Base03.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/c-neck-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/c-neck-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/c-neck-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/c-neck-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/c-neck-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/c-neck-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/night-dress-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/night-dress-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/night-dress-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/night-dress-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/night-dress-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/night-dress-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/off-shoulder-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/off-shoulder-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/off-shoulder-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/off-shoulder-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/off-shoulder-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/off-shoulder-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/sweater-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/sweater-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/sweater-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/sweater-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/sweater-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/sweater-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/tank-top-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/tank-top-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/tank-top-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/tank-top-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/tank-top-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/tank-top-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/uniform-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/uniform-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/uniform-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/uniform-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/uniform-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/uniform-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/v-neck-sweater-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/v-neck-sweater-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/v-neck-sweater-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/v-neck-sweater-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/clothes/v-neck-sweater-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/clothes/v-neck-sweater-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes01.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes01.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes02.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes02.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes03.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes03.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes04.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes04.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes05.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes05.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes06.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes06.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes07.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes07.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes08.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes08.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes09.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes09.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes10.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes10.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes11.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes11.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes12.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes12.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes13.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes13.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes14.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes14.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes15.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes15.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes16.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes16.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes17.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes17.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes18.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes18.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes19.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes19.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes20.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes20.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes21.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes21.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes22.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes22.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes23.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes23.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes24.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes24.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes25.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes25.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes26.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes26.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes27.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes27.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes28.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes28.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes29.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes29.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes30.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes30.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes31.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes31.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes32.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes32.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes33.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes33.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes34.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes34.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes35.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes35.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes36.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes36.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes37.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes37.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes38.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes38.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes39.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes39.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes40.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes40.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes41.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes41.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/eyes/eyes42.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/eyes/eyes42.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/anime-hair-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/anime-hair-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/anime-hair-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/anime-hair-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/anime-hair-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/anime-hair-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/anime-hair-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/anime-hair-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/anime-hair-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/anime-hair-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/anime-hair-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/anime-hair-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/anime-hair-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/anime-hair-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/anime-hair-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/anime-hair-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-short-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-short-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-short-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-short-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-short-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-short-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-short-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-short-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-short-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-short-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-short-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-short-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-short-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-short-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-short-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-short-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bangs-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bangs-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/boys-cut-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/boys-cut-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/boys-cut-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/boys-cut-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/boys-cut-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/boys-cut-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/boys-cut-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/boys-cut-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/boys-cut-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/boys-cut-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/boys-cut-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/boys-cut-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/boys-cut-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/boys-cut-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/boys-cut-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/boys-cut-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bun-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bun-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bun-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bun-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bun-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bun-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bun-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bun-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bun-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bun-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bun-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bun-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bun-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bun-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/bun-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/bun-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/granny-hair-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/granny-hair-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/granny-hair-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/granny-hair-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/granny-hair-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/granny-hair-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/granny-hair-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/granny-hair-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/granny-hair-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/granny-hair-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/granny-hair-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/granny-hair-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/granny-hair-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/granny-hair-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/granny-hair-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/granny-hair-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/medium-curl-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/medium-curl-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/medium-curl-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/medium-curl-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/medium-curl-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/medium-curl-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/medium-curl-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/medium-curl-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/medium-curl-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/medium-curl-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/medium-curl-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/medium-curl-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/medium-curl-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/medium-curl-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/medium-curl-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/medium-curl-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/pigtails-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/pigtails-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/pigtails-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/pigtails-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/pigtails-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/pigtails-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/pigtails-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/pigtails-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/pigtails-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/pigtails-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/pigtails-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/pigtails-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/pigtails-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/pigtails-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/pigtails-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/pigtails-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/side-pony-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/side-pony-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/side-pony-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/side-pony-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/side-pony-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/side-pony-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/side-pony-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/side-pony-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/side-pony-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/side-pony-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/side-pony-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/side-pony-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/side-pony-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/side-pony-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/side-pony-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/side-pony-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/to-the-side-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/to-the-side-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/to-the-side-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/to-the-side-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/to-the-side-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/to-the-side-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/to-the-side-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/to-the-side-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/to-the-side-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/to-the-side-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/to-the-side-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/to-the-side-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/to-the-side-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/to-the-side-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/hair/to-the-side-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/hair/to-the-side-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/justhead/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/female/justhead/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/justhead/justheadbase01.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/justhead/justheadbase01.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/justhead/justheadbase02.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/justhead/justheadbase02.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/justhead/justheadbase03.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/justhead/justheadbase03.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/mouth/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/female/mouth/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/mouth/mouth01.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/mouth/mouth01.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/mouth/mouth02.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/mouth/mouth02.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/mouth/mouth03.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/mouth/mouth03.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/mouth/mouth04.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/mouth/mouth04.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/mouth/mouth05.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/mouth/mouth05.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/mouth/mouth06.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/mouth/mouth06.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/mouth/mouth07.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/mouth/mouth07.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/mouth/mouth08.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/mouth/mouth08.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/mouth/mouth09.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/mouth/mouth09.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/mouth/mouth10.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/mouth/mouth10.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/nose/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/female/nose/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/nose/nose01.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/nose/nose01.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/nose/nose02.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/nose/nose02.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/nose/nose03.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/nose/nose03.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/nose/nose04.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/nose/nose04.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/nose/nose05.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/nose/nose05.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/nose/nose06.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/nose/nose06.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/nose/nose07.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/nose/nose07.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/nose/nose08.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/nose/nose08.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/nose/nose09.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/nose/nose09.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/female/nose/nose10.png",
+      "PackagePath": "staticwebassets/assets/avatar/female/nose/nose10.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/icons/accessories-icon.png",
+      "PackagePath": "staticwebassets/assets/avatar/icons/accessories-icon.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/icons/arrow-left.svg",
+      "PackagePath": "staticwebassets/assets/avatar/icons/arrow-left.svg"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/icons/arrow-right.svg",
+      "PackagePath": "staticwebassets/assets/avatar/icons/arrow-right.svg"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/icons/base-icon.png",
+      "PackagePath": "staticwebassets/assets/avatar/icons/base-icon.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/icons/beard-icon.png",
+      "PackagePath": "staticwebassets/assets/avatar/icons/beard-icon.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/icons/clothes-icon.png",
+      "PackagePath": "staticwebassets/assets/avatar/icons/clothes-icon.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/icons/eyes-icon.png",
+      "PackagePath": "staticwebassets/assets/avatar/icons/eyes-icon.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/icons/hair-icon.png",
+      "PackagePath": "staticwebassets/assets/avatar/icons/hair-icon.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/icons/mouth-icon.png",
+      "PackagePath": "staticwebassets/assets/avatar/icons/mouth-icon.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/icons/nose-icon.png",
+      "PackagePath": "staticwebassets/assets/avatar/icons/nose-icon.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/male/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/basketball-cap-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/basketball-cap-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/basketball-cap-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/basketball-cap-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/basketball-cap-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/basketball-cap-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/bottomless-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/bottomless-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/boy-tie-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/boy-tie-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/boy-tie-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/boy-tie-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/boy-tie-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/boy-tie-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/circular-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/circular-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/flower-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/flower-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/flower-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/flower-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/flower-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/flower-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/french-cap-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/french-cap-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/french-cap-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/french-cap-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/french-cap-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/french-cap-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hairband1-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hairband1-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hairband1-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hairband1-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hairband1-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hairband1-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hairband2-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hairband2-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hairband2-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hairband2-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hairband2-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hairband2-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hairband3-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hairband3-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hairband3-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hairband3-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hairband3-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hairband3-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hat-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hat-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hat-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hat-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/hat-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/hat-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/heart-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/heart-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/lady-hat-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/lady-hat-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/lady-hat-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/lady-hat-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/lady-hat-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/lady-hat-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/magician-hat-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/magician-hat-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/magician-hat-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/magician-hat-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/magician-hat-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/magician-hat-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/side-bow-grren.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/side-bow-grren.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/side-bow-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/side-bow-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/side-bow-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/side-bow-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/sideways-baseball-cap-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/sideways-baseball-cap-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/sideways-baseball-cap-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/sideways-baseball-cap-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/sideways-baseball-cap-yellow.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/sideways-baseball-cap-yellow.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/square-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/square-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/star-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/star-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/straight-tie-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/straight-tie-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/straight-tie-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/straight-tie-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/straight-tie-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/straight-tie-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/stripped-glasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/stripped-glasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/sunglasses.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/sunglasses.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/winter-cap-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/winter-cap-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/accessories/winter-cap-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/accessories/winter-cap-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/base/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/male/base/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/base/Base01.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/base/Base01.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/base/Base02.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/base/Base02.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/base/Base03.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/base/Base03.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/button-up-shirt-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/button-up-shirt-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/button-up-shirt-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/button-up-shirt-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/button-up-shirt-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/button-up-shirt-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/c-neck-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/c-neck-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/c-neck-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/c-neck-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/c-neck-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/c-neck-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/sweater-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/sweater-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/sweater-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/sweater-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/sweater-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/sweater-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/tank-top-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/tank-top-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/tank-top-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/tank-top-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/tank-top-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/tank-top-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/uniform-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/uniform-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/uniform-green.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/uniform-green.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/uniform-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/uniform-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/v-neck-sweater-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/v-neck-sweater-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/v-neck-sweater-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/v-neck-sweater-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/clothes/v-neck-sweater-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/clothes/v-neck-sweater-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes01.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes01.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes02.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes02.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes03.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes03.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes04.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes04.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes05.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes05.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes06.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes06.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes07.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes07.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes08.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes08.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes09.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes09.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes10.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes10.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes11.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes11.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes12.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes12.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes13.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes13.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes14.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes14.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes15.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes15.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes16.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes16.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes17.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes17.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes18.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes18.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes19.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes19.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes20.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes20.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes21.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes21.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes22.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes22.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes23.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes23.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes24.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes24.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes25.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes25.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes26.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes26.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes27.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes27.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes28.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes28.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes29.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes29.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes30.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes30.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes31.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes31.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes32.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes32.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes33.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes33.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes34.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes34.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes35.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes35.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes36.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes36.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes37.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes37.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes38.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes38.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes39.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes39.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes40.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes40.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes41.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes41.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/eyes/eyes42.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/eyes/eyes42.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style1.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style1.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style10.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style10.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style11.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style11.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style12.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style12.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style13.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style13.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style14.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style14.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style15.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style15.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style16.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style16.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style17.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style17.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style18.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style18.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style19.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style19.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style2.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style2.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style20.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style20.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style3.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style3.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style4.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style4.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style5.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style5.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style6.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style6.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style7.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style7.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style8.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style8.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/facialhair/style9.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/facialhair/style9.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/90s-hair-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/90s-hair-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/90s-hair-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/90s-hair-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/90s-hair-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/90s-hair-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/90s-hair-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/90s-hair-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/90s-hair-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/90s-hair-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/90s-hair-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/90s-hair-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/90s-hair-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/90s-hair-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/90s-hair-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/90s-hair-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/Hair 100.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/Hair 100.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/bangs-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/bangs-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/bangs-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/bangs-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/bangs-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/bangs-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/bangs-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/bangs-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/bangs-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/bangs-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/bangs-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/bangs-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/bangs-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/bangs-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/bangs-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/bangs-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/ceo-hair-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/ceo-hair-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/ceo-hair-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/ceo-hair-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/ceo-hair-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/ceo-hair-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/ceo-hair-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/ceo-hair-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/ceo-hair-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/ceo-hair-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/ceo-hair-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/ceo-hair-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/ceo-hair-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/ceo-hair-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/ceo-hair-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/ceo-hair-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/curly-short-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/curly-short-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/curly-short-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/curly-short-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/curly-short-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/curly-short-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/curly-short-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/curly-short-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/curly-short-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/curly-short-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/curly-short-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/curly-short-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/curly-short-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/curly-short-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/curly-short-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/curly-short-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/dad-hair-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/dad-hair-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/dad-hair-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/dad-hair-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/dad-hair-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/dad-hair-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/dad-hair-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/dad-hair-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/dad-hair-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/dad-hair-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/dad-hair-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/dad-hair-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/dad-hair-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/dad-hair-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/dad-hair-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/dad-hair-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/edgy-hair-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/edgy-hair-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/edgy-hair-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/edgy-hair-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/edgy-hair-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/edgy-hair-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/edgy-hair-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/edgy-hair-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/edgy-hair-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/edgy-hair-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/edgy-hair-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/edgy-hair-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/edgy-hair-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/edgy-hair-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/flat-hair-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/flat-hair-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/flat-hair-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/flat-hair-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/flat-hair-blue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/flat-hair-blue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/flat-hair-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/flat-hair-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/flat-hair-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/flat-hair-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/flat-hair-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/flat-hair-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/flat-hair-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/flat-hair-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/flat-hair-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/flat-hair-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/pointed-pony-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/pointed-pony-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/pointed-pony-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/pointed-pony-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/pointed-pony-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/pointed-pony-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/pointed-pony-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/pointed-pony-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/pointed-pony-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/pointed-pony-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/pointed-pony-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/pointed-pony-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/pointed-pony-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/pointed-pony-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/pointed-pony-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/pointed-pony-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/spiky-hair-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/spiky-hair-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/spiky-hair-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/spiky-hair-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/spiky-hair-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/spiky-hair-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/spiky-hair-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/spiky-hair-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/spiky-hair-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/spiky-hair-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/spiky-hair-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/spiky-hair-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/spiky-hair-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/spiky-hair-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/spiky-hair-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/spiky-hair-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/straight-short-black.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/straight-short-black.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/straight-short-blonde.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/straight-short-blonde.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/straight-short-brown.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/straight-short-brown.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/straight-short-darkblue.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/straight-short-darkblue.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/straight-short-orange.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/straight-short-orange.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/straight-short-pink.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/straight-short-pink.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/straight-short-red.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/straight-short-red.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/hair/straight-short-silver.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/hair/straight-short-silver.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/justhead/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/male/justhead/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/justhead/justheadbase01.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/justhead/justheadbase01.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/justhead/justheadbase02.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/justhead/justheadbase02.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/justhead/justheadbase03.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/justhead/justheadbase03.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/mouth/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/male/mouth/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/mouth/mouth01.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/mouth/mouth01.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/mouth/mouth02.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/mouth/mouth02.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/mouth/mouth03.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/mouth/mouth03.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/mouth/mouth04.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/mouth/mouth04.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/mouth/mouth05.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/mouth/mouth05.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/mouth/mouth06.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/mouth/mouth06.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/mouth/mouth07.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/mouth/mouth07.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/mouth/mouth08.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/mouth/mouth08.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/mouth/mouth09.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/mouth/mouth09.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/mouth/mouth10.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/mouth/mouth10.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/nose/.gitkeep",
+      "PackagePath": "staticwebassets/assets/avatar/male/nose/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/nose/nose01.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/nose/nose01.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/nose/nose02.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/nose/nose02.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/nose/nose03.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/nose/nose03.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/nose/nose04.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/nose/nose04.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/nose/nose05.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/nose/nose05.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/nose/nose06.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/nose/nose06.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/nose/nose07.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/nose/nose07.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/nose/nose08.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/nose/nose08.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/nose/nose09.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/nose/nose09.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/avatar/male/nose/nose10.png",
+      "PackagePath": "staticwebassets/assets/avatar/male/nose/nose10.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/images/.gitkeep",
+      "PackagePath": "staticwebassets/assets/images/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/images/icons/.gitkeep",
+      "PackagePath": "staticwebassets/assets/images/icons/.gitkeep"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/images/onboarding/Login.svg",
+      "PackagePath": "staticwebassets/assets/images/onboarding/Login.svg"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/images/onboarding/Onboarding1.svg",
+      "PackagePath": "staticwebassets/assets/images/onboarding/Onboarding1.svg"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/images/onboarding/Onboarding2.svg",
+      "PackagePath": "staticwebassets/assets/images/onboarding/Onboarding2.svg"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/images/onboarding/Onboarding3.svg",
+      "PackagePath": "staticwebassets/assets/images/onboarding/Onboarding3.svg"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/css/Avatar.css",
+      "PackagePath": "staticwebassets/css/Avatar.css"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/css/Fonts.css",
+      "PackagePath": "staticwebassets/css/Fonts.css"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/css/Login.css",
+      "PackagePath": "staticwebassets/css/Login.css"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/css/Onboarding.css",
+      "PackagePath": "staticwebassets/css/Onboarding.css"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/css/app.css",
+      "PackagePath": "staticwebassets/css/app.css"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/css/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/css/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/staticwebassets/msbuild.MoodJournal.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/staticwebassets/msbuild.MoodJournal.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/staticwebassets/msbuild.build.MoodJournal.props",
+      "PackagePath": "build\\MoodJournal.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/staticwebassets/msbuild.buildMultiTargeting.MoodJournal.props",
+      "PackagePath": "buildMultiTargeting\\MoodJournal.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/staticwebassets/msbuild.buildTransitive.MoodJournal.props",
+      "PackagePath": "buildTransitive\\MoodJournal.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

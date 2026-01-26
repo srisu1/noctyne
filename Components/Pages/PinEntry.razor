@@ -1,0 +1,256 @@
+@page "/pin-entry"
+@using MoodJournal.Services.Interfaces
+@using MoodJournal.Models
+@using Microsoft.JSInterop
+@inject ISecurityService SecurityService
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+
+<div class="loginContainer">
+    <div class="loginContent">
+        <!-- Illustration -->
+        <div class="illustrationSide">
+            <img src="assets/images/onboarding/Login.svg" alt="Welcome back" class="illustration">
+        </div>
+
+        <!-- Form -->
+        <div class="formSide">
+            <h1 class="loginTitle">Welcome Back!</h1>
+            <p class="loginSubtitle">Enter your @(credentialType == "pin" ? "PIN" : "password")<br>to continue.</p>
+
+            @if (credentialType == "pin")
+            {
+                <!-- PIN Input -->
+                <div class="pinContainer">
+                    @for (int i = 0; i < 6; i++)
+                    {
+                        int index = i;
+                        <input type="password" 
+                               class="pinBox" 
+                               maxlength="1" 
+                               placeholder="•" 
+                               @bind="pinDigits[index]"
+                               @bind:event="oninput"
+                               @onkeydown="@(e => HandlePinKeyDown(e, index))"
+                               @ref="pinBoxRefs[index]" />
+                    }
+                </div>
+            }
+            else
+            {
+                <!-- Password Input -->
+                <div class="passwordContainer active">
+                    <div class="passwordWrapper">
+                        <input type="password" 
+                               class="passwordInput" 
+                               placeholder="Enter your password"
+                               @bind="passwordValue"
+                               @bind:event="oninput"
+                               @onkeydown="HandlePasswordKeyDown"
+                               @ref="passwordInputRef" />
+                    </div>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <p class="errorText shake">@errorMessage</p>
+            }
+            else
+            {
+                <p class="helperText">@helperText</p>
+            }
+
+            <!-- Unlock Button -->
+            <button class="confirmBtn" @onclick="HandleUnlock" disabled="@isProcessing">
+                @(isProcessing ? "VERIFYING..." : "UNLOCK")
+            </button>
+
+            @if (attemptCount >= 3)
+            {
+                <button class="forgotBtn" @onclick="HandleForgotCredential">
+                    Forgot @(credentialType == "pin" ? "PIN" : "Password")?
+                </button>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private string credentialType = "pin";
+    private string[] pinDigits = new string[6];
+    private string passwordValue = "";
+    private string errorMessage = "";
+    private string helperText = "";
+    private bool isProcessing = false;
+    private int attemptCount = 0;
+
+    private ElementReference[] pinBoxRefs = new ElementReference[6];
+    private ElementReference passwordInputRef;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var type = await SecurityService.GetCredentialTypeAsync();
+            credentialType = type ?? "pin";
+            helperText = credentialType == "pin" ? "Enter your 6-digit PIN" : "Enter your password";
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"OnInitializedAsync Error: {ex.Message}");
+            credentialType = "pin";
+            helperText = "Enter your 6-digit PIN";
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(100);
+            try
+            {
+                if (credentialType == "pin")
+                {
+                    await pinBoxRefs[0].FocusAsync();
+                }
+                else
+                {
+                    await passwordInputRef.FocusAsync();
+                }
+            }
+            catch { }
+        }
+    }
+
+    private async Task HandlePinKeyDown(KeyboardEventArgs e, int index)
+    {
+        if (e.Key == "Enter")
+        {
+            await HandleUnlock();
+            return;
+        }
+
+        if (e.Key == "Backspace")
+        {
+            if (string.IsNullOrEmpty(pinDigits[index]) && index > 0)
+            {
+                try { await pinBoxRefs[index - 1].FocusAsync(); } catch { }
+            }
+        }
+        else if (e.Key == "ArrowLeft" && index > 0)
+        {
+            try { await pinBoxRefs[index - 1].FocusAsync(); } catch { }
+        }
+        else if (e.Key == "ArrowRight" && index < 5)
+        {
+            try { await pinBoxRefs[index + 1].FocusAsync(); } catch { }
+        }
+        else if (char.IsDigit(e.Key[0]))
+        {
+            await Task.Delay(10);
+            if (index < 5)
+            {
+                try { await pinBoxRefs[index + 1].FocusAsync(); } catch { }
+            }
+            else
+            {
+                await Task.Delay(100);
+                await HandleUnlock();
+            }
+        }
+    }
+
+    private async Task HandlePasswordKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await HandleUnlock();
+        }
+    }
+
+    private async Task HandleUnlock()
+    {
+        errorMessage = "";
+        helperText = "";
+        isProcessing = true;
+
+        try
+        {
+            string credential = credentialType == "pin" ? string.Join("", pinDigits) : passwordValue;
+
+            if (string.IsNullOrWhiteSpace(credential))
+            {
+                errorMessage = credentialType == "pin" ? "Please enter your PIN" : "Please enter your password";
+                isProcessing = false;
+                return;
+            }
+
+            if (credentialType == "pin" && credential.Length != 6)
+            {
+                errorMessage = "Please enter complete 6-digit PIN";
+                isProcessing = false;
+                return;
+            }
+
+            bool isValid = await SecurityService.VerifySecurityAsync(credential);
+
+            if (isValid)
+            {
+                Navigation.NavigateTo("/main", true);
+            }
+            else
+            {
+                attemptCount++;
+                errorMessage = credentialType == "pin" ? "Incorrect PIN. Please try again." : "Incorrect password. Please try again.";
+
+                if (credentialType == "pin")
+                {
+                    Array.Clear(pinDigits, 0, pinDigits.Length);
+                    StateHasChanged();
+                    await Task.Delay(50);
+                    try { await pinBoxRefs[0].FocusAsync(); } catch { }
+                }
+                else
+                {
+                    passwordValue = "";
+                    StateHasChanged();
+                    await Task.Delay(50);
+                    try { await passwordInputRef.FocusAsync(); } catch { }
+                }
+
+                if (attemptCount >= 3)
+                {
+                    errorMessage = "Too many failed attempts. Need help?";
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "An error occurred. Please try again.";
+            System.Diagnostics.Debug.WriteLine($"HandleUnlock Error: {ex.Message}");
+        }
+        finally
+        {
+            isProcessing = false;
+        }
+    }
+
+    private async Task HandleForgotCredential()
+    {
+        try
+        {
+            bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Resetting your security will require you to set up your journal again. Continue?");
+            if (confirmed)
+            {
+                await SecurityService.DisableSecurityAsync();
+                Navigation.NavigateTo("/", true);
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"HandleForgotCredential Error: {ex.Message}");
+        }
+    }
+}
