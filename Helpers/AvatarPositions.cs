@@ -70,12 +70,12 @@ public static class AvatarPositions
 
     public static readonly Dictionary<string, LayerPosition> ClothesPositions_Male = new()
     {
-        ["uniform"] = new LayerPosition(0, 210, 0.30),
-        ["button-up-shirt"] = new LayerPosition(0, 210, 0.30),
-        ["sweater"] = new LayerPosition(-4, 214, 0.32),
-        ["c-neck"] = new LayerPosition(-4, 214, 0.32),
-        ["neck"] = new LayerPosition(-4, 214, 0.32),
-        ["tank-top"] = new LayerPosition(6, 214, 0.30)
+        ["uniform"] = new LayerPosition(1, 230, 0.39),
+        ["button-up-shirt"] = new LayerPosition(1, 230, 0.39),
+        ["sweater"] = new LayerPosition(-3, 239, 0.40),
+        ["c-neck"] = new LayerPosition(-3, 239, 0.40),
+        ["v-neck"] = new LayerPosition(-3, 239, 0.40),
+        ["tank-top"] = new LayerPosition(7, 212, 0.32)
     };
 
     #endregion
@@ -96,14 +96,14 @@ public static class AvatarPositions
         ["style10"] = new LayerPosition(0, 18, 0.30),
         ["style11"] = new LayerPosition(-2, 35, 0.30),
         ["style12"] = new LayerPosition(-4, 109, 0.30),
-        ["style13"] = new LayerPosition(0, 60, 0.30),
-        ["style14"] = new LayerPosition(0, 60, 0.30),
-        ["style15"] = new LayerPosition(0, 60, 0.30),
-        ["style16"] = new LayerPosition(0, 60, 0.30),
-        ["style17"] = new LayerPosition(0, 60, 0.30),
-        ["style18"] = new LayerPosition(0, 60, 0.30),
-        ["style19"] = new LayerPosition(0, 60, 0.30),
-        ["style20"] = new LayerPosition(0, 60, 0.30)
+        ["style13"] = new LayerPosition(-1, 33, 0.30),
+        ["style14"] = new LayerPosition(-1, 111, 0.30),
+        ["style15"] = new LayerPosition(-1, 6, 0.29),
+        ["style16"] = new LayerPosition(-2, 86, 0.64),
+        ["style17"] = new LayerPosition(-2, 86, 0.34),
+        ["style18"] = new LayerPosition(-2, 97, 0.30),
+        ["style19"] = new LayerPosition(-2, 29, 0.30),
+        ["style20"] = new LayerPosition(-2, 44, 0.30)
     };
 
     public static readonly Dictionary<string, LayerPosition> GlassesPositions = new()
