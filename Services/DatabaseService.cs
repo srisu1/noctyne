@@ -3,192 +3,111 @@ using MoodJournal.Models;
 
 namespace MoodJournal.Services;
 
-/// <summary>
-/// Manages all SQLite database operations for MoodJournal
-/// Enhanced with detailed logging for debugging
-/// </summary>
 public class DatabaseService : Services.Interfaces.IDatabaseService
 {
     private SQLiteAsyncConnection? _database;
     private readonly string _dbPath;
 
-  
-    //Constructor that sets up database file path
     public DatabaseService()
     {
         _dbPath = Path.Combine(FileSystem.AppDataDirectory, "moodjournal.db3");
-        Console.WriteLine($"📁 Database path set to: {_dbPath}");
+        Console.WriteLine($"📁 Database path: {_dbPath}");
     }
 
- 
-    //Initialize database connection and create all tables that is called once at app startup
     public async Task InitializeAsync()
     {
-        Console.WriteLine(" InitializeAsync called");
-        
-        // Prevent multiple initializations
-        if (_database != null)
-        {
-            Console.WriteLine(" Database already initialized, skipping");
-            return;
-        }
+        if (_database != null) return;
 
         try
         {
-            Console.WriteLine(" Creating database connection...");
-            
-            // Create database connection
             _database = new SQLiteAsyncConnection(_dbPath);
-            Console.WriteLine("Database connection created");
-
-            // Create all tables (SQLite auto creates if not exists)
-            Console.WriteLine("Creating tables...");
             
-            Console.WriteLine("Creating AppSettings table...");
-            await _database.CreateTableAsync<AppSetting>();
-            Console.WriteLine(" AppSettings table created");
+            // Note: If table creation fails, use the SQL file to create tables manually
+            try
+            {
+                await _database.CreateTableAsync<AppSetting>();
+                await _database.CreateTableAsync<UserProfile>();
+                await _database.CreateTableAsync<AvatarConfiguration>();
+                await _database.CreateTableAsync<SecurityCredential>();
+                await _database.CreateTableAsync<JournalEntry>();
+                await _database.CreateTableAsync<Tag>();
+                await _database.CreateTableAsync<EntryTag>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️ Table creation failed: {ex.Message}");
+                Console.WriteLine("💡 Use DATABASE_SETUP_SQL.sql to create tables manually");
+            }
             
-            Console.WriteLine("Creating UserProfile table...");
-            await _database.CreateTableAsync<UserProfile>();
-            Console.WriteLine("UserProfile table created");
-            
-            Console.WriteLine("Creating AvatarConfiguration table...");
-            await _database.CreateTableAsync<AvatarConfiguration>();
-            Console.WriteLine("AvatarConfiguration table created");
-            
-            Console.WriteLine("Creating SecurityCredential table...");
-            await _database.CreateTableAsync<SecurityCredential>();
-            Console.WriteLine("SecurityCredential table created");
-
-            Console.WriteLine("Seeding default settings...");
             await SeedDefaultSettingsAsync();
-            Console.WriteLine("Default settings seeded");
-            
-            Console.WriteLine("Database initialization complete!");
+            Console.WriteLine("🎉 Database initialized!");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Database initialization error: {ex.Message}");
-            Console.WriteLine($"Stack trace: {ex.StackTrace}");
+            Console.WriteLine($"❌ Database error: {ex.Message}");
             throw;
         }
     }
 
-
-    // Get database connection (ensures initialization first)
     public async Task<SQLiteAsyncConnection> GetConnectionAsync()
     {
-        if (_database == null)
-        {
-            Console.WriteLine("Database not initialized, initializing now...");
-            await InitializeAsync();
-        }
-
+        if (_database == null) await InitializeAsync();
         return _database!;
     }
 
-    #region Default Settings
-
-
-    //Seed default application settings on first launch
     private async Task SeedDefaultSettingsAsync()
     {
-        try
-        {
-            var existingSettings = await _database!.Table<AppSetting>().CountAsync();
-            Console.WriteLine($"  - Found {existingSettings} existing settings");
-            
-            if (existingSettings > 0)
-            {
-                Console.WriteLine("  - Settings already exist, skipping seed");
-                return;
-            }
+        var count = await _database!.Table<AppSetting>().CountAsync();
+        if (count > 0) return;
 
-            Console.WriteLine("  - Inserting default settings...");
-            var defaultSettings = new List<AppSetting>
-            {
-                new() { SettingKey = SettingKeys.Theme, SettingValue = "light" },
-                new() { SettingKey = SettingKeys.IsFirstLaunch, SettingValue = "true" },
-                new() { SettingKey = SettingKeys.OnboardingCompleted, SettingValue = "false" },
-                new() { SettingKey = SettingKeys.AvatarCompleted, SettingValue = "false" },
-                new() { SettingKey = SettingKeys.SecurityCompleted, SettingValue = "false" },
-                new() { SettingKey = SettingKeys.SecurityEnabled, SettingValue = "false" },
-                new() { SettingKey = SettingKeys.FontSize, SettingValue = "medium" },
-                new() { SettingKey = SettingKeys.AccentColor, SettingValue = "#F490AF" }
-            };
-
-            await _database.InsertAllAsync(defaultSettings);
-            Console.WriteLine($"Inserted {defaultSettings.Count} default settings");
-        }
-        catch (Exception ex)
+        var settings = new List<AppSetting>
         {
-            Console.WriteLine($"Error seeding settings: {ex.Message}");
-            throw;
-        }
+            new() { SettingKey = SettingKeys.Theme, SettingValue = "light" },
+            new() { SettingKey = SettingKeys.IsFirstLaunch, SettingValue = "true" },
+            new() { SettingKey = SettingKeys.OnboardingCompleted, SettingValue = "false" },
+            new() { SettingKey = SettingKeys.AvatarCompleted, SettingValue = "false" },
+            new() { SettingKey = SettingKeys.SecurityCompleted, SettingValue = "false" },
+            new() { SettingKey = SettingKeys.SecurityEnabled, SettingValue = "false" },
+            new() { SettingKey = SettingKeys.FontSize, SettingValue = "medium" },
+            new() { SettingKey = SettingKeys.AccentColor, SettingValue = "#F490AF" }
+        };
+        await _database.InsertAllAsync(settings);
     }
 
-    #endregion
-
-    #region Settings Methods
+    #region Settings
 
     public async Task<string?> GetSettingAsync(string key)
     {
-        try
-        {
-            var db = await GetConnectionAsync();
-            var setting = await db.Table<AppSetting>()
-                .Where(s => s.SettingKey == key)
-                .FirstOrDefaultAsync();
-
-            return setting?.SettingValue;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error getting setting '{key}': {ex.Message}");
-            return null;
-        }
+        var db = await GetConnectionAsync();
+        var setting = await db.Table<AppSetting>()
+            .Where(s => s.SettingKey == key)
+            .FirstOrDefaultAsync();
+        return setting?.SettingValue;
     }
 
     public async Task SetSettingAsync(string key, string value)
     {
-        try
-        {
-            var db = await GetConnectionAsync();
-            var setting = await db.Table<AppSetting>()
-                .Where(s => s.SettingKey == key)
-                .FirstOrDefaultAsync();
+        var db = await GetConnectionAsync();
+        var setting = await db.Table<AppSetting>()
+            .Where(s => s.SettingKey == key)
+            .FirstOrDefaultAsync();
 
-            if (setting != null)
-            {
-                setting.SettingValue = value;
-                setting.UpdatedAt = DateTime.UtcNow;
-                await db.UpdateAsync(setting);
-                Console.WriteLine($"Updated setting '{key}' = '{value}'");
-            }
-            else
-            {
-                await db.InsertAsync(new AppSetting
-                {
-                    SettingKey = key,
-                    SettingValue = value
-                });
-                Console.WriteLine($"Created setting '{key}' = '{value}'");
-            }
-        }
-        catch (Exception ex)
+        if (setting != null)
         {
-            Console.WriteLine($"Error setting '{key}': {ex.Message}");
-            throw;
+            setting.SettingValue = value;
+            setting.UpdatedAt = DateTime.UtcNow;
+            await db.UpdateAsync(setting);
+        }
+        else
+        {
+            await db.InsertAsync(new AppSetting { SettingKey = key, SettingValue = value });
         }
     }
 
     public async Task<bool> GetBoolSettingAsync(string key, bool defaultValue = false)
     {
         var value = await GetSettingAsync(key);
-        if (string.IsNullOrEmpty(value))
-            return defaultValue;
-
-        return bool.TryParse(value, out var result) && result;
+        return string.IsNullOrEmpty(value) ? defaultValue : bool.TryParse(value, out var result) && result;
     }
 
     public async Task SetBoolSettingAsync(string key, bool value)
@@ -198,203 +117,326 @@ public class DatabaseService : Services.Interfaces.IDatabaseService
 
     #endregion
 
-    #region User Profile Methods
+    #region User Profile
 
     public async Task<UserProfile?> GetUserProfileAsync()
     {
-        try
-        {
-            var db = await GetConnectionAsync();
-            var profile = await db.Table<UserProfile>().FirstOrDefaultAsync();
-            
-            if (profile != null)
-            {
-                Console.WriteLine($"Found user profile: {profile.Name} (ID: {profile.Id})");
-            }
-            else
-            {
-                Console.WriteLine("No user profile found");
-            }
-            
-            return profile;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error getting user profile: {ex.Message}");
-            return null;
-        }
+        var db = await GetConnectionAsync();
+        return await db.Table<UserProfile>().FirstOrDefaultAsync();
     }
 
     public async Task<UserProfile> SaveUserProfileAsync(UserProfile profile)
     {
-        try
-        {
-            var db = await GetConnectionAsync();
-            profile.UpdatedAt = DateTime.UtcNow;
+        var db = await GetConnectionAsync();
+        profile.UpdatedAt = DateTime.UtcNow;
 
-            if (profile.Id == 0)
-            {
-                profile.CreatedAt = DateTime.UtcNow;
-                await db.InsertAsync(profile);
-                Console.WriteLine($"Created user profile: {profile.Name} (ID: {profile.Id})");
-            }
-            else
-            {
-                await db.UpdateAsync(profile);
-                Console.WriteLine($"Updated user profile: {profile.Name} (ID: {profile.Id})");
-            }
-
-            return profile;
-        }
-        catch (Exception ex)
+        if (profile.Id == 0)
         {
-            Console.WriteLine($"Error saving user profile: {ex.Message}");
-            Console.WriteLine($"Stack trace: {ex.StackTrace}");
-            throw;
+            profile.CreatedAt = DateTime.UtcNow;
+            await db.InsertAsync(profile);
         }
+        else
+        {
+            await db.UpdateAsync(profile);
+        }
+        return profile;
     }
 
     #endregion
 
-    #region Avatar Configuration Methods
+    #region Avatar
 
     public async Task<AvatarConfiguration?> GetAvatarConfigurationAsync(int id)
     {
-        try
-        {
-            var db = await GetConnectionAsync();
-            return await db.Table<AvatarConfiguration>()
-                .Where(a => a.Id == id)
-                .FirstOrDefaultAsync();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error getting avatar config: {ex.Message}");
-            return null;
-        }
+        var db = await GetConnectionAsync();
+        return await db.Table<AvatarConfiguration>()
+            .Where(a => a.Id == id)
+            .FirstOrDefaultAsync();
     }
 
     public async Task<AvatarConfiguration> SaveAvatarConfigurationAsync(AvatarConfiguration config)
     {
-        try
-        {
-            var db = await GetConnectionAsync();
-            config.UpdatedAt = DateTime.UtcNow;
+        var db = await GetConnectionAsync();
+        config.UpdatedAt = DateTime.UtcNow;
 
-            if (config.Id == 0)
-            {
-                config.CreatedAt = DateTime.UtcNow;
-                await db.InsertAsync(config);
-                Console.WriteLine($"Created avatar config: {config.Gender} (ID: {config.Id})");
-            }
-            else
-            {
-                await db.UpdateAsync(config);
-                Console.WriteLine($"Updated avatar config: {config.Gender} (ID: {config.Id})");
-            }
-
-            return config;
-        }
-        catch (Exception ex)
+        if (config.Id == 0)
         {
-            Console.WriteLine($"Error saving avatar config: {ex.Message}");
-            Console.WriteLine($"Stack trace: {ex.StackTrace}");
-            throw;
+            config.CreatedAt = DateTime.UtcNow;
+            await db.InsertAsync(config);
         }
+        else
+        {
+            await db.UpdateAsync(config);
+        }
+        return config;
     }
 
     public async Task<AvatarConfiguration?> GetUserAvatarAsync()
     {
-        try
-        {
-            var profile = await GetUserProfileAsync();
-            if (profile?.AvatarConfigId == null)
-            {
-                Console.WriteLine("User has no avatar yet");
-                return null;
-            }
-
-            var avatar = await GetAvatarConfigurationAsync(profile.AvatarConfigId.Value);
-            if (avatar != null)
-            {
-                Console.WriteLine($"Loaded user avatar: {avatar.Gender}, {avatar.HairStyle}-{avatar.HairColor}");
-            }
-            
-            return avatar;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error getting user avatar: {ex.Message}");
-            return null;
-        }
+        var profile = await GetUserProfileAsync();
+        if (profile?.AvatarConfigId == null) return null;
+        return await GetAvatarConfigurationAsync(profile.AvatarConfigId.Value);
     }
 
     #endregion
 
-    #region Security Credential Methods
+    #region Security
 
-    /// <summary>
-    /// Get security credential from database
-    /// </summary>
     public async Task<SecurityCredential?> GetSecurityCredentialAsync()
     {
-        try
-        {
-            var db = await GetConnectionAsync();
-            var credentials = await db.Table<SecurityCredential>()
-                .Where(c => c.IsEnabled)
-                .ToListAsync();
-            
-            return credentials.FirstOrDefault();
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"GetSecurityCredentialAsync Error: {ex.Message}");
-            return null;
-        }
+        var db = await GetConnectionAsync();
+        var creds = await db.Table<SecurityCredential>()
+            .Where(c => c.IsEnabled)
+            .ToListAsync();
+        return creds.FirstOrDefault();
     }
 
-    /// <summary>
-    /// Save security credential (creates new or updates existing)
-    /// </summary>
     public async Task<bool> SaveSecurityCredentialAsync(SecurityCredential credential)
     {
-        try
-        {
-            var db = await GetConnectionAsync();
-            
-            // Delete any existing credentials first
-            await db.ExecuteAsync("DELETE FROM SecurityCredential");
-            
-            // Insert new credential
-            credential.UpdatedAt = DateTime.UtcNow;
-            int result = await db.InsertAsync(credential);
-            
-            return result > 0;
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"SaveSecurityCredentialAsync Error: {ex.Message}");
-            return false;
-        }
+        var db = await GetConnectionAsync();
+        await db.ExecuteAsync("DELETE FROM SecurityCredential");
+        credential.UpdatedAt = DateTime.UtcNow;
+        int result = await db.InsertAsync(credential);
+        return result > 0;
     }
 
-    /// <summary>
-    /// Delete security credential (disable security)
-    /// </summary>
     public async Task<bool> DeleteSecurityCredentialAsync()
     {
-        try
+        var db = await GetConnectionAsync();
+        int result = await db.ExecuteAsync("DELETE FROM SecurityCredential");
+        return result > 0;
+    }
+
+    #endregion
+
+    #region Journal Entries
+
+    public async Task<JournalEntry?> GetJournalEntryByIdAsync(int id)
+    {
+        await InitializeAsync();
+        return await _database!.Table<JournalEntry>()
+            .Where(e => e.Id == id)
+            .FirstOrDefaultAsync();
+    }
+
+    public async Task<JournalEntry?> GetJournalEntryByDateAsync(string date)
+    {
+        await InitializeAsync();
+        return await _database!.Table<JournalEntry>()
+            .Where(e => e.EntryDate == date)
+            .FirstOrDefaultAsync();
+    }
+
+    public async Task<List<JournalEntry>> GetAllJournalEntriesAsync()
+    {
+        await InitializeAsync();
+        return await _database!.Table<JournalEntry>()
+            .OrderByDescending(e => e.EntryDate)
+            .ToListAsync();
+    }
+
+    public async Task<List<JournalEntry>> GetJournalEntriesByDateRangeAsync(string startDate, string endDate)
+    {
+        await InitializeAsync();
+        // FIXED: Use string comparison instead of >= and <=
+        var allEntries = await _database!.Table<JournalEntry>().ToListAsync();
+        return allEntries
+            .Where(e => string.Compare(e.EntryDate, startDate) >= 0 && string.Compare(e.EntryDate, endDate) <= 0)
+            .OrderByDescending(e => e.EntryDate)
+            .ToList();
+    }
+
+    public async Task<List<JournalEntry>> GetJournalEntriesByPrimaryMoodAsync(string mood)
+    {
+        await InitializeAsync();
+        return await _database!.Table<JournalEntry>()
+            .Where(e => e.PrimaryMood == mood)
+            .OrderByDescending(e => e.EntryDate)
+            .ToListAsync();
+    }
+
+    public async Task<List<JournalEntry>> SearchJournalEntriesAsync(string searchTerm)
+    {
+        await InitializeAsync();
+        var allEntries = await _database!.Table<JournalEntry>().ToListAsync();
+        return allEntries.Where(e =>
+            (!string.IsNullOrEmpty(e.Title) && e.Title.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)) ||
+            (!string.IsNullOrEmpty(e.Content) && e.Content.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+        ).OrderByDescending(e => e.EntryDate).ToList();
+    }
+
+    public async Task<JournalEntry?> CreateJournalEntryAsync(JournalEntry entry)
+    {
+        await InitializeAsync();
+        await _database!.InsertAsync(entry);
+        return entry;
+    }
+
+    public async Task<bool> UpdateJournalEntryAsync(JournalEntry entry)
+    {
+        await InitializeAsync();
+        await _database!.UpdateAsync(entry);
+        return true;
+    }
+
+    public async Task<bool> DeleteJournalEntryAsync(int id)
+    {
+        await InitializeAsync();
+        await _database!.DeleteAsync<JournalEntry>(id);
+        return true;
+    }
+
+    public async Task<bool> JournalEntryExistsForDateAsync(string date)
+    {
+        await InitializeAsync();
+        var count = await _database!.Table<JournalEntry>()
+            .Where(e => e.EntryDate == date)
+            .CountAsync();
+        return count > 0;
+    }
+
+    public async Task<int> GetJournalEntryCountAsync()
+    {
+        await InitializeAsync();
+        return await _database!.Table<JournalEntry>().CountAsync();
+    }
+
+    public async Task<int> GetTotalWordCountAsync()
+    {
+        await InitializeAsync();
+        var entries = await _database!.Table<JournalEntry>().ToListAsync();
+        return entries.Sum(e => e.WordCount);
+    }
+
+    #endregion
+
+    #region Tags
+
+    public async Task<List<Tag>> GetAllTagsAsync()
+    {
+        await InitializeAsync();
+        return await _database!.Table<Tag>()
+            .OrderByDescending(t => t.UsageCount)
+            .ToListAsync();
+    }
+
+    public async Task<Tag?> GetTagByIdAsync(int id)
+    {
+        await InitializeAsync();
+        return await _database!.Table<Tag>()
+            .Where(t => t.Id == id)
+            .FirstOrDefaultAsync();
+    }
+
+    public async Task<Tag?> GetTagByNameAsync(string name)
+    {
+        await InitializeAsync();
+        return await _database!.Table<Tag>()
+            .Where(t => t.Name == name)
+            .FirstOrDefaultAsync();
+    }
+
+    public async Task<Tag> CreateTagAsync(Tag tag)
+    {
+        await InitializeAsync();
+        await _database!.InsertAsync(tag);
+        return tag;
+    }
+
+    public async Task<bool> UpdateTagAsync(Tag tag)
+    {
+        await InitializeAsync();
+        await _database!.UpdateAsync(tag);
+        return true;
+    }
+
+    public async Task<bool> DeleteTagAsync(int id)
+    {
+        await InitializeAsync();
+        await _database!.DeleteAsync<Tag>(id);
+        return true;
+    }
+
+    public async Task<List<Tag>> GetMostUsedTagsAsync(int count)
+    {
+        await InitializeAsync();
+        return await _database!.Table<Tag>()
+            .OrderByDescending(t => t.UsageCount)
+            .Take(count)
+            .ToListAsync();
+    }
+
+    public async Task<List<Tag>> SearchTagsAsync(string searchTerm)
+    {
+        await InitializeAsync();
+        var allTags = await _database!.Table<Tag>().ToListAsync();
+        return allTags.Where(t => t.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            .OrderByDescending(t => t.UsageCount)
+            .ToList();
+    }
+
+    #endregion
+
+    #region Entry-Tag Relationships
+
+    public async Task<List<Tag>> GetTagsForEntryAsync(int entryId)
+    {
+        await InitializeAsync();
+        var entryTags = await _database!.Table<EntryTag>()
+            .Where(et => et.EntryId == entryId)
+            .ToListAsync();
+        
+        var tags = new List<Tag>();
+        foreach (var entryTag in entryTags)
         {
-            var db = await GetConnectionAsync();
-            int result = await db.ExecuteAsync("DELETE FROM SecurityCredential");
-            return result > 0;
+            var tag = await GetTagByIdAsync(entryTag.TagId);
+            if (tag != null) tags.Add(tag);
         }
-        catch (Exception ex)
+        return tags;
+    }
+
+    public async Task<List<EntryTag>> GetEntryTagsAsync(int entryId)
+    {
+        await InitializeAsync();
+        return await _database!.Table<EntryTag>()
+            .Where(et => et.EntryId == entryId)
+            .ToListAsync();
+    }
+
+    public async Task<bool> CreateEntryTagAsync(EntryTag entryTag)
+    {
+        await InitializeAsync();
+        await _database!.InsertAsync(entryTag);
+        return true;
+    }
+
+    public async Task<bool> DeleteEntryTagAsync(int entryId, int tagId)
+    {
+        await InitializeAsync();
+        var entryTag = await _database!.Table<EntryTag>()
+            .Where(et => et.EntryId == entryId && et.TagId == tagId)
+            .FirstOrDefaultAsync();
+        
+        if (entryTag != null)
         {
-            System.Diagnostics.Debug.WriteLine($"DeleteSecurityCredentialAsync Error: {ex.Message}");
-            return false;
+            await _database.DeleteAsync(entryTag);
+            return true;
         }
+        return false;
+    }
+
+    public async Task<bool> DeleteAllEntryTagsAsync(int entryId)
+    {
+        await InitializeAsync();
+        var entryTags = await _database!.Table<EntryTag>()
+            .Where(et => et.EntryId == entryId)
+            .ToListAsync();
+        
+        foreach (var entryTag in entryTags)
+        {
+            await _database.DeleteAsync(entryTag);
+        }
+        return true;
     }
 
     #endregion

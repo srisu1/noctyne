@@ -1,7 +1,4 @@
-/* ================================================================
-   AVATAR CUSTOMIZATION - AESTHETICALLY BALANCED DESIGN
-   Every element proportioned to look cohesive and professional
-   ================================================================ */
+@import url('Fonts.css');
 
 * {
     margin: 0;
@@ -10,17 +7,22 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    background: #f5f1e8;
+    font-family: 'Pogonia', sans-serif;
+    font-weight: 400;
+    background: #fef5e8;
     overflow: hidden;
 }
 
-/* ==================== CONTAINER ==================== */
 .customizationContainer {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: #f5f1e8;
+    background: linear-gradient(135deg, #fef5e8 0%, #fff0e0 100%);
+    background-image:
+            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px),
+            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
     display: flex;
     flex-direction: column;
 }
@@ -35,228 +37,315 @@ body {
     border: none;
     font-size: 32px;
     font-weight: 300;
-    color: #2c2c2c;
+    color: #3d3d3d;
     cursor: pointer;
     z-index: 100;
-    transition: color 0.2s;
+    transition: all 0.2s;
 }
 
 .closeBtn:hover {
-    color: #ff9b8a;
+    color: #f4a9c1;
+    transform: rotate(90deg);
 }
 
-/* ==================== HEADING ==================== */
 .pageHeading {
-    font-family: 'Pogonia', sans-serif;
-    font-size: 56px;
-    font-weight: 400;
-    color: #2c2c2c;
-    text-align: center;
-    margin: 30px 0 30px;
-    letter-spacing: 1px;
+    display: none;
 }
 
-/* ==================== MAIN LAYOUT ==================== */
 .mainContent {
     display: flex;
     width: 100%;
     flex: 1;
-    padding: 0 80px 60px;
-    gap: 80px;
+    padding: 40px 80px 60px;
+    gap: 60px;
     align-items: center;
     justify-content: center;
 }
 
-/* ==================== LEFT: OPTIONS PANEL ==================== */
+/* ==================== LEFT SECTION - MATCHING HEIGHTS ==================== */
 .leftSection {
     display: flex;
     gap: 0;
-    height: 560px; /* Fixed aesthetic height */
+    height: 800px; /* INCREASED HEIGHT */
 }
 
+/* Tabs Sidebar - SAME BACKGROUND AS PANEL */
 .tabsSidebar {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+    background: #fef5e8; /* SAME AS BODY */
 }
 
 .tabBtn {
-    width: 85px;
-    height: 85px;
-    background: #f9f9f9;
-    border: 3px solid #d4d4d4;
+    width: 95px;
+    height: 95px;
+    background: #f6e0e9;
+    border: 4px solid #3d3d3d;
     border-right: none;
-    border-radius: 12px 0 0 12px;
+    border-radius: 50px 0 0 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
-    padding: 10px;
+    transition: all 0.25s ease;
+    padding: 14px;
 }
 
 .tabBtn img {
-    width: 52px;
-    height: 52px;
+    width: 58px;
+    height: 58px;
     object-fit: contain;
+    filter: grayscale(80%);
+    opacity: 0.6;
+    transition: all 0.25s;
 }
 
 .tabBtn:hover {
-    background: #fff;
-    border-color: #999;
+    background: white;
 }
 
 .tabBtn.active {
     background: white;
-    border-color: #2c2c2c;
+    border-color: #3d3d3d;
 }
 
-/* Options panel - PROPORTIONATE SIZE */
+.tabBtn.active img {
+    filter: none;
+    opacity: 1;
+}
+
+/* Options Panel - TALLER TO MATCH TABS */
 .optionsPanel {
-    background: #F2F2F2;
-    border: 3px solid #d4d4d4;
-    border-radius: 0 12px 12px 12px;
-    padding: 36px 28px;
-    width: 520px; /* Bigger but balanced */
-    margin-left: -3px;
-    overflow-y: auto;
-    height: 560px; /* Match tabs height */
-}
-
-.optionsPanel.active {
-    border-color: #2c2c2c;
+    background: linear-gradient(180deg, #f4a9c1 0%, #f4a9c1 70px, #f9e5ef 70px, #f9e5ef 100%);
+    border: 4px solid #3d3d3d;
+    border-left: none;
+    border-radius: 0px 40px 40px 10px;
+    padding: 0;
+    width: 580px;
+    overflow: hidden;
+    height: 822px; /* MATCH TABS HEIGHT */
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 .panelTitle {
-    font-size: 24px;
-    font-weight: 600;
-    color: #2c2c2c;
-    margin-bottom: 28px;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
     text-align: center;
+    font-family: 'Pogonia', sans-serif;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.panelContent {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 25px 20px 20px;
+}
+
+.panelContent::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.panelContent {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .sectionLabel {
-    font-size: 14px;
-    font-weight: 600;
-    color: #666;
-    margin-bottom: 14px;
-    margin-top: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    display: none;
 }
 
 .optionsGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
 }
 
 .optionBox {
-    height: 110px;
-    border: 3px solid #d4d4d4;
-    border-radius: 12px;
-    background: #f9f9f9;
+    aspect-ratio: 1;
+    height: 120px;
+    border: 3px solid #3d3d3d;
+    border-radius: 25px;
+    background: #fef5e8;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
-    font-size: 11px;
-    font-weight: 600;
-    color: #666;
-    text-align: center;
-    padding: 10px;
+    padding: 12px;
+    position: relative;
 }
 
 .optionBox img {
-    width: 65px;
-    height: 65px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
-    margin-bottom: 4px;
-}
-
-.optionBox .optionLabel {
-    font-size: 10px;
 }
 
 .optionBox:hover {
-    border-color: #ff9b8a;
     background: white;
-    transform: scale(1.03);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 .optionBox.selected {
-    border-color: #2c2c2c;
     border-width: 4px;
     background: white;
-    color: #2c2c2c;
+    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.4);
 }
 
-/* ==================== RIGHT: PREVIEW SECTION ==================== */
+.optionBox.selected::before {
+    content: '✓';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 32px;
+    height: 32px;
+    background: #f490af;
+    color: white;
+    border-radius: 50%;
+    border: 3px solid #3d3d3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.paginationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+.paginationBtn {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.paginationBtn::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.paginationBtn:first-child::before {
+    border-width: 15px 20px 15px 0;
+    border-color: transparent #f4d99d transparent transparent;
+}
+
+.paginationBtn:last-child::before {
+    border-width: 15px 0 15px 20px;
+    border-color: transparent transparent transparent #f4d99d;
+}
+
+.paginationBtn:hover:not(:disabled)::before {
+    filter: brightness(0.85);
+}
+
+.paginationBtn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.paginationBtn:disabled::before {
+    filter: grayscale(100%);
+}
+
+.pageInfo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #3d3d3d;
+    background: #f5dde6;
+    padding: 8px 28px;
+    border-radius: 40px;
+    border: 3px solid #3d3d3d;
+}
+
+/* ==================== RIGHT SECTION ==================== */
 .rightSection {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 32px;
+    gap: 28px;
     flex: 1;
-    max-width: 650px;
+    max-width: 750px;
 }
 
-/* Gender Tabs - ALWAYS VISIBLE */
 .genderTabs {
     display: flex;
-    border-radius: 16px;
+    border-radius: 40px;
     overflow: hidden;
-    border: 4px solid #d4d4d4;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 4px solid #3d3d3d;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .genderTab {
-    padding: 14px 60px;
-    background: white;
+    padding: 18px 80px;
+    background: #fef5e8;
     border: none;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
     color: #666;
     transition: all 0.3s ease;
+    font-family: 'Pogonia', sans-serif;
 }
 
 .genderTab:first-child {
-    border-right: 4px solid #d4d4d4;
+    border-right: 4px solid #3d3d3d;
 }
 
 .genderTab.active {
-    background: #F490AF;
+    background: #f490af;
     color: white;
-    transform: scale(1.02);
 }
 
 .genderTab:hover:not(.active) {
-    background: #f9f9f9;
+    background: white;
 }
 
-/* Avatar Preview - PERFECTLY SIZED */
 .avatarPreview {
     position: relative;
-    width: 520px;
-    height: 520px;
+    width: 600px;
+    height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
-    
-   
-    
+    background: transparent;
 }
 
 .avatarContainer {
     position: relative;
     width: 100%;
     height: 100%;
-    transform: scale(0.48);
+    transform: scale(0.6);
+    filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.18));
 }
 
 .avatarLayer {
@@ -266,22 +355,23 @@ body {
     pointer-events: none;
 }
 
-/* Name Input - PROPORTIONATE */
 .nameInputContainer {
-    width: 400px;
+    width: 460px;
 }
 
 .nameInput {
     width: 100%;
-    padding: 22px 28px;
-    font-size: 20px;
-    border: 4px solid #d4d4d4;
-    border-radius: 14px;
+    padding: 18px 32px;
+    font-size: 22px;
+    border: 4px solid #3d3d3d;
+    border-radius: 50px;
     text-align: center;
     font-weight: 500;
-    color: #2c2c2c;
+    color: #3d3d3d;
     background: white;
     transition: all 0.3s ease;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.08);
+    font-family: 'Pogonia', sans-serif;
 }
 
 .nameInput::placeholder {
@@ -290,340 +380,165 @@ body {
 
 .nameInput:focus {
     outline: none;
-    border-color: #F490AF;
-    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.15);
+    border-color: #f490af;
+    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.2), 3px 3px 0 rgba(0, 0, 0, 0.08);
 }
 
-/* Color Selector - VISIBLE AND BALANCED */
+.colorSelectorContainer {
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .colorSelector {
     display: flex;
-    gap: 18px;
+    gap: 10px;
     justify-content: center;
-    flex-wrap: wrap;
-    min-height: 70px;
     align-items: center;
+    padding: 14px 26px;
+    background: white;
+    border-radius: 60px;
+    border: 4px solid #3d3d3d;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.08);
+}
+
+.colorSelector.hidden {
+    display: none;
 }
 
 .colorDot {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    border: 4px solid #d4d4d4;
+    border: 3px solid #3d3d3d;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .colorDot:hover {
-    border-color: #999;
     transform: scale(1.12);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .colorDot.selected {
-    border-color: #2c2c2c;
     border-width: 5px;
-    transform: scale(1.15);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.2);
+    box-shadow: 0 0 0 3px white, 0 0 0 8px #3d3d3d;
 }
 
-/* OK Button - PROMINENT */
 .okBtn {
-    padding: 14px 50px;
-    background: white;
-    border: 4px solid #2c2c2c;
-    border-radius: 16px;
-    font-size: 24px;
-    font-weight: 600;
-    color: #2c2c2c;
+    padding: 18px 75px;
+    background: #a8d5a3;
+    border: 4px solid #3d3d3d;
+    border-radius: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+    font-family: 'Pogonia', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 .okBtn:hover {
-    background: #2c2c2c;
-    color: white;
+    background: #95c991;
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(44, 44, 44, 0.25);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .okBtn:active {
-    transform: translateY(-1px);
-}
-
-/* ==================== SCROLLBAR ==================== */
-.optionsPanel::-webkit-scrollbar {
-    width: 10px;
-}
-
-.optionsPanel::-webkit-scrollbar-track {
-    background: #e0e0e0;
-    border-radius: 5px;
-}
-
-.optionsPanel::-webkit-scrollbar-thumb {
-    background: #999;
-    border-radius: 5px;
-}
-
-.optionsPanel::-webkit-scrollbar-thumb:hover {
-    background: #666;
+    transform: translateY(1px);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
 }
 
 /* ==================== RESPONSIVE ==================== */
-
-/* Large Desktop (1600px+) */
-@media (min-width: 1600px) {
-    .pageHeading {
-        font-size: 64px;
-        margin: 40px 0 40px;
-    }
-
-    .mainContent {
-        gap: 100px;
-    }
-
-    .leftSection {
-        height: 620px;
-    }
-
-    .optionsPanel {
-        width: 560px;
-        height: 620px;
-    }
-
-    .avatarPreview {
-        width: 580px;
-        height: 580px;
-    }
-
-    .avatarContainer {
-        transform: scale(0.65);
-    }
-
-    .nameInputContainer {
-        width: 580px;
-    }
-}
-
-/* Standard Desktop (1200px - 1599px) */
-@media (max-width: 1599px) and (min-width: 1200px) {
-    .mainContent {
-        gap: 70px;
-        padding: 0 60px 50px;
-    }
-}
-
-/* Medium Desktop (1000px - 1199px) */
 @media (max-width: 1199px) {
-    .pageHeading {
-        font-size: 48px;
-        margin: 25px 0 25px;
-    }
-
     .mainContent {
-        gap: 50px;
-        padding: 0 40px 40px;
+        gap: 40px;
+        padding: 30px 40px 40px;
     }
 
     .leftSection {
-        height: 500px;
-    }
-
-    .tabBtn {
-        width: 75px;
-        height: 75px;
-    }
-
-    .tabBtn img {
-        width: 45px;
-        height: 45px;
+        height: 600px;
     }
 
     .optionsPanel {
-        width: 450px;
-        height: 500px;
-        padding: 30px 24px;
-    }
-
-    .optionsGrid {
-        gap: 12px;
-    }
-
-    .optionBox {
-        height: 100px;
+        width: 520px;
+        height: 600px;
     }
 
     .avatarPreview {
-        width: 450px;
-        height: 450px;
+        width: 520px;
+        height: 520px;
     }
 
     .avatarContainer {
-        transform: scale(0.52);
-    }
-
-    .nameInputContainer {
-        width: 450px;
-    }
-
-    .genderTab {
-        padding: 16px 70px;
-        font-size: 20px;
+        transform: scale(0.55);
     }
 }
 
-/* Tablet (800px - 999px) */
 @media (max-width: 999px) {
-    .pageHeading {
-        font-size: 42px;
-        margin: 20px 0 20px;
-    }
-
     .mainContent {
         flex-direction: column;
-        padding: 0 30px 30px;
-        gap: 40px;
         overflow-y: auto;
     }
 
     .leftSection {
         width: 100%;
-        max-width: 550px;
-        height: auto;
-        max-height: 450px;
-    }
-
-    .optionsPanel {
-        width: 100%;
-        height: 450px;
+        max-width: 600px;
     }
 
     .rightSection {
         max-width: 100%;
-        gap: 28px;
-    }
-
-    .avatarPreview {
-        width: 400px;
-        height: 400px;
-    }
-
-    .avatarContainer {
-        transform: scale(0.48);
-    }
-
-    .nameInputContainer {
-        width: 100%;
-        max-width: 500px;
     }
 }
 
-/* Mobile (below 800px) */
 @media (max-width: 799px) {
-    .pageHeading {
-        font-size: 36px;
-        margin: 18px 0 18px;
-    }
-
-    .closeBtn {
-        top: 15px;
-        right: 15px;
-        width: 36px;
-        height: 36px;
-        font-size: 28px;
-    }
-
     .mainContent {
-        padding: 0 20px 20px;
-        gap: 30px;
+        padding: 20px;
     }
 
     .leftSection {
-        flex-direction: row;
+        flex-direction: column;
         height: auto;
-        max-height: none;
     }
 
     .tabsSidebar {
         flex-direction: row;
         gap: 10px;
-        flex-wrap: wrap;
         justify-content: center;
     }
 
     .tabBtn {
-        width: 65px;
-        height: 65px;
-        border-radius: 10px;
-        border-right: 3px solid #d4d4d4;
-    }
-
-    .tabBtn img {
-        width: 40px;
-        height: 40px;
+        width: 75px;
+        height: 75px;
+        border-radius: 20px;
+        border: 3px solid #3d3d3d;
     }
 
     .optionsPanel {
+        border-left: 4px solid #3d3d3d;
+        border-radius: 40px;
         width: 100%;
-        margin-left: 0;
-        margin-top: -3px;
-        border-radius: 12px;
-        height: 400px;
-        padding: 24px 18px;
+        height: 450px;
     }
 
     .optionsGrid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .optionBox {
-        height: 90px;
     }
 
     .avatarPreview {
-        width: 320px;
-        height: 320px;
+        width: 380px;
+        height: 380px;
     }
 
     .avatarContainer {
-        transform: scale(0.4);
+        transform: scale(0.5);
     }
 
-    .genderTabs {
-        border: 3px solid #d4d4d4;
-    }
-
-    .genderTab {
-        padding: 14px 50px;
-        font-size: 18px;
-    }
-
-    .genderTab:first-child {
-        border-right: 3px solid #d4d4d4;
-    }
-
-    .nameInput {
-        padding: 18px 22px;
-        font-size: 18px;
-        border: 3px solid #d4d4d4;
-    }
-
-    .colorDot {
-        width: 48px;
-        height: 48px;
-        border: 3px solid #d4d4d4;
-    }
-
-    .colorDot.selected {
-        border-width: 4px;
-    }
-
-    .okBtn {
-        padding: 18px 70px;
-        font-size: 20px;
-        border: 3px solid #2c2c2c;
+    .nameInputContainer {
+        width: 100%;
     }
 }

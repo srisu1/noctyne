@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace MoodJournal.Helpers;
 
 /// <summary>
@@ -13,8 +15,8 @@ public static class MoodStickerPositions
     #region BASE POSITIONS
 
 
-    //Just head base position (same for both genders, different assets)
-    public static readonly LayerPosition JustHeadBasePosition = new(0, 0, 0.50);
+    
+    public static readonly LayerPosition JustHeadBasePosition = new(0, 0, 0.75);
 
     #endregion
 
@@ -25,8 +27,8 @@ public static class MoodStickerPositions
     public static class Female
     {
         public static readonly LayerPosition Eyes = new(0, -20, 0.30);
-        public static readonly LayerPosition Nose = new(0, -6, 0.20);
-        public static readonly LayerPosition Mouth = new(1, 38, 0.20);
+        public static readonly LayerPosition Nose = new(0, -6, 0.10);      // ADJUSTED: was 0.20, now 0.12 (smaller)
+        public static readonly LayerPosition Mouth = new(1, 38, 0.12);     // ADJUSTED: was 0.20, now 0.12 (smaller)
     }
 
 
@@ -34,8 +36,8 @@ public static class MoodStickerPositions
     public static class Male
     {
         public static readonly LayerPosition Eyes = new(0, -26, 0.30);
-        public static readonly LayerPosition Nose = new(0, -12, 0.20);
-        public static readonly LayerPosition Mouth = new(1, 38, 0.21);
+        public static readonly LayerPosition Nose = new(0, -12, 0.10);     // ADJUSTED: was 0.20, now 0.12 (smaller)
+        public static readonly LayerPosition Mouth = new(1, 38, 0.12);     // ADJUSTED: was 0.21, now 0.13 (smaller)
     }
 
     #endregion
@@ -67,7 +69,7 @@ public static class MoodStickerPositions
         ["ceo-hair"] = new LayerPosition(7, -88, 0.63),
         ["flat-hair"] = new LayerPosition(0, -78, 0.55),
         ["90s-hair"] = new LayerPosition(0, -78, 0.55),
-        ["bangs"] = new LayerPosition(0, -91, 0.54),  // Note: Different from female bangs
+        ["bangs"] = new LayerPosition(0, -91, 0.54),
         ["pointed-pony"] = new LayerPosition(1, -117, 0.54),
         ["spiky-hair"] = new LayerPosition(5, -94, 0.54),
         ["dad-hair"] = new LayerPosition(-2, -80, 0.53),

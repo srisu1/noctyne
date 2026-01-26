@@ -1,0 +1,597 @@
+@page "/create-entry"
+@page "/create-entry/{EntryDate}"
+@using MoodJournal.Models
+@using MoodJournal.Services.Interfaces
+@inject IJournalService JournalService
+@inject ITagService TagService
+@inject IMoodStickerService MoodStickerService
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+
+<!-- Professional Layout with Sticky Header/Footer -->
+<div class="journal-container">
+    
+    <!-- ==================== HEADER ==================== -->
+    <header class="journal-header">
+        <button class="back-btn" @onclick="Cancel">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        
+        <div class="date-section">
+            <h1 class="entry-date">
+                @(DateTime.Parse(selectedDate).ToString("dddd, MMMM dd, yyyy"))
+            </h1>
+            <p class="date-subtitle">@(isUpdate ? "Edit Entry" : "New Entry")</p>
+        </div>
+
+        <div class="header-actions">
+            <button class="icon-btn" @onclick="() => showDatePicker = !showDatePicker" title="Change date">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Date Picker Popup -->
+    @if (showDatePicker)
+    {
+        <div class="date-picker-popup">
+            <input type="date" 
+                   value="@selectedDate" 
+                   @onchange="OnDateChanged"
+                   max="@DateTime.Today.ToString("yyyy-MM-dd")"
+                   class="date-picker-input" />
+        </div>
+    }
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <div class="content-wrapper">
+        
+        <!-- LEFT: EDITOR SECTION -->
+        <div class="editor-section">
+            
+            <!-- Title Field -->
+            <div class="title-field">
+                <input type="text" 
+                       @bind="entryTitle" 
+                       placeholder="Entry title (optional)..." 
+                       maxlength="100" />
+            </div>
+
+            <!-- Quill Rich Text Editor -->
+            <div class="editor-container">
+                <!-- Toolbar -->
+                <div class="editor-toolbar" id="quill-toolbar">
+                    <button class="ql-bold"></button>
+                    <button class="ql-italic"></button>
+                    <button class="ql-underline"></button>
+                    <button class="ql-strike"></button>
+                    <span class="toolbar-divider"></span>
+                    <button class="ql-header" value="1"></button>
+                    <button class="ql-header" value="2"></button>
+                    <span class="toolbar-divider"></span>
+                    <button class="ql-list" value="ordered"></button>
+                    <button class="ql-list" value="bullet"></button>
+                </div>
+
+                <!-- Editor Area -->
+                <div id="quill-editor" class="editor-area"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT: SIDEBAR -->
+        <aside class="sidebar">
+            
+            <!-- MOOD CARD -->
+            <div class="card mood-card">
+                <h3 class="card-title">How are you feeling?</h3>
+                <p class="card-subtitle">Select 1-3 moods *</p>
+                
+                <div class="mood-selection-count">
+                    @selectedMoods.Count / 3 selected
+                </div>
+
+                <div class="mood-grid">
+                    @foreach (var mood in Moods.All)
+                    {
+                        var isSelected = selectedMoods.Contains(mood.Key);
+                        var isDisabled = !isSelected && selectedMoods.Count >= 3;
+                        
+                        <button class="mood-btn @(isSelected ? "selected" : "") @(isDisabled ? "disabled" : "")"
+                                @onclick="() => ToggleMood(mood.Key)">
+                            @if (!string.IsNullOrEmpty(moodStickers.GetValueOrDefault(mood.Key)))
+                            {
+                                <div class="mood-sticker">
+                                    @((MarkupString)moodStickers[mood.Key])
+                                </div>
+                            }
+                            else
+                            {
+                                <span class="mood-emoji">@mood.Value.Emoji</span>
+                            }
+                            <span class="mood-label">@mood.Value.Label</span>
+                            @if (isSelected)
+                            {
+                                <div class="mood-badge">
+                                    <span class="badge-number">@(selectedMoods.IndexOf(mood.Key) + 1)</span>
+                                </div>
+                            }
+                        </button>
+                    }
+                </div>
+            </div>
+
+            <!-- TAGS CARD -->
+            <div class="card tags-card">
+                <h3 class="card-title">Tags</h3>
+                <p class="card-subtitle">Add tags to organize your entry</p>
+                
+                <div class="tags-input-wrapper">
+                    <input type="text" 
+                           @bind="tagInput" 
+                           @bind:event="oninput"
+                           @onkeydown="HandleTagKeyDown"
+                           class="tag-input" 
+                           placeholder="Type and press Enter..." />
+                </div>
+
+                <!-- Selected Tags -->
+                @if (currentTags.Count > 0)
+                {
+                    <div class="tags-display">
+                        @foreach (var tag in currentTags)
+                        {
+                            <div class="tag-chip">
+                                <span>@tag</span>
+                                <button class="remove-btn" @onclick="() => RemoveTag(tag)">×</button>
+                            </div>
+                        }
+                    </div>
+                }
+
+                <!-- Suggested Tags -->
+                @if (suggestedTags.Count > 0)
+                {
+                    <div class="suggested-tags">
+                        <p class="suggestions-label">Suggestions:</p>
+                        <div class="suggestions-list">
+                            @foreach (var tag in suggestedTags.Take(5))
+                            {
+                                <button class="suggestion-tag" @onclick="() => AddSuggestedTag(tag.Name)">
+                                    @tag.Name
+                                </button>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- INFO CARD -->
+            <div class="card info-card">
+                <div class="info-row">
+                    <span class="info-label">Words</span>
+                    <span class="info-value">@wordCount</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Characters</span>
+                    <span class="info-value">@characterCount</span>
+                </div>
+                @if (isUpdate && existingEntry != null)
+                {
+                    <div class="info-row">
+                        <span class="info-label">Created</span>
+                        <span class="info-value">@existingEntry.CreatedAt.ToString("MMM dd, yyyy")</span>
+                    </div>
+                }
+            </div>
+
+        </aside>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="journal-footer">
+        <div class="footer-actions">
+            <button class="btn btn-secondary" @onclick="Cancel" disabled="@isSaving">
+                Cancel
+            </button>
+            
+            @if (isUpdate)
+            {
+                <button class="btn btn-danger" @onclick="DeleteEntry" disabled="@isSaving">
+                    Delete Entry
+                </button>
+            }
+            
+            <div style="flex: 1;"></div>
+            
+            <button class="btn btn-primary" @onclick="SaveEntry" disabled="@isSaving">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                </svg>
+                @(isSaving ? "Saving..." : (isUpdate ? "Update Entry" : "Save Entry"))
+            </button>
+        </div>
+    </footer>
+
+    <!-- SUCCESS TOAST -->
+    @if (showSuccessToast)
+    {
+        <div class="toast show">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>@successMessage</span>
+        </div>
+    }
+
+    <!-- ERROR TOAST -->
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="toast error show">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>@errorMessage</span>
+        </div>
+    }
+
+</div>
+
+@code {
+    [Parameter] public string? EntryDate { get; set; }
+
+    private string selectedDate = DateTime.Today.ToString("yyyy-MM-dd");
+    private string? entryTitle;
+    private string? entryContent;
+    private List<string> selectedMoods = new();
+    private List<string> currentTags = new();
+    private string? tagInput;
+    private List<Tag> suggestedTags = new();
+    private Models.JournalEntry? existingEntry;
+    private bool isUpdate = false;
+    private bool isSaving = false;
+    private string? errorMessage;
+    private string? successMessage;
+    private bool showSuccessToast = false;
+    private bool showDatePicker = false;
+    private int wordCount = 0;
+    private int characterCount = 0;
+    private Dictionary<string, string> moodStickers = new();
+    private bool quillInitialized = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("CreateEntry: OnInitializedAsync started");
+        
+        if (!string.IsNullOrEmpty(EntryDate))
+        {
+            selectedDate = EntryDate;
+            Console.WriteLine($"Using date from parameter: {selectedDate}");
+        }
+
+        await LoadMoodStickers();
+        suggestedTags = await TagService.GetSuggestedTagsAsync(5);
+        Console.WriteLine($"Loaded {suggestedTags.Count} suggested tags");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Console.WriteLine("CreateEntry: First render - initializing Quill");
+            
+            try
+            {
+                await JSRuntime.InvokeVoidAsync("initQuillEditor");
+                quillInitialized = true;
+                Console.WriteLine("Quill initialized successfully");
+
+                await LoadEntry();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error initializing Quill: {ex.Message}");
+                errorMessage = "Failed to initialize text editor";
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task LoadMoodStickers()
+    {
+        try
+        {
+            moodStickers = await MoodStickerService.GenerateAllMoodStickersAsync(200, 200);
+            Console.WriteLine($"Loaded {moodStickers.Count} mood stickers");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading mood stickers: {ex.Message}");
+        }
+    }
+
+    private async Task LoadEntry()
+    {
+        try
+        {
+            Console.WriteLine($"Loading entry for date: {selectedDate}");
+            existingEntry = await JournalService.GetEntryByDateAsync(selectedDate);
+            
+            if (existingEntry != null)
+            {
+                Console.WriteLine($"Found existing entry (ID: {existingEntry.Id})");
+                isUpdate = true;
+                entryTitle = existingEntry.Title;
+                entryContent = existingEntry.Content;
+                
+                // Load moods (primary + secondary combined)
+                selectedMoods = new List<string>();
+                if (!string.IsNullOrEmpty(existingEntry.PrimaryMood))
+                {
+                    selectedMoods.Add(existingEntry.PrimaryMood);
+                }
+                if (!string.IsNullOrEmpty(existingEntry.SecondaryMoods))
+                {
+                    var secondaryMoodsList = existingEntry.SecondaryMoods.Split(',', StringSplitOptions.RemoveEmptyEntries);
+                    selectedMoods.AddRange(secondaryMoodsList);
+                }
+
+                var tags = await JournalService.GetTagsForEntryAsync(existingEntry.Id);
+                currentTags = tags.Select(t => t.Name).ToList();
+                Console.WriteLine($"Loaded {currentTags.Count} tags for entry");
+
+                if (!string.IsNullOrEmpty(entryContent) && quillInitialized)
+                {
+                    Console.WriteLine("Setting Quill content...");
+                    await Task.Delay(100);
+                    await JSRuntime.InvokeVoidAsync("setQuillContent", entryContent);
+                    Console.WriteLine("Quill content set");
+                }
+
+                UpdateWordCount();
+                StateHasChanged();
+            }
+            else
+            {
+                Console.WriteLine("No existing entry found - creating new");
+                isUpdate = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading entry: {ex.Message}");
+            errorMessage = $"Failed to load entry: {ex.Message}";
+            StateHasChanged();
+        }
+    }
+
+    private async Task OnDateChanged(ChangeEventArgs e)
+    {
+        if (e.Value != null)
+        {
+            selectedDate = e.Value.ToString() ?? DateTime.Today.ToString("yyyy-MM-dd");
+            Console.WriteLine($"Date changed to: {selectedDate}");
+            
+            entryTitle = null;
+            entryContent = null;
+            selectedMoods.Clear();
+            currentTags.Clear();
+            showDatePicker = false;
+            
+            if (quillInitialized)
+            {
+                await JSRuntime.InvokeVoidAsync("clearQuillContent");
+            }
+            
+            await LoadEntry();
+        }
+    }
+
+    private void ToggleMood(string mood)
+    {
+        if (selectedMoods.Contains(mood))
+        {
+            selectedMoods.Remove(mood);
+            Console.WriteLine($"➖ Removed mood: {mood}");
+        }
+        else if (selectedMoods.Count < 3)
+        {
+            selectedMoods.Add(mood);
+            Console.WriteLine($"➕ Added mood: {mood}");
+        }
+        
+        StateHasChanged();
+    }
+
+    private void HandleTagKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter" && !string.IsNullOrWhiteSpace(tagInput))
+        {
+            AddTag(tagInput);
+        }
+    }
+
+    private void AddTag(string tag)
+    {
+        var normalizedTag = tag.Trim().ToLower();
+        
+        if (string.IsNullOrWhiteSpace(normalizedTag))
+            return;
+
+        if (!currentTags.Contains(normalizedTag))
+        {
+            currentTags.Add(normalizedTag);
+            Console.WriteLine($"Added tag: {normalizedTag}");
+        }
+
+        tagInput = string.Empty;
+        StateHasChanged();
+    }
+
+    private void AddSuggestedTag(string tag)
+    {
+        AddTag(tag);
+    }
+
+    private void RemoveTag(string tag)
+    {
+        currentTags.Remove(tag);
+        Console.WriteLine($"Removed tag: {tag}");
+        StateHasChanged();
+    }
+
+    private void UpdateWordCount()
+    {
+        if (string.IsNullOrWhiteSpace(entryContent))
+        {
+            wordCount = 0;
+            characterCount = 0;
+            return;
+        }
+
+        var plainText = System.Text.RegularExpressions.Regex.Replace(entryContent, "<.*?>", string.Empty);
+        var words = plainText.Split(new[] { ' ', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+        wordCount = words.Length;
+        characterCount = plainText.Replace(" ", "").Replace("\n", "").Replace("\r", "").Replace("\t", "").Length;
+    }
+
+    private async Task SaveEntry()
+    {
+        errorMessage = null;
+        showSuccessToast = false;
+
+        try
+        {
+            Console.WriteLine("Starting save operation...");
+            
+            entryContent = await JSRuntime.InvokeAsync<string>("getQuillContent");
+            Console.WriteLine($"Got content from Quill: {entryContent?.Length ?? 0} chars");
+
+            if (string.IsNullOrWhiteSpace(entryContent) || entryContent == "<p><br></p>")
+            {
+                errorMessage = "Please write something in your journal entry";
+                Console.WriteLine("Validation failed: No content");
+                return;
+            }
+
+            if (selectedMoods.Count == 0)
+            {
+                errorMessage = "Please select at least one mood";
+                Console.WriteLine("Validation failed: No mood selected");
+                return;
+            }
+
+            isSaving = true;
+            StateHasChanged();
+
+            var primaryMood = selectedMoods[0];
+            var secondaryMoods = selectedMoods.Count > 1 
+                ? string.Join(",", selectedMoods.Skip(1)) 
+                : string.Empty;
+
+            if (isUpdate && existingEntry != null)
+            {
+                Console.WriteLine($"Updating existing entry (ID: {existingEntry.Id})");
+                
+                existingEntry.Title = entryTitle;
+                existingEntry.Content = entryContent;
+                existingEntry.PrimaryMood = primaryMood;
+                existingEntry.SecondaryMoods = secondaryMoods;
+
+                var success = await JournalService.UpdateEntryAsync(existingEntry);
+                
+                if (success)
+                {
+                    await JournalService.SetEntryTagsAsync(existingEntry.Id, currentTags);
+                    
+                    Console.WriteLine("Entry updated successfully");
+                    
+                    successMessage = "Entry updated successfully!";
+                    showSuccessToast = true;
+                    StateHasChanged();
+                    
+                    await Task.Delay(1500);
+                    Navigation.NavigateTo("/main");
+                }
+                else
+                {
+                    errorMessage = "Failed to update entry. Please try again.";
+                    Console.WriteLine("Update failed");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"➕ Creating new entry for {selectedDate}");
+                
+                var newEntry = new Models.JournalEntry
+                {
+                    EntryDate = selectedDate,
+                    Title = entryTitle,
+                    Content = entryContent,
+                    PrimaryMood = primaryMood,
+                    SecondaryMoods = secondaryMoods
+                };
+
+                var created = await JournalService.CreateEntryAsync(newEntry);
+                
+                if (created != null)
+                {
+                    await JournalService.AddTagsToEntryAsync(created.Id, currentTags);
+                    
+                    Console.WriteLine($"Entry created successfully (ID: {created.Id})");
+                    
+                    successMessage = "Entry saved successfully!";
+                    showSuccessToast = true;
+                    StateHasChanged();
+                    
+                    await Task.Delay(1500);
+                    Navigation.NavigateTo("/main");
+                }
+                else
+                {
+                    errorMessage = "Failed to save entry. An entry for this date may already exist.";
+                    Console.WriteLine("Create failed");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error: {ex.Message}";
+            Console.WriteLine($"Save error: {ex.Message}");
+        }
+        finally
+        {
+            isSaving = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task DeleteEntry()
+    {
+        if (existingEntry == null) return;
+
+        // TODO: Add confirmation dialog
+        var success = await JournalService.DeleteEntryAsync(existingEntry.Id);
+        if (success)
+        {
+            Console.WriteLine("🗑️ Entry deleted");
+            Navigation.NavigateTo("/main");
+        }
+    }
+
+    private void Cancel()
+    {
+        Console.WriteLine("Entry cancelled, navigating to main");
+        Navigation.NavigateTo("/main");
+    }
+}

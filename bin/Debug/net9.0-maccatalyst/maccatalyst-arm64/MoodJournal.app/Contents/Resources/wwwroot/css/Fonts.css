@@ -1,91 +1,556 @@
+@import url('Fonts.css');
 
-@font-face {
-    font-family: 'OnTheHill';
-    src: url('Fonts/Onthehill.otf') format('opentype');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Pogonia Font Family - All Weights */
-
-/* Thin */
-@font-face {
-    font-family: 'Pogonia';
-    src: url('Fonts/Pogonia-Thin.otf') format('opentype');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Extra Light */
-@font-face {
-    font-family: 'Pogonia';
-    src: url('Fonts/Pogonia-ExtraLight.otf') format('opentype');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Light */
-@font-face {
-    font-family: 'Pogonia';
-    src: url('Fonts/Pogonia-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Regular */
-@font-face {
-    font-family: 'Pogonia';
-    src: url('Fonts/Pogonia-Regular.otf') format('opentype');
+body {
+    font-family: 'Pogonia', sans-serif;
     font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+    background: #fef5e8;
+    overflow: hidden;
 }
 
-/* Medium */
-@font-face {
-    font-family: 'Pogonia';
-    src: url('Fonts/Pogonia-Medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+/* ==================== CONTAINER ==================== */
+.customizationContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #fef5e8 0%, #fff0e0 100%);
+    background-image:
+            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px),
+            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Semibold */
-@font-face {
-    font-family: 'Pogonia';
-    src: url('Fonts/Pogonia-Semibold.otf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+.closeBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    font-weight: 300;
+    color: #3d3d3d;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.2s;
 }
 
-/* Bold */
-@font-face {
-    font-family: 'Pogonia';
-    src: url('Fonts/Pogonia-Bold.otf') format('opentype');
+.closeBtn:hover {
+    color: #f4a9c1;
+    transform: rotate(90deg);
+}
+
+.pageHeading {
+    display: none;
+}
+
+/* ==================== MAIN LAYOUT ==================== */
+.mainContent {
+    display: flex;
+    width: 100%;
+    flex: 1;
+    padding: 40px 80px 60px;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==================== LEFT: TABS + OPTIONS ==================== */
+.leftSection {
+    display: flex;
+    gap: 0;
+    height: 580px;
+}
+
+/* Vertical Tabs Sidebar */
+.tabsSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tabBtn {
+    width: 95px;
+    height: 95px;
+    background: #fef5e8;
+    border: 4px solid #3d3d3d;
+    border-right: none;
+    border-radius: 50px 0 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    padding: 14px;
+    position: relative;
+}
+
+.tabBtn img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    filter: grayscale(80%);
+    opacity: 0.6;
+    transition: all 0.25s;
+}
+
+.tabBtn:hover {
+    background: #fff9f0;
+}
+
+.tabBtn.active {
+    background: white;
+    border-color: #3d3d3d;
+}
+
+.tabBtn.active img {
+    filter: none;
+    opacity: 1;
+}
+
+/* Options Panel - SEAMLESS CONNECTION */
+.optionsPanel {
+    background: linear-gradient(180deg, #f4a9c1 0%, #f4a9c1 70px, #f9e5ef 70px, #f9e5ef 100%);
+    border: 4px solid #3d3d3d;
+    border-left: none; /* REMOVED LEFT BORDER FOR SEAMLESS CONNECTION */
+    border-radius: 0 40px 40px 0; /* Only round right side */
+    padding: 0;
+    width: 580px;
+    overflow: hidden;
+    height: 580px;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Panel Header */
+.panelTitle {
+    font-size: 30px;
     font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+    color: white;
+    text-align: center;
+    font-family: 'Pogonia', sans-serif;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
 }
 
-/* Extra Bold */
-@font-face {
-    font-family: 'Pogonia';
-    src: url('Fonts/Pogonia-ExtraBold.otf') format('opentype');
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
+/* Scrollable Content - NO VISIBLE SCROLLBAR */
+.panelContent {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 25px 20px 20px;
 }
 
-/* Black */
-@font-face {
-    font-family: 'Pogonia';
-    src: url('Fonts/Pogonia-Black.otf') format('opentype');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
+/* HIDE SCROLLBAR but keep functionality */
+.panelContent::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.panelContent {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.sectionLabel {
+    display: none; /* REMOVE "NOSE", "EYES" text */
+}
+
+/* Options Grid - 3 COLUMNS FIXED */
+.optionsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.optionBox {
+    aspect-ratio: 1;
+    height: 120px;
+    border: 3px solid #3d3d3d;
+    border-radius: 25px;
+    background: #fef5e8;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 12px;
+    position: relative;
+}
+
+.optionBox img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.optionBox:hover {
+    background: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.optionBox.selected {
+    border-width: 4px;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.4);
+}
+
+.optionBox.selected::before {
+    content: '✓';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 32px;
+    height: 32px;
+    background: #f490af;
+    color: white;
+    border-radius: 50%;
+    border: 3px solid #3d3d3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Pagination - ALWAYS VISIBLE */
+.paginationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+.paginationBtn {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.paginationBtn::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.paginationBtn:first-child::before {
+    border-width: 15px 20px 15px 0;
+    border-color: transparent #f4d99d transparent transparent;
+}
+
+.paginationBtn:last-child::before {
+    border-width: 15px 0 15px 20px;
+    border-color: transparent transparent transparent #f4d99d;
+}
+
+.paginationBtn:hover:not(:disabled)::before {
+    filter: brightness(0.85);
+}
+
+.paginationBtn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.paginationBtn:disabled::before {
+    filter: grayscale(100%);
+}
+
+.pageInfo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #3d3d3d;
+    background: #f5dde6;
+    padding: 8px 28px;
+    border-radius: 40px;
+    border: 3px solid #3d3d3d;
+}
+
+/* ==================== RIGHT: PREVIEW ==================== */
+.rightSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    flex: 1;
+    max-width: 750px;
+}
+
+/* Gender Tabs */
+.genderTabs {
+    display: flex;
+    border-radius: 40px;
+    overflow: hidden;
+    border: 4px solid #3d3d3d;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.genderTab {
+    padding: 18px 80px;
+    background: #fef5e8;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s ease;
+    font-family: 'Pogonia', sans-serif;
+}
+
+.genderTab:first-child {
+    border-right: 4px solid #3d3d3d;
+}
+
+.genderTab.active {
+    background: #f490af;
+    color: white;
+}
+
+.genderTab:hover:not(.active) {
+    background: white;
+}
+
+/* Avatar Preview */
+.avatarPreview {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.avatarContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.6);
+    filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.18));
+}
+
+.avatarLayer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+}
+
+/* Name Input */
+.nameInputContainer {
+    width: 460px;
+}
+
+.nameInput {
+    width: 100%;
+    padding: 18px 32px;
+    font-size: 22px;
+    border: 4px solid #3d3d3d;
+    border-radius: 50px;
+    text-align: center;
+    font-weight: 500;
+    color: #3d3d3d;
+    background: white;
+    transition: all 0.3s ease;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.08);
+    font-family: 'Pogonia', sans-serif;
+}
+
+.nameInput::placeholder {
+    color: #bbb;
+}
+
+.nameInput:focus {
+    outline: none;
+    border-color: #f490af;
+    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.2), 3px 3px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Color Selector - ONLY SHOW WHEN NEEDED */
+.colorSelectorContainer {
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.colorSelector {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 26px;
+    background: white;
+    border-radius: 60px;
+    border: 4px solid #3d3d3d;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.08);
+}
+
+.colorSelector.hidden {
+    display: none; /* COMPLETELY HIDE when not needed */
+}
+
+.colorDot {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 3px solid #3d3d3d;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.colorDot:hover {
+    transform: scale(1.12);
+}
+
+.colorDot.selected {
+    border-width: 5px;
+    transform: scale(1.2);
+    box-shadow: 0 0 0 3px white, 0 0 0 8px #3d3d3d;
+}
+
+/* OK Button */
+.okBtn {
+    padding: 18px 75px;
+    background: #a8d5a3;
+    border: 4px solid #3d3d3d;
+    border-radius: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+    font-family: 'Pogonia', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.okBtn:hover {
+    background: #95c991;
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.okBtn:active {
+    transform: translateY(1px);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1199px) {
+    .mainContent {
+        gap: 40px;
+        padding: 30px 40px 40px;
+    }
+
+    .leftSection {
+        height: 540px;
+    }
+
+    .optionsPanel {
+        width: 520px;
+        height: 540px;
+    }
+
+    .avatarPreview {
+        width: 520px;
+        height: 520px;
+    }
+
+    .avatarContainer {
+        transform: scale(0.55);
+    }
+}
+
+@media (max-width: 999px) {
+    .mainContent {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .leftSection {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .rightSection {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 799px) {
+    .mainContent {
+        padding: 20px;
+    }
+
+    .leftSection {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .tabsSidebar {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .tabBtn {
+        width: 75px;
+        height: 75px;
+        border-radius: 20px;
+        border: 3px solid #3d3d3d;
+    }
+
+    .optionsPanel {
+        border-left: 4px solid #3d3d3d;
+        border-radius: 40px;
+        width: 100%;
+        height: 450px;
+    }
+
+    .optionsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .avatarPreview {
+        width: 380px;
+        height: 380px;
+    }
+
+    .avatarContainer {
+        transform: scale(0.5);
+    }
+
+    .nameInputContainer {
+        width: 100%;
+    }
 }

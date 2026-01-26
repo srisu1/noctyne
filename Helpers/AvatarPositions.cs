@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace MoodJournal.Helpers;
 
 /// <summary>
@@ -74,7 +76,7 @@ public static class AvatarPositions
         ["button-up-shirt"] = new LayerPosition(1, 230, 0.39),
         ["sweater"] = new LayerPosition(-3, 239, 0.40),
         ["c-neck"] = new LayerPosition(-3, 239, 0.40),
-        ["v-neck"] = new LayerPosition(-3, 239, 0.40),
+        ["v-neck-sweater"] = new LayerPosition(-3, 239, 0.40),
         ["tank-top"] = new LayerPosition(7, 212, 0.32)
     };
 

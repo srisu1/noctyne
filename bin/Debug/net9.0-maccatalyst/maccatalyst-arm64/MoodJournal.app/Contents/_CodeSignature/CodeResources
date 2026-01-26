@@ -12,13 +12,81 @@
 		<data>
 		7Q7TN5yIlOavOULd2Ubm7c31Als=
 		</data>
+		<key>Resources/MauiInfo.plist</key>
+		<data>
+		Xq07+u9fd9ZQcYSW3nsQRd5qdJI=
+		</data>
 		<key>Resources/MonoTouchDebugConfiguration.txt</key>
 		<data>
 		oowkf1sL6T19nanXUObgmuayWqM=
 		</data>
+		<key>Resources/Nagoku-Black.otf</key>
+		<data>
+		6L82p4pxjaL78DOojdEw5OdJdgY=
+		</data>
+		<key>Resources/Nagoku-Bold.otf</key>
+		<data>
+		6poT7VS50AtiYiTbGCtddAqIdOs=
+		</data>
+		<key>Resources/Nagoku-Light.otf</key>
+		<data>
+		uLhyblItxuckxyCtnOLKKQ1Xuyw=
+		</data>
+		<key>Resources/Nagoku-Medium.otf</key>
+		<data>
+		VCnrGhhIUVN2JZYBZU/e5i0ZJw4=
+		</data>
+		<key>Resources/Nagoku-Regular.otf</key>
+		<data>
+		SmFBBo6TbQGh9nKs61Bt8uDndow=
+		</data>
+		<key>Resources/Onthehill.otf</key>
+		<data>
+		fZT88xVmXFibK+68c4A0TtctTUg=
+		</data>
+		<key>Resources/Onthehill.ttf</key>
+		<data>
+		z5AkeGHkAdf/RbDa6SR3/YeMzxk=
+		</data>
 		<key>Resources/OpenSans-Regular.ttf</key>
 		<data>
 		asYswFu7xNz0OTyD/sETYGb5DbA=
+		</data>
+		<key>Resources/Pogonia-Black.otf</key>
+		<data>
+		39B7IDuH+4xUyYUzVy/pMS4VAYY=
+		</data>
+		<key>Resources/Pogonia-Bold.otf</key>
+		<data>
+		kWbCcmj5jKQpLyKJF53/Kqn/kqk=
+		</data>
+		<key>Resources/Pogonia-ExtraBold.otf</key>
+		<data>
+		PtR/39iFYk1cXijlCv+iVUTyK8c=
+		</data>
+		<key>Resources/Pogonia-ExtraLight.otf</key>
+		<data>
+		Ix1lV/IhrYuoi2+WO+nKWi5AJko=
+		</data>
+		<key>Resources/Pogonia-Light.otf</key>
+		<data>
+		4O8vpwjPG/z+9xGPROgsXtdZ/tY=
+		</data>
+		<key>Resources/Pogonia-Medium.otf</key>
+		<data>
+		UKi/Kp6SO/m5g/C0JZXxNATZSY8=
+		</data>
+		<key>Resources/Pogonia-Regular.otf</key>
+		<data>
+		7I2AiottosZ4HAXzyBf44odchqc=
+		</data>
+		<key>Resources/Pogonia-Semibold.otf</key>
+		<data>
+		hHGFnv9ULzhy4iJ4+RFcorrMWEo=
+		</data>
+		<key>Resources/Pogonia-Thin.otf</key>
+		<data>
+		0xKN579Jm0ItkJJuPWOhI8SvXuw=
 		</data>
 		<key>Resources/appicon.icns</key>
 		<data>
@@ -36,33 +104,381 @@
 		<data>
 		CGyd+hCoYDV6CoYLjdlmIQg1EfE=
 		</data>
-		<key>Resources/wwwroot/MoodJournal.q7t6btgtit.bundle.scp.css</key>
+		<key>Resources/wwwroot/MoodJournal.24p6mwwgav.bundle.scp.css</key>
 		<data>
-		yrzixa5cYeg/aqVbGf3EqNXVPZo=
+		l+okZpMQiTTpuTKBD/MFYaDeBv4=
 		</data>
-		<key>Resources/wwwroot/MoodJournal.q7t6btgtit.bundle.scp.css.br</key>
+		<key>Resources/wwwroot/MoodJournal.24p6mwwgav.bundle.scp.css.br</key>
 		<data>
-		4QJ3skhHgRYHDaKuSTnAWckULaU=
+		etbfswMkfsFS0c5ecunvSfZ6YFw=
 		</data>
-		<key>Resources/wwwroot/MoodJournal.q7t6btgtit.bundle.scp.css.gz</key>
+		<key>Resources/wwwroot/MoodJournal.24p6mwwgav.bundle.scp.css.gz</key>
 		<data>
-		bWD9TjCJNjVPhytvE3H7TOpAWjI=
+		B6F0+0ZFQyWz4R3i/6kaiplrhNg=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.25vi9jukws.bundle.scp.css</key>
+		<data>
+		3BcmwQLpafCVcXNeOen/sjRZ92Y=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.25vi9jukws.bundle.scp.css.br</key>
+		<data>
+		514KgbAZYjM53gNddXWuL9daGOI=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.25vi9jukws.bundle.scp.css.gz</key>
+		<data>
+		0N2tHrPEF4P7gFcpoEgTlCvpKZs=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.464olds1y2.bundle.scp.css</key>
+		<data>
+		n4zxM0bgpe97KgdG40YIyeAP30U=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.464olds1y2.bundle.scp.css.br</key>
+		<data>
+		Dj9x7MJ5iwkEYghe+1+E6c7yiWw=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.464olds1y2.bundle.scp.css.gz</key>
+		<data>
+		jhmd8aspcFpzhrLGV0fhaGw9fEA=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.9r6u4wwtw2.bundle.scp.css</key>
+		<data>
+		gY3m1EVxM4VKZHUk0Mw+roMEzDE=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.9r6u4wwtw2.bundle.scp.css.br</key>
+		<data>
+		x9/xKKTEJKmZ2M2IF46npjp2fe4=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.9r6u4wwtw2.bundle.scp.css.gz</key>
+		<data>
+		yhmI0ulaZfiaJvCOOmciPCMNLCg=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.ae985hb0i4.bundle.scp.css</key>
+		<data>
+		9iTFPT1KugfMdtVWbSlmXFcz4v8=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.ae985hb0i4.bundle.scp.css.br</key>
+		<data>
+		GEyOXIv7QZH3bqL3DjaohJX1Wx0=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.ae985hb0i4.bundle.scp.css.gz</key>
+		<data>
+		lDBYqyE5/zo8sFTZmrmMGH1v52c=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.h4b5dt53bg.bundle.scp.css</key>
+		<data>
+		YJFES+lnjMZZOR9lSlvFP3zVJ6o=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.h4b5dt53bg.bundle.scp.css.br</key>
+		<data>
+		2bIuijrhZdII9CSphATOAPAQKCY=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.h4b5dt53bg.bundle.scp.css.gz</key>
+		<data>
+		YEVzlq//cFXPvnkEypQCoe4KWw0=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.jbviogt0wx.bundle.scp.css</key>
+		<data>
+		RtTDqJWpVSy9GNyxvzFc+7Mafgw=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.jbviogt0wx.bundle.scp.css.br</key>
+		<data>
+		uo4oEfB3GtNnfuZ0ae8RJvBcRtA=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.jbviogt0wx.bundle.scp.css.gz</key>
+		<data>
+		4OBIcnBpjijfBiQ45i3aI56h5pA=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.mdky52nwgn.bundle.scp.css</key>
+		<data>
+		GWMFai9FBUsHEvUD0A8DCmm5uVw=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.mdky52nwgn.bundle.scp.css.br</key>
+		<data>
+		6zKUm7kHLwEL3E6F3gZRxdRF3OI=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.mdky52nwgn.bundle.scp.css.gz</key>
+		<data>
+		1lNMf5fih1KCuiUqBC0SNV8HF84=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.n8wbmifx3o.bundle.scp.css</key>
+		<data>
+		CjCxQEFdlhM65r8FhTXKcT7X4ec=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.n8wbmifx3o.bundle.scp.css.br</key>
+		<data>
+		Z0S/jhwwtaIrU56WpZM4u8vic1Y=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.n8wbmifx3o.bundle.scp.css.gz</key>
+		<data>
+		kfrVwJEcS2ewOHQlsmI7qUdzkuI=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.q6wwwhszl4.bundle.scp.css</key>
+		<data>
+		HeVncrzycKE5s3C2H9nGfAnKcMs=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.q6wwwhszl4.bundle.scp.css.br</key>
+		<data>
+		/PfMDuG8u+/+kme9A1c3tf3g3dQ=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.q6wwwhszl4.bundle.scp.css.gz</key>
+		<data>
+		J2huBAl686uDXtUxJ/5C2la6hvg=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.qmbf3ywl19.bundle.scp.css</key>
+		<data>
+		4ttiI8pjWbHVSFFPtbSzSGjKbt4=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.qmbf3ywl19.bundle.scp.css.br</key>
+		<data>
+		G6bXOqX0XXBJpcIT8JVwqMoSkG8=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.qmbf3ywl19.bundle.scp.css.gz</key>
+		<data>
+		L2Mf56dsN9B2vBN46HFCarfM3nQ=
 		</data>
 		<key>Resources/wwwroot/MoodJournal.styles.css</key>
 		<data>
-		yrzixa5cYeg/aqVbGf3EqNXVPZo=
+		gY3m1EVxM4VKZHUk0Mw+roMEzDE=
 		</data>
 		<key>Resources/wwwroot/MoodJournal.styles.css.br</key>
 		<data>
-		4QJ3skhHgRYHDaKuSTnAWckULaU=
+		x9/xKKTEJKmZ2M2IF46npjp2fe4=
 		</data>
 		<key>Resources/wwwroot/MoodJournal.styles.css.gz</key>
 		<data>
-		bWD9TjCJNjVPhytvE3H7TOpAWjI=
+		yhmI0ulaZfiaJvCOOmciPCMNLCg=
 		</data>
-		<key>Resources/wwwroot/assets/.gitkeep</key>
+		<key>Resources/wwwroot/MoodJournal.ugugvbf055.bundle.scp.css</key>
 		<data>
-		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		2cfCFKkTn/OFxvPsIBDN+OHqoKw=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.ugugvbf055.bundle.scp.css.br</key>
+		<data>
+		fzep1nU2O+JELh+93X2W8nahv44=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.ugugvbf055.bundle.scp.css.gz</key>
+		<data>
+		wZ54oJIWYnt5FgUEso84jCob2O4=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.vj10cz9rff.bundle.scp.css</key>
+		<data>
+		8mvTINTVtvI6wdJZds+caqdafwE=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.vj10cz9rff.bundle.scp.css.br</key>
+		<data>
+		j4sf1vDa9AnDodPwtZYG9cQZAAA=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.vj10cz9rff.bundle.scp.css.gz</key>
+		<data>
+		+PhcsFHK3+7zJST6Fq8AfcZy+rk=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.wki7q2emq9.bundle.scp.css</key>
+		<data>
+		TEuPowbdoQk5KKG684v9m+tast4=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.wki7q2emq9.bundle.scp.css.br</key>
+		<data>
+		QgxOKsOrROOOTM/AdC0qxbBGrLI=
+		</data>
+		<key>Resources/wwwroot/MoodJournal.wki7q2emq9.bundle.scp.css.gz</key>
+		<data>
+		JCunFMZSR0iR/2o8Dmw0wHjG4Kk=
+		</data>
+		<key>Resources/wwwroot/assets/AvatarcustomizationBackground.jpg</key>
+		<data>
+		/A0dGCwN5qZAMYXyJmPH3RMo/WI=
+		</data>
+		<key>Resources/wwwroot/assets/AvatarcustomizationBackground2.jpg</key>
+		<data>
+		LCFNEcc5abz42GXNjC8fa3W/dHk=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Black.otf</key>
+		<data>
+		6L82p4pxjaL78DOojdEw5OdJdgY=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Black.otf.br</key>
+		<data>
+		W5o8OBF9awO8122FEdsE25L2tOc=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Black.otf.gz</key>
+		<data>
+		LuwHS2xuK837xK0SuO5nh/0Bb2Q=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Bold.otf</key>
+		<data>
+		6poT7VS50AtiYiTbGCtddAqIdOs=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Bold.otf.br</key>
+		<data>
+		pRuEEsjMHje+5cQhiilTDrL9KcQ=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Bold.otf.gz</key>
+		<data>
+		6aWY8Hy33neGkwQh3QdtXDc7gWU=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Light.otf</key>
+		<data>
+		uLhyblItxuckxyCtnOLKKQ1Xuyw=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Light.otf.br</key>
+		<data>
+		3iMzVczP9cQ0uFT3kUjJ4donyMY=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Light.otf.gz</key>
+		<data>
+		28jr22YAELaVpn27q5pYXaRKs2c=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Medium.otf</key>
+		<data>
+		VCnrGhhIUVN2JZYBZU/e5i0ZJw4=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Medium.otf.br</key>
+		<data>
+		2v6gYPlzpeXyl2OK6WQN38DO9Jw=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Medium.otf.gz</key>
+		<data>
+		KMDVsT6HiT+3yJvryOHiNG7uvPc=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Regular.otf</key>
+		<data>
+		SmFBBo6TbQGh9nKs61Bt8uDndow=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Regular.otf.br</key>
+		<data>
+		v5pY4R35vWp0YvK32lahvZINUmg=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Regular.otf.gz</key>
+		<data>
+		jNoWz3rzSX+6L6yHzI/ushi7LwQ=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Onthehill.otf</key>
+		<data>
+		fZT88xVmXFibK+68c4A0TtctTUg=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Onthehill.otf.br</key>
+		<data>
+		zAnt8aWyIxlV68Pbj/xjSCmbEoc=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Onthehill.otf.gz</key>
+		<data>
+		2W0RUFMBG3Jfn0PLCipS6d0MNpI=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Onthehill.ttf</key>
+		<data>
+		z5AkeGHkAdf/RbDa6SR3/YeMzxk=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/OpenSans-Regular.ttf</key>
+		<data>
+		asYswFu7xNz0OTyD/sETYGb5DbA=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Black.otf</key>
+		<data>
+		39B7IDuH+4xUyYUzVy/pMS4VAYY=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Black.otf.br</key>
+		<data>
+		r6WCuTNyG8ywu3LILWLGRCLB2uk=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Black.otf.gz</key>
+		<data>
+		7PXu93hv/yl4ajULnzaO06e8Qoo=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Bold.otf</key>
+		<data>
+		kWbCcmj5jKQpLyKJF53/Kqn/kqk=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Bold.otf.br</key>
+		<data>
+		OttlAszbhIRoYMytPXZvJEBkF2k=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Bold.otf.gz</key>
+		<data>
+		6BWl6QpEp81YBu2c1gi0jHAmQiM=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraBold.otf</key>
+		<data>
+		PtR/39iFYk1cXijlCv+iVUTyK8c=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraBold.otf.br</key>
+		<data>
+		H3DgOAei+h186TLZG+0zyHpx5rg=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraBold.otf.gz</key>
+		<data>
+		6GGDtb42iBeAlcyMg/5FryHU0uQ=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraLight.otf</key>
+		<data>
+		Ix1lV/IhrYuoi2+WO+nKWi5AJko=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraLight.otf.br</key>
+		<data>
+		HNlwfKYBTXNGOJSEzB7pQcAIaV8=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraLight.otf.gz</key>
+		<data>
+		pRPrOEu4dHwT3u2/5zEA2rLQPlI=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Light.otf</key>
+		<data>
+		4O8vpwjPG/z+9xGPROgsXtdZ/tY=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Light.otf.br</key>
+		<data>
+		zW9Qt21vPsLT+lJV/icIL+cVx3M=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Light.otf.gz</key>
+		<data>
+		kgxOtcmjoXv1MfEknm2bAp6J4BQ=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Medium.otf</key>
+		<data>
+		UKi/Kp6SO/m5g/C0JZXxNATZSY8=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Medium.otf.br</key>
+		<data>
+		tvfjjWEod9GWQQKtx+hZxbpwoqQ=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Medium.otf.gz</key>
+		<data>
+		KTUxqJrSPECBcIiK06+iEFHTG3M=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Regular.otf</key>
+		<data>
+		7I2AiottosZ4HAXzyBf44odchqc=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Regular.otf.br</key>
+		<data>
+		2V2+EqQ8rgWhmmtNngLJ0LCHPXA=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Regular.otf.gz</key>
+		<data>
+		DDjo9uJt/wmAM88OGwrDP74aC/U=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Semibold.otf</key>
+		<data>
+		hHGFnv9ULzhy4iJ4+RFcorrMWEo=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Semibold.otf.br</key>
+		<data>
+		bXSOWPTFsCq13MMAl6eXmCDi5ZQ=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Semibold.otf.gz</key>
+		<data>
+		41/U3TaS3jshKQy1LCBjcUPHriY=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Thin.otf</key>
+		<data>
+		0xKN579Jm0ItkJJuPWOhI8SvXuw=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Thin.otf.br</key>
+		<data>
+		TQ291JhxvI15KThcjtZI2pY2Ehk=
+		</data>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Thin.otf.gz</key>
+		<data>
+		UwLTRd2NyLjraYjMYjhMCtSRchQ=
 		</data>
 		<key>Resources/wwwroot/assets/avatar/.gitkeep</key>
 		<data>
@@ -76,33 +492,129 @@
 		<data>
 		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
 		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/angry/eyes.png</key>
+		<data>
+		ckouf4cST8LIU9Vdey7XWFiJRgU=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/angry/mouth.png</key>
+		<data>
+		fyFFGFsLai3jJiNq7qwuh52F+gg=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/angry/nose.png</key>
+		<data>
+		ke1htejyS7FnWLhH3WD+MHjAIyE=
+		</data>
 		<key>Resources/wwwroot/assets/avatar/expressions/anxious/.gitkeep</key>
 		<data>
 		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/anxious/eyes.png</key>
+		<data>
+		yv36sE158/fpuRvb//XG9apAC3s=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/anxious/mouth.png</key>
+		<data>
+		qm5QxOg/90vGvIjj8XZXfuG8VbQ=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/anxious/nose.png</key>
+		<data>
+		03TbOHg/v4U9nTQ8Sa6sBh0Dfcw=
 		</data>
 		<key>Resources/wwwroot/assets/avatar/expressions/calm/.gitkeep</key>
 		<data>
 		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
 		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/calm/eyes.png</key>
+		<data>
+		6+adLdODPxgw43ePKecrfvPEzUI=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/calm/mouth.png</key>
+		<data>
+		YsX0lv5GVa+n9fWGKL03cJrZ6Jk=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/calm/nose.png</key>
+		<data>
+		YDUiAM7Reg9mWPbwyPdNiY4UsR0=
+		</data>
 		<key>Resources/wwwroot/assets/avatar/expressions/excited/.gitkeep</key>
 		<data>
 		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/excited/eyes.png</key>
+		<data>
+		RhyWEudL6GLrSpMnrWovyMa5uKk=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/excited/mouth.png</key>
+		<data>
+		8CDYDbB2n3yh2RoQ5ippTPueCK4=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/excited/nose.png</key>
+		<data>
+		YMGggeTc3PvJrpVwQmIKIUExL0E=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/grateful/.gitkeep</key>
+		<data>
+		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/grateful/eyes.png</key>
+		<data>
+		u5EY5MiA4FW24mHfOcYkGFjhGgg=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/grateful/mouth.png</key>
+		<data>
+		DwaUeBBKNeADmQgejosgXNNjcms=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/grateful/nose.png</key>
+		<data>
+		YMGggeTc3PvJrpVwQmIKIUExL0E=
 		</data>
 		<key>Resources/wwwroot/assets/avatar/expressions/happy/.gitkeep</key>
 		<data>
 		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
 		</data>
-		<key>Resources/wwwroot/assets/avatar/expressions/neutral/.gitkeep</key>
+		<key>Resources/wwwroot/assets/avatar/expressions/happy/eyes.png</key>
 		<data>
-		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		/5ERRaUlJ6DA1k64eOEZTq/7Vew=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/happy/mouth.png</key>
+		<data>
+		ycbeg0sZ8BvAaYHolPw+KOmjzJA=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/happy/nose.png</key>
+		<data>
+		YMGggeTc3PvJrpVwQmIKIUExL0E=
 		</data>
 		<key>Resources/wwwroot/assets/avatar/expressions/sad/.gitkeep</key>
 		<data>
 		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
 		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/sad/eyes.png</key>
+		<data>
+		rEO/ZxRZ8Fu3JvkZME1M/3SthWI=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/sad/mouth.png</key>
+		<data>
+		fyFFGFsLai3jJiNq7qwuh52F+gg=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/sad/nose.png</key>
+		<data>
+		tAH2yVH++wrkMySQtTsUFU1FhkQ=
+		</data>
 		<key>Resources/wwwroot/assets/avatar/expressions/tired/.gitkeep</key>
 		<data>
 		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/tired/eyes.png</key>
+		<data>
+		sj2w4TjJV0w5EO2eM0ndsd7vliM=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/tired/mouth.png</key>
+		<data>
+		fyFFGFsLai3jJiNq7qwuh52F+gg=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/expressions/tired/nose.png</key>
+		<data>
+		03TbOHg/v4U9nTQ8Sa6sBh0Dfcw=
 		</data>
 		<key>Resources/wwwroot/assets/avatar/female/.gitkeep</key>
 		<data>
@@ -904,19 +1416,15 @@
 		<data>
 		HeM28ssoXWG/dN2dr01El0AEwXg=
 		</data>
-		<key>Resources/wwwroot/assets/avatar/female/justhead/.gitkeep</key>
-		<data>
-		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/female/justhead/justheadbase01.png</key>
+		<key>Resources/wwwroot/assets/avatar/female/justheadbase/justheadbase01.png</key>
 		<data>
 		EHu2XqhUlAYXNeHoYNIt5LCI6tE=
 		</data>
-		<key>Resources/wwwroot/assets/avatar/female/justhead/justheadbase02.png</key>
+		<key>Resources/wwwroot/assets/avatar/female/justheadbase/justheadbase02.png</key>
 		<data>
 		NBAYzyjij4AFfXhtc3SHqOOzJpg=
 		</data>
-		<key>Resources/wwwroot/assets/avatar/female/justhead/justheadbase03.png</key>
+		<key>Resources/wwwroot/assets/avatar/female/justheadbase/justheadbase03.png</key>
 		<data>
 		/7UMVvaHb9Hxkw5JxzJqn8cK2pQ=
 		</data>
@@ -1007,62 +1515,6 @@
 		<key>Resources/wwwroot/assets/avatar/female/nose/nose10.png</key>
 		<data>
 		I9XrCuBBryCUieglzj84Z8jOHu0=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/accessories-icon.png</key>
-		<data>
-		9R/5+BKzJ1zpzqnSDWI3CS+0Er0=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-left.svg</key>
-		<data>
-		dw4iErV1fDxDUCNDso58Bl8hDEY=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-left.svg.br</key>
-		<data>
-		r0UYIWM9Jq/fce0mCkh/8qwe0gA=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-left.svg.gz</key>
-		<data>
-		vfoF1mhWaf5Sx+ukppRyF2vDaNs=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-right.svg</key>
-		<data>
-		rASFf2UmGzQJc0hVFJe7fPlgsv4=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-right.svg.br</key>
-		<data>
-		7MnZUtYx68kDSNCMChsRNo6D1Eo=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-right.svg.gz</key>
-		<data>
-		C8LqilrJKUylkGfQh8hpR6SPG8s=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/base-icon.png</key>
-		<data>
-		r+VGEREzIfGkVk+UsRnDQND+r7M=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/beard-icon.png</key>
-		<data>
-		QcjAfHOB+uEDYkdyx+tPa+atQ5A=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/clothes-icon.png</key>
-		<data>
-		s77hk/K+3E4H9r1woPIo7Ruosxg=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/eyes-icon.png</key>
-		<data>
-		mcV9x+X50bo+PerQAxAHjWekvoI=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/hair-icon.png</key>
-		<data>
-		P9DhF6IpQQ7mQ0FTTE4VbjK3d9Y=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/mouth-icon.png</key>
-		<data>
-		5zFrY2dHtDvtcdArFW40CmZaUKU=
-		</data>
-		<key>Resources/wwwroot/assets/avatar/icons/nose-icon.png</key>
-		<data>
-		cFdG993FSXibks77ApuX4JJXtVA=
 		</data>
 		<key>Resources/wwwroot/assets/avatar/male/.gitkeep</key>
 		<data>
@@ -1292,6 +1744,10 @@
 		<data>
 		Oh21SSSyrOadgF4UXhgru31Ibdc=
 		</data>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/button-up-shirt-green.png</key>
+		<data>
+		AWILgjgiyvs9brCTnXdr27tlwac=
+		</data>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/button-up-shirt-red.png</key>
 		<data>
 		9SB9MUWB0o2BJ5rEz7d8/iruPvo=
@@ -1303,6 +1759,10 @@
 		<key>Resources/wwwroot/assets/avatar/male/clothes/c-neck-blue.png</key>
 		<data>
 		8v8sHYs02eK2KFT5hHpCXBFjlVg=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/c-neck-green.png</key>
+		<data>
+		6uodoXG+gUwx9zc1HhUC71XNKQ8=
 		</data>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/c-neck-red.png</key>
 		<data>
@@ -1316,6 +1776,10 @@
 		<data>
 		R3RxDG8nm4A4xuHtAcFmMtgC8uk=
 		</data>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/sweater-green.png</key>
+		<data>
+		k1X2cjfOgyfdCmGOAKz/GN6lQdA=
+		</data>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/sweater-red.png</key>
 		<data>
 		npcwjAR8kHEBI6+vh4azHzffjPQ=
@@ -1328,9 +1792,17 @@
 		<data>
 		S/IyZumUwERPVxPqhJPQrMoh7k0=
 		</data>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/tank-top-green.png</key>
+		<data>
+		UuCGb6bN2zQQUM298SbS2aYBB9g=
+		</data>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/tank-top-red.png</key>
 		<data>
 		4+NxLw8DEytge/nFAPaMgLhlD1U=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/uniform-black.png</key>
+		<data>
+		OcCTIy9nnXoLQf2cd4SkAI/xooA=
 		</data>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/uniform-blue.png</key>
 		<data>
@@ -1351,6 +1823,10 @@
 		<key>Resources/wwwroot/assets/avatar/male/clothes/v-neck-sweater-blue.png</key>
 		<data>
 		2DCdcfdvYy1F8j4ttiGCSQki1QQ=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/v-neck-sweater-green.png</key>
+		<data>
+		Ni/r3pwF3cJ8LxIrZDY/m0yre/8=
 		</data>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/v-neck-sweater-red.png</key>
 		<data>
@@ -1648,10 +2124,6 @@
 		<data>
 		NcGJGpgHACwaeT9+nVUa1NIetyA=
 		</data>
-		<key>Resources/wwwroot/assets/avatar/male/hair/Hair 100.png</key>
-		<data>
-		jcK4PTQX8MFrSWPe8c1j6tXbLLc=
-		</data>
 		<key>Resources/wwwroot/assets/avatar/male/hair/bangs-black.png</key>
 		<data>
 		x8dkkA3GnTHSjBpxcFo3ta/Y+Oc=
@@ -1804,6 +2276,10 @@
 		<data>
 		mOUhdoR1RqTwm+4Xo3xTWbvppSU=
 		</data>
+		<key>Resources/wwwroot/assets/avatar/male/hair/edgy-hair-red.png</key>
+		<data>
+		jcK4PTQX8MFrSWPe8c1j6tXbLLc=
+		</data>
 		<key>Resources/wwwroot/assets/avatar/male/hair/edgy-hair-silver.png</key>
 		<data>
 		qHUfP8hqlk3Im16P7BBZL1te2ek=
@@ -1816,13 +2292,13 @@
 		<data>
 		ieKFywPIrw2jyJoe8u7nu+QNMHY=
 		</data>
-		<key>Resources/wwwroot/assets/avatar/male/hair/flat-hair-blue.png</key>
-		<data>
-		xjIuScXRYeO3G5ehA0Oux6v2SwU=
-		</data>
 		<key>Resources/wwwroot/assets/avatar/male/hair/flat-hair-brown.png</key>
 		<data>
 		uB1/2jVSAqGhWBLy6Lb2NJPlQfo=
+		</data>
+		<key>Resources/wwwroot/assets/avatar/male/hair/flat-hair-darkblue.png</key>
+		<data>
+		xjIuScXRYeO3G5ehA0Oux6v2SwU=
 		</data>
 		<key>Resources/wwwroot/assets/avatar/male/hair/flat-hair-orange.png</key>
 		<data>
@@ -1936,19 +2412,19 @@
 		<data>
 		kY9VFtGKbGAI+j60pA5dLxNQwj4=
 		</data>
-		<key>Resources/wwwroot/assets/avatar/male/justhead/.gitkeep</key>
+		<key>Resources/wwwroot/assets/avatar/male/justheadbase/.gitkeep</key>
 		<data>
 		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
 		</data>
-		<key>Resources/wwwroot/assets/avatar/male/justhead/justheadbase01.png</key>
+		<key>Resources/wwwroot/assets/avatar/male/justheadbase/justheadbase01.png</key>
 		<data>
 		UzHT1N3wIpmsxhkCjynhWgJxej8=
 		</data>
-		<key>Resources/wwwroot/assets/avatar/male/justhead/justheadbase02.png</key>
+		<key>Resources/wwwroot/assets/avatar/male/justheadbase/justheadbase02.png</key>
 		<data>
 		NFXK0fgOZUUvRp55l5td+fadzr0=
 		</data>
-		<key>Resources/wwwroot/assets/avatar/male/justhead/justheadbase03.png</key>
+		<key>Resources/wwwroot/assets/avatar/male/justheadbase/justheadbase03.png</key>
 		<data>
 		k6z1W9B5QjpncqjtMNTgHtGiZyw=
 		</data>
@@ -2040,13 +2516,61 @@
 		<data>
 		I9XrCuBBryCUieglzj84Z8jOHu0=
 		</data>
-		<key>Resources/wwwroot/assets/images/.gitkeep</key>
+		<key>Resources/wwwroot/assets/icons/accessories-icon.png</key>
 		<data>
-		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		9R/5+BKzJ1zpzqnSDWI3CS+0Er0=
 		</data>
-		<key>Resources/wwwroot/assets/images/icons/.gitkeep</key>
+		<key>Resources/wwwroot/assets/icons/arrow-left.svg</key>
 		<data>
-		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		dw4iErV1fDxDUCNDso58Bl8hDEY=
+		</data>
+		<key>Resources/wwwroot/assets/icons/arrow-left.svg.br</key>
+		<data>
+		r0UYIWM9Jq/fce0mCkh/8qwe0gA=
+		</data>
+		<key>Resources/wwwroot/assets/icons/arrow-left.svg.gz</key>
+		<data>
+		vfoF1mhWaf5Sx+ukppRyF2vDaNs=
+		</data>
+		<key>Resources/wwwroot/assets/icons/arrow-right.svg</key>
+		<data>
+		rASFf2UmGzQJc0hVFJe7fPlgsv4=
+		</data>
+		<key>Resources/wwwroot/assets/icons/arrow-right.svg.br</key>
+		<data>
+		7MnZUtYx68kDSNCMChsRNo6D1Eo=
+		</data>
+		<key>Resources/wwwroot/assets/icons/arrow-right.svg.gz</key>
+		<data>
+		C8LqilrJKUylkGfQh8hpR6SPG8s=
+		</data>
+		<key>Resources/wwwroot/assets/icons/base-icon.png</key>
+		<data>
+		r+VGEREzIfGkVk+UsRnDQND+r7M=
+		</data>
+		<key>Resources/wwwroot/assets/icons/beard-icon.png</key>
+		<data>
+		QcjAfHOB+uEDYkdyx+tPa+atQ5A=
+		</data>
+		<key>Resources/wwwroot/assets/icons/clothes-icon.png</key>
+		<data>
+		s77hk/K+3E4H9r1woPIo7Ruosxg=
+		</data>
+		<key>Resources/wwwroot/assets/icons/eyes-icon.png</key>
+		<data>
+		mcV9x+X50bo+PerQAxAHjWekvoI=
+		</data>
+		<key>Resources/wwwroot/assets/icons/hair-icon.png</key>
+		<data>
+		P9DhF6IpQQ7mQ0FTTE4VbjK3d9Y=
+		</data>
+		<key>Resources/wwwroot/assets/icons/mouth-icon.png</key>
+		<data>
+		5zFrY2dHtDvtcdArFW40CmZaUKU=
+		</data>
+		<key>Resources/wwwroot/assets/icons/nose-icon.png</key>
+		<data>
+		cFdG993FSXibks77ApuX4JJXtVA=
 		</data>
 		<key>Resources/wwwroot/assets/images/onboarding/Login.svg</key>
 		<data>
@@ -2098,27 +2622,39 @@
 		</data>
 		<key>Resources/wwwroot/css/Avatar.css</key>
 		<data>
-		v8VEUvE2Rov4Y4a3WeABrrjdeZw=
+		KKEMm/KfpFN1DbIUa70DVhP6oUY=
 		</data>
 		<key>Resources/wwwroot/css/Avatar.css.br</key>
 		<data>
-		J/R1FGOAekY4frmFS/i8bndJfug=
+		ageNBrpYim8MpaeEsntB8hW0D9g=
 		</data>
 		<key>Resources/wwwroot/css/Avatar.css.gz</key>
 		<data>
-		36N9OUdR+c4IPPyyMBUvrPGwqDE=
+		sfxSo8LCPxvEPU2Atk3AzZfTTfw=
+		</data>
+		<key>Resources/wwwroot/css/Avatarog.css</key>
+		<data>
+		Av9n8wDidbVmJ/AJyG3MlXwAi1g=
+		</data>
+		<key>Resources/wwwroot/css/Avatarog.css.br</key>
+		<data>
+		sbsmvB6oShhugGeBZarXHvkAjSM=
+		</data>
+		<key>Resources/wwwroot/css/Avatarog.css.gz</key>
+		<data>
+		sP+IIibw/3A+Heg3dBjX4xyDyDQ=
 		</data>
 		<key>Resources/wwwroot/css/Fonts.css</key>
 		<data>
-		M0xum1IcrptjVdDw/BZp8EPPNVQ=
+		v5s6b2e2VxQlDlh/CERkXo7Y0vw=
 		</data>
 		<key>Resources/wwwroot/css/Fonts.css.br</key>
 		<data>
-		G7PruFtjH1Cw7t4UtQ8st2XNQ7w=
+		cSB7b/vYHQ9iPiGt+6HlzMLXSao=
 		</data>
 		<key>Resources/wwwroot/css/Fonts.css.gz</key>
 		<data>
-		BxEiV89e8a9o8BDgiyV0+8IuTWA=
+		iFtpUwwCjUAfCL7bsjiXHSyJBYE=
 		</data>
 		<key>Resources/wwwroot/css/Login.css</key>
 		<data>
@@ -2134,15 +2670,27 @@
 		</data>
 		<key>Resources/wwwroot/css/Onboarding.css</key>
 		<data>
-		LJmKWwY7jlS+Y1guMEdUrz2453k=
+		nVW7zw+AVzBT09x4yqyUT5xnWEA=
 		</data>
 		<key>Resources/wwwroot/css/Onboarding.css.br</key>
 		<data>
-		cPEXXBmzKnKClB3+ZMrST/iJaAw=
+		ULD2urXNFP5HSZ2n4wWG29QHQVw=
 		</data>
 		<key>Resources/wwwroot/css/Onboarding.css.gz</key>
 		<data>
-		JR6J9NQ9d7iCDKjtncvL8vVJvN4=
+		gT7ZoiaHZo1kXB66Wb+Zi1kwSaQ=
+		</data>
+		<key>Resources/wwwroot/css/SecuritySetup.css</key>
+		<data>
+		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		</data>
+		<key>Resources/wwwroot/css/SecuritySetup.css.br</key>
+		<data>
+		LRSrl8w9wpTFHA1oFPTqRfS04xI=
+		</data>
+		<key>Resources/wwwroot/css/SecuritySetup.css.gz</key>
+		<data>
+		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
 		</data>
 		<key>Resources/wwwroot/css/app.css</key>
 		<data>
@@ -2182,15 +2730,27 @@
 		</data>
 		<key>Resources/wwwroot/index.html</key>
 		<data>
-		mo8Q+Y6Xnzn3aa0kF3ENirdpFJ4=
+		6/5ZEZJfjPopSvc5BbOmPDDgRyY=
 		</data>
 		<key>Resources/wwwroot/index.html.br</key>
 		<data>
-		B0Nm/YBWK50qNhC0g8rgd4V3Gzg=
+		3VAxS9GlYk3RyI4er0EmrSSlZIs=
 		</data>
 		<key>Resources/wwwroot/index.html.gz</key>
 		<data>
-		GuD8P3KiTNy6fQyj+mUwhJH3Xrc=
+		LPARUI45jNZf7OLMZv6UV8F04sQ=
+		</data>
+		<key>Resources/wwwroot/js/quill-interop.js</key>
+		<data>
+		6RG70CgBD7Dt7NCije7Zp4zYYAc=
+		</data>
+		<key>Resources/wwwroot/js/quill-interop.js.br</key>
+		<data>
+		WEV1rz7b3LITFFBwmUhVJKbJh5k=
+		</data>
+		<key>Resources/wwwroot/js/quill-interop.js.gz</key>
+		<data>
+		/9SBLPHW7M1KlI+4L8Hi21vCrak=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -2472,14 +3032,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CXs3IH7q+PzAkQ2QyIHUOgongyGiQ0fcKg0DYZlbDCs=
+			4Tfie49uSLFNvLrdKvo9VAazx/2ux1k56Xh0aHMhpFM=
 			</data>
 		</dict>
 		<key>MonoBundle/MoodJournal.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uZNBhFLskxaZ8ZuedSlPefsEHmeerj4bRiyoWLyj0mk=
+			4gaxdT8VC2HiHTCeFyBGIVnDhw+2ykbxZk35sKMeaXw=
 			</data>
 		</dict>
 		<key>MonoBundle/QuestPDF.dll</key>
@@ -3938,6 +4498,13 @@
 			n8hWbaTBYyIZSJHswRWq3jnOMQ8LDDhHRSCjgDYsLz4=
 			</data>
 		</dict>
+		<key>Resources/MauiInfo.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1MMddfZTWCpFpewyulq410YKKr2UneNImopiB4KLsNQ=
+			</data>
+		</dict>
 		<key>Resources/MonoTouchDebugConfiguration.txt</key>
 		<dict>
 			<key>hash2</key>
@@ -3945,11 +4512,123 @@
 			RS51BO98d+zhJWK1abJOyD5jB4nYJnWJPtL2DZyA/zw=
 			</data>
 		</dict>
+		<key>Resources/Nagoku-Black.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DzT6B1WYi4Sc/qfiV5kmBihkD1lCZ05bTcAqR6BX1JA=
+			</data>
+		</dict>
+		<key>Resources/Nagoku-Bold.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/ksLFHD9RQH+40/cZkZklN2Oexzqg7GLYTOCVqN4Ew4=
+			</data>
+		</dict>
+		<key>Resources/Nagoku-Light.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ICrKf6cW9teF2aKHtGsNyar2dHfm9jx2LCph6tb1uVY=
+			</data>
+		</dict>
+		<key>Resources/Nagoku-Medium.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/akRVx3ZTI0TX3Tx0KiVZonu95W9mBTXklsqm7flLz4=
+			</data>
+		</dict>
+		<key>Resources/Nagoku-Regular.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kZLFcirOms6QJIAKv7VEBy5rebAjoeEPI7rj2GfuG9s=
+			</data>
+		</dict>
+		<key>Resources/Onthehill.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DM8hbIu3KsdnMKq8ifhb06dS2U7+lAkmtdbeONOspcE=
+			</data>
+		</dict>
+		<key>Resources/Onthehill.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			UObVR9tBUz1w9FC7t/RxrZQn2MBT+lV+hchIS4vCQ0k=
+			</data>
+		</dict>
 		<key>Resources/OpenSans-Regular.ttf</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			cI72SpmE2TVhoHlA+HEGrpl5aoSBp9/t4dvNmq0fjVw=
+			</data>
+		</dict>
+		<key>Resources/Pogonia-Black.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6lBBNl9PdD3iwNEcd12Kdf1MynffAFszW1eqVo1D5xw=
+			</data>
+		</dict>
+		<key>Resources/Pogonia-Bold.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ng1PHUiXlEEotzqjWpkkkFduUEXaCQ+MsBFc1g+AvkI=
+			</data>
+		</dict>
+		<key>Resources/Pogonia-ExtraBold.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			F4+u4CYaEluzff9YTHL3Yr8+1HaCpFSTQL01WZ8OWoc=
+			</data>
+		</dict>
+		<key>Resources/Pogonia-ExtraLight.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			r5PPxjnyag1EEoaU2SHXquMXF+3C7TgNPZptikSFaW0=
+			</data>
+		</dict>
+		<key>Resources/Pogonia-Light.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			008CyYiN1OZT2gbXbXF+kQ1j3Ippvgu3+aOs6ScNPoQ=
+			</data>
+		</dict>
+		<key>Resources/Pogonia-Medium.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6GRdiG46jIS7l2JU5cHXfg7Pug1bmfKKmMNGL+IuCDg=
+			</data>
+		</dict>
+		<key>Resources/Pogonia-Regular.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0f23rTnvxEI1qJNVgIcYW5yCZSUVaTouO21vk6FjfNk=
+			</data>
+		</dict>
+		<key>Resources/Pogonia-Semibold.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			escYhjC700EIVwOHoiO71bjrboXtnBuA5vtg4Fs31gI=
+			</data>
+		</dict>
+		<key>Resources/Pogonia-Thin.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gXU75Jb72fFpGTyRNM41BxthqS88kjrvBYIF9HUyb70=
 			</data>
 		</dict>
 		<key>Resources/appicon.icns</key>
@@ -3980,53 +4659,662 @@
 			oTCNed2W8gqZp7lcUqnPLwDNqny+KdHYOAjr9LClkz0=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/MoodJournal.q7t6btgtit.bundle.scp.css</key>
+		<key>Resources/wwwroot/MoodJournal.24p6mwwgav.bundle.scp.css</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mmcoHUyF9x2O1jdbW33KR+x3sAxyeGysq3Omj2V0A1U=
+			XuXmBUvExX6JFoTffWwHgYmlqbK/B6YOzCTF/0BjhwA=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/MoodJournal.q7t6btgtit.bundle.scp.css.br</key>
+		<key>Resources/wwwroot/MoodJournal.24p6mwwgav.bundle.scp.css.br</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/eHSlcNmXrGWnIokT3s48PLBNps7/w2625S2HitCClY=
+			7Ev3ZY4r5/KFy37Z/96Tn3HA44rFEhChHxeP3fpEWKY=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/MoodJournal.q7t6btgtit.bundle.scp.css.gz</key>
+		<key>Resources/wwwroot/MoodJournal.24p6mwwgav.bundle.scp.css.gz</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1y1wDTP2JD+Gd6zjYPZ4KXjUf8XkeFH4PgGTv1A6x3Y=
+			oBMngtZ+xY83Z5BSoo83kepUitwG85GqQir+Xo1WBpg=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.25vi9jukws.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2tzwu50QPL2tqwI8fMCsmPg8L/YTTPLVv9ndZyH9p/Y=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.25vi9jukws.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zVMG0iyQKdoNCdX6zOot0u+3+aTHgSTknqo55EZ7PMw=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.25vi9jukws.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lBa1WE+Ov5wpEomuxC1F1E4Cwt2lN0xltZGhdxNCxBc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.464olds1y2.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5EssR01oEfHrkviQoLhiXgGNZETE2b8IJ+2XwAMWAEk=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.464olds1y2.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			T8H2lu7ZTDUF0DV20bsYGDZlYSW/GgEFkiNA6o0jzuQ=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.464olds1y2.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xD89eSECz7QUYl2MTja49TblmLqslpB+TenihkYLtdY=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.9r6u4wwtw2.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Sz5IyeVPyzX1qWMKQWvW/pppFDU3iPbQYIxoTv4sbdw=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.9r6u4wwtw2.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HSNQwN3H/CloN7xYN4FMLnk9RQpji93jzEAUOZWSFZ4=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.9r6u4wwtw2.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			iKCV2hqbN97V4PvpihjhSgWNiMQ21OR7OdIeswVZyNM=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.ae985hb0i4.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kpryf3NUq7ROrr49wdf3KM1b/r0RKrqhrEBnT/dGBNo=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.ae985hb0i4.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JezBJLSDdf7DGuDlUlxDqvin+BybYRFry0IC8hzbogM=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.ae985hb0i4.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jAfYMSNngQE25pQOyzg8wdpMWtIysKbsTim2lFD92io=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.h4b5dt53bg.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			b2epgh3JlE6wJnYNmvqDD1ArObjqwZ7i5tKXdZ8GC1Y=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.h4b5dt53bg.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2VyXjQKkhhazeEv926cTDsGOBkC9NYCJ4tmMyLRqTs0=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.h4b5dt53bg.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5jtYMNJuepYjonSgUieUgU3ADPpVriTeXTXeF2TjPKQ=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.jbviogt0wx.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8WgocZCl8JKXSfZPtpuiZRH71ckLyytDIcgW3HVgUqM=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.jbviogt0wx.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NYUO8wK7ADqK+TSbdSxII7DXXFHZy5xSqyHl18WU1TQ=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.jbviogt0wx.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2B+9WfbsWPCn8G00PfM6REZF8I6otl6EBorPiEvoWm8=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.mdky52nwgn.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qng8L4FKklscEkZ3WggfhL4SdtGmW8UrF+2joFT0mDw=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.mdky52nwgn.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CQqWYkNCKLZDcTlQcudeQtkBx/rKAZ4z+IJv0fAcNAI=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.mdky52nwgn.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qq6esBvK22eWOH3t7N13L1rIIIqFfTkk6CIDCOUtopw=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.n8wbmifx3o.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9wUHOtClRiUSAzm+q9LQW+cSa4GUN2zdqJReoKum3mQ=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.n8wbmifx3o.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			GnFitplJ+v5PUSzkhdF8ztQtlhd1eoUb2/wCMbEa4ZE=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.n8wbmifx3o.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8sc4FhqZmWMca/QoX/zdo1ydeJE6Pz9+2C40Hy3Cwfc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.q6wwwhszl4.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8u7NbqfgAyw1ErAGPp5B/9AvrEuBPKQMmFb5abiPinw=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.q6wwwhszl4.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HVSrLzH7D2XPmA2vZhsvUQsccVBrZ9U8j1ZCbqPwEas=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.q6wwwhszl4.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			89MilntlpQHG73nXEEdM3fRP3X8ZkmmLEO4L3GXQmV0=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.qmbf3ywl19.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Xiy8YEqt9WfUiQMYsFo5eBBu72MqKjaX30QnCMl/gAE=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.qmbf3ywl19.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/4GtAULlh+jX3IXyTImZeuETc6Nt1JhXMkXX3Vo13sw=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.qmbf3ywl19.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			BfVTETB/KNuht0B3zIA+z9gMVQtM8Pf9uz/hjT5rznw=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/MoodJournal.styles.css</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mmcoHUyF9x2O1jdbW33KR+x3sAxyeGysq3Omj2V0A1U=
+			Sz5IyeVPyzX1qWMKQWvW/pppFDU3iPbQYIxoTv4sbdw=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/MoodJournal.styles.css.br</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/eHSlcNmXrGWnIokT3s48PLBNps7/w2625S2HitCClY=
+			HSNQwN3H/CloN7xYN4FMLnk9RQpji93jzEAUOZWSFZ4=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/MoodJournal.styles.css.gz</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1y1wDTP2JD+Gd6zjYPZ4KXjUf8XkeFH4PgGTv1A6x3Y=
+			iKCV2hqbN97V4PvpihjhSgWNiMQ21OR7OdIeswVZyNM=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/.gitkeep</key>
+		<key>Resources/wwwroot/MoodJournal.ugugvbf055.bundle.scp.css</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			woZZVR5cEf/CGVeXNDt3pkmGmpnv8XlhAiuGQx/PU8c=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.ugugvbf055.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			l0itKA13KJhkCxF0RpuFl5AYR6QKYIth+y8vlPD5Kl8=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.ugugvbf055.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			M2OPHU1nsvc/x+x4+7wiPt1JCLQl6xmrM4NwnDexGfo=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.vj10cz9rff.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			208LdAJ25ZViIInW6EHtdLqTkwcJHiG2CM6cqVLxHjk=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.vj10cz9rff.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			i2LXkhuz53IRF5Z54YnyP45LT625xh5DPHwedXaBJR8=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.vj10cz9rff.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IRbfC+k9CZcHAP0QCfhD+CQbuVfloxrz8oQn5x2CdGo=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.wki7q2emq9.bundle.scp.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			MKQQHVJjDOPzlneGCezGKinSFa3yqcjHUDpLHO2ZK0Q=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.wki7q2emq9.bundle.scp.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			asBCmQHS4eG8NXcQ4Jf1douHswp+V4C/eTVYKNgkWwo=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/MoodJournal.wki7q2emq9.bundle.scp.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gCWm8oW5p1/VDMW671C93hwvAH0YK8YpnZg4S3rmPbo=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/AvatarcustomizationBackground.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NmOhkFbPWKxzsrVzX39jr4KuyHnFBN9PYHTv5+4wXgI=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/AvatarcustomizationBackground2.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			slnlPZw10Fm7q6/1nhLUDkrFaCrbACaerUJhL6bPFPA=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Black.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DzT6B1WYi4Sc/qfiV5kmBihkD1lCZ05bTcAqR6BX1JA=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Black.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			f75MMKL3YIL1BhDzzBAUMTZ9p7l5Gd09rQVd3Go9CSU=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Black.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			+1/XHv5wwv5n8EiSVChruxfCQi9aGwaXppR+1sZ+t3k=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Bold.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/ksLFHD9RQH+40/cZkZklN2Oexzqg7GLYTOCVqN4Ew4=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Bold.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qTy+VJXI8/rRPyKUjlCAdgsTgdcTu1xZhIhAuAFJ+Bc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Bold.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vMhVuP9JBwA0EXz8BA4j5IRjGVVKGWbGasO8GkDw+K0=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Light.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ICrKf6cW9teF2aKHtGsNyar2dHfm9jx2LCph6tb1uVY=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Light.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uHOJ0eCAShJI9Ee7HZJVPjujbi7yP6R4DzfGNHNpqlA=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Light.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			N8VYonDgX0fufiVMZJFEg4PVLTz83yKXl5cdHw6AJec=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Medium.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/akRVx3ZTI0TX3Tx0KiVZonu95W9mBTXklsqm7flLz4=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Medium.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G1V8/Tw4GjkG7HgC8y54lyV5PBdfzsXBHH6xshcmtks=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Medium.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NAYOqApjK2OU7eb/fYpvtLjud5SsGwCe3plbjnOleQM=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Regular.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kZLFcirOms6QJIAKv7VEBy5rebAjoeEPI7rj2GfuG9s=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Regular.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			nNzH8kzlxtZO03rgBUtoP2xNc9EsSvTH9gUEqz4A3uU=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Nagoku-Regular.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Ipd/AMUpRxIsDYI+KEiumeU+q1MU05/p1rSOR5rJbhE=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Onthehill.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DM8hbIu3KsdnMKq8ifhb06dS2U7+lAkmtdbeONOspcE=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Onthehill.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			02ARNdGifHhwTgWMfhXFGRXyGUiYVy+5z8eUY8CkJpk=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Onthehill.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2yWEB52cki18cTKHcJUyyaGvbmQ1FDCZCcr2NIl0np4=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Onthehill.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			UObVR9tBUz1w9FC7t/RxrZQn2MBT+lV+hchIS4vCQ0k=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/OpenSans-Regular.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			cI72SpmE2TVhoHlA+HEGrpl5aoSBp9/t4dvNmq0fjVw=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Black.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6lBBNl9PdD3iwNEcd12Kdf1MynffAFszW1eqVo1D5xw=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Black.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Rja+ziCTK/Cahf1lbdnGdwy3cfMuqHUz22VpfdPIsBk=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Black.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			7BOqPzVDwdF9yI0HWLnSyuWPbzXJHcN2c2ZpmdoT4Ww=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Bold.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ng1PHUiXlEEotzqjWpkkkFduUEXaCQ+MsBFc1g+AvkI=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Bold.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			K6qy7RdRd2pSod+g4O6t8KKDLVaMejQeY5mo0MenA14=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Bold.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			d2o7ZAWT67GPSkegRCX440RYnRzOnvj9M49tcyjDrtc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraBold.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			F4+u4CYaEluzff9YTHL3Yr8+1HaCpFSTQL01WZ8OWoc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraBold.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PWhBzcV91dyt6V0vYfv7qIu9Ntj5j0CDgMVHtFusUIA=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraBold.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			7MrS4QpErOXoRm6Hz0TNjLa2e3Cgulk8pU4WODTkqV8=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraLight.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			r5PPxjnyag1EEoaU2SHXquMXF+3C7TgNPZptikSFaW0=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraLight.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			H8kqx14vwgHePolxf5tI+DjQKO+j0noWA6ZsLgp0xY0=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-ExtraLight.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hapnENf28H75Vt9cEedd1kDsAmeXNfXWCgbP2VRlm+Y=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Light.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			008CyYiN1OZT2gbXbXF+kQ1j3Ippvgu3+aOs6ScNPoQ=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Light.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uZ7uBy0/OoT6Ue2LHmMlJtg+kh8nC6o74yuaE0SFmj8=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Light.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			o24LicTD5MaxWO4A6HfIRMCO+2LQBj2HTSppHsjYF+Q=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Medium.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6GRdiG46jIS7l2JU5cHXfg7Pug1bmfKKmMNGL+IuCDg=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Medium.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2pAVwCdS4WgEhIrG8xWfOULnBqlWVxBse2r6/WDBoMU=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Medium.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0cuBvFTalcH/x4N1W6pbcPyzBfAQk3qKVOk2fIB73G8=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Regular.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0f23rTnvxEI1qJNVgIcYW5yCZSUVaTouO21vk6FjfNk=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Regular.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZZOZmD/0fscBwhIaU+osvGNIPbMdiH09K+Q3hCbmVWc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Regular.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			iBcnEkM+ClkC8ur7He93FQP3/fUMuaG23nRhW85JLV0=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Semibold.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			escYhjC700EIVwOHoiO71bjrboXtnBuA5vtg4Fs31gI=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Semibold.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Ztbf3EGYQK6jLis01soAMH+9JSM+yFPCDpJXPGRaLTQ=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Semibold.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1bJI6aGjHl/rllJ/qe+s2lhl3d5MFUlFsEXVTD0/QLU=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Thin.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gXU75Jb72fFpGTyRNM41BxthqS88kjrvBYIF9HUyb70=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Thin.otf.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dcuQ3jFAGJLCW8wfq5HwnIy6Dj/emi6JkMz8nMECYPg=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/Fonts/Pogonia-Thin.otf.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			w1ZoPlWy93k0b19/EA+kMKJGL00M14WnAbiee3cB86E=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/assets/avatar/.gitkeep</key>
@@ -4050,11 +5338,53 @@
 			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
 			</data>
 		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/angry/eyes.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PGnMsQvTuNfZ9EbgRHAkn8F5DdxYjY78BXTl/7lEg7g=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/angry/mouth.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uapH+lyksFVpO++ZbEMMOKsR4ul5JIihEpP4ymN92Bc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/angry/nose.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CB4uD8FsMVZpMVsLxYcWQp+stOxBJ0uzKX2tK5Snkf0=
+			</data>
+		</dict>
 		<key>Resources/wwwroot/assets/avatar/expressions/anxious/.gitkeep</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/anxious/eyes.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HsEYaSzIoGNE+UahGUOa8ASDwwcFsVXachCi8veuKM4=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/anxious/mouth.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			P4Jr3AjCX1EU3AOoR9X6fbG2Qjfv85TfjTXTcymTkrc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/anxious/nose.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			QyyJHn81nepQjx9c4uyY5LBvUD/+DEP63I9OqkYhTYM=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/assets/avatar/expressions/calm/.gitkeep</key>
@@ -4064,11 +5394,81 @@
 			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
 			</data>
 		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/calm/eyes.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			a0+NUCDOO8fbV5g66adw+a0Cop3rkAtTCAfAIwX/BGI=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/calm/mouth.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yQ2evV1EpqizuZm295HPAIZMxalBDCwOHa00LXAZGiY=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/calm/nose.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OBNQY+Dcwbm+xibcuBdncwRyb+lt1WfIf0ueZwuAuHs=
+			</data>
+		</dict>
 		<key>Resources/wwwroot/assets/avatar/expressions/excited/.gitkeep</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/excited/eyes.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LTFNdCzKlu7FdgSm+D6cts4Codrk46A6cwVUEWyVfBw=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/excited/mouth.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			XzsOtGWuouNp7FPyJ2eUc1ZReceJZiJ7Qsfa5wh7SdI=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/excited/nose.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KZFETgE/CRnWOb2tGjgKwayqHPGGPr5sgHOeIh5q3vE=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/grateful/.gitkeep</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/grateful/eyes.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hCkqxWp9ypPvjY+TcHvy27naou6L7lhbdLknIjRsdDs=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/grateful/mouth.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VSd+TRiEDpdGt0/SsM9tIwE+uRlNNEwZlPgNh+GAp6w=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/grateful/nose.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KZFETgE/CRnWOb2tGjgKwayqHPGGPr5sgHOeIh5q3vE=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/assets/avatar/expressions/happy/.gitkeep</key>
@@ -4078,11 +5478,25 @@
 			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/avatar/expressions/neutral/.gitkeep</key>
+		<key>Resources/wwwroot/assets/avatar/expressions/happy/eyes.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			OvNJLv0rGFZHfbPRIhANf+EgnGL5b7pRv+EiRtVs4vg=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/happy/mouth.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			V5Fw74m/cSAnvWq3kBxPlRVrFFTtGT0LKcgbarqfst4=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/happy/nose.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KZFETgE/CRnWOb2tGjgKwayqHPGGPr5sgHOeIh5q3vE=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/assets/avatar/expressions/sad/.gitkeep</key>
@@ -4092,11 +5506,53 @@
 			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
 			</data>
 		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/sad/eyes.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qrrCml7xH2p/xN+hBtpygG3WT46F3LpBvtN8wvTQ4DQ=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/sad/mouth.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uapH+lyksFVpO++ZbEMMOKsR4ul5JIihEpP4ymN92Bc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/sad/nose.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NQn9Q2hoxF+kgLyyTwLndWRMzduBDwri8h4FHsBVDF4=
+			</data>
+		</dict>
 		<key>Resources/wwwroot/assets/avatar/expressions/tired/.gitkeep</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/tired/eyes.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZgMpVO+BVQRFjH35IJmJCbw9OjbSszC/OG0vW9HZZpU=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/tired/mouth.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uapH+lyksFVpO++ZbEMMOKsR4ul5JIihEpP4ymN92Bc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/expressions/tired/nose.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			QyyJHn81nepQjx9c4uyY5LBvUD/+DEP63I9OqkYhTYM=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/assets/avatar/female/.gitkeep</key>
@@ -5499,28 +6955,21 @@
 			eHsYlcKjCb7VJe4LnLRGBmdF3kEoUCvZ0B/KwMNrfOc=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/avatar/female/justhead/.gitkeep</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/female/justhead/justheadbase01.png</key>
+		<key>Resources/wwwroot/assets/avatar/female/justheadbase/justheadbase01.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			XaAxUca4Zthm04RbZi44ooS9JCx0SS1KcW9cgn+mvOc=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/avatar/female/justhead/justheadbase02.png</key>
+		<key>Resources/wwwroot/assets/avatar/female/justheadbase/justheadbase02.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			KC0SUONrQuaMFejFcy6BWodA0iphKGA9qdK+l8JbaNk=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/avatar/female/justhead/justheadbase03.png</key>
+		<key>Resources/wwwroot/assets/avatar/female/justheadbase/justheadbase03.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
@@ -5679,104 +7128,6 @@
 			<key>hash2</key>
 			<data>
 			LJlgDW6ZwsBD23c/m0R07KsVgxjyNJOPrlrts8M1Q1I=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/accessories-icon.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			574xdm0llep01fQoDO4cUu23LkN1j34S97MthLHck5I=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-left.svg</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			/oAZxfHqUKf8zPIjiYHHLxyX/B1yWA+fRIVDfX5VVMo=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-left.svg.br</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			PIh5y8sRwDkaBoZotcdTLM6J0uDgH+xMs83iJL1zp7U=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-left.svg.gz</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Q2TK1qm+Pe2sFdWEXqyoUvoYUmYb8lzgbBP1TEkVuTs=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-right.svg</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			h2FWYCkmBzj17f9tqKQBwL8Z9paw6sbWvIiSVRUhiBY=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-right.svg.br</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ftqNyWwEaNXDlx5jCCoHPfTSMk06F7e+/14eBkLtw3I=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/arrow-right.svg.gz</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Pb70H+I3Ix6s096J7iQZ7YhuO3kzRVtCEMIQZXfCL60=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/base-icon.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			9HGCk9z/UtmSIMzaLyK6L3gzwypPmerWx6IS9IrsvTc=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/beard-icon.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Az22IitVflIXvdM8M7ha7R0Zgv8TEbAIl95UYzvGjpw=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/clothes-icon.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			sFx9OfFPSUYW01S9xFt5JfBShlAwu4MrJ2QZatB1coU=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/eyes-icon.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			kNjLWirX2spc83lKzl9ipvOYrrlAels1BZ5Ug6/BpbE=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/hair-icon.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			1HuK8flKl+v6qPU7fPdoFbB6uNgWyfw+bZIqHP52/X0=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/mouth-icon.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			NkOZKsSJjX4FdpelF4A1szbuO4xaI2HQTGToMjbgRS8=
-			</data>
-		</dict>
-		<key>Resources/wwwroot/assets/avatar/icons/nose-icon.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			N1Ua7ju2y4BdwDgTQSISm92P5YUzbxL/RGEmmVLvgTE=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/assets/avatar/male/.gitkeep</key>
@@ -6178,6 +7529,13 @@
 			FW1ItFqMoncRI4Enbv00bdWcub6DNzXhA7xfkOm/xD0=
 			</data>
 		</dict>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/button-up-shirt-green.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hHVj28vVM3exyuuR+jV57gk6sYyoELgykhVMqE8zYPw=
+			</data>
+		</dict>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/button-up-shirt-red.png</key>
 		<dict>
 			<key>hash2</key>
@@ -6197,6 +7555,13 @@
 			<key>hash2</key>
 			<data>
 			F0bHHzhmy7WzxHgfiSjMkYPG0ixl1EzrJckzJ3kmaaw=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/c-neck-green.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NmqHqJwnxjEF6922L+ABhbOZkD/olPuNFCEMWfIF4fM=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/c-neck-red.png</key>
@@ -6220,6 +7585,13 @@
 			olZooHSbn6tkY2H9qg4KZIsqPjLjHxnQvv3MAOc+r1g=
 			</data>
 		</dict>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/sweater-green.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hL8XvZQ4PO1MrUFHSYV9AMyn2gbiMj2xnP/Hp7EqHt8=
+			</data>
+		</dict>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/sweater-red.png</key>
 		<dict>
 			<key>hash2</key>
@@ -6241,11 +7613,25 @@
 			F/yFUbF6b/ZYBjfO/iQaGDLTWfujDkbwMNjVhTzc3uM=
 			</data>
 		</dict>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/tank-top-green.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ogFS8T0ks66ovo/vCflZ+BrqyPyjd05OxzL4Ygs2Ddc=
+			</data>
+		</dict>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/tank-top-red.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			LydtSb7JeE1EBVjdH49cs4MdHrV1ItmXxYFcfyTpTJg=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/uniform-black.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Loig5smzToAquCRIJENLurXPvL+p0YmaF7jBjY4b2cA=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/uniform-blue.png</key>
@@ -6281,6 +7667,13 @@
 			<key>hash2</key>
 			<data>
 			c46mtktRI9M93VPw8W77g5g7a9j3TmNmhWmfM5w8BEA=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/male/clothes/v-neck-sweater-green.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			iFdNm7OSc6QhXfISJfRvX5A6XgoK35ElMFhVlKJpvOk=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/assets/avatar/male/clothes/v-neck-sweater-red.png</key>
@@ -6801,13 +8194,6 @@
 			yktn+LW3h50pnfUVjkF0jKZBCB2XlW2coif8/mJrAJI=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/avatar/male/hair/Hair 100.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			iaMbrkzd6aR9nPXxP6aBukAuUlGP4TZDpdIhy5P+fJg=
-			</data>
-		</dict>
 		<key>Resources/wwwroot/assets/avatar/male/hair/bangs-black.png</key>
 		<dict>
 			<key>hash2</key>
@@ -7074,6 +8460,13 @@
 			sp5VXFlUro3C0vEK9w/RqVBOI3R8pAiYHibm/qhgQJc=
 			</data>
 		</dict>
+		<key>Resources/wwwroot/assets/avatar/male/hair/edgy-hair-red.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			iaMbrkzd6aR9nPXxP6aBukAuUlGP4TZDpdIhy5P+fJg=
+			</data>
+		</dict>
 		<key>Resources/wwwroot/assets/avatar/male/hair/edgy-hair-silver.png</key>
 		<dict>
 			<key>hash2</key>
@@ -7095,18 +8488,18 @@
 			nNYnujDmTIm+XQqXqr3+1qIBshmYugP4o5VmMAmWvtQ=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/avatar/male/hair/flat-hair-blue.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			bNWtJEfT1ycSI/B624uariOGI8ZbSQ/yQ5p8Lqnm4Q0=
-			</data>
-		</dict>
 		<key>Resources/wwwroot/assets/avatar/male/hair/flat-hair-brown.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			2ADQYRENsl5BaWZfI9q7M0lK9u8dBlm7XF+HhO38Gik=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/avatar/male/hair/flat-hair-darkblue.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bNWtJEfT1ycSI/B624uariOGI8ZbSQ/yQ5p8Lqnm4Q0=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/assets/avatar/male/hair/flat-hair-orange.png</key>
@@ -7305,28 +8698,28 @@
 			kADTWC1s2b0fiQBeSZ64WGX4jZBx/pz4ij76+vZPJV8=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/avatar/male/justhead/.gitkeep</key>
+		<key>Resources/wwwroot/assets/avatar/male/justheadbase/.gitkeep</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/avatar/male/justhead/justheadbase01.png</key>
+		<key>Resources/wwwroot/assets/avatar/male/justheadbase/justheadbase01.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			+OSmlvcXutXy0daZ0bsoYMLQxlhp0J6kGJ+gaaqAjpM=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/avatar/male/justhead/justheadbase02.png</key>
+		<key>Resources/wwwroot/assets/avatar/male/justheadbase/justheadbase02.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			qwNtIItcVhzvJu0uufOy5TyLCD8BVEfqQww2K7u48sE=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/avatar/male/justhead/justheadbase03.png</key>
+		<key>Resources/wwwroot/assets/avatar/male/justheadbase/justheadbase03.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
@@ -7487,18 +8880,102 @@
 			LJlgDW6ZwsBD23c/m0R07KsVgxjyNJOPrlrts8M1Q1I=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/images/.gitkeep</key>
+		<key>Resources/wwwroot/assets/icons/accessories-icon.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			574xdm0llep01fQoDO4cUu23LkN1j34S97MthLHck5I=
 			</data>
 		</dict>
-		<key>Resources/wwwroot/assets/images/icons/.gitkeep</key>
+		<key>Resources/wwwroot/assets/icons/arrow-left.svg</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			/oAZxfHqUKf8zPIjiYHHLxyX/B1yWA+fRIVDfX5VVMo=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/arrow-left.svg.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PIh5y8sRwDkaBoZotcdTLM6J0uDgH+xMs83iJL1zp7U=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/arrow-left.svg.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Q2TK1qm+Pe2sFdWEXqyoUvoYUmYb8lzgbBP1TEkVuTs=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/arrow-right.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			h2FWYCkmBzj17f9tqKQBwL8Z9paw6sbWvIiSVRUhiBY=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/arrow-right.svg.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ftqNyWwEaNXDlx5jCCoHPfTSMk06F7e+/14eBkLtw3I=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/arrow-right.svg.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Pb70H+I3Ix6s096J7iQZ7YhuO3kzRVtCEMIQZXfCL60=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/base-icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9HGCk9z/UtmSIMzaLyK6L3gzwypPmerWx6IS9IrsvTc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/beard-icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Az22IitVflIXvdM8M7ha7R0Zgv8TEbAIl95UYzvGjpw=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/clothes-icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			sFx9OfFPSUYW01S9xFt5JfBShlAwu4MrJ2QZatB1coU=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/eyes-icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kNjLWirX2spc83lKzl9ipvOYrrlAels1BZ5Ug6/BpbE=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/hair-icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1HuK8flKl+v6qPU7fPdoFbB6uNgWyfw+bZIqHP52/X0=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/mouth-icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NkOZKsSJjX4FdpelF4A1szbuO4xaI2HQTGToMjbgRS8=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/assets/icons/nose-icon.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			N1Ua7ju2y4BdwDgTQSISm92P5YUzbxL/RGEmmVLvgTE=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/assets/images/onboarding/Login.svg</key>
@@ -7589,42 +9066,63 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			A8ilDvRbfd3u2v+E32l5MgGR4+0Gvi4UR+/YMzNM1vo=
+			jHRBzihMzucRbbmKb31pz7xvnR80c4UsKhFSU3TgS5Q=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/Avatar.css.br</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jj9WWISJkLISxUySyNXlpGOmv60TFMBa7rZl637q81w=
+			X4mj7RPnfbJ5z2lRx/HAJn5RYH0T5HUZnE9fOh200NA=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/Avatar.css.gz</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			px3TbVH32vyqjFTGxnlcpRGNmyalA+clKHpae/anJ6s=
+			sr/9bQnXEbg4pwha/nIhFivHPXkQ97rELmUfsIUk4QE=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/css/Avatarog.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HvO1UFpxccMsGc6y7CwqzYI1lErgDJT0iEk75J03wlc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/css/Avatarog.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hZ5uLgbH0GGfIwE2rs+Y6gphxBPqexhRvRj2RQssEcI=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/css/Avatarog.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bym4y1EUqMx3//ibB585uFX6rVA6K1Rhn7u2DW9y5sY=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/Fonts.css</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			gCWzIT6/BlxYrBBwPpyQQkVvVLGsBfi0et6jgGMiIfc=
+			2Lk3I8rva/b2VOzdT0bQMQKQ176nKpC5htigxnUwR44=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/Fonts.css.br</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0l569Rz5QwJkG7evg+Kqvtym+ckl4tHAq7BMw8ZS4ZY=
+			vIERzZtkAEZApbPxvsV6a1U9TUAyXdmknU7MHoUUSLs=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/Fonts.css.gz</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			r8/VMN25mIk4y0xoeR9FOEKH4DiBoEORyh4xhqnF7M4=
+			JodO+M0PO3SvfEhMqx7sjUpePahbSoBp3T9Ev6YSvNI=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/Login.css</key>
@@ -7652,21 +9150,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			DILtXh4DVCSrqgh+RDRF6X7QE6NG8bZzTZI4BcnLrOc=
+			0c9eVcCnNhleXfsWSTXeQbN9U6oMwv1MogUDKxzZmIA=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/Onboarding.css.br</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MJ/cFAU0tGNk1kcknKCd1s7Nq5r2/3j0V2gfzAsc8Sw=
+			z5RyXHu8/7Eu+H7gg+6syGAwFZwzkYGUQ98cpYeuNBc=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/Onboarding.css.gz</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2equg6JLOnHpZEqrnGLBmOi3J0qYJh8AD5HLhCC6LYM=
+			lwdCp/QzK4442IR5pY2iHhAde/unbkrUm6HKX8lJxq0=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/css/SecuritySetup.css</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/css/SecuritySetup.css.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			QbgF6nrAFOI1VumLs3RwKgg0Qmj5JImgLwiAhJOUoeQ=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/css/SecuritySetup.css.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/css/app.css</key>
@@ -7736,21 +9255,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TTvmFjDulm1rLKACE7cOY2z8+CizTbHC1zsabJjYLP0=
+			kPzdtXvwCnh0+hz+8WazkUh5uL2eS7UPqPLzRgP2Hzk=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/index.html.br</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YvyWfFPRITOjiUcliBo+z6BiUHP5LeZbjDdKuFB24lc=
+			F5KhR/LRmFZA/752ptwj6dVHmWadqeWXVGnrWqxz3rE=
 			</data>
 		</dict>
 		<key>Resources/wwwroot/index.html.gz</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OXDty9VSGteLxBocVFkm1v9t2580APXNmVCfJuE49qo=
+			hWEXRtkuBPKEAxXTYF3vcICHJmE9LI+1w3bMyYy8gzc=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/js/quill-interop.js</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ou9ag/bNshFSIxSPvl74N6dwCWcb0lH+8uzy9wbsk2g=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/js/quill-interop.js.br</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			XUja+LjbgHNDb9XfB1SjzdIaseah0nJ4AGVTS2Yw6P8=
+			</data>
+		</dict>
+		<key>Resources/wwwroot/js/quill-interop.js.gz</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			aXkz9BeJ5ceYcVuvFdG0YTtoKtfjwTbXQVo+2xD41n8=
 			</data>
 		</dict>
 	</dict>

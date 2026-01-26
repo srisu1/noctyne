@@ -1,9 +1,14 @@
-/* SecuritySetup.razor.css - Scoped CSS for Security Setup Page */
+/* SecuritySetup.razor.css - Cute Pastel Theme */
 
 .loginContainer[b-kp62bgh9nz] {
     width: 100%;
     min-height: 100vh;
-    background: #f5f1e8;
+    background: linear-gradient(135deg, #fef5e8 0%, #fff0e0 100%);
+    background-image:
+            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px),
+            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
     position: relative;
     display: flex;
     align-items: center;
@@ -12,14 +17,14 @@
 
 .closeBtn[b-kp62bgh9nz] {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: transparent;
-    border: none;
-    color: #666;
-    font-size: 24px;
+    top: 24px;
+    right: 24px;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: 3px solid #3d3d3d;
+    color: #3d3d3d;
+    font-size: 28px;
     cursor: pointer;
     border-radius: 50%;
     transition: all 0.2s;
@@ -27,11 +32,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    font-weight: 700;
 }
 
 .closeBtn:hover[b-kp62bgh9nz] {
-    background: rgba(0, 0, 0, 0.05);
-    color: #1a1a1a;
+    background: #f490af;
+    color: white;
+    transform: rotate(90deg) scale(1.1);
 }
 
 .loginContent[b-kp62bgh9nz] {
@@ -57,6 +65,7 @@
     width: 100%;
     max-width: 700px;
     height: auto;
+    filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.08));
 }
 
 .formSide[b-kp62bgh9nz] {
@@ -69,76 +78,84 @@
 }
 
 .loginTitle[b-kp62bgh9nz] {
-    font-family: 'Pogonia', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 48px;
-    font-weight: 500;
-    color: #1a1a1a;
-    margin-bottom: 20px;
+    font-family: 'Pogonia', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: #3d3d3d;
+    margin-bottom: 16px;
     line-height: 1.2;
     text-align: center;
 }
 
 .loginSubtitle[b-kp62bgh9nz] {
-    font-size: 22px;
+    font-size: 20px;
     color: #666;
     line-height: 1.6;
     text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
+    font-weight: 600;
 }
 
 .tabSwitcher[b-kp62bgh9nz] {
     display: flex;
     gap: 0;
-    background: #e8e8e8;
-    border-radius: 8px;
-    padding: 4px;
-    margin-bottom: 48px;
+    background: white;
+    border-radius: 30px;
+    padding: 6px;
+    margin-bottom: 40px;
+    border: 4px solid #3d3d3d;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
 
 .tabBtn[b-kp62bgh9nz] {
-    padding: 14px 50px;
+    padding: 16px 50px;
     border: none;
     background: transparent;
     color: #666;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 700;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 25px;
     transition: all 0.2s;
+    font-family: 'Pogonia', sans-serif;
 }
 
 .tabBtn.active[b-kp62bgh9nz] {
-    background: #7ba3d4;
+    background: #f490af;
     color: white;
 }
 
 .tabBtn:hover:not(.active)[b-kp62bgh9nz] {
-    background: rgba(0, 0, 0, 0.05);
+    background: #fef5e8;
+    color: #3d3d3d;
 }
 
 .pinContainer[b-kp62bgh9nz] {
     display: flex;
-    gap: 16px;
-    margin-bottom: 24px;
+    gap: 14px;
+    margin-bottom: 28px;
     justify-content: center;
 }
 
 .pinBox[b-kp62bgh9nz] {
-    width: 56px;
-    height: 70px;
-    border: 2px solid #d0d0d0;
-    border-radius: 8px;
-    font-size: 36px;
+    width: 64px;
+    height: 80px;
+    border: 4px solid #3d3d3d;
+    border-radius: 20px;
+    font-size: 42px;
     text-align: center;
-    font-weight: 600;
-    color: #1a1a1a;
+    font-weight: 700;
+    color: #3d3d3d;
     transition: all 0.2s;
+    background: white;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
 }
 
 .pinBox:focus[b-kp62bgh9nz] {
     outline: none;
-    border-color: #7ba3d4;
-    box-shadow: 0 0 0 3px rgba(123, 163, 212, 0.1);
+    border-color: #f490af;
+    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.3);
+    transform: scale(1.05);
 }
 
 .pinBox[b-kp62bgh9nz]::placeholder {
@@ -148,8 +165,8 @@
 .passwordContainer[b-kp62bgh9nz] {
     display: none;
     width: 100%;
-    max-width: 360px;
-    margin-bottom: 20px;
+    max-width: 380px;
+    margin-bottom: 24px;
 }
 
 .passwordContainer.active[b-kp62bgh9nz] {
@@ -163,23 +180,26 @@
 
 .passwordInput[b-kp62bgh9nz] {
     width: 100%;
-    padding: 16px 50px 16px 16px;
-    border: 2px solid #d0d0d0;
-    border-radius: 8px;
+    padding: 18px 60px 18px 20px;
+    border: 4px solid #3d3d3d;
+    border-radius: 25px;
     font-size: 18px;
-    color: #1a1a1a;
+    color: #3d3d3d;
     transition: all 0.2s;
+    background: white;
+    font-weight: 600;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
 }
 
 .passwordInput:focus[b-kp62bgh9nz] {
     outline: none;
-    border-color: #7ba3d4;
-    box-shadow: 0 0 0 3px rgba(123, 163, 212, 0.1);
+    border-color: #f490af;
+    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.3);
 }
 
 .togglePassword[b-kp62bgh9nz] {
     position: absolute;
-    right: 12px;
+    right: 16px;
     top: 50%;
     transform: translateY(-50%);
     background: transparent;
@@ -187,48 +207,55 @@
     cursor: pointer;
     padding: 8px;
     color: #666;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .togglePassword:hover[b-kp62bgh9nz] {
-    color: #1a1a1a;
+    color: #f490af;
 }
 
 .helperText[b-kp62bgh9nz] {
-    font-size: 18px;
+    font-size: 17px;
     color: #666;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
     text-align: center;
+    font-weight: 600;
 }
 
 .errorText[b-kp62bgh9nz] {
-    font-size: 16px;
+    font-size: 17px;
     color: #e74c3c;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     text-align: center;
-    font-weight: 500;
+    font-weight: 700;
+    background: #ffe8e8;
+    padding: 12px 20px;
+    border-radius: 20px;
+    border: 3px solid #e74c3c;
 }
 
 .confirmBtn[b-kp62bgh9nz] {
-    padding: 18px 80px;
-    background: #333;
+    padding: 20px 90px;
+    background: #a8d5a3;
     color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 600;
+    border: 4px solid #3d3d3d;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
+    font-family: 'Pogonia', sans-serif;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .confirmBtn:hover[b-kp62bgh9nz] {
-    background: #000;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #95c991;
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
 }
 
 .confirmBtn:disabled[b-kp62bgh9nz] {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
 }
 
@@ -256,7 +283,7 @@
     }
 
     .loginTitle[b-kp62bgh9nz] {
-        font-size: 36px;
+        font-size: 40px;
     }
 
     .loginSubtitle[b-kp62bgh9nz] {
@@ -264,7 +291,9 @@
     }
 
     .closeBtn[b-kp62bgh9nz] {
-        top: 10px;
-        right: 10px;
+        top: 16px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
     }
 }

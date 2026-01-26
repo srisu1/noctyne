@@ -1,9 +1,14 @@
-/* PinEntry.razor.css - Scoped CSS for PIN Entry Page */
+/* PinEntry.razor.css - Cute Pastel Theme */
 
 .loginContainer {
     width: 100%;
     min-height: 100vh;
-    background: #f5f1e8;
+    background: linear-gradient(135deg, #fef5e8 0%, #fff0e0 100%);
+    background-image:
+            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px),
+            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
     position: relative;
     display: flex;
     align-items: center;
@@ -33,6 +38,7 @@
     width: 100%;
     max-width: 700px;
     height: auto;
+    filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.08));
 }
 
 .formSide {
@@ -45,46 +51,50 @@
 }
 
 .loginTitle {
-    font-family: 'Pogonia', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 48px;
-    font-weight: 500;
-    color: #1a1a1a;
-    margin-bottom: 20px;
+    font-family: 'Pogonia', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: #3d3d3d;
+    margin-bottom: 16px;
     line-height: 1.2;
     text-align: center;
 }
 
 .loginSubtitle {
-    font-size: 22px;
+    font-size: 20px;
     color: #666;
     line-height: 1.6;
     text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
+    font-weight: 600;
 }
 
 .pinContainer {
     display: flex;
-    gap: 16px;
-    margin-bottom: 24px;
+    gap: 14px;
+    margin-bottom: 28px;
     justify-content: center;
 }
 
 .pinBox {
-    width: 56px;
-    height: 70px;
-    border: 2px solid #d0d0d0;
-    border-radius: 8px;
-    font-size: 36px;
+    width: 64px;
+    height: 80px;
+    border: 4px solid #3d3d3d;
+    border-radius: 20px;
+    font-size: 42px;
     text-align: center;
-    font-weight: 600;
-    color: #1a1a1a;
+    font-weight: 700;
+    color: #3d3d3d;
     transition: all 0.2s;
+    background: white;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
 }
 
 .pinBox:focus {
     outline: none;
-    border-color: #7ba3d4;
-    box-shadow: 0 0 0 3px rgba(123, 163, 212, 0.1);
+    border-color: #f490af;
+    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.3);
+    transform: scale(1.05);
 }
 
 .pinBox::placeholder {
@@ -94,8 +104,8 @@
 .passwordContainer {
     display: none;
     width: 100%;
-    max-width: 360px;
-    margin-bottom: 20px;
+    max-width: 380px;
+    margin-bottom: 24px;
 }
 
 .passwordContainer.active {
@@ -109,33 +119,41 @@
 
 .passwordInput {
     width: 100%;
-    padding: 16px 20px;
-    border: 2px solid #d0d0d0;
-    border-radius: 8px;
+    padding: 18px 20px;
+    border: 4px solid #3d3d3d;
+    border-radius: 25px;
     font-size: 18px;
-    color: #1a1a1a;
+    color: #3d3d3d;
     transition: all 0.2s;
+    background: white;
+    font-weight: 600;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
 }
 
 .passwordInput:focus {
     outline: none;
-    border-color: #7ba3d4;
-    box-shadow: 0 0 0 3px rgba(123, 163, 212, 0.1);
+    border-color: #f490af;
+    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.3);
 }
 
 .helperText {
-    font-size: 18px;
+    font-size: 17px;
     color: #666;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
     text-align: center;
+    font-weight: 600;
 }
 
 .errorText {
-    color: #e74c3c;
-    font-size: 18px;
-    margin-bottom: 36px;
+    color: white;
+    background: #e74c3c;
+    font-size: 17px;
+    margin-bottom: 28px;
     text-align: center;
-    font-weight: 500;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 20px;
+    border: 3px solid #3d3d3d;
 }
 
 .shake {
@@ -149,25 +167,27 @@
 }
 
 .confirmBtn {
-    padding: 18px 80px;
-    background: #333;
+    padding: 20px 90px;
+    background: #f490af;
     color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: 600;
+    border: 4px solid #3d3d3d;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
+    font-family: 'Pogonia', sans-serif;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .confirmBtn:hover {
-    background: #000;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #f4a9c1;
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
 }
 
 .confirmBtn:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
 }
 
@@ -175,15 +195,16 @@
     margin-top: 20px;
     background: transparent;
     border: none;
-    color: #7ba3d4;
+    color: #f490af;
     font-size: 16px;
     cursor: pointer;
     text-decoration: underline;
     padding: 8px;
+    font-weight: 700;
 }
 
 .forgotBtn:hover {
-    color: #5a8bc4;
+    color: #f4a9c1;
 }
 
 @keyframes fadeIn {
@@ -210,7 +231,7 @@
     }
 
     .loginTitle {
-        font-size: 36px;
+        font-size: 40px;
     }
 
     .loginSubtitle {

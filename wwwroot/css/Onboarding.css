@@ -1,6 +1,5 @@
-/* Onboarding Styles - Shared across all screens */
+/* Onboarding.css - Cute Pastel Theme */
 
-/* Import Fonts */
 @import url('fonts.css');
 
 * {
@@ -9,59 +8,47 @@
     box-sizing: border-box;
 }
 
-:root {
-    
-    --title-font: 'Pogonia';
-    --background-color: #f5f1e8;
-    --text-primary: #1a1a1a;
-    --text-secondary: #666;
-    --button-primary: #333;
-    --button-border: #e0e0e0;
-    --dot-inactive: #d0d0d0;
-    --dot-active: #333;
-}
-
 body {
-    font-family: var(--font-family), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
- 
-    background: var(--background-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-family: 'Pogonia', -apple-system, sans-serif;
+    background: linear-gradient(135deg, #fef5e8 0%, #fff0e0 100%);
+    background-image:
+            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px),
+            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
     min-height: 100vh;
-    margin: 0;
-    overflow: auto;
 }
 
 .windowContainer {
     width: 100%;
     min-height: 100vh;
-    background: var(--background-color);
     position: relative;
 }
 
-/* Skip button positioned absolutely */
 .skipBtn {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: transparent;
-    border: none;
-    color: var(--text-secondary);
-    font-size: 14px;
+    top: 24px;
+    right: 24px;
+    background: white;
+    border: 3px solid #3d3d3d;
+    color: #3d3d3d;
+    font-size: 16px;
     cursor: pointer;
-    padding: 8px 16px;
-    border-radius: 6px;
+    padding: 12px 24px;
+    border-radius: 20px;
     transition: all 0.2s;
     z-index: 10;
+    font-weight: 700;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
 }
 
 .skipBtn:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--text-primary);
+    background: #f490af;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.12);
 }
 
-/* Main Content Area */
 .onboardingContent {
     display: flex;
     align-items: center;
@@ -73,7 +60,6 @@ body {
     margin: 0 auto;
 }
 
-/* Illustration Side */
 .illustrationSide {
     flex: 0 0 45%;
     display: flex;
@@ -85,9 +71,9 @@ body {
     width: 100%;
     max-width: 700px;
     height: auto;
+    filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.08));
 }
 
-/* Content Side */
 .contentSide {
     flex: 1;
     display: flex;
@@ -96,38 +82,32 @@ body {
 }
 
 .onboardingTitle {
-    font-family: var(--title-font), var(--font-family), sans-serif;
-    font-size: 38px;
-    font-weight: 400;
-    color: var(--text-primary);
+    font-family: 'Pogonia', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #3d3d3d;
     margin-bottom: 28px;
-    line-height: 2.2;
-    white-space: nowrap;
+    line-height: 1.3;
     text-align: center;
 }
 
 .onboardingDescription {
-    font-family: var(--font-family), serif;
     font-size: 22px;
-    color: var(--text-secondary);
-    line-height: 2.6;
+    color: #666;
+    line-height: 1.6;
     margin-bottom: 8px;
     text-align: center;
-    text-transform: none;
-    font-variant: normal;
+    font-weight: 600;
 }
 
 .onboardingSubdescription {
-    font-family: var(--font-family), serif;
     font-size: 22px;
-    color: var(--text-secondary);
-    line-height: 2.6;
+    color: #666;
+    line-height: 1.6;
     text-align: center;
-    text-transform: none;
-    font-variant: normal;
+    font-weight: 600;
 }
 
-/* Navigation */
 .navigation {
     display: flex;
     align-items: center;
@@ -141,28 +121,29 @@ body {
 }
 
 .navBtn {
-    width: 64px;
-    height: 64px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
 
 .backBtn {
     background: white;
-    border: 2px solid var(--button-border);
-    color: var(--text-secondary);
+    border: 3px solid #3d3d3d;
+    color: #3d3d3d;
 }
 
 .backBtn:hover {
-    border-color: var(--button-primary);
-    color: var(--button-primary);
+    background: #fef5e8;
+    transform: scale(1.05);
 }
 
 .backBtn:disabled {
@@ -171,17 +152,16 @@ body {
 }
 
 .nextBtn {
-    background: var(--button-primary);
-    border: 2px solid var(--button-primary);
+    background: #f490af;
+    border: 3px solid #3d3d3d;
     color: white;
 }
 
 .nextBtn:hover {
-    background: #000;
-    border-color: #000;
+    background: #f4a9c1;
+    transform: scale(1.05);
 }
 
-/* Progress Dots */
 .progressDots {
     display: flex;
     gap: 16px;
@@ -189,12 +169,13 @@ body {
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: var(--dot-inactive);
+    background: #d0d0d0;
     transition: all 0.3s;
     cursor: pointer;
+    border: 2px solid #3d3d3d;
 }
 
 .dot:hover {
@@ -202,125 +183,11 @@ body {
 }
 
 .dot.active {
-    background: var(--dot-active);
-    width: 40px;
-    border-radius: 6px;
+    background: #f490af;
+    width: 50px;
+    border-radius: 10px;
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
-    .onboardingContent {
-        padding: 60px 60px;
-        gap: 60px;
-    }
-
-    .onboardingTitle {
-        font-size: 40px;
-    }
-
-    .onboardingDescription,
-    .onboardingSubdescription {
-        font-size: 20px;
-    }
-
-    .illustration {
-        max-width: 420px;
-    }
-}
-
-@media (max-width: 900px) {
-    .onboardingContent {
-        flex-direction: column;
-        padding: 80px 40px 20px;
-        gap: 30px;
-        min-height: calc(100vh - 120px);
-        height: auto;
-    }
-
-    .illustrationSide {
-        flex: 0 0 auto;
-    }
-
-    .illustration {
-        max-width: 280px;
-        width: 80%;
-    }
-
-    .contentSide {
-        text-align: center;
-        flex: 0 0 auto;
-    }
-
-    .onboardingTitle {
-        font-size: 28px;
-        white-space: normal;
-    }
-
-    .onboardingDescription,
-    .onboardingSubdescription {
-        text-align: center;
-        font-size: 16px;
-    }
-
-    .navigation {
-        padding: 20px 40px 40px;
-        flex-wrap: wrap;
-        position: relative;
-        margin-top: 20px;
-    }
-
-    .skipBtn {
-        top: 10px;
-        right: 10px;
-        padding: 6px 12px;
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 600px) {
-    .onboardingContent {
-        padding: 60px 20px 20px;
-        gap: 20px;
-    }
-
-    .illustration {
-        max-width: 220px;
-    }
-
-    .onboardingTitle {
-        font-size: 24px;
-    }
-
-    .onboardingDescription,
-    .onboardingSubdescription {
-        font-size: 14px;
-    }
-
-    .navigation {
-        padding: 10px 20px 30px;
-    }
-
-    .navBtn {
-        width: 48px;
-        height: 48px;
-    }
-
-    .navBtn svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    .dot {
-        width: 8px;
-        height: 8px;
-    }
-
-    .dot.active {
-        width: 28px;
-    }
-}
-
-/* Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -334,4 +201,47 @@ body {
 
 .onboardingContent {
     animation: fadeIn 0.4s ease-out;
+}
+
+@media (max-width: 1200px) {
+    .onboardingContent {
+        padding: 60px 60px;
+        gap: 60px;
+    }
+
+    .onboardingTitle {
+        font-size: 40px;
+    }
+
+    .illustration {
+        max-width: 420px;
+    }
+}
+
+@media (max-width: 900px) {
+    .onboardingContent {
+        flex-direction: column;
+        padding: 80px 40px 20px;
+        gap: 30px;
+    }
+
+    .illustration {
+        max-width: 280px;
+    }
+
+    .onboardingTitle {
+        font-size: 32px;
+    }
+
+    .navigation {
+        padding: 20px 40px 40px;
+        position: relative;
+        margin-top: 20px;
+    }
+
+    .skipBtn {
+        top: 16px;
+        right: 16px;
+        padding: 10px 20px;
+    }
 }

@@ -31,6 +31,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
         builder.Services.AddScoped<IAvatarService, AvatarService>();
         builder.Services.AddScoped<ISecurityService, SecurityService>();
+        builder.Services.AddScoped<IJournalService, JournalService>();
+        builder.Services.AddScoped<ITagService, TagService>();
+        builder.Services.AddScoped<IMoodStickerService, MoodStickerService>();
 
         return builder.Build();
     }

@@ -1,0 +1,101 @@
+@page "/main"
+@using MoodJournal.Services.Interfaces
+@inject NavigationManager Navigation
+@inject IDatabaseService DatabaseService
+
+<div class="main-page">
+    <div class="header">
+        <h1>MoodJournal</h1>
+        <p>Welcome back, @userName!</p>
+    </div>
+
+    <div class="quick-actions">
+        <button class="action-btn primary" @onclick="CreateJournalEntry">
+            <span class="icon">📝</span>
+            <span>New Journal Entry</span>
+        </button>
+
+        <button class="action-btn secondary" @onclick="ViewAllEntries">
+            <span class="icon">📚</span>
+            <span>View All Entries</span>
+        </button>
+
+        <button class="action-btn secondary" @onclick="ViewStats">
+            <span class="icon">📊</span>
+            <span>Statistics</span>
+        </button>
+    </div>
+
+    <div class="info-cards">
+        <div class="info-card">
+            <div class="card-icon">✍️</div>
+            <div class="card-content">
+                <div class="card-value">@entryCount</div>
+                <div class="card-label">Total Entries</div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <div class="card-icon">🔥</div>
+            <div class="card-content">
+                <div class="card-value">@currentStreak</div>
+                <div class="card-label">Day Streak</div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <div class="card-icon">💬</div>
+            <div class="card-content">
+                <div class="card-value">@totalWords</div>
+                <div class="card-label">Total Words</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string userName = "User";
+    private int entryCount = 0;
+    private int currentStreak = 0;
+    private int totalWords = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Load user profile
+            var profile = await DatabaseService.GetUserProfileAsync();
+            if (profile != null)
+            {
+                userName = profile.Name;
+            }
+
+            // Load statistics (these will work once Feature 4 is implemented)
+            // For now, just placeholder values
+            entryCount = 0;
+            currentStreak = 0;
+            totalWords = 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading main page: {ex.Message}");
+        }
+    }
+
+    private void CreateJournalEntry()
+    {
+        Navigation.NavigateTo("/create-entry");
+    }
+
+    private void ViewAllEntries()
+    {
+        // TODO: Navigate to entries list page
+        Console.WriteLine("View all entries - coming soon!");
+    }
+
+    private void ViewStats()
+    {
+        // TODO: Navigate to statistics page
+        Console.WriteLine("View statistics - coming soon!");
+    }
+}

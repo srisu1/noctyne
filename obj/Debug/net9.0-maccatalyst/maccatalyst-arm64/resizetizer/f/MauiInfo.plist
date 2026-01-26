@@ -4,7 +4,23 @@
 <dict>
   <key>UIAppFonts</key>
   <array>
+	<string>Nagoku-Black.otf</string>
+	<string>Nagoku-Bold.otf</string>
+	<string>Nagoku-Light.otf</string>
+	<string>Nagoku-Medium.otf</string>
+	<string>Nagoku-Regular.otf</string>
+	<string>Onthehill.otf</string>
+	<string>Onthehill.ttf</string>
 	<string>OpenSans-Regular.ttf</string>
+	<string>Pogonia-Black.otf</string>
+	<string>Pogonia-Bold.otf</string>
+	<string>Pogonia-ExtraBold.otf</string>
+	<string>Pogonia-ExtraLight.otf</string>
+	<string>Pogonia-Light.otf</string>
+	<string>Pogonia-Medium.otf</string>
+	<string>Pogonia-Regular.otf</string>
+	<string>Pogonia-Semibold.otf</string>
+	<string>Pogonia-Thin.otf</string>
   </array>
 
 </dict>
