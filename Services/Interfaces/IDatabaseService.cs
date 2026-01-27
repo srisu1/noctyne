@@ -27,7 +27,9 @@ public interface IDatabaseService
     Task<bool> SaveSecurityCredentialAsync(SecurityCredential credential);
     Task<bool> DeleteSecurityCredentialAsync();
     
-    
+    // In IDatabaseService
+    Task<AvatarConfiguration?> GetUserAvatarByIdAsync(int avatarConfigId);
+
 
     #region Journal Entries
 

@@ -11,7 +11,7 @@ public class DatabaseService : Services.Interfaces.IDatabaseService
     public DatabaseService()
     {
         _dbPath = Path.Combine(FileSystem.AppDataDirectory, "moodjournal.db3");
-        Console.WriteLine($"📁 Database path: {_dbPath}");
+        Console.WriteLine($"Database path: {_dbPath}");
     }
 
     public async Task InitializeAsync()
@@ -35,16 +35,16 @@ public class DatabaseService : Services.Interfaces.IDatabaseService
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"⚠️ Table creation failed: {ex.Message}");
-                Console.WriteLine("💡 Use DATABASE_SETUP_SQL.sql to create tables manually");
+                Console.WriteLine($"Table creation failed: {ex.Message}");
+                Console.WriteLine("Use DATABASE_SETUP_SQL.sql to create tables manually");
             }
             
             await SeedDefaultSettingsAsync();
-            Console.WriteLine("🎉 Database initialized!");
+            Console.WriteLine("Database initialized!");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"❌ Database error: {ex.Message}");
+            Console.WriteLine($"Database error: {ex.Message}");
             throw;
         }
     }
@@ -73,6 +73,17 @@ public class DatabaseService : Services.Interfaces.IDatabaseService
         };
         await _database.InsertAllAsync(settings);
     }
+    
+    // In DatabaseService class
+    public async Task<AvatarConfiguration?> GetUserAvatarByIdAsync(int avatarConfigId)
+    {
+        var db = await GetConnectionAsync();
+        return await db.Table<AvatarConfiguration>()
+            .Where(a => a.Id == avatarConfigId)
+            .FirstOrDefaultAsync();
+    }
+
+
 
     #region Settings
 

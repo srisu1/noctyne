@@ -1,0 +1,381 @@
+@page "/analytics"
+@using MoodJournal.Models
+@using MoodJournal.Services.Interfaces
+@inject IJournalService JournalService
+@inject ITagService TagService
+@inject IMoodStickerService MoodStickerService
+@inject NavigationManager Navigation
+
+<div class="analytics-container">
+    
+    <!-- HEADER -->
+    <div class="analytics-header">
+        <button class="back-btn" @onclick='() => Navigation.NavigateTo("/main")'>
+            ← Back to Main
+        </button>
+        <h1 class="page-title">Analytics & Insights</h1>
+    </div>
+    
+    <!-- TIME PERIOD FILTERS -->
+    <div class="time-filters">
+        <button class="filter-btn @(timePeriod == "week" ? "active" : "")" @onclick='() => SetTimePeriod("week")'>
+            Last Week
+        </button>
+        <button class="filter-btn @(timePeriod == "month" ? "active" : "")" @onclick='() => SetTimePeriod("month")'>
+            Last Month
+        </button>
+        <button class="filter-btn @(timePeriod == "year" ? "active" : "")" @onclick='() => SetTimePeriod("year")'>
+            Last Year
+        </button>
+        <button class="filter-btn @(timePeriod == "all" ? "active" : "")" @onclick='() => SetTimePeriod("all")'>
+            All Time
+        </button>
+    </div>
+    
+    @if (isLoading)
+    {
+        <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading analytics...</p>
+        </div>
+    }
+    else
+    {
+        <!-- MOOD DISTRIBUTION -->
+        <div class="analytics-card">
+            <h2 class="card-title">Mood Distribution</h2>
+            <div class="mood-distribution">
+                @foreach (var mood in moodStats.OrderByDescending(m => m.Value))
+                {
+                    var percentage = totalEntries > 0 ? (mood.Value * 100.0 / totalEntries) : 0;
+                    <div class="mood-bar-item">
+                        <div class="mood-bar-header">
+                            <div class="mood-info">
+                                @if (moodStickers.ContainsKey(mood.Key))
+                                {
+                                    <div class="mood-sticker-icon">
+                                        @((MarkupString)moodStickers[mood.Key])
+                                    </div>
+                                }
+                                <span class="mood-name">@mood.Key</span>
+                            </div>
+                            <span class="mood-count">@mood.Value entries (@percentage.ToString("F1")%)</span>
+                        </div>
+                        <div class="mood-bar-track">
+                            <div class="mood-bar-fill" style="width: @percentage%"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        
+        <!-- MOOD TRENDS - LINE GRAPH -->
+        <div class="analytics-card">
+            <h2 class="card-title">Mood Trends Over Time</h2>
+            <div class="mood-trends">
+                @if (moodTrendData.Any())
+                {
+                    <div class="trend-chart">
+                        <svg class="trend-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                            @{
+                                var maxCountForPath = moodTrendData.Max(p => p.Count);
+                                var points = new List<string>();
+                                
+                                for (int i = 0; i < moodTrendData.Count; i++)
+                                {
+                                    var point = moodTrendData[i];
+                                    var x = (i * 1000.0 / (moodTrendData.Count - 1));
+                                    var heightPercent = maxCountForPath > 0 ? (point.Count * 100.0 / maxCountForPath) : 0;
+                                    var y = 300 - (heightPercent * 3);
+                                    points.Add($"{x},{y}");
+                                }
+                                var pathData = "M " + string.Join(" L ", points);
+                            }
+                            <path class="trend-path" d="@pathData" />
+                        </svg>
+                        
+                        <div class="trend-line-container">
+                            @{
+                                var maxCountForDots = moodTrendData.Max(p => p.Count);
+                            }
+                            @foreach (var point in moodTrendData)
+                            {
+                                var heightPercent = maxCountForDots > 0 ? (point.Count * 100.0 / maxCountForDots) : 0;
+                                
+                                <div class="trend-point" style="height: @heightPercent%">
+                                    <div class="trend-dot"></div>
+                                    @if (!string.IsNullOrEmpty(point.MoodSticker))
+                                    {
+                                        <div class="trend-sticker" title="@point.Label (@point.Count entries)">
+                                            @((MarkupString)point.MoodSticker)
+                                        </div>
+                                    }
+                                    <div class="trend-label">@point.Label</div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="empty-chart">No mood data available for this period</div>
+                }
+            </div>
+        </div>
+        
+        <div class="analytics-grid">
+            
+            <!-- MOST USED TAGS -->
+            <div class="analytics-card">
+                <h2 class="card-title">Most Used Tags</h2>
+                <div class="tags-chart">
+                    @if (topTags.Any())
+                    {
+                        var maxUsage = topTags.Max(t => t.UsageCount);
+                        var tagColors = new[] { "#a8d5a3", "#f490af", "#ffd93d", "#95d1cc", "#ff9f45", "#7ba3d4" };
+                        var colorIndex = 0;
+                        
+                        @foreach (var tag in topTags)
+                        {
+                            var widthPercent = maxUsage > 0 ? (tag.UsageCount * 100.0 / maxUsage) : 0;
+                            var tagColor = tagColors[colorIndex % tagColors.Length];
+                            colorIndex++;
+                            
+                            <div class="tag-bar-item">
+                                <div class="tag-bar-header">
+                                    <span class="tag-name">🏷️ @tag.Name</span>
+                                    <span class="tag-count">@tag.UsageCount</span>
+                                </div>
+                                <div class="tag-bar-track">
+                                    <div class="tag-bar-fill" style="width: @widthPercent%; background: @tagColor"></div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="empty-chart">No tags used yet</div>
+                    }
+                </div>
+            </div>
+            
+            <!-- WORD COUNT TRENDS -->
+            <div class="analytics-card">
+                <h2 class="card-title">Word Count Trends</h2>
+                <div class="word-stats">
+                    <div class="stat-box">
+                        <div class="stat-value-big">@avgWordCount</div>
+                        <div class="stat-label-big">Avg Words/Entry</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value-big">@totalWords</div>
+                        <div class="stat-label-big">Total Words</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value-big">@totalEntries</div>
+                        <div class="stat-label-big">Total Entries</div>
+                    </div>
+                </div>
+                
+                @if (wordCountTrend.Any())
+                {
+                    <div class="word-trend-chart">
+                        @{
+                            var maxWords = wordCountTrend.Max(w => w.WordCount);
+                        }
+                        @foreach (var point in wordCountTrend)
+                        {
+                            var heightPercent = maxWords > 0 ? (point.WordCount * 100.0 / maxWords) : 0;
+                            
+                            <div class="word-bar" style="height: @heightPercent%">
+                                <div class="word-bar-label">@point.Date</div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+            
+        </div>
+        
+        <!-- STREAK INFO -->
+        <div class="analytics-card">
+            <h2 class="card-title">Journaling Streaks</h2>
+            <div class="streak-stats">
+                <div class="streak-box">
+                    <div class="streak-icon">🔥</div>
+                    <div class="streak-value">@currentStreak</div>
+                    <div class="streak-label">Current Streak</div>
+                </div>
+                <div class="streak-box">
+                    <div class="streak-icon">🏆</div>
+                    <div class="streak-value">@longestStreak</div>
+                    <div class="streak-label">Longest Streak</div>
+                </div>
+                <div class="streak-box">
+                    <div class="streak-icon">📝</div>
+                    <div class="streak-value">@totalEntries</div>
+                    <div class="streak-label">Total Entries</div>
+                </div>
+                <div class="streak-box">
+                    <div class="streak-icon">❌</div>
+                    <div class="streak-value">@missedDays</div>
+                    <div class="streak-label">Missed Days</div>
+                </div>
+            </div>
+        </div>
+    }
+    
+</div>
+
+@code {
+    private class TrendPoint
+    {
+        public string Label { get; set; } = "";
+        public int Count { get; set; }
+        public string MoodSticker { get; set; } = "";
+    }
+    
+    private class WordTrendPoint
+    {
+        public string Date { get; set; } = "";
+        public int WordCount { get; set; }
+    }
+    
+    private bool isLoading = true;
+    private string timePeriod = "month";
+    
+    private Dictionary<string, int> moodStats = new();
+    private Dictionary<string, string> moodStickers = new();
+    private List<TrendPoint> moodTrendData = new();
+    private List<Tag> topTags = new();
+    private List<WordTrendPoint> wordCountTrend = new();
+    
+    private int totalEntries = 0;
+    private int totalWords = 0;
+    private int avgWordCount = 0;
+    private int currentStreak = 0;
+    private int longestStreak = 0;
+    private int missedDays = 0;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAnalytics();
+    }
+    
+    private async Task SetTimePeriod(string period)
+    {
+        timePeriod = period;
+        await LoadAnalytics();
+    }
+    
+    private async Task LoadAnalytics()
+    {
+        isLoading = true;
+        StateHasChanged();
+        
+        try
+        {
+            var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+            var startDate = timePeriod switch
+            {
+                "week" => DateTime.Now.AddDays(-7).ToString("yyyy-MM-dd"),
+                "month" => DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd"),
+                "year" => DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd"),
+                _ => "2000-01-01"
+            };
+            
+            var entries = await JournalService.GetEntriesByDateRangeAsync(startDate, endDate);
+            totalEntries = entries.Count;
+            
+            if (totalEntries > 0)
+            {
+                moodStats = entries.GroupBy(e => e.PrimaryMood).ToDictionary(g => g.Key, g => g.Count());
+                
+                foreach (var mood in moodStats.Keys)
+                {
+                    try
+                    {
+                        var svg = await MoodStickerService.GenerateMoodStickerSvgAsync(mood, 40, 40);
+                        moodStickers[mood] = svg;
+                    }
+                    catch { }
+                }
+                
+                var trendGroups = timePeriod == "week" || timePeriod == "month"
+                    ? entries.GroupBy(e => DateTime.Parse(e.EntryDate).ToString("MMM dd")).OrderBy(g => g.Key).Take(10).ToList()
+                    : entries.GroupBy(e => DateTime.Parse(e.EntryDate).ToString("MMM yyyy")).OrderBy(g => g.Key).Take(12).ToList();
+                
+                moodTrendData = new List<TrendPoint>();
+                
+                foreach (var group in trendGroups)
+                {
+                    try
+                    {
+                        var mostCommonMood = group.GroupBy(e => e.PrimaryMood).OrderByDescending(mg => mg.Count()).First().Key;
+                        var sticker = await MoodStickerService.GenerateMoodStickerSvgAsync(mostCommonMood, 50, 50);
+                        moodTrendData.Add(new TrendPoint { Label = group.Key, Count = group.Count(), MoodSticker = sticker });
+                    }
+                    catch { }
+                }
+                
+                totalWords = entries.Sum(e => e.WordCount);
+                avgWordCount = totalEntries > 0 ? totalWords / totalEntries : 0;
+                
+                wordCountTrend = entries.OrderBy(e => e.EntryDate).Take(20)
+                    .Select(e => new WordTrendPoint { Date = DateTime.Parse(e.EntryDate).ToString("MMM dd"), WordCount = e.WordCount })
+                    .ToList();
+            }
+            
+            topTags = await TagService.GetMostUsedTagsAsync(10);
+            
+            try
+            {
+                var allEntries = await JournalService.GetAllEntriesAsync();
+                if (allEntries.Any())
+                {
+                    var sortedDates = allEntries.Select(e => DateTime.Parse(e.EntryDate)).OrderByDescending(d => d).ToList();
+                    currentStreak = 1;
+                    var checkDate = DateTime.Today;
+                    
+                    if (sortedDates.Contains(checkDate) || sortedDates.Contains(checkDate.AddDays(-1)))
+                    {
+                        checkDate = sortedDates.Contains(checkDate) ? checkDate : checkDate.AddDays(-1);
+                        for (int i = 1; i < sortedDates.Count; i++)
+                        {
+                            var prevDate = checkDate.AddDays(-i);
+                            if (sortedDates.Contains(prevDate)) currentStreak++;
+                            else break;
+                        }
+                    }
+                    else currentStreak = 0;
+                    
+                    longestStreak = currentStreak;
+                    var tempStreak = 1;
+                    for (int i = 0; i < sortedDates.Count - 1; i++)
+                    {
+                        if ((sortedDates[i] - sortedDates[i + 1]).Days == 1)
+                        {
+                            tempStreak++;
+                            longestStreak = Math.Max(longestStreak, tempStreak);
+                        }
+                        else tempStreak = 1;
+                    }
+                    
+                    var firstEntry = sortedDates.Min();
+                    var daysSinceFirst = (DateTime.Today - firstEntry).Days + 1;
+                    missedDays = daysSinceFirst - allEntries.Count;
+                }
+            }
+            catch { }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"ERROR: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+}

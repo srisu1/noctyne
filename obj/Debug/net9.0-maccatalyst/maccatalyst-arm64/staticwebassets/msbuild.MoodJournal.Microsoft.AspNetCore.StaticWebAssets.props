@@ -10972,12 +10972,12 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>tdaxdot3vj</Fingerprint>
-      <Integrity>0c9eVcCnNhleXfsWSTXeQbN9U6oMwv1MogUDKxzZmIA=</Integrity>
+      <Fingerprint>crobzl1rk7</Fingerprint>
+      <Integrity>GJnIEmdrppAqtyhHfD3aHrlUwdPiP/L/wE0XnUnPQSI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>4346</FileLength>
-      <LastWriteTime>Mon, 26 Jan 2026 19:10:15 GMT</LastWriteTime>
+      <FileLength>4356</FileLength>
+      <LastWriteTime>Tue, 27 Jan 2026 10:55:20 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Onboarding.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\SecuritySetup.css'))">
@@ -11052,12 +11052,12 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ApplicationBundle</AssetTraitValue>
-      <Fingerprint>kp03w8bqza</Fingerprint>
-      <Integrity>WJZemN/5mlNRCa2PvA982aPfyxix+/Oju6jlkIgNIwE=</Integrity>
+      <Fingerprint>a14zhl09ho</Fingerprint>
+      <Integrity>0ptCq9wFPV/iz4R09YoGcz+Rf3MVFY/8+NvKvTAj3m8=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>55705</FileLength>
-      <LastWriteTime>Tue, 27 Jan 2026 10:23:11 GMT</LastWriteTime>
+      <FileLength>82781</FileLength>
+      <LastWriteTime>Tue, 27 Jan 2026 19:39:12 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MoodJournal.styles.css'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>

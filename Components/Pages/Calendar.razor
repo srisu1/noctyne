@@ -3,15 +3,11 @@
 @using MoodJournal.Services.Interfaces
 @using Microsoft.JSInterop
 @inject IJournalService JournalService
-@inject ITagService TagService
 @inject IMoodStickerService MoodStickerService
 @inject NavigationManager Navigation
 @inject IJSRuntime JSRuntime
 
 <div class="calendar-container">
-    
- 
- 
     
     <!-- MONTH NAVIGATION -->
     <div class="calendar-top-header">
@@ -31,6 +27,7 @@
             <button class="today-btn" @onclick="JumpToToday">Today</button>
         </div>
     </div>
+    
     <!-- MAIN CONTENT -->
     <div class="calendar-content">
         
@@ -98,26 +95,23 @@
                         <h3 class="preview-title">@selectedEntry.Title</h3>
                     }
 
-                    @if (!string.IsNullOrEmpty(selectedEntry.Content))
-                    {
-                        <div class="preview-content">
-                            @GetContentPreview(selectedEntry.Content)
-                        </div>
-                    }
+                    <div class="preview-content">
+                        @((MarkupString)selectedEntry.Content)
+                    </div>
 
                     @if (selectedTags.Count > 0)
                     {
                         <div class="preview-tags">
                             @foreach (var tag in selectedTags)
                             {
-                                <span class="preview-tag">🏷️ @tag.Name</span>
+                                <span class="preview-tag">@tag.Name</span>
                             }
                         </div>
                     }
 
                     <div class="preview-meta">
-                        <div class="meta-item">@selectedEntry.WordCount words • @selectedEntry.CharacterCount characters</div>
                         <div class="meta-item">Created: @selectedEntry.CreatedAt.ToString("MMM dd, yyyy h:mm tt")</div>
+                        <div class="meta-item">Word Count: @GetWordCount(selectedEntry.Content)</div>
                     </div>
 
                     <div class="preview-actions">
@@ -128,45 +122,38 @@
             }
             else if (selectedDate != null)
             {
-                <!-- Empty State -->
-                <div class="preview-card">
-                    <div class="empty-preview">
-                        <div class="empty-preview-icon">📅</div>
-                        <div class="empty-preview-text">No entry for this date</div>
-                        <div class="empty-preview-hint">Click the button below to create one</div>
-                        <button class="action-btn btn-edit" style="margin-top: 16px;" @onclick="CreateNewEntry">
-                            + New Entry
-                        </button>
-                    </div>
+                <!-- No Entry State -->
+                <div class="preview-card empty-preview">
+                    <div class="empty-preview-icon">📝</div>
+                    <div class="empty-preview-text">No entry for this day</div>
+                    <div class="empty-preview-hint">Click a date with an entry to view it</div>
                 </div>
             }
             else
             {
-                <!-- No Date Selected -->
-                <div class="preview-card">
-                    <div class="empty-preview">
-                        <div class="empty-preview-icon">👆</div>
-                        <div class="empty-preview-text">Select a date</div>
-                        <div class="empty-preview-hint">Click on any date to view or create an entry</div>
-                    </div>
+                <!-- Default State -->
+                <div class="preview-card empty-preview">
+                    <div class="empty-preview-icon">🗓️</div>
+                    <div class="empty-preview-text">Select a date</div>
+                    <div class="empty-preview-hint">Click on any date to view or create an entry</div>
                 </div>
             }
 
             <!-- Legend -->
             <div class="legend-card">
-                <h4 class="legend-title">Legend</h4>
+                <h3 class="legend-title">Legend</h3>
                 <div class="legend-items">
                     <div class="legend-item">
-                        <div class="legend-indicator" style="background: #7ba3d4; border: 3px solid #3d3d3d;"></div>
-                        <span>Today's date</span>
+                        <div class="legend-indicator" style="background: #a8d5a3; border: 4px solid #3d3d3d;"></div>
+                        <span>Today</span>
                     </div>
                     <div class="legend-item">
-                        <div class="legend-indicator" style="background: white; border: 3px solid #3d3d3d;"></div>
-                        <span>Date with entry</span>
+                        <div class="legend-indicator" style="background: white; border: 4px solid #3d3d3d;"></div>
+                        <span>Has Entry</span>
                     </div>
                     <div class="legend-item">
-                        <div class="legend-indicator" style="background: #e8f4ff; border: 3px solid #7ba3d4;"></div>
-                        <span>Selected date</span>
+                        <div class="legend-indicator" style="background: #e8f4ff; border: 4px solid #a8d5a3;"></div>
+                        <span>Selected</span>
                     </div>
                 </div>
             </div>
@@ -174,67 +161,82 @@
         </div>
 
     </div>
-
 </div>
 
 @code {
-    // Date class for calendar grid
     private class CalendarDate
     {
         public DateTime Date { get; set; }
         public int Day { get; set; }
         public bool IsCurrentMonth { get; set; }
         public bool IsToday { get; set; }
+        public bool IsSelected { get; set; }
         public string DateString { get; set; } = string.Empty;
     }
 
-    // State
     private int currentYear = DateTime.Now.Year;
     private int currentMonth = DateTime.Now.Month;
-    private DateTime? selectedDate;
     private List<CalendarDate> calendarDates = new();
     private Dictionary<string, JournalEntry> entriesByDate = new();
-    private Dictionary<string, string> moodStickers = new(); // Date -> SVG
-    private JournalEntry? selectedEntry;
+    private Dictionary<string, string> moodStickers = new();
+    
+    private DateTime? selectedDate = null;
+    private JournalEntry? selectedEntry = null;
+    private string? selectedMoodSticker = null;
     private List<Tag> selectedTags = new();
-    private string? selectedMoodSticker;
 
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine("Calendar: Initializing");
-        
-        GenerateCalendarDates();
         await LoadMonthEntries();
-        await LoadMoodStickersForEntries();
-        
-        Console.WriteLine($"Calendar initialized: {currentMonth}/{currentYear}");
+    }
+
+    private async Task LoadMonthEntries()
+    {
+        try
+        {
+            GenerateCalendarDates();
+            
+            var startDate = new DateTime(currentYear, currentMonth, 1).ToString("yyyy-MM-dd");
+            var endDate = new DateTime(currentYear, currentMonth, DateTime.DaysInMonth(currentYear, currentMonth)).ToString("yyyy-MM-dd");
+            
+            var entries = await JournalService.GetEntriesByDateRangeAsync(startDate, endDate);
+            
+            entriesByDate.Clear();
+            foreach (var entry in entries)
+            {
+                entriesByDate[entry.EntryDate] = entry;
+            }
+            
+            await LoadMoodStickersForEntries();
+            
+            Console.WriteLine($"Loaded {entries.Count} entries for {currentMonth}/{currentYear}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading month entries: {ex.Message}");
+        }
     }
 
     private async Task LoadMoodStickersForEntries()
     {
-        try
+        moodStickers.Clear();
+        
+        foreach (var kvp in entriesByDate)
         {
-            moodStickers.Clear();
-            
-            foreach (var kvp in entriesByDate)
+            if (!string.IsNullOrEmpty(kvp.Value.PrimaryMood))
             {
-                var dateStr = kvp.Key;
-                var entry = kvp.Value;
-                
-                if (!string.IsNullOrEmpty(entry.PrimaryMood))
+                try
                 {
                     var svg = await MoodStickerService.GenerateMoodStickerSvgAsync(
-                        entry.PrimaryMood, 40, 40
+                        kvp.Value.PrimaryMood, 70, 70
                     );
-                    moodStickers[dateStr] = svg;
+                    moodStickers[kvp.Key] = svg;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error generating sticker: {ex.Message}");
                 }
             }
-            
-            Console.WriteLine($"Generated {moodStickers.Count} mood stickers for calendar");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error generating mood stickers: {ex.Message}");
         }
     }
 
@@ -242,52 +244,56 @@
     {
         calendarDates.Clear();
         
-        var firstDayOfMonth = new DateTime(currentYear, currentMonth, 1);
-        var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+        var firstDay = new DateTime(currentYear, currentMonth, 1);
+        var lastDay = firstDay.AddMonths(1).AddDays(-1);
         
-        var startDate = firstDayOfMonth.AddDays(-(int)firstDayOfMonth.DayOfWeek);
-        var endDate = lastDayOfMonth.AddDays(6 - (int)lastDayOfMonth.DayOfWeek);
+        var startDate = firstDay.AddDays(-(int)firstDay.DayOfWeek);
+        var endDate = lastDay.AddDays(6 - (int)lastDay.DayOfWeek);
         
-        var currentDate = startDate;
-        while (currentDate <= endDate)
+        var current = startDate;
+        while (current <= endDate)
         {
             calendarDates.Add(new CalendarDate
             {
-                Date = currentDate,
-                Day = currentDate.Day,
-                IsCurrentMonth = currentDate.Month == currentMonth,
-                IsToday = currentDate.Date == DateTime.Today,
-                DateString = currentDate.ToString("yyyy-MM-dd")
+                Date = current,
+                Day = current.Day,
+                IsCurrentMonth = current.Month == currentMonth,
+                IsToday = current.Date == DateTime.Today,
+                IsSelected = selectedDate.HasValue && current.Date == selectedDate.Value.Date,
+                DateString = current.ToString("yyyy-MM-dd")
             });
             
-            currentDate = currentDate.AddDays(1);
+            current = current.AddDays(1);
         }
-        
-        Console.WriteLine($"Generated {calendarDates.Count} calendar dates");
     }
 
-    private async Task LoadMonthEntries()
+    private async Task SelectDate(CalendarDate date)
     {
-        try
+        selectedDate = date.Date;
+        
+        if (entriesByDate.ContainsKey(date.DateString))
         {
-            entriesByDate.Clear();
+            selectedEntry = entriesByDate[date.DateString];
             
-            var startDate = new DateTime(currentYear, currentMonth, 1).ToString("yyyy-MM-dd");
-            var endDate = new DateTime(currentYear, currentMonth, DateTime.DaysInMonth(currentYear, currentMonth)).ToString("yyyy-MM-dd");
-            
-            var entries = await JournalService.GetEntriesByDateRangeAsync(startDate, endDate);
-            
-            foreach (var entry in entries)
+            if (!string.IsNullOrEmpty(selectedEntry.PrimaryMood))
             {
-                entriesByDate[entry.EntryDate] = entry;
+                selectedMoodSticker = await MoodStickerService.GenerateMoodStickerSvgAsync(
+                    selectedEntry.PrimaryMood, 100, 100
+                );
             }
             
-            Console.WriteLine($"Loaded {entries.Count} entries for {currentMonth}/{currentYear}");
+            
+            selectedTags = await JournalService.GetTagsForEntryAsync(selectedEntry.Id);
         }
-        catch (Exception ex)
+        else
         {
-            Console.WriteLine($"Error loading entries: {ex.Message}");
+            selectedEntry = null;
+            selectedMoodSticker = null;
+            selectedTags.Clear();
         }
+        
+        GenerateCalendarDates();
+        StateHasChanged();
     }
 
     private string GetDateCssClass(CalendarDate date)
@@ -300,78 +306,66 @@
         if (date.IsToday)
             classes.Add("today");
         
-        if (selectedDate.HasValue && date.Date.Date == selectedDate.Value.Date)
-            classes.Add("selected");
-        
         if (entriesByDate.ContainsKey(date.DateString))
             classes.Add("has-entry");
+        
+        if (date.IsSelected)
+            classes.Add("selected");
         
         return string.Join(" ", classes);
     }
 
-    private async Task SelectDate(CalendarDate date)
+    private string GetMoodDisplayText(JournalEntry entry)
     {
-        selectedDate = date.Date;
-        selectedEntry = null;
-        selectedTags.Clear();
-        selectedMoodSticker = null;
+        var moods = new List<string>();
         
-        if (entriesByDate.ContainsKey(date.DateString))
+        // Primary mood
+        if (!string.IsNullOrEmpty(entry.PrimaryMood))
         {
-            selectedEntry = entriesByDate[date.DateString];
-            
-            // Load tags for entry using GetTagsForEntryAsync (correct method!)
-            if (selectedEntry.Id > 0)
+            var moodInfo = Moods.All.GetValueOrDefault(entry.PrimaryMood);
+            if (moodInfo != null)
             {
-                try
-                {
-                    selectedTags = await JournalService.GetTagsForEntryAsync(selectedEntry.Id);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error loading tags: {ex.Message}");
-                    selectedTags = new List<Tag>();
-                }
+                moods.Add($"{moodInfo.Emoji} {moodInfo.Label}");
             }
-            
-            // Generate larger mood sticker for preview
-            if (!string.IsNullOrEmpty(selectedEntry.PrimaryMood))
+        }
+        
+       
+        var secondaryMoods = entry.SecondaryMoodsList;
+        foreach (var secondaryMood in secondaryMoods)
+        {
+            if (!string.IsNullOrEmpty(secondaryMood))
             {
-                try
+                var moodInfo = Moods.All.GetValueOrDefault(secondaryMood);
+                if (moodInfo != null)
                 {
-                    selectedMoodSticker = await MoodStickerService.GenerateMoodStickerSvgAsync(
-                        selectedEntry.PrimaryMood, 60, 60
-                    );
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error loading mood sticker: {ex.Message}");
+                    moods.Add(moodInfo.Label);
                 }
             }
         }
         
-        StateHasChanged();
-    }
-
-    private string GetMoodDisplayText(JournalEntry entry)
-    {
-        // Get all moods using the helper property
-        var allMoods = entry.AllMoods;
-        return string.Join(", ", allMoods);
-    }
-
-    private string GetContentPreview(string content)
-    {
-        if (string.IsNullOrEmpty(content)) return "";
-        
-        var plain = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", "");
-        
-        return plain.Length > 200 ? plain.Substring(0, 200) + "..." : plain;
+        return moods.Count > 0 ? string.Join(", ", moods) : "No mood selected";
     }
 
     private string FormatDateLong(DateTime date)
     {
-        return date.ToString("dddd, MMMM d, yyyy");
+        var today = DateTime.Today;
+        var yesterday = today.AddDays(-1);
+        
+        if (date.Date == today)
+            return $"Today, {date:MMMM dd, yyyy}";
+        else if (date.Date == yesterday)
+            return $"Yesterday, {date:MMMM dd, yyyy}";
+        else
+            return date.ToString("MMMM dd, yyyy");
+    }
+
+    private int GetWordCount(string content)
+    {
+        if (string.IsNullOrWhiteSpace(content))
+            return 0;
+        
+        var plainText = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", string.Empty);
+        return plainText.Split(new[] { ' ', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries).Length;
     }
 
     private string GetMonthYearDisplay()
@@ -388,10 +382,7 @@
             currentYear--;
         }
         
-        GenerateCalendarDates();
         await LoadMonthEntries();
-        await LoadMoodStickersForEntries();
-        
         selectedDate = null;
         selectedEntry = null;
     }
@@ -405,10 +396,7 @@
             currentYear++;
         }
         
-        GenerateCalendarDates();
         await LoadMonthEntries();
-        await LoadMoodStickersForEntries();
-        
         selectedDate = null;
         selectedEntry = null;
     }
@@ -418,11 +406,45 @@
         currentYear = DateTime.Now.Year;
         currentMonth = DateTime.Now.Month;
         
-        GenerateCalendarDates();
         await LoadMonthEntries();
-        await LoadMoodStickersForEntries();
         
+        // Set selected date to today
         selectedDate = DateTime.Today;
+        
+        // Find today's date string in correct format
+        var todayString = DateTime.Today.ToString("yyyy-MM-dd");
+        
+        // Load entry for today if it exists
+        if (entriesByDate.ContainsKey(todayString))
+        {
+            selectedEntry = entriesByDate[todayString];
+            
+            // Load mood sticker for selected entry
+            if (!string.IsNullOrEmpty(selectedEntry.PrimaryMood))
+            {
+                selectedMoodSticker = await MoodStickerService.GenerateMoodStickerSvgAsync(
+                    selectedEntry.PrimaryMood, 100, 100
+                );
+            }
+            
+            
+            selectedTags = await JournalService.GetTagsForEntryAsync(selectedEntry.Id);
+            
+            Console.WriteLine($"Found entry for today: {todayString}");
+        }
+        else
+        {
+            selectedEntry = null;
+            selectedMoodSticker = null;
+            selectedTags.Clear();
+            Console.WriteLine($"ℹNo entry for today: {todayString}");
+        }
+        
+        // Update calendar dates to show selection
+        GenerateCalendarDates();
+        
+        // Force UI update
+        StateHasChanged();
     }
 
     private void EditEntry()
@@ -452,7 +474,6 @@
                 {
                     await JournalService.DeleteEntryAsync(selectedEntry.Id);
                     await LoadMonthEntries();
-                    await LoadMoodStickersForEntries();
                     selectedEntry = null;
                     selectedDate = null;
                     StateHasChanged();

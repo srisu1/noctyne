@@ -1,5 +1,10 @@
 /* PinEntry.razor.css - Cute Pastel Theme */
-
+body[b-f4ubmhh96q] {
+    font-family: 'Pogonia', sans-serif;
+    font-weight: 400;
+    background: #fef5e8;
+    overflow: hidden;
+}
 .loginContainer[b-f4ubmhh96q] {
     width: 100%;
     min-height: 100vh;
@@ -13,6 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .loginContent[b-f4ubmhh96q] {

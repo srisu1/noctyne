@@ -1,0 +1,257 @@
+@page "/journal"
+@using MoodJournal.Models
+@using MoodJournal.Services.Interfaces
+@inject IJournalService JournalService
+@inject IMoodStickerService MoodStickerService
+@inject NavigationManager Navigation
+
+<link href="css/JournalView.css" rel="stylesheet" />
+
+<div class="journal-container">
+    
+    <!-- HEADER -->
+    <div class="journal-header">
+        <div class="header-left">
+            <button class="back-btn" @onclick='() => Navigation.NavigateTo("/main")'>
+                ← Back
+            </button>
+            <h1 class="page-title">All Journal Entries</h1>
+        </div>
+    </div>
+    
+    <!-- ENTRIES LIST -->
+    <div class="entries-section">
+        @if (isLoading)
+        {
+            <div class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading entries...</p>
+            </div>
+        }
+        else if (pagedEntries.Count > 0)
+        {
+            <div class="entries-grid">
+                @foreach (var entry in pagedEntries)
+                {
+                    <div class="entry-card" @onclick="() => EditEntry(entry.EntryDate)">
+                        <div class="card-header">
+                            <div class="entry-mood-icon">
+                                @if (!string.IsNullOrEmpty(entry.PrimaryMood) && entrySvgCache.ContainsKey(entry.Id))
+                                {
+                                    @((MarkupString)entrySvgCache[entry.Id])
+                                }
+                            </div>
+                            <div class="entry-info">
+                                <div class="entry-date-display">@FormatEntryDate(entry.EntryDate)</div>
+                                <div class="entry-time-display">@entry.CreatedAt.ToString("h:mm tt")</div>
+                            </div>
+                        </div>
+                        
+                        @if (!string.IsNullOrEmpty(entry.Title))
+                        {
+                            <h3 class="entry-title-display">@entry.Title</h3>
+                        }
+                        
+                        <div class="entry-content-preview">
+                            @GetContentPreview(entry.Content)
+                        </div>
+                        
+                        <div class="entry-meta-display">
+                            <span class="word-count">@GetWordCount(entry.Content) words</span>
+                        </div>
+                    </div>
+                }
+            </div>
+            
+            <!-- PAGINATION -->
+            <div class="pagination">
+                <button class="page-btn" 
+                        @onclick="PreviousPage" 
+                        disabled="@(currentPage == 1)">
+                    ← Previous
+                </button>
+                
+                <div class="page-info">
+                    Page @currentPage of @totalPages
+                </div>
+                
+                <button class="page-btn" 
+                        @onclick="NextPage" 
+                        disabled="@(currentPage >= totalPages)">
+                    Next →
+                </button>
+            </div>
+        }
+        else
+        {
+            <div class="empty-state">
+                <div class="empty-icon">📝</div>
+                <div class="empty-text">No journal entries yet</div>
+                <div class="empty-hint">Start writing to see your entries here!</div>
+                <button class="create-btn" @onclick='() => Navigation.NavigateTo("/create-entry")'>
+                    Create First Entry
+                </button>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<JournalEntry> allEntries = new();
+    private List<JournalEntry> pagedEntries = new();
+    private Dictionary<int, string> entrySvgCache = new();
+    private bool isLoading = true;
+    
+    private int currentPage = 1;
+    private int entriesPerPage = 10;
+    private int totalPages = 1;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadEntries();
+    }
+    
+    private async Task LoadEntries()
+    {
+        isLoading = true;
+        StateHasChanged();
+        
+        try
+        {
+            // Load all entries
+            allEntries = await JournalService.GetAllEntriesAsync();
+            
+            // Sort by date descending (newest first)
+            allEntries = allEntries
+                .OrderByDescending(e => DateTime.Parse(e.EntryDate))
+                .ThenByDescending(e => e.CreatedAt)
+                .ToList();
+            
+            // Calculate pagination
+            totalPages = (int)Math.Ceiling((double)allEntries.Count / entriesPerPage);
+            if (totalPages == 0) totalPages = 1;
+            
+            // Load first page
+            LoadPage(1);
+            
+            // Load mood stickers for paged entries
+            await LoadMoodStickersForEntries();
+            
+            Console.WriteLine($"Loaded {allEntries.Count} entries, {totalPages} pages");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($" Error loading entries: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+    
+    private void LoadPage(int page)
+    {
+        currentPage = Math.Max(1, Math.Min(page, totalPages));
+        
+        var skip = (currentPage - 1) * entriesPerPage;
+        pagedEntries = allEntries
+            .Skip(skip)
+            .Take(entriesPerPage)
+            .ToList();
+        
+        Console.WriteLine($"Loaded page {currentPage}/{totalPages} ({pagedEntries.Count} entries)");
+    }
+    
+    private async Task LoadMoodStickersForEntries()
+    {
+        entrySvgCache.Clear();
+        
+        foreach (var entry in pagedEntries)
+        {
+            if (!string.IsNullOrEmpty(entry.PrimaryMood))
+            {
+                try
+                {
+                    var svg = await MoodStickerService.GenerateMoodStickerSvgAsync(
+                        entry.PrimaryMood, 80, 80
+                    );
+                    entrySvgCache[entry.Id] = svg;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error generating sticker for entry {entry.Id}: {ex.Message}");
+                }
+            }
+        }
+    }
+    
+    private async Task PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            LoadPage(currentPage - 1);
+            await LoadMoodStickersForEntries();
+        }
+    }
+    
+    private async Task NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            LoadPage(currentPage + 1);
+            await LoadMoodStickersForEntries();
+        }
+    }
+    
+    private void EditEntry(string date)
+    {
+        Navigation.NavigateTo($"/create-entry/{date}");
+    }
+    
+    private string FormatEntryDate(string dateString)
+    {
+        if (DateTime.TryParse(dateString, out var date))
+        {
+            var today = DateTime.Today;
+            var yesterday = today.AddDays(-1);
+            
+            if (date.Date == today)
+                return "Today";
+            else if (date.Date == yesterday)
+                return "Yesterday";
+            else if (date.Year == today.Year)
+                return date.ToString("MMMM dd");
+            else
+                return date.ToString("MMM dd, yyyy");
+        }
+        return dateString;
+    }
+    
+    private string GetContentPreview(string content)
+    {
+        if (string.IsNullOrEmpty(content))
+            return "No content";
+        
+        // Strip HTML tags
+        var plainText = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", string.Empty);
+        
+        // Truncate
+        if (plainText.Length > 150)
+            return plainText.Substring(0, 150) + "...";
+        
+        return plainText;
+    }
+    
+    private int GetWordCount(string content)
+    {
+        if (string.IsNullOrWhiteSpace(content))
+            return 0;
+        
+        // Strip HTML tags
+        var plainText = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", string.Empty);
+        
+        // Count words
+        return plainText.Split(new[] { ' ', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries).Length;
+    }
+}

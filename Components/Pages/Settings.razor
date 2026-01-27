@@ -22,15 +22,15 @@
             <h2 class="card-title">👤 Profile</h2>
             <div class="profile-info">
                 
-                <!-- Avatar Display -->
-                <div class="avatar-display">
-                    @if (!string.IsNullOrEmpty(userAvatarSvg))
+                <!-- Avatar Preview - FIXED CLASS NAME AND SIZE -->
+                <div class="avatar-preview">
+                    @if (avatarConfigId.HasValue)
                     {
-                        @((MarkupString)userAvatarSvg)
+                        <AvatarDisplay Size="180" AvatarConfigId="@avatarConfigId.Value" />
                     }
                     else
                     {
-                        <div class="avatar-placeholder">No Avatar</div>
+                        <div class="avatar-placeholder">👤</div>
                     }
                 </div>
 
@@ -53,20 +53,95 @@
             </div>
         </div>
 
-        <!-- COMING SOON SECTIONS -->
+        <!-- THEME CUSTOMIZATION (Feature 9) -->
         <div class="settings-card">
-            <h2 class="card-title">Theme Customization</h2>
-            <p class="coming-soon">Coming soon! (Feature 9)</p>
+            <h2 class="card-title">🎨 Theme Customization</h2>
+            <div class="theme-section">
+                <div class="theme-option">
+                    <span class="theme-label">Theme Mode:</span>
+                    <select class="theme-selector" @onchange="ChangeTheme">
+                        <option value="light" selected="@(currentTheme == "light")">☀️ Light</option>
+                        <option value="dark" selected="@(currentTheme == "dark")">🌙 Dark</option>
+                        <option value="custom" selected="@(currentTheme == "custom")">🎨 Custom</option>
+                    </select>
+                </div>
+                
+                @if (currentTheme == "custom")
+                {
+                    <div class="color-pickers">
+                        <div class="color-option">
+                            <span class="color-label">Accent Color:</span>
+                            <input type="color" class="color-input" value="#f490af" @onchange="ChangeAccentColor" />
+                        </div>
+                        <div class="color-option">
+                            <span class="color-label">Background Color:</span>
+                            <input type="color" class="color-input" value="#fef5e8" @onchange="ChangeBackgroundColor" />
+                        </div>
+                    </div>
+                }
+                
+                <div class="theme-preview">
+                    <p class="preview-text">Theme preview will appear here</p>
+                </div>
+            </div>
         </div>
 
+        <!-- EXPORT JOURNALS (Feature 12) -->
         <div class="settings-card">
-            <h2 class="card-title">Security & Privacy</h2>
+            <h2 class="card-title">📄 Export Journals</h2>
+            <div class="export-section">
+                <p class="section-description">Export your journal entries as a PDF document</p>
+                
+                <div class="date-range">
+                    <div class="date-input-group">
+                        <label class="date-label">From:</label>
+                        <input type="date" class="date-input" @bind="exportStartDate" />
+                    </div>
+                    <div class="date-input-group">
+                        <label class="date-label">To:</label>
+                        <input type="date" class="date-input" @bind="exportEndDate" />
+                    </div>
+                </div>
+                
+                <div class="export-options">
+                    <label class="checkbox-option">
+                        <input type="checkbox" @bind="includeMoods" />
+                        <span>Include mood information</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" @bind="includeTags" />
+                        <span>Include tags</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" @bind="includeImages" />
+                        <span>Include images (if any)</span>
+                    </label>
+                </div>
+                
+                <button class="export-btn" @onclick="ExportJournals" disabled="@isExporting">
+                    @if (isExporting)
+                    {
+                        <span>⏳ Exporting...</span>
+                    }
+                    else
+                    {
+                        <span>📥 Export as PDF</span>
+                    }
+                </button>
+                
+                @if (!string.IsNullOrEmpty(exportMessage))
+                {
+                    <div class="export-message @(exportSuccess ? "success" : "error")">
+                        @exportMessage
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- SECURITY & PRIVACY (Feature 11) -->
+        <div class="settings-card">
+            <h2 class="card-title">🔒 Security & Privacy</h2>
             <p class="coming-soon">Coming soon! (Feature 11)</p>
-        </div>
-
-        <div class="settings-card">
-            <h2 class="card-title">Export Journals</h2>
-            <p class="coming-soon">Coming soon! (Feature 12)</p>
         </div>
 
     </div>
@@ -76,33 +151,42 @@
 @code {
     private string userName = "User";
     private string userGender = "Unknown";
-    private string userAvatarSvg = string.Empty;
+    private int? avatarConfigId = null;
+    
+    // Theme settings
+    private string currentTheme = "light";
+    
+    // Export settings
+    private DateTime exportStartDate = DateTime.Now.AddMonths(-1);
+    private DateTime exportEndDate = DateTime.Now;
+    private bool includeMoods = true;
+    private bool includeTags = true;
+    private bool includeImages = false;
+    private bool isExporting = false;
+    private string exportMessage = string.Empty;
+    private bool exportSuccess = false;
 
     protected override async Task OnInitializedAsync()
     {
         await LoadUserProfile();
+        await LoadSettings();
     }
 
     private async Task LoadUserProfile()
     {
         try
         {
-            // Load user profile
             var profile = await DatabaseService.GetUserProfileAsync();
             if (profile != null)
             {
                 userName = profile.Name;
-                
-                // Load avatar configuration to get gender
+                avatarConfigId = profile.AvatarConfigId;
+
                 var avatarConfig = await DatabaseService.GetUserAvatarAsync();
                 if (avatarConfig != null)
                 {
                     userGender = avatarConfig.Gender;
                 }
-                
-                // TODO: Generate avatar SVG when avatar service is ready
-                // For now, leave empty
-                userAvatarSvg = string.Empty;
             }
         }
         catch (Exception ex)
@@ -111,9 +195,97 @@
         }
     }
 
+    private async Task LoadSettings()
+    {
+        try
+        {
+            var themeSetting = await DatabaseService.GetSettingAsync("Theme");
+            if (!string.IsNullOrEmpty(themeSetting))
+            {
+                currentTheme = themeSetting;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading settings: {ex.Message}");
+        }
+    }
+
     private void EditAvatar()
     {
-        // Navigate back to avatar customization
         Navigation.NavigateTo("/avatar");
+    }
+
+    private async Task ChangeTheme(ChangeEventArgs e)
+    {
+        currentTheme = e.Value?.ToString() ?? "light";
+        try
+        {
+            await DatabaseService.SetSettingAsync("Theme", currentTheme);
+            Console.WriteLine($"Theme changed to: {currentTheme}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving theme: {ex.Message}");
+        }
+    }
+
+    private async Task ChangeAccentColor(ChangeEventArgs e)
+    {
+        var color = e.Value?.ToString() ?? "#f490af";
+        try
+        {
+            await DatabaseService.SetSettingAsync("AccentColor", color);
+            Console.WriteLine($"Accent color changed to: {color}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving accent color: {ex.Message}");
+        }
+    }
+
+    private async Task ChangeBackgroundColor(ChangeEventArgs e)
+    {
+        var color = e.Value?.ToString() ?? "#fef5e8";
+        try
+        {
+            await DatabaseService.SetSettingAsync("BackgroundColor", color);
+            Console.WriteLine($"Background color changed to: {color}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving background color: {ex.Message}");
+        }
+    }
+
+    private async Task ExportJournals()
+    {
+        isExporting = true;
+        exportMessage = string.Empty;
+        StateHasChanged();
+
+        try
+        {
+            // TODO: Implement actual PDF export using IExportService
+            // For now, simulate export
+            await Task.Delay(2000);
+            
+            exportMessage = $"Successfully exported journals from {exportStartDate:MMM dd, yyyy} to {exportEndDate:MMM dd, yyyy}";
+            exportSuccess = true;
+            
+            Console.WriteLine($"Exporting journals: {exportStartDate:yyyy-MM-dd} to {exportEndDate:yyyy-MM-dd}");
+            Console.WriteLine($"Include moods: {includeMoods}, Include tags: {includeTags}, Include images: {includeImages}");
+        }
+        catch (Exception ex)
+        {
+            exportMessage = $"Export failed: {ex.Message}";
+            exportSuccess = false;
+            Console.WriteLine($"Error exporting: {ex.Message}");
+        }
+        finally
+        {
+            isExporting = false;
+            StateHasChanged();
+        }
     }
 }

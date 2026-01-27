@@ -1,0 +1,120 @@
+@using MoodJournal.Models
+@using MoodJournal.Services.Interfaces
+@using MoodJournal.Helpers
+@inject IDatabaseService DatabaseService
+
+@if (config != null)
+{
+    <div style="position: relative; width: @(Size)px; height: @(Size)px; overflow: visible;">
+        <div style="position: relative; width: 100%; height: 100%; transform: scale(@(Size / 400.0)); filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.18));">
+            @RenderAvatar()
+        </div>
+    </div>
+}
+else
+{
+    <div style="width: @(Size)px; height: @(Size)px; display: flex; align-items: center; justify-content: center; background: #fef5e8; border-radius: 50%;">
+        <span style="font-size: @(Size * 0.6)px;">👤</span>
+    </div>
+}
+
+@code {
+    [Parameter] public int Size { get; set; } = 80;
+    [Parameter] public int? AvatarConfigId { get; set; }
+    
+    private AvatarConfiguration? config;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            if (AvatarConfigId.HasValue && AvatarConfigId.Value > 0)
+            {
+                config = await DatabaseService.GetAvatarConfigurationAsync(AvatarConfigId.Value);
+            }
+            else
+            {
+                config = await DatabaseService.GetUserAvatarAsync();
+            }
+            
+            if (config != null)
+            {
+                Console.WriteLine($"AvatarDisplay: Size={Size}px, Gender={config.Gender}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"AvatarDisplay error: {ex.Message}");
+        }
+    }
+    
+    private RenderFragment RenderAvatar() => builder =>
+    {
+        if (config == null) return;
+        
+        var gender = config.Gender;
+        var layers = new List<(string type, string src, string? styleKey)>();
+        
+        layers.Add(("base", $"assets/avatar/{gender}/base/base{config.BaseIndex:D2}.png", null));
+        layers.Add(("eyes", $"assets/avatar/{gender}/eyes/eyes{config.EyesIndex:D2}.png", null));
+        layers.Add(("nose", $"assets/avatar/{gender}/nose/nose{config.NoseIndex:D2}.png", null));
+        layers.Add(("mouth", $"assets/avatar/{gender}/mouth/mouth{config.MouthIndex:D2}.png", null));
+        
+        if (!string.IsNullOrEmpty(config.ClothesStyle) && !string.IsNullOrEmpty(config.ClothesColor))
+            layers.Add(("clothes", $"assets/avatar/{gender}/clothes/{config.ClothesStyle}-{config.ClothesColor}.png", config.ClothesStyle));
+        
+        if (!string.IsNullOrEmpty(config.HairStyle) && !string.IsNullOrEmpty(config.HairColor))
+            layers.Add(("hair", $"assets/avatar/{gender}/hair/{config.HairStyle}-{config.HairColor}.png", config.HairStyle));
+        
+        if (config.FacialHairStyle != null && gender == "male")
+            layers.Add(("facialHair", $"assets/avatar/male/facialHair/{config.FacialHairStyle}.png", config.FacialHairStyle));
+        
+        if (config.GlassesStyle != null)
+            layers.Add(("glasses", $"assets/avatar/{gender}/accessories/{config.GlassesStyle}.png", config.GlassesStyle));
+        
+        if (config.HeadwearStyle != null && config.HeadwearColor != null)
+            layers.Add(("headwear", $"assets/avatar/{gender}/accessories/{config.HeadwearStyle}-{config.HeadwearColor}.png", config.HeadwearStyle));
+        
+        if (config.NeckwearStyle != null && config.NeckwearColor != null)
+            layers.Add(("neckwear", $"assets/avatar/{gender}/accessories/{config.NeckwearStyle}-{config.NeckwearColor}.png", config.NeckwearStyle));
+        
+        if (config.ExtrasStyle != null && config.ExtrasColor != null)
+            layers.Add(("extras", $"assets/avatar/{gender}/accessories/{config.ExtrasStyle}-{config.ExtrasColor}.png", config.ExtrasStyle));
+        
+        foreach (var layer in layers)
+        {
+            var pos = GetPosition(layer.type, layer.styleKey);
+            
+            builder.OpenElement(0, "img");
+            builder.AddAttribute(1, "style", $"position: absolute; top: 50%; left: 50%; pointer-events: none; user-select: none; transform: translate(-50%, -50%) translate({pos.X}px, {pos.Y}px) scale({pos.Scale});");
+            builder.AddAttribute(2, "src", layer.src);
+            builder.CloseElement();
+        }
+    };
+    
+    private AvatarPositions.LayerPosition GetPosition(string type, string? styleKey)
+    {
+        if (config == null)
+            return new AvatarPositions.LayerPosition(0, 0, 0.30);
+        
+        var gender = config.Gender;
+        
+        if (type == "hair" && styleKey != null)
+            return AvatarPositions.GetHairPosition(gender, styleKey);
+        else if (type == "clothes" && styleKey != null)
+            return AvatarPositions.GetClothesPosition(gender, styleKey);
+        else if (type == "facialHair" && styleKey != null)
+            return AvatarPositions.GetFacialHairPosition(styleKey);
+        else if (type == "glasses")
+            return AvatarPositions.GetGlassesPosition(styleKey ?? "default");
+        else if (type == "headwear" && styleKey != null)
+            return AvatarPositions.GetHeadwearPosition(styleKey);
+        else if (type == "neckwear" && styleKey != null)
+            return AvatarPositions.GetNeckwearPosition(styleKey ?? "default");
+        else if (type == "extras" && styleKey != null)
+            return AvatarPositions.GetExtrasPosition(styleKey);
+        
+        return AvatarPositions.DefaultPositions.GetValueOrDefault(type, 
+            new AvatarPositions.LayerPosition(0, 0, 0.30));
+    }
+}

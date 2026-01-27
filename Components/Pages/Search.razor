@@ -1,0 +1,241 @@
+@page "/search"
+@using MoodJournal.Models
+@using MoodJournal.Services.Interfaces
+@using Microsoft.AspNetCore.Components
+@inject IJournalService JournalService
+@inject IMoodStickerService MoodStickerService
+@inject NavigationManager Navigation
+
+<div class="search-container">
+    
+    <!-- HEADER -->
+    <div class="search-header">
+        <button class="back-btn" @onclick='() => Navigation.NavigateTo("/main")'>
+            ← Back
+        </button>
+        <h1 class="page-title">Search Results</h1>
+    </div>
+    
+    <!-- SEARCH BAR -->
+    <div class="search-bar-container">
+        <input type="text" class="search-input" placeholder="Search journal entries..." 
+               @bind="searchQuery" @bind:event="oninput" @onkeyup="HandleSearchKeyPress">
+        <button class="search-btn" @onclick="PerformSearch">Search</button>
+    </div>
+    
+    <!-- RESULTS -->
+    <div class="results-section">
+        @if (isSearching)
+        {
+            <div class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Searching...</p>
+            </div>
+        }
+        else if (!string.IsNullOrEmpty(currentQuery))
+        {
+            @if (searchResults.Count > 0)
+            {
+                <div class="results-header">
+                    <h2>Found @searchResults.Count result@(searchResults.Count == 1 ? "" : "s") for "@currentQuery"</h2>
+                </div>
+                
+                <div class="results-grid">
+                    @foreach (var entry in searchResults)
+                    {
+                        <div class="result-card" @onclick="() => EditEntry(entry.EntryDate)">
+                            <div class="card-header">
+                                <div class="entry-mood-icon">
+                                    @if (!string.IsNullOrEmpty(entry.PrimaryMood) && entrySvgCache.ContainsKey(entry.Id))
+                                    {
+                                        @((MarkupString)entrySvgCache[entry.Id])
+                                    }
+                                </div>
+                                <div class="entry-info">
+                                    <div class="entry-date">@FormatEntryDate(entry.EntryDate)</div>
+                                    <div class="entry-time">@entry.CreatedAt.ToString("h:mm tt")</div>
+                                </div>
+                            </div>
+                            
+                            @if (!string.IsNullOrEmpty(entry.Title))
+                            {
+                                <h3 class="entry-title">@HighlightSearchTerm(entry.Title)</h3>
+                            }
+                            
+                            <div class="entry-content-preview">
+                                @((MarkupString)HighlightSearchTermInHtml(GetContentPreview(entry.Content)))
+                            </div>
+                            
+                            <div class="entry-meta">
+                                <span class="word-count">@entry.WordCount words</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="empty-state">
+                    <div class="empty-icon">🔍</div>
+                    <div class="empty-text">No results found for "@currentQuery"</div>
+                    <div class="empty-hint">Try different keywords or check your spelling</div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="empty-state">
+                <div class="empty-icon">🔍</div>
+                <div class="empty-text">Enter a search term</div>
+                <div class="empty-hint">Search by title, content, or keywords</div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+@code {
+    [SupplyParameterFromQuery(Name = "q")]
+    public string? InitialQuery { get; set; }
+    
+    private string searchQuery = string.Empty;
+    private string currentQuery = string.Empty;
+    private List<JournalEntry> searchResults = new();
+    private Dictionary<int, string> entrySvgCache = new();
+    private bool isSearching = false;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(InitialQuery))
+        {
+            searchQuery = InitialQuery;
+            await PerformSearch();
+        }
+    }
+    
+    private async Task PerformSearch()
+    {
+        if (string.IsNullOrWhiteSpace(searchQuery))
+            return;
+        
+        isSearching = true;
+        currentQuery = searchQuery;
+        StateHasChanged();
+        
+        try
+        {
+            searchResults = await JournalService.SearchEntriesAsync(searchQuery);
+            await LoadMoodStickers();
+            
+            Console.WriteLine($"Found {searchResults.Count} results for '{searchQuery}'");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Search error: {ex.Message}");
+        }
+        finally
+        {
+            isSearching = false;
+            StateHasChanged();
+        }
+    }
+    
+    private async Task LoadMoodStickers()
+    {
+        entrySvgCache.Clear();
+        
+        foreach (var entry in searchResults)
+        {
+            if (!string.IsNullOrEmpty(entry.PrimaryMood))
+            {
+                try
+                {
+                    var svg = await MoodStickerService.GenerateMoodStickerSvgAsync(
+                        entry.PrimaryMood, 60, 60
+                    );
+                    entrySvgCache[entry.Id] = svg;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error generating sticker: {ex.Message}");
+                }
+            }
+        }
+    }
+    
+    private void HandleSearchKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            _ = PerformSearch();
+        }
+    }
+    
+    private void EditEntry(string date)
+    {
+        Navigation.NavigateTo($"/create-entry/{date}");
+    }
+    
+    private string FormatEntryDate(string dateString)
+    {
+        if (DateTime.TryParse(dateString, out var date))
+        {
+            var today = DateTime.Today;
+            var yesterday = today.AddDays(-1);
+            
+            if (date.Date == today)
+                return "Today";
+            else if (date.Date == yesterday)
+                return "Yesterday";
+            else if (date.Year == today.Year)
+                return date.ToString("MMMM dd");
+            else
+                return date.ToString("MMM dd, yyyy");
+        }
+        return dateString;
+    }
+    
+    private string GetContentPreview(string content)
+    {
+        if (string.IsNullOrEmpty(content))
+            return "No content";
+        
+        var plainText = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", string.Empty);
+        
+        if (plainText.Length > 150)
+            return plainText.Substring(0, 150) + "...";
+        
+        return plainText;
+    }
+    
+    private string HighlightSearchTerm(string text)
+    {
+        if (string.IsNullOrEmpty(currentQuery) || string.IsNullOrEmpty(text))
+            return text;
+        
+        var index = text.IndexOf(currentQuery, StringComparison.OrdinalIgnoreCase);
+        if (index >= 0)
+        {
+            var before = text.Substring(0, index);
+            var match = text.Substring(index, currentQuery.Length);
+            var after = text.Substring(index + currentQuery.Length);
+            return $"{before}<span class='highlight'>{match}</span>{after}";
+        }
+        
+        return text;
+    }
+    
+    private string HighlightSearchTermInHtml(string html)
+    {
+        if (string.IsNullOrEmpty(currentQuery))
+            return html;
+        
+        return System.Text.RegularExpressions.Regex.Replace(
+            html,
+            $"({System.Text.RegularExpressions.Regex.Escape(currentQuery)})",
+            "<span class='highlight'>$1</span>",
+            System.Text.RegularExpressions.RegexOptions.IgnoreCase
+        );
+    }
+}
