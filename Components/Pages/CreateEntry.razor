@@ -584,7 +584,7 @@
         var success = await JournalService.DeleteEntryAsync(existingEntry.Id);
         if (success)
         {
-            Console.WriteLine("🗑️ Entry deleted");
+            Console.WriteLine("Entry deleted");
             Navigation.NavigateTo("/main");
         }
     }

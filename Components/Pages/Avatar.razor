@@ -1,0 +1,677 @@
+@page "/avatar"
+@using MoodJournal.Services.Interfaces
+@using MoodJournal.Models
+@using MoodJournal.Helpers
+@using Microsoft.AspNetCore.Components.Rendering
+@using MoodJournal.Services
+@inject IDatabaseService Database
+@inject NavigationManager Navigation
+
+<!-- CSS link-->
+<link href="css/Fonts.css" rel="stylesheet" />
+<link href="css/Avatar.css" rel="stylesheet" />
+
+<div class="customizationContainer">
+    <button class="closeBtn" @onclick="GoBack">×</button>
+
+    <div class="mainContent">
+        <!-- LEFT side options panel for building avatar -->
+        <div class="leftSection">
+            <div class="tabsSidebar">
+                <div class="tabBtn @(currentCategory == "skin" ? "active" : "")" @onclick='() => SwitchCategory("skin")'>
+                    <img src="assets/icons/base-icon.png" alt="Skin">
+                </div>
+                <div class="tabBtn @(currentCategory == "eyes" ? "active" : "")" @onclick='() => SwitchCategory("eyes")'>
+                    <img src="assets/icons/eyes-icon.png" alt="Eyes">
+                </div>
+                <div class="tabBtn @(currentCategory == "nose" ? "active" : "")" @onclick='() => SwitchCategory("nose")'>
+                    <img src="assets/icons/nose-icon.png" alt="Nose">
+                </div>
+                <div class="tabBtn @(currentCategory == "mouth" ? "active" : "")" @onclick='() => SwitchCategory("mouth")'>
+                    <img src="assets/icons/mouth-icon.png" alt="Mouth">
+                </div>
+                <div class="tabBtn @(currentCategory == "hair" ? "active" : "")" @onclick='() => SwitchCategory("hair")'>
+                    <img src="assets/icons/hair-icon.png" alt="Hair">
+                </div>
+                <div class="tabBtn @(currentCategory == "clothes" ? "active" : "")" @onclick='() => SwitchCategory("clothes")'>
+                    <img src="assets/icons/clothes-icon.png" alt="Clothes">
+                </div>
+                @if (gender == "male")
+                {
+                    <div class="tabBtn @(currentCategory == "facialHair" ? "active" : "")" @onclick='() => SwitchCategory("facialHair")'>
+                        <img src="assets/icons/beard-icon.png" alt="Facial Hair">
+                    </div>
+                }
+                <div class="tabBtn @(currentCategory == "accessories" ? "active" : "")" @onclick='() => SwitchCategory("accessories")'>
+                    <img src="assets/icons/accessories-icon.png" alt="Accessories">
+                </div>
+            </div>
+
+            <div class="optionsPanel active">
+                <div class="panelTitle">@GetPanelTitle()</div>
+                <div class="panelContent">
+                    @RenderOptions()
+                </div>
+            </div>
+        </div>
+
+        <!-- right side preview -->
+        <div class="rightSection">
+            <div class="genderTabs">
+                <button class="genderTab @(gender == "female" ? "active" : "")" @onclick='() => SwitchGender("female")'>Girl</button>
+                <button class="genderTab @(gender == "male" ? "active" : "")" @onclick='() => SwitchGender("male")'>Boy</button>
+            </div>
+
+            <div class="avatarPreview">
+                <div class="avatarContainer">
+                    @RenderAvatar()
+                </div>
+            </div>
+
+            <div class="nameInputContainer">
+                <input type="text" class="nameInput" @bind="userName" placeholder="NAME" maxlength="20">
+            </div>
+
+            <div class="colorSelectorContainer">
+                @if (ShouldShowColorSelector())
+                {
+                    <div class="colorSelector">
+                        @RenderColorSelector()
+                    </div>
+                }
+            </div>
+
+            <button class="okBtn" @onclick="SaveAndContinue">OK</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string gender = "female";
+    private string userName = "";
+    private int baseIndex = 1;
+    private int eyesIndex = 1;
+    private int noseIndex = 1;
+    private int mouthIndex = 1;
+    private string hairStyle = "medium-curl";
+    private string hairColor = "black";
+    private string clothesStyle = "off-shoulder";
+    private string clothesColor = "blue";
+    private string? facialHairStyle = null;
+    private string? glassesStyle = null;
+    private string? headwearStyle = null;
+    private string? headwearColor = null;
+    private string? neckwearStyle = null;
+    private string? neckwearColor = null;
+    private string? extrasStyle = null;
+    private string? extrasColor = null;
+
+    private string currentCategory = "skin";
+
+    private Dictionary<string, string[]> femaleHairStyles = new() { ["styles"] = new[] { "medium-curl", "bangs", "to-the-side", "boys-cut", "granny-hair", "anime-hair", "bangs-short", "side-pony", "pigtails", "bun" } };
+    private Dictionary<string, string[]> maleHairStyles = new() { ["styles"] = new[] { "curly-short", "straight-short", "ceo-hair", "flat-hair", "90s-hair", "bangs", "pointed-pony", "spiky-hair", "dad-hair", "edgy-hair" } };
+    private string[] hairColors = new[] { "blonde", "black", "brown", "red", "orange", "silver", "pink", "darkblue" };
+    
+    private Dictionary<string, string[]> femaleClothesStyles = new() { ["styles"] = new[] { "off-shoulder", "night-dress", "sweater", "tank-top", "c-neck", "v-neck-sweater" } };
+    private Dictionary<string, string[]> maleClothesStyles = new() { ["styles"] = new[] { "uniform", "button-up-shirt", "sweater", "c-neck", "v-neck-sweater", "tank-top" } };
+    private Dictionary<string, string[]> femaleClothesColors = new() { ["colors"] = new[] { "green", "red", "blue" } };
+    private Dictionary<string, string[]> maleClothesColors = new() { ["colors"] = new[] { "black", "blue", "red", "green" } };
+    
+    private string[] glassesOptions = new[] { "circular-glasses", "sunglasses", "square-glasses", "heart-glasses", "stripped-glasses", "star-glasses", "bottomless-glasses" };
+    private string[] headwearOptions = new[] { "basketball-cap", "french-cap", "hat", "winter-cap", "magician-hat", "sideways-baseball-cap", "hairband1", "hairband2" };
+    private string[] neckwearOptions = new[] { "boy-tie", "straight-tie" };
+    private string[] extrasOptions = new[] { "lady-hat", "side-bow", "flower" };
+    private string[] accessoryColors = new[] { "red", "green", "yellow", "black" };
+    
+    private Dictionary<string, string> colorMap = new()
+    {
+        ["blonde"] = "#fee484",
+        ["black"] = "#606060",
+        ["brown"] = "#cc7e2a",
+        ["red"] = "#e05e5f",
+        ["orange"] = "#f37634",
+        ["silver"] = "#d1d1d2",
+        ["pink"] = "#f38385",
+        ["darkblue"] = "#727bbb",
+        ["green"] = "#70c4a1",
+        ["blue"] = "#73adc3",
+        ["yellow"] = "#ffeb3b"
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        var existingAvatar = await Database.GetUserAvatarAsync();
+        if (existingAvatar != null)
+        {
+            LoadAvatarConfig(existingAvatar);
+        }
+        
+        var profile = await Database.GetUserProfileAsync();
+        if (profile != null && !string.IsNullOrEmpty(profile.Name))
+        {
+            userName = profile.Name;
+        }
+    }
+
+    private void LoadAvatarConfig(AvatarConfiguration config)
+    {
+        gender = config.Gender;
+        baseIndex = config.BaseIndex;
+        eyesIndex = config.EyesIndex;
+        noseIndex = config.NoseIndex;
+        mouthIndex = config.MouthIndex;
+        hairStyle = config.HairStyle ?? "medium-curl";
+        hairColor = config.HairColor ?? "black";
+        clothesStyle = config.ClothesStyle ?? "off-shoulder";
+        clothesColor = config.ClothesColor ?? "blue";
+        facialHairStyle = config.FacialHairStyle;
+        glassesStyle = config.GlassesStyle;
+        headwearStyle = config.HeadwearStyle;
+        headwearColor = config.HeadwearColor;
+        neckwearStyle = config.NeckwearStyle;
+        neckwearColor = config.NeckwearColor;
+        extrasStyle = config.ExtrasStyle;
+        extrasColor = config.ExtrasColor;
+    }
+
+    private string GetPanelTitle() => currentCategory switch
+    {
+        "skin" => "Skin Tone",
+        "eyes" => "Eyes",
+        "nose" => "Nose",
+        "mouth" => "Mouth",
+        "hair" => "Hair",
+        "clothes" => "Clothes",
+        "facialHair" => "Facial Hair",
+        "accessories" => "Accessories",
+        _ => ""
+    };
+
+    private void SwitchCategory(string category)
+    {
+        currentCategory = category;
+    }
+
+    private void SwitchGender(string newGender)
+    {
+        gender = newGender;
+        if (gender == "male")
+        {
+            clothesStyle = "uniform";
+            clothesColor = "black";
+        }
+        else
+        {
+            clothesStyle = "off-shoulder";
+            clothesColor = "blue";
+            facialHairStyle = null;
+        }
+    }
+
+    private bool ShouldShowColorSelector()
+    {
+        if (currentCategory == "hair") return true;
+        if (currentCategory == "clothes") return true;
+        if (currentCategory == "accessories" && 
+            (headwearStyle != null || neckwearStyle != null || extrasStyle != null))
+            return true;
+        
+        return false;
+    }
+
+    private RenderFragment RenderOptions() => builder =>
+    {
+        if (currentCategory == "skin")
+        {
+            builder.OpenElement(0, "div");
+            builder.AddAttribute(1, "class", "optionsGrid");
+            for (int i = 1; i <= 3; i++)
+            {
+                var idx = i;
+                builder.OpenElement(2, "div");
+                builder.AddAttribute(3, "class", $"optionBox {(baseIndex == idx ? "selected" : "")}");
+                builder.AddAttribute(4, "onclick", EventCallback.Factory.Create(this, () => { baseIndex = idx; StateHasChanged(); }));
+                builder.OpenElement(5, "img");
+                builder.AddAttribute(6, "src", $"assets/avatar/{gender}/base/base{idx:D2}.png");
+                builder.CloseElement();
+                builder.CloseElement();
+            }
+            builder.CloseElement();
+        }
+        else if (currentCategory == "eyes")
+        {
+            builder.OpenElement(0, "div");
+            builder.AddAttribute(1, "class", "optionsGrid");
+            for (int i = 1; i <= 42; i++)
+            {
+                var idx = i;
+                builder.OpenElement(2, "div");
+                builder.AddAttribute(3, "class", $"optionBox {(eyesIndex == idx ? "selected" : "")}");
+                builder.AddAttribute(4, "onclick", EventCallback.Factory.Create(this, () => { eyesIndex = idx; StateHasChanged(); }));
+                builder.OpenElement(5, "img");
+                builder.AddAttribute(6, "src", $"assets/avatar/{gender}/eyes/eyes{idx:D2}.png");
+                builder.CloseElement();
+                builder.CloseElement();
+            }
+            builder.CloseElement();
+        }
+        else if (currentCategory == "nose")
+        {
+            builder.OpenElement(0, "div");
+            builder.AddAttribute(1, "class", "optionsGrid");
+            for (int i = 1; i <= 10; i++)
+            {
+                var idx = i;
+                builder.OpenElement(2, "div");
+                builder.AddAttribute(3, "class", $"optionBox {(noseIndex == idx ? "selected" : "")}");
+                builder.AddAttribute(4, "onclick", EventCallback.Factory.Create(this, () => { noseIndex = idx; StateHasChanged(); }));
+                builder.OpenElement(5, "img");
+                builder.AddAttribute(6, "src", $"assets/avatar/{gender}/nose/nose{idx:D2}.png");
+                builder.CloseElement();
+                builder.CloseElement();
+            }
+            builder.CloseElement();
+        }
+        else if (currentCategory == "mouth")
+        {
+            builder.OpenElement(0, "div");
+            builder.AddAttribute(1, "class", "optionsGrid");
+            for (int i = 1; i <= 10; i++)
+            {
+                var idx = i;
+                builder.OpenElement(2, "div");
+                builder.AddAttribute(3, "class", $"optionBox {(mouthIndex == idx ? "selected" : "")}");
+                builder.AddAttribute(4, "onclick", EventCallback.Factory.Create(this, () => { mouthIndex = idx; StateHasChanged(); }));
+                builder.OpenElement(5, "img");
+                builder.AddAttribute(6, "src", $"assets/avatar/{gender}/mouth/mouth{idx:D2}.png");
+                builder.CloseElement();
+                builder.CloseElement();
+            }
+            builder.CloseElement();
+        }
+        else if (currentCategory == "hair")
+        {
+            var styles = gender == "male" ? maleHairStyles["styles"] : femaleHairStyles["styles"];
+            builder.OpenElement(0, "div");
+            builder.AddAttribute(1, "class", "optionsGrid");
+            foreach (var style in styles)
+            {
+                var s = style;
+                builder.OpenElement(2, "div");
+                builder.AddAttribute(3, "class", $"optionBox {(hairStyle == s ? "selected" : "")}");
+                builder.AddAttribute(4, "onclick", EventCallback.Factory.Create(this, () => { hairStyle = s; StateHasChanged(); }));
+                builder.OpenElement(5, "img");
+                builder.AddAttribute(6, "src", $"assets/avatar/{gender}/hair/{s}-{hairColor}.png");
+                builder.CloseElement();
+                builder.CloseElement();
+            }
+            builder.CloseElement();
+        }
+        else if (currentCategory == "clothes")
+        {
+            var styles = gender == "male" ? maleClothesStyles["styles"] : femaleClothesStyles["styles"];
+            builder.OpenElement(0, "div");
+            builder.AddAttribute(1, "class", "optionsGrid");
+            foreach (var style in styles)
+            {
+                var s = style;
+                builder.OpenElement(2, "div");
+                builder.AddAttribute(3, "class", $"optionBox {(clothesStyle == s ? "selected" : "")}");
+                builder.AddAttribute(4, "onclick", EventCallback.Factory.Create(this, () => { clothesStyle = s; StateHasChanged(); }));
+                builder.OpenElement(5, "img");
+                builder.AddAttribute(6, "src", $"assets/avatar/{gender}/clothes/{s}-{clothesColor}.png");
+                builder.CloseElement();
+                builder.CloseElement();
+            }
+            builder.CloseElement();
+        }
+        else if (currentCategory == "facialHair" && gender == "male")
+        {
+            builder.OpenElement(0, "div");
+            builder.AddAttribute(1, "class", "optionsGrid");
+            builder.OpenElement(2, "div");
+            builder.AddAttribute(3, "class", $"optionBox {(facialHairStyle == null ? "selected" : "")}");
+            builder.AddAttribute(4, "onclick", EventCallback.Factory.Create(this, () => { facialHairStyle = null; StateHasChanged(); }));
+            builder.AddContent(5, "None");
+            builder.CloseElement();
+            for (int i = 1; i <= 20; i++)
+            {
+                var s = $"style{i}";
+                builder.OpenElement(6, "div");
+                builder.AddAttribute(7, "class", $"optionBox {(facialHairStyle == s ? "selected" : "")}");
+                builder.AddAttribute(8, "onclick", EventCallback.Factory.Create(this, () => { facialHairStyle = s; StateHasChanged(); }));
+                builder.OpenElement(9, "img");
+                builder.AddAttribute(10, "src", $"assets/avatar/male/facialHair/{s}.png");
+                builder.CloseElement();
+                builder.CloseElement();
+            }
+            builder.CloseElement();
+        }
+        else if (currentCategory == "accessories")
+        {
+            RenderAccessories(builder);
+        }
+    };
+
+    private void RenderAccessories(RenderTreeBuilder builder)
+    {
+        builder.OpenElement(0, "div");
+        builder.AddAttribute(1, "class", "optionsGrid");
+        builder.OpenElement(2, "div");
+        builder.AddAttribute(3, "class", $"optionBox {(glassesStyle == null ? "selected" : "")}");
+        builder.AddAttribute(4, "onclick", EventCallback.Factory.Create(this, () => { glassesStyle = null; StateHasChanged(); }));
+        builder.AddContent(5, "None");
+        builder.CloseElement();
+        foreach (var g in glassesOptions)
+        {
+            var gs = g;
+            builder.OpenElement(6, "div");
+            builder.AddAttribute(7, "class", $"optionBox {(glassesStyle == gs ? "selected" : "")}");
+            builder.AddAttribute(8, "onclick", EventCallback.Factory.Create(this, () => { glassesStyle = gs; StateHasChanged(); }));
+            builder.OpenElement(9, "img");
+            builder.AddAttribute(10, "src", $"assets/avatar/{gender}/accessories/{gs}.png");
+            builder.CloseElement();
+            builder.CloseElement();
+        }
+        builder.CloseElement();
+
+        builder.OpenElement(11, "div");
+        builder.AddAttribute(12, "class", "optionsGrid");
+        builder.OpenElement(13, "div");
+        builder.AddAttribute(14, "class", $"optionBox {(headwearStyle == null ? "selected" : "")}");
+        builder.AddAttribute(15, "onclick", EventCallback.Factory.Create(this, () => { headwearStyle = null; StateHasChanged(); }));
+        builder.AddContent(16, "None");
+        builder.CloseElement();
+        foreach (var h in headwearOptions)
+        {
+            var hs = h;
+            builder.OpenElement(17, "div");
+            builder.AddAttribute(18, "class", $"optionBox {(headwearStyle == hs ? "selected" : "")}");
+            builder.AddAttribute(19, "onclick", EventCallback.Factory.Create(this, () => { headwearStyle = hs; headwearColor = "red"; StateHasChanged(); }));
+            builder.OpenElement(20, "img");
+            builder.AddAttribute(21, "src", $"assets/avatar/{gender}/accessories/{hs}-red.png");
+            builder.CloseElement();
+            builder.CloseElement();
+        }
+        builder.CloseElement();
+
+        builder.OpenElement(22, "div");
+        builder.AddAttribute(23, "class", "optionsGrid");
+        builder.OpenElement(24, "div");
+        builder.AddAttribute(25, "class", $"optionBox {(neckwearStyle == null ? "selected" : "")}");
+        builder.AddAttribute(26, "onclick", EventCallback.Factory.Create(this, () => { neckwearStyle = null; StateHasChanged(); }));
+        builder.AddContent(27, "None");
+        builder.CloseElement();
+        foreach (var n in neckwearOptions)
+        {
+            var ns = n;
+            builder.OpenElement(28, "div");
+            builder.AddAttribute(29, "class", $"optionBox {(neckwearStyle == ns ? "selected" : "")}");
+            builder.AddAttribute(30, "onclick", EventCallback.Factory.Create(this, () => { neckwearStyle = ns; neckwearColor = "red"; StateHasChanged(); }));
+            builder.OpenElement(31, "img");
+            builder.AddAttribute(32, "src", $"assets/avatar/{gender}/accessories/{ns}-red.png");
+            builder.CloseElement();
+            builder.CloseElement();
+        }
+        builder.CloseElement();
+
+        if (gender == "female")
+        {
+            builder.OpenElement(33, "div");
+            builder.AddAttribute(34, "class", "optionsGrid");
+            builder.OpenElement(35, "div");
+            builder.AddAttribute(36, "class", $"optionBox {(extrasStyle == null ? "selected" : "")}");
+            builder.AddAttribute(37, "onclick", EventCallback.Factory.Create(this, () => { extrasStyle = null; StateHasChanged(); }));
+            builder.AddContent(38, "None");
+            builder.CloseElement();
+            foreach (var e in extrasOptions)
+            {
+                var es = e;
+                builder.OpenElement(39, "div");
+                builder.AddAttribute(40, "class", $"optionBox {(extrasStyle == es ? "selected" : "")}");
+                builder.AddAttribute(41, "onclick", EventCallback.Factory.Create(this, () => { extrasStyle = es; extrasColor = "red"; StateHasChanged(); }));
+                builder.OpenElement(42, "img");
+                builder.AddAttribute(43, "src", $"assets/avatar/{gender}/accessories/{es}-red.png");
+                builder.CloseElement();
+                builder.CloseElement();
+            }
+            builder.CloseElement();
+        }
+    }
+
+    private RenderFragment RenderColorSelector() => builder =>
+    {
+        if (currentCategory == "hair")
+        {
+            foreach (var color in hairColors)
+            {
+                var c = color;
+                builder.OpenElement(0, "div");
+                builder.AddAttribute(1, "class", $"colorDot {(hairColor == c ? "selected" : "")}");
+                builder.AddAttribute(2, "style", $"background-color: {colorMap[c]};");
+                builder.AddAttribute(3, "onclick", EventCallback.Factory.Create(this, () => { hairColor = c; StateHasChanged(); }));
+                builder.CloseElement();
+            }
+        }
+        else if (currentCategory == "clothes")
+        {
+            var colors = gender == "male" ? maleClothesColors["colors"] : femaleClothesColors["colors"];
+            foreach (var color in colors)
+            {
+                var c = color;
+                builder.OpenElement(0, "div");
+                builder.AddAttribute(1, "class", $"colorDot {(clothesColor == c ? "selected" : "")}");
+                builder.AddAttribute(2, "style", $"background-color: {colorMap[c]};");
+                builder.AddAttribute(3, "onclick", EventCallback.Factory.Create(this, () => { clothesColor = c; StateHasChanged(); }));
+                builder.CloseElement();
+            }
+        }
+        else if (currentCategory == "accessories")
+        {
+            if (headwearStyle != null || neckwearStyle != null || extrasStyle != null)
+            {
+                foreach (var color in accessoryColors)
+                {
+                    var c = color;
+                    var isSelected = (headwearStyle != null && headwearColor == c) || (neckwearStyle != null && neckwearColor == c) || (extrasStyle != null && extrasColor == c);
+                    builder.OpenElement(0, "div");
+                    builder.AddAttribute(1, "class", $"colorDot {(isSelected ? "selected" : "")}");
+                    builder.AddAttribute(2, "style", $"background-color: {colorMap[c]};");
+                    builder.AddAttribute(3, "onclick", EventCallback.Factory.Create(this, () => 
+                    {
+                        if (headwearStyle != null) headwearColor = c;
+                        if (neckwearStyle != null) neckwearColor = c;
+                        if (extrasStyle != null) extrasColor = c;
+                        StateHasChanged();
+                    }));
+                    builder.CloseElement();
+                }
+            }
+        }
+    };
+
+    private RenderFragment RenderAvatar() => builder =>
+    {
+        var layers = new List<(string type, string src, string? styleKey)>
+        {
+            ("base", $"assets/avatar/{gender}/base/base{baseIndex:D2}.png", null),
+            ("eyes", $"assets/avatar/{gender}/eyes/eyes{eyesIndex:D2}.png", null),
+            ("nose", $"assets/avatar/{gender}/nose/nose{noseIndex:D2}.png", null),
+            ("mouth", $"assets/avatar/{gender}/mouth/mouth{mouthIndex:D2}.png", null)
+        };
+
+        if (!string.IsNullOrEmpty(clothesStyle) && !string.IsNullOrEmpty(clothesColor))
+            layers.Add(("clothes", $"assets/avatar/{gender}/clothes/{clothesStyle}-{clothesColor}.png", clothesStyle));
+
+        if (!string.IsNullOrEmpty(hairStyle) && !string.IsNullOrEmpty(hairColor))
+            layers.Add(("hair", $"assets/avatar/{gender}/hair/{hairStyle}-{hairColor}.png", hairStyle));
+
+        if (facialHairStyle != null && gender == "male")
+            layers.Add(("facialHair", $"assets/avatar/male/facialHair/{facialHairStyle}.png", facialHairStyle));
+
+        if (glassesStyle != null)
+            layers.Add(("glasses", $"assets/avatar/{gender}/accessories/{glassesStyle}.png", null));
+
+        if (headwearStyle != null && headwearColor != null)
+            layers.Add(("headwear", $"assets/avatar/{gender}/accessories/{headwearStyle}-{headwearColor}.png", headwearStyle));
+
+        if (neckwearStyle != null && neckwearColor != null)
+            layers.Add(("neckwear", $"assets/avatar/{gender}/accessories/{neckwearStyle}-{neckwearColor}.png", neckwearStyle));
+
+        if (extrasStyle != null && extrasColor != null)
+            layers.Add(("extras", $"assets/avatar/{gender}/accessories/{extrasStyle}-{extrasColor}.png", extrasStyle));
+
+        foreach (var layer in layers)
+        {
+            var pos = GetPosition(layer.type, layer.styleKey);
+            builder.OpenElement(0, "img");
+            builder.AddAttribute(1, "class", $"avatarLayer layer-{layer.type}");
+            builder.AddAttribute(2, "src", layer.src);
+            builder.AddAttribute(3, "style", $"transform: translate(calc(-50% + {pos.X}px), calc(-50% + {pos.Y}px)) scale({pos.Scale});");
+            builder.CloseElement();
+        }
+    };
+
+    private AvatarPositions.LayerPosition GetPosition(string type, string? styleKey)
+    {
+        if (type == "hair" && styleKey != null)
+            return AvatarPositions.GetHairPosition(gender, styleKey);
+        else if (type == "clothes" && styleKey != null)
+            return AvatarPositions.GetClothesPosition(gender, styleKey);
+        else if (type == "facialHair" && styleKey != null)
+            return AvatarPositions.GetFacialHairPosition(styleKey);
+        else if (type == "glasses")
+            return AvatarPositions.GetGlassesPosition(styleKey ?? "default");
+        else if (type == "headwear" && styleKey != null)
+            return AvatarPositions.GetHeadwearPosition(styleKey);
+        else if (type == "neckwear" && styleKey != null)
+            return AvatarPositions.GetNeckwearPosition(styleKey);
+        else if (type == "extras" && styleKey != null)
+            return AvatarPositions.GetExtrasPosition(styleKey);
+
+        return AvatarPositions.DefaultPositions.GetValueOrDefault(type, new AvatarPositions.LayerPosition(0, 0, 0.30));
+    }
+
+    private async Task SaveAndContinue()
+    {
+        try
+        {
+            // Step 1: Save avatar configuration to AvatarConfiguration table
+            var config = new AvatarConfiguration
+            {
+                Gender = gender, 
+                BaseIndex = baseIndex,
+                EyesIndex = eyesIndex,
+                NoseIndex = noseIndex,
+                MouthIndex = mouthIndex,
+                HairStyle = hairStyle,
+                HairColor = hairColor,
+                ClothesStyle = clothesStyle,
+                ClothesColor = clothesColor,
+                FacialHairStyle = facialHairStyle,
+                GlassesStyle = glassesStyle,
+                HeadwearStyle = headwearStyle,
+                HeadwearColor = headwearColor,
+                NeckwearStyle = neckwearStyle,
+                NeckwearColor = neckwearColor,
+                ExtrasStyle = extrasStyle,
+                ExtrasColor = extrasColor
+            };
+
+            var savedConfig = await Database.SaveAvatarConfigurationAsync(config);
+
+            // Step 2: Get or create user profile
+            var profile = await Database.GetUserProfileAsync();
+            if (profile == null)
+            {
+                profile = new UserProfile
+                {
+                    Name = string.IsNullOrWhiteSpace(userName) ? "User" : userName,
+                    AvatarConfigId = savedConfig.Id  // Link to avatar config
+                };
+            }
+            else
+            {
+                profile.Name = string.IsNullOrWhiteSpace(userName) ? profile.Name : userName;
+                profile.AvatarConfigId = savedConfig.Id;
+            }
+
+            // Step 3: Generate and save avatar SVG
+            profile.AvatarSvg = GenerateAvatarSvg();
+            
+            Console.WriteLine($"Generated Avatar SVG: {profile.AvatarSvg.Length} characters");
+
+            // Step 4: Save profile
+            await Database.SaveUserProfileAsync(profile);
+            await Database.SetBoolSettingAsync(SettingKeys.AvatarCompleted, true);
+
+            // Step 5: Navigate to security setup
+            Navigation.NavigateTo("/security-setup", true);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving avatar: {ex.Message}");
+            Console.WriteLine($"Stack trace: {ex.StackTrace}");
+        }
+    }
+
+    private string GenerateAvatarSvg()
+    {
+        var svgBuilder = new System.Text.StringBuilder();
+        
+        svgBuilder.AppendLine("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 400 400\" width=\"400\" height=\"400\">");
+        
+        var layers = new List<(string type, string src, string? styleKey)>
+        {
+            ("base", $"assets/avatar/{gender}/base/base{baseIndex:D2}.png", null),
+            ("eyes", $"assets/avatar/{gender}/eyes/eyes{eyesIndex:D2}.png", null),
+            ("nose", $"assets/avatar/{gender}/nose/nose{noseIndex:D2}.png", null),
+            ("mouth", $"assets/avatar/{gender}/mouth/mouth{mouthIndex:D2}.png", null)
+        };
+
+        if (!string.IsNullOrEmpty(clothesStyle) && !string.IsNullOrEmpty(clothesColor))
+            layers.Add(("clothes", $"assets/avatar/{gender}/clothes/{clothesStyle}-{clothesColor}.png", clothesStyle));
+
+        if (!string.IsNullOrEmpty(hairStyle) && !string.IsNullOrEmpty(hairColor))
+            layers.Add(("hair", $"assets/avatar/{gender}/hair/{hairStyle}-{hairColor}.png", hairStyle));
+
+        if (facialHairStyle != null && gender == "male")
+            layers.Add(("facialHair", $"assets/avatar/male/facialHair/{facialHairStyle}.png", facialHairStyle));
+
+        if (glassesStyle != null)
+            layers.Add(("glasses", $"assets/avatar/{gender}/accessories/{glassesStyle}.png", null));
+
+        if (headwearStyle != null && headwearColor != null)
+            layers.Add(("headwear", $"assets/avatar/{gender}/accessories/{headwearStyle}-{headwearColor}.png", headwearStyle));
+
+        if (neckwearStyle != null && neckwearColor != null)
+            layers.Add(("neckwear", $"assets/avatar/{gender}/accessories/{neckwearStyle}-{neckwearColor}.png", neckwearStyle));
+
+        if (extrasStyle != null && extrasColor != null)
+            layers.Add(("extras", $"assets/avatar/{gender}/accessories/{extrasStyle}-{extrasColor}.png", extrasStyle));
+
+        foreach (var layer in layers)
+        {
+            var pos = GetPosition(layer.type, layer.styleKey);
+            
+            var x = (int)(200 + pos.X);
+            var y = (int)(200 + pos.Y);
+            var width = (int)(400 * pos.Scale);
+            var height = (int)(400 * pos.Scale);
+            
+            x -= width / 2;
+            y -= height / 2;
+            
+            svgBuilder.AppendLine($"  <image href=\"{layer.src}\" x=\"{x}\" y=\"{y}\" width=\"{width}\" height=\"{height}\" />");
+        }
+        
+        svgBuilder.AppendLine("</svg>");
+        
+        return svgBuilder.ToString();
+    }
+
+    private void GoBack()
+    {
+        Navigation.NavigateTo("/onboarding/3");
+    }
+}

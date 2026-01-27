@@ -1,0 +1,467 @@
+@page "/calendar"
+@using MoodJournal.Models
+@using MoodJournal.Services.Interfaces
+@using Microsoft.JSInterop
+@inject IJournalService JournalService
+@inject ITagService TagService
+@inject IMoodStickerService MoodStickerService
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+
+<div class="calendar-container">
+    
+ 
+ 
+    
+    <!-- MONTH NAVIGATION -->
+    <div class="calendar-top-header">
+        <div class="calendar-title-section">
+            <button class="back-btn" @onclick='() => Navigation.NavigateTo("/main")'>
+                ← Back to Main
+            </button>
+            <h1 class="page-title">Journal Calendar</h1>
+        </div>
+        
+        <div class="calendar-nav-section">
+            <div class="month-navigation">
+                <button class="nav-btn" @onclick="PreviousMonth">← Previous</button>
+                <h2 class="current-month">@GetMonthYearDisplay()</h2>
+                <button class="nav-btn" @onclick="NextMonth">Next →</button>
+            </div>
+            <button class="today-btn" @onclick="JumpToToday">Today</button>
+        </div>
+    </div>
+    <!-- MAIN CONTENT -->
+    <div class="calendar-content">
+        
+        <!-- CALENDAR GRID -->
+        <div class="calendar-section">
+            <div class="calendar-grid-container">
+                
+                <!-- Weekday Headers -->
+                <div class="weekday-headers">
+                    <div class="weekday">Sun</div>
+                    <div class="weekday">Mon</div>
+                    <div class="weekday">Tue</div>
+                    <div class="weekday">Wed</div>
+                    <div class="weekday">Thu</div>
+                    <div class="weekday">Fri</div>
+                    <div class="weekday">Sat</div>
+                </div>
+
+                <!-- Calendar Grid -->
+                <div class="calendar-grid">
+                    @foreach (var date in calendarDates)
+                    {
+                        var cssClass = GetDateCssClass(date);
+                        var hasEntry = entriesByDate.ContainsKey(date.DateString);
+                        
+                        <div class="calendar-date @cssClass" @onclick="() => SelectDate(date)">
+                            <span class="date-number">@date.Day</span>
+                            
+                            @if (hasEntry && moodStickers.ContainsKey(date.DateString))
+                            {
+                                <div class="date-indicator">
+                                    <div class="mood-sticker-small">
+                                        @((MarkupString)moodStickers[date.DateString])
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PREVIEW PANEL -->
+        <div class="preview-section">
+            
+            @if (selectedEntry != null && selectedDate != null)
+            {
+                <!-- Entry Preview -->
+                <div class="preview-card">
+                    <div class="preview-date">@FormatDateLong(selectedDate.Value)</div>
+
+                    <div class="preview-mood">
+                        @if (selectedMoodSticker != null)
+                        {
+                            <div class="preview-mood-sticker">
+                                @((MarkupString)selectedMoodSticker)
+                            </div>
+                        }
+                        <span class="preview-mood-text">@GetMoodDisplayText(selectedEntry)</span>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(selectedEntry.Title))
+                    {
+                        <h3 class="preview-title">@selectedEntry.Title</h3>
+                    }
+
+                    @if (!string.IsNullOrEmpty(selectedEntry.Content))
+                    {
+                        <div class="preview-content">
+                            @GetContentPreview(selectedEntry.Content)
+                        </div>
+                    }
+
+                    @if (selectedTags.Count > 0)
+                    {
+                        <div class="preview-tags">
+                            @foreach (var tag in selectedTags)
+                            {
+                                <span class="preview-tag">🏷️ @tag.Name</span>
+                            }
+                        </div>
+                    }
+
+                    <div class="preview-meta">
+                        <div class="meta-item">@selectedEntry.WordCount words • @selectedEntry.CharacterCount characters</div>
+                        <div class="meta-item">Created: @selectedEntry.CreatedAt.ToString("MMM dd, yyyy h:mm tt")</div>
+                    </div>
+
+                    <div class="preview-actions">
+                        <button class="action-btn btn-edit" @onclick="EditEntry">Edit Entry</button>
+                        <button class="action-btn btn-delete" @onclick="DeleteEntry">Delete</button>
+                    </div>
+                </div>
+            }
+            else if (selectedDate != null)
+            {
+                <!-- Empty State -->
+                <div class="preview-card">
+                    <div class="empty-preview">
+                        <div class="empty-preview-icon">📅</div>
+                        <div class="empty-preview-text">No entry for this date</div>
+                        <div class="empty-preview-hint">Click the button below to create one</div>
+                        <button class="action-btn btn-edit" style="margin-top: 16px;" @onclick="CreateNewEntry">
+                            + New Entry
+                        </button>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <!-- No Date Selected -->
+                <div class="preview-card">
+                    <div class="empty-preview">
+                        <div class="empty-preview-icon">👆</div>
+                        <div class="empty-preview-text">Select a date</div>
+                        <div class="empty-preview-hint">Click on any date to view or create an entry</div>
+                    </div>
+                </div>
+            }
+
+            <!-- Legend -->
+            <div class="legend-card">
+                <h4 class="legend-title">Legend</h4>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <div class="legend-indicator" style="background: #7ba3d4; border: 3px solid #3d3d3d;"></div>
+                        <span>Today's date</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-indicator" style="background: white; border: 3px solid #3d3d3d;"></div>
+                        <span>Date with entry</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-indicator" style="background: #e8f4ff; border: 3px solid #7ba3d4;"></div>
+                        <span>Selected date</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@code {
+    // Date class for calendar grid
+    private class CalendarDate
+    {
+        public DateTime Date { get; set; }
+        public int Day { get; set; }
+        public bool IsCurrentMonth { get; set; }
+        public bool IsToday { get; set; }
+        public string DateString { get; set; } = string.Empty;
+    }
+
+    // State
+    private int currentYear = DateTime.Now.Year;
+    private int currentMonth = DateTime.Now.Month;
+    private DateTime? selectedDate;
+    private List<CalendarDate> calendarDates = new();
+    private Dictionary<string, JournalEntry> entriesByDate = new();
+    private Dictionary<string, string> moodStickers = new(); // Date -> SVG
+    private JournalEntry? selectedEntry;
+    private List<Tag> selectedTags = new();
+    private string? selectedMoodSticker;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("Calendar: Initializing");
+        
+        GenerateCalendarDates();
+        await LoadMonthEntries();
+        await LoadMoodStickersForEntries();
+        
+        Console.WriteLine($"Calendar initialized: {currentMonth}/{currentYear}");
+    }
+
+    private async Task LoadMoodStickersForEntries()
+    {
+        try
+        {
+            moodStickers.Clear();
+            
+            foreach (var kvp in entriesByDate)
+            {
+                var dateStr = kvp.Key;
+                var entry = kvp.Value;
+                
+                if (!string.IsNullOrEmpty(entry.PrimaryMood))
+                {
+                    var svg = await MoodStickerService.GenerateMoodStickerSvgAsync(
+                        entry.PrimaryMood, 40, 40
+                    );
+                    moodStickers[dateStr] = svg;
+                }
+            }
+            
+            Console.WriteLine($"Generated {moodStickers.Count} mood stickers for calendar");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error generating mood stickers: {ex.Message}");
+        }
+    }
+
+    private void GenerateCalendarDates()
+    {
+        calendarDates.Clear();
+        
+        var firstDayOfMonth = new DateTime(currentYear, currentMonth, 1);
+        var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+        
+        var startDate = firstDayOfMonth.AddDays(-(int)firstDayOfMonth.DayOfWeek);
+        var endDate = lastDayOfMonth.AddDays(6 - (int)lastDayOfMonth.DayOfWeek);
+        
+        var currentDate = startDate;
+        while (currentDate <= endDate)
+        {
+            calendarDates.Add(new CalendarDate
+            {
+                Date = currentDate,
+                Day = currentDate.Day,
+                IsCurrentMonth = currentDate.Month == currentMonth,
+                IsToday = currentDate.Date == DateTime.Today,
+                DateString = currentDate.ToString("yyyy-MM-dd")
+            });
+            
+            currentDate = currentDate.AddDays(1);
+        }
+        
+        Console.WriteLine($"Generated {calendarDates.Count} calendar dates");
+    }
+
+    private async Task LoadMonthEntries()
+    {
+        try
+        {
+            entriesByDate.Clear();
+            
+            var startDate = new DateTime(currentYear, currentMonth, 1).ToString("yyyy-MM-dd");
+            var endDate = new DateTime(currentYear, currentMonth, DateTime.DaysInMonth(currentYear, currentMonth)).ToString("yyyy-MM-dd");
+            
+            var entries = await JournalService.GetEntriesByDateRangeAsync(startDate, endDate);
+            
+            foreach (var entry in entries)
+            {
+                entriesByDate[entry.EntryDate] = entry;
+            }
+            
+            Console.WriteLine($"Loaded {entries.Count} entries for {currentMonth}/{currentYear}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading entries: {ex.Message}");
+        }
+    }
+
+    private string GetDateCssClass(CalendarDate date)
+    {
+        var classes = new List<string>();
+        
+        if (!date.IsCurrentMonth)
+            classes.Add("other-month");
+        
+        if (date.IsToday)
+            classes.Add("today");
+        
+        if (selectedDate.HasValue && date.Date.Date == selectedDate.Value.Date)
+            classes.Add("selected");
+        
+        if (entriesByDate.ContainsKey(date.DateString))
+            classes.Add("has-entry");
+        
+        return string.Join(" ", classes);
+    }
+
+    private async Task SelectDate(CalendarDate date)
+    {
+        selectedDate = date.Date;
+        selectedEntry = null;
+        selectedTags.Clear();
+        selectedMoodSticker = null;
+        
+        if (entriesByDate.ContainsKey(date.DateString))
+        {
+            selectedEntry = entriesByDate[date.DateString];
+            
+            // Load tags for entry using GetTagsForEntryAsync (correct method!)
+            if (selectedEntry.Id > 0)
+            {
+                try
+                {
+                    selectedTags = await JournalService.GetTagsForEntryAsync(selectedEntry.Id);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error loading tags: {ex.Message}");
+                    selectedTags = new List<Tag>();
+                }
+            }
+            
+            // Generate larger mood sticker for preview
+            if (!string.IsNullOrEmpty(selectedEntry.PrimaryMood))
+            {
+                try
+                {
+                    selectedMoodSticker = await MoodStickerService.GenerateMoodStickerSvgAsync(
+                        selectedEntry.PrimaryMood, 60, 60
+                    );
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error loading mood sticker: {ex.Message}");
+                }
+            }
+        }
+        
+        StateHasChanged();
+    }
+
+    private string GetMoodDisplayText(JournalEntry entry)
+    {
+        // Get all moods using the helper property
+        var allMoods = entry.AllMoods;
+        return string.Join(", ", allMoods);
+    }
+
+    private string GetContentPreview(string content)
+    {
+        if (string.IsNullOrEmpty(content)) return "";
+        
+        var plain = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", "");
+        
+        return plain.Length > 200 ? plain.Substring(0, 200) + "..." : plain;
+    }
+
+    private string FormatDateLong(DateTime date)
+    {
+        return date.ToString("dddd, MMMM d, yyyy");
+    }
+
+    private string GetMonthYearDisplay()
+    {
+        return new DateTime(currentYear, currentMonth, 1).ToString("MMMM yyyy");
+    }
+
+    private async Task PreviousMonth()
+    {
+        currentMonth--;
+        if (currentMonth < 1)
+        {
+            currentMonth = 12;
+            currentYear--;
+        }
+        
+        GenerateCalendarDates();
+        await LoadMonthEntries();
+        await LoadMoodStickersForEntries();
+        
+        selectedDate = null;
+        selectedEntry = null;
+    }
+
+    private async Task NextMonth()
+    {
+        currentMonth++;
+        if (currentMonth > 12)
+        {
+            currentMonth = 1;
+            currentYear++;
+        }
+        
+        GenerateCalendarDates();
+        await LoadMonthEntries();
+        await LoadMoodStickersForEntries();
+        
+        selectedDate = null;
+        selectedEntry = null;
+    }
+
+    private async Task JumpToToday()
+    {
+        currentYear = DateTime.Now.Year;
+        currentMonth = DateTime.Now.Month;
+        
+        GenerateCalendarDates();
+        await LoadMonthEntries();
+        await LoadMoodStickersForEntries();
+        
+        selectedDate = DateTime.Today;
+    }
+
+    private void EditEntry()
+    {
+        if (selectedDate.HasValue)
+        {
+            Navigation.NavigateTo($"/create-entry?date={selectedDate.Value:yyyy-MM-dd}");
+        }
+    }
+
+    private void CreateNewEntry()
+    {
+        if (selectedDate.HasValue)
+        {
+            Navigation.NavigateTo($"/create-entry?date={selectedDate.Value:yyyy-MM-dd}");
+        }
+    }
+
+    private async Task DeleteEntry()
+    {
+        if (selectedEntry != null)
+        {
+            try
+            {
+                var confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this entry?");
+                if (confirmed)
+                {
+                    await JournalService.DeleteEntryAsync(selectedEntry.Id);
+                    await LoadMonthEntries();
+                    await LoadMoodStickersForEntries();
+                    selectedEntry = null;
+                    selectedDate = null;
+                    StateHasChanged();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting entry: {ex.Message}");
+            }
+        }
+    }
+}

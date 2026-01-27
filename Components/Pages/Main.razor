@@ -1,101 +1,513 @@
 @page "/main"
+@using MoodJournal.Models
 @using MoodJournal.Services.Interfaces
 @inject NavigationManager Navigation
 @inject IDatabaseService DatabaseService
+@inject IJournalService JournalService
+@inject ITagService TagService
+@inject IMoodStickerService MoodStickerService
 
-<div class="main-page">
-    <div class="header">
-        <h1>MoodJournal</h1>
-        <p>Welcome back, @userName!</p>
-    </div>
-
-    <div class="quick-actions">
-        <button class="action-btn primary" @onclick="CreateJournalEntry">
-            <span class="icon">📝</span>
-            <span>New Journal Entry</span>
-        </button>
-
-        <button class="action-btn secondary" @onclick="ViewAllEntries">
-            <span class="icon">📚</span>
-            <span>View All Entries</span>
-        </button>
-
-        <button class="action-btn secondary" @onclick="ViewStats">
-            <span class="icon">📊</span>
-            <span>Statistics</span>
+<div class="dashboard">
+    
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="greeting">Hi, @userName </div>
+        <button class="profile-btn" @onclick="GoToSettings">
+            @if (!string.IsNullOrEmpty(userAvatarSvg))
+            {
+                @((MarkupString)userAvatarSvg)
+            }
+            else
+            {
+                <span style="font-size: 32px;">👤</span>
+            }
         </button>
     </div>
 
-    <div class="info-cards">
-        <div class="info-card">
-            <div class="card-icon">✍️</div>
-            <div class="card-content">
-                <div class="card-value">@entryCount</div>
-                <div class="card-label">Total Entries</div>
-            </div>
-        </div>
-
-        <div class="info-card">
-            <div class="card-icon">🔥</div>
-            <div class="card-content">
-                <div class="card-value">@currentStreak</div>
-                <div class="card-label">Day Streak</div>
-            </div>
-        </div>
-
-        <div class="info-card">
-            <div class="card-icon">💬</div>
-            <div class="card-content">
-                <div class="card-value">@totalWords</div>
-                <div class="card-label">Total Words</div>
-            </div>
+    <!-- SEARCH BAR -->
+    <div class="search-container">
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-bar" placeholder="Search your journal entries..." 
+                   @bind="searchQuery" @bind:event="oninput" @onkeyup="HandleSearchKeyPress">
         </div>
     </div>
+
+    <!-- STATS GRID -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Current Streak</div>
+            <div class="stat-value">@currentStreak</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Longest Streak</div>
+            <div class="stat-value">@longestStreak</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">This Month</div>
+            <div class="stat-value">@thisMonthCount</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Total Entries</div>
+            <div class="stat-value">@totalEntries</div>
+        </div>
+    </div>
+
+    <!-- CONTENT GRID -->
+    <div class="content-grid">
+        
+        <!-- RECENT ENTRIES -->
+        <div class="section-card">
+            <div class="section-header">
+                <h2 class="section-title">Recent Entries</h2>
+                <a class="view-all-link" @onclick='() => Navigation.NavigateTo("/calendar")'>View All</a>
+            </div>
+
+            @if (recentEntries.Count > 0)
+            {
+                <div class="entry-list">
+                    @foreach (var entry in recentEntries)
+                    {
+                        <div class="entry-item" @onclick="() => EditEntry(entry.EntryDate)">
+                            <div class="entry-header">
+                                <div class="entry-mood">
+                                    @if (!string.IsNullOrEmpty(entry.PrimaryMood) && entrySvgCache.ContainsKey(entry.Id))
+                                    {
+                                        @((MarkupString)entrySvgCache[entry.Id])
+                                    }
+                                </div>
+                                <div class="entry-meta">
+                                    <div class="entry-date">@FormatEntryDate(entry.EntryDate)</div>
+                                    <div class="entry-time">@entry.CreatedAt.ToString("h:mm tt")</div>
+                                </div>
+                            </div>
+                            <div class="entry-preview">
+                                @GetContentPreview(entry.Content)
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="empty-state">
+                    <div class="empty-icon">📝</div>
+                    <div class="empty-text">No entries yet</div>
+                    <div class="empty-hint">Click the + button to create your first entry!</div>
+                </div>
+            }
+        </div>
+
+        <!-- RIGHT SIDEBAR -->
+        <div>
+            <!-- MINI CALENDAR -->
+            <div class="section-card calendar-widget">
+                <div class="calendar-header">
+                    <div class="calendar-month">@GetMonthYearDisplay()</div>
+                    <div class="calendar-nav">
+                        <button class="calendar-nav-btn" @onclick="PreviousMonth">←</button>
+                        <button class="calendar-nav-btn" @onclick="NextMonth">→</button>
+                    </div>
+                </div>
+
+                <div class="mini-calendar">
+                    <div class="mini-weekday">S</div>
+                    <div class="mini-weekday">M</div>
+                    <div class="mini-weekday">T</div>
+                    <div class="mini-weekday">W</div>
+                    <div class="mini-weekday">T</div>
+                    <div class="mini-weekday">F</div>
+                    <div class="mini-weekday">S</div>
+
+                    @foreach (var date in calendarDates)
+                    {
+                        var cssClass = GetDateCssClass(date);
+                        var hasEntry = monthEntriesByDate.ContainsKey(date.DateString);
+                        
+                        <div class="mini-date @cssClass" @onclick="() => GoToCalendar(date.DateString)">
+                            <span class="date-number">@date.Day</span>
+                            @if (hasEntry)
+                            {
+                                var entry = monthEntriesByDate[date.DateString];
+                                var moodSticker = GetMoodSticker(entry.PrimaryMood);
+                                if (!string.IsNullOrEmpty(moodSticker))
+                                {
+                                    <div class="mini-mood-sticker">
+                                        @((MarkupString)moodSticker)
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- QUICK STATS -->
+            <div class="section-card">
+                <h2 class="section-title" style="margin-bottom: 16px;">Quick Stats</h2>
+                <div class="quick-stats">
+                    <div class="quick-stat">
+                        <div class="quick-stat-label">Avg Words/Entry</div>
+                        <div class="quick-stat-value">@avgWords</div>
+                    </div>
+                    <div class="quick-stat">
+                        <div class="quick-stat-label">Top Mood</div>
+                        <div class="quick-stat-value">
+                            @if (!string.IsNullOrEmpty(topMood))
+                            {
+                                var moodInfo = Moods.All.GetValueOrDefault(topMood);
+                                if (moodInfo != null)
+                                {
+                                    <span>@moodInfo.Emoji @moodInfo.Label</span>
+                                }
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="quick-stat">
+                        <div class="quick-stat-label">Most Used Tag</div>
+                        <div class="quick-stat-value">
+                            @if (!string.IsNullOrEmpty(topTag))
+                            {
+                                <span>🏷️ @topTag</span>
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
+<!-- FLOATING ACTION BUTTON -->
+<button class="fab" @onclick="CreateNewEntry">+</button>
+
 @code {
+   
+   
+    // Calendar date class
+    private class CalendarDate
+    {
+        public DateTime Date { get; set; }
+        public int Day { get; set; }
+        public bool IsCurrentMonth { get; set; }
+        public bool IsToday { get; set; }
+        public string DateString { get; set; } = string.Empty;
+    }
+
+    // State
+    private Dictionary<int, string> entrySvgCache = new(); 
     private string userName = "User";
-    private int entryCount = 0;
+    private string userAvatarSvg = string.Empty;
+    private string searchQuery = string.Empty;
+    
+    // Stats
     private int currentStreak = 0;
-    private int totalWords = 0;
+    private int longestStreak = 0;
+    private int thisMonthCount = 0;
+    private int totalEntries = 0;
+    private int avgWords = 0;
+    private string topMood = string.Empty;
+    private string topTag = string.Empty;
+    
+    // Entries
+    private List<JournalEntry> recentEntries = new();
+    
+    // Calendar
+    private int currentMonth = DateTime.Now.Month;
+    private int currentYear = DateTime.Now.Year;
+    private List<CalendarDate> calendarDates = new();
+    private Dictionary<string, JournalEntry> monthEntriesByDate = new();
+    private Dictionary<string, string> moodStickers = new();
 
     protected override async Task OnInitializedAsync()
     {
+        Console.WriteLine("Main Dashboard: Initializing");
+        
+        await LoadUserProfile();
+        await LoadMoodStickers();
+        await LoadStats();
+        await LoadRecentEntries();
+        await LoadMoodStickersForEntries();
+        await LoadCalendarData();
+        
+        Console.WriteLine("Main Dashboard: Loaded");
+    }
+
+    private async Task LoadUserProfile()
+    {
         try
         {
-            // Load user profile
             var profile = await DatabaseService.GetUserProfileAsync();
             if (profile != null)
             {
                 userName = profile.Name;
+                
+                // Generate avatar dynamically using MoodStickerService
+                // Use "Happy" mood as default for profile button
+                userAvatarSvg = await MoodStickerService.GenerateMoodStickerSvgAsync("Happy", 60, 60);
+                
+                Console.WriteLine($"Loaded user: {userName}");
             }
-
-            // Load statistics (these will work once Feature 4 is implemented)
-            // For now, just placeholder values
-            entryCount = 0;
-            currentStreak = 0;
-            totalWords = 0;
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error loading main page: {ex.Message}");
+            Console.WriteLine($"Error loading profile: {ex.Message}");
         }
     }
 
-    private void CreateJournalEntry()
+    private async Task LoadMoodStickers()
+    {
+        try
+        {
+            // Load tiny mood stickers for mini calendar (20x20)
+            moodStickers = await MoodStickerService.GenerateAllMoodStickersAsync(20, 20);
+            Console.WriteLine($"Loaded {moodStickers.Count} mood stickers");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($" Error loading mood stickers: {ex.Message}");
+        }
+    }
+
+    private async Task LoadStats()
+    {
+        try
+        {
+            totalEntries = await JournalService.GetTotalEntriesCountAsync();
+            thisMonthCount = await JournalService.GetEntriesCountThisMonthAsync();
+            avgWords = await JournalService.GetAverageWordCountAsync();
+            
+            // Streak calculations (Feature 8 - will implement later)
+            currentStreak = 0; // TODO: Implement streak calculation
+            longestStreak = 0; // TODO: Implement longest streak
+            
+            // Top mood
+            topMood = await JournalService.GetMostFrequentMoodAsync();
+            
+            // Top tag
+            topTag = await TagService.GetMostUsedTagAsync();
+            
+            Console.WriteLine($"Stats loaded: {totalEntries} entries, {avgWords} avg words");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading stats: {ex.Message}");
+        }
+    }
+
+    private async Task LoadRecentEntries()
+    {
+        try
+        {
+            recentEntries = await JournalService.GetRecentEntriesAsync(4);
+            Console.WriteLine($"Loaded {recentEntries.Count} recent entries");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading recent entries: {ex.Message}");
+        }
+    }
+    
+    private async Task LoadMoodStickersForEntries()
+    {
+        entrySvgCache.Clear();
+    
+        foreach (var entry in recentEntries)
+        {
+            if (!string.IsNullOrEmpty(entry.PrimaryMood))
+            {
+                try
+                {
+                    var svg = await MoodStickerService.GenerateMoodStickerSvgAsync(
+                        entry.PrimaryMood, 50, 50
+                    );
+                    entrySvgCache[entry.Id] = svg;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error generating sticker for entry {entry.Id}: {ex.Message}");
+                }
+            }
+        }
+    }
+
+    private async Task LoadCalendarData()
+    {
+        try
+        {
+            GenerateCalendarDates();
+            
+            var startDate = new DateTime(currentYear, currentMonth, 1).ToString("yyyy-MM-dd");
+            var endDate = new DateTime(currentYear, currentMonth, DateTime.DaysInMonth(currentYear, currentMonth)).ToString("yyyy-MM-dd");
+            
+            var entries = await JournalService.GetEntriesByDateRangeAsync(startDate, endDate);
+            
+            monthEntriesByDate.Clear();
+            foreach (var entry in entries)
+            {
+                monthEntriesByDate[entry.EntryDate] = entry;
+            }
+            
+            Console.WriteLine($"Loaded calendar: {entries.Count} entries in {currentMonth}/{currentYear}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading calendar: {ex.Message}");
+        }
+    }
+
+    private void GenerateCalendarDates()
+    {
+        calendarDates.Clear();
+        
+        var firstDay = new DateTime(currentYear, currentMonth, 1);
+        var lastDay = firstDay.AddMonths(1).AddDays(-1);
+        
+        var startDate = firstDay.AddDays(-(int)firstDay.DayOfWeek);
+        var endDate = lastDay.AddDays(6 - (int)lastDay.DayOfWeek);
+        
+        var current = startDate;
+        while (current <= endDate)
+        {
+            calendarDates.Add(new CalendarDate
+            {
+                Date = current,
+                Day = current.Day,
+                IsCurrentMonth = current.Month == currentMonth,
+                IsToday = current.Date == DateTime.Today,
+                DateString = current.ToString("yyyy-MM-dd")
+            });
+            
+            current = current.AddDays(1);
+        }
+    }
+
+    private async Task PreviousMonth()
+    {
+        currentMonth--;
+        if (currentMonth < 1)
+        {
+            currentMonth = 12;
+            currentYear--;
+        }
+        
+        await LoadCalendarData();
+    }
+
+    private async Task NextMonth()
+    {
+        currentMonth++;
+        if (currentMonth > 12)
+        {
+            currentMonth = 1;
+            currentYear++;
+        }
+        
+        await LoadCalendarData();
+    }
+
+    private string GetMonthYearDisplay()
+    {
+        var date = new DateTime(currentYear, currentMonth, 1);
+        return date.ToString("MMMM yyyy");
+    }
+
+    private string GetDateCssClass(CalendarDate date)
+    {
+        var classes = new List<string>();
+        
+        if (!date.IsCurrentMonth)
+            classes.Add("other-month");
+        
+        if (date.IsToday)
+            classes.Add("today");
+        
+        if (monthEntriesByDate.ContainsKey(date.DateString))
+            classes.Add("has-entry");
+        
+        return string.Join(" ", classes);
+    }
+
+    private string? GetMoodSticker(string mood)
+    {
+        return moodStickers.GetValueOrDefault(mood);
+    }
+
+    private string FormatEntryDate(string dateString)
+    {
+        if (DateTime.TryParse(dateString, out var date))
+        {
+            var today = DateTime.Today;
+            var yesterday = today.AddDays(-1);
+            
+            if (date.Date == today)
+                return "Today";
+            else if (date.Date == yesterday)
+                return "Yesterday";
+            else
+                return date.ToString("MMMM dd");
+        }
+        return dateString;
+    }
+
+    private string GetContentPreview(string content)
+    {
+        if (string.IsNullOrEmpty(content))
+            return "No content";
+        
+        var plainText = System.Text.RegularExpressions.Regex.Replace(content, "<.*?>", string.Empty);
+        
+        if (plainText.Length > 100)
+            return plainText.Substring(0, 100) + "...";
+        
+        return plainText;
+    }
+
+    private void CreateNewEntry()
     {
         Navigation.NavigateTo("/create-entry");
     }
 
-    private void ViewAllEntries()
+    private void EditEntry(string date)
     {
-        // TODO: Navigate to entries list page
-        Console.WriteLine("View all entries - coming soon!");
+        Navigation.NavigateTo($"/create-entry/{date}");
     }
 
-    private void ViewStats()
+    private void GoToCalendar(string date)
     {
-        // TODO: Navigate to statistics page
-        Console.WriteLine("View statistics - coming soon!");
+        Navigation.NavigateTo($"/calendar?date={date}");
+    }
+
+    private void GoToSettings()
+    {
+        // TODO: Navigate to settings page when implemented
+        // For now, show a console message
+        Console.WriteLine(" Settings page - coming soon!");
+        Console.WriteLine("Will allow: Profile customization, avatar editing, app preferences");
+        
+        // Uncomment when settings page is ready:
+        // Navigation.NavigateTo("/settings");
+    }
+
+    private void HandleSearchKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter" && !string.IsNullOrWhiteSpace(searchQuery))
+        {
+            // TODO: Navigate to search page (Feature 7)
+            Console.WriteLine($"Search for: {searchQuery}");
+        }
     }
 }

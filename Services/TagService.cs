@@ -196,4 +196,31 @@ public class TagService : ITagService
             return false;
         }
     }
+
+    // ===== NEW DASHBOARD METHOD =====
+
+    /// <summary>
+    /// Gets the name of the most used tag
+    /// </summary>
+    public async Task<string> GetMostUsedTagAsync()
+    {
+        try
+        {
+            var allTags = await GetAllTagsAsync();
+            
+            if (allTags.Count == 0)
+                return string.Empty;
+            
+            var mostUsedTag = allTags
+                .OrderByDescending(t => t.UsageCount)
+                .FirstOrDefault();
+            
+            return mostUsedTag?.Name ?? string.Empty;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"GetMostUsedTagAsync Error: {ex.Message}");
+            return string.Empty;
+        }
+    }
 }

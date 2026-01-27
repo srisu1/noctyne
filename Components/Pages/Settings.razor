@@ -1,0 +1,119 @@
+@page "/settings"
+@using MoodJournal.Models
+@using MoodJournal.Services.Interfaces
+@inject NavigationManager Navigation
+@inject IDatabaseService DatabaseService
+
+<div class="settings-container">
+    
+    <!-- HEADER -->
+    <div class="settings-header">
+        <button class="back-btn" @onclick='() => Navigation.NavigateTo("/main")'>
+            ← Back
+        </button>
+        <h1 class="settings-title">Settings</h1>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="settings-content">
+        
+        <!-- PROFILE SECTION -->
+        <div class="settings-card">
+            <h2 class="card-title">👤 Profile</h2>
+            <div class="profile-info">
+                
+                <!-- Avatar Display -->
+                <div class="avatar-display">
+                    @if (!string.IsNullOrEmpty(userAvatarSvg))
+                    {
+                        @((MarkupString)userAvatarSvg)
+                    }
+                    else
+                    {
+                        <div class="avatar-placeholder">No Avatar</div>
+                    }
+                </div>
+
+                <!-- User Info -->
+                <div class="user-info">
+                    <div class="info-row">
+                        <span class="label">Name:</span>
+                        <span class="value">@userName</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Gender:</span>
+                        <span class="value">@userGender</span>
+                    </div>
+                </div>
+
+                <!-- Edit Button -->
+                <button class="edit-btn" @onclick="EditAvatar">
+                    ✏️ Edit Avatar
+                </button>
+            </div>
+        </div>
+
+        <!-- COMING SOON SECTIONS -->
+        <div class="settings-card">
+            <h2 class="card-title">Theme Customization</h2>
+            <p class="coming-soon">Coming soon! (Feature 9)</p>
+        </div>
+
+        <div class="settings-card">
+            <h2 class="card-title">Security & Privacy</h2>
+            <p class="coming-soon">Coming soon! (Feature 11)</p>
+        </div>
+
+        <div class="settings-card">
+            <h2 class="card-title">Export Journals</h2>
+            <p class="coming-soon">Coming soon! (Feature 12)</p>
+        </div>
+
+    </div>
+
+</div>
+
+@code {
+    private string userName = "User";
+    private string userGender = "Unknown";
+    private string userAvatarSvg = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUserProfile();
+    }
+
+    private async Task LoadUserProfile()
+    {
+        try
+        {
+            // Load user profile
+            var profile = await DatabaseService.GetUserProfileAsync();
+            if (profile != null)
+            {
+                userName = profile.Name;
+                
+                // Load avatar configuration to get gender
+                var avatarConfig = await DatabaseService.GetUserAvatarAsync();
+                if (avatarConfig != null)
+                {
+                    userGender = avatarConfig.Gender;
+                }
+                
+                // TODO: Generate avatar SVG when avatar service is ready
+                // For now, leave empty
+                userAvatarSvg = string.Empty;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading profile: {ex.Message}");
+        }
+    }
+
+    private void EditAvatar()
+    {
+        // Navigate back to avatar customization
+        Navigation.NavigateTo("/avatar");
+    }
+}

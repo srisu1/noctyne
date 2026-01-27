@@ -372,6 +372,103 @@ public class JournalService : IJournalService
         }
     }
 
+    // ===== NEW DASHBOARD METHODS =====
+
+    /// <summary>
+    /// Gets total number of entries (alias for GetEntryCountAsync)
+    /// </summary>
+    public async Task<int> GetTotalEntriesCountAsync()
+    {
+        return await GetEntryCountAsync();
+    }
+
+    /// <summary>
+    /// Gets count of entries created this month
+    /// </summary>
+    public async Task<int> GetEntriesCountThisMonthAsync()
+    {
+        try
+        {
+            var now = DateTime.Now;
+            var startOfMonth = new DateTime(now.Year, now.Month, 1).ToString("yyyy-MM-dd");
+            var endOfMonth = new DateTime(now.Year, now.Month, DateTime.DaysInMonth(now.Year, now.Month)).ToString("yyyy-MM-dd");
+            
+            var entries = await GetEntriesByDateRangeAsync(startOfMonth, endOfMonth);
+            return entries.Count;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"GetEntriesCountThisMonthAsync Error: {ex.Message}");
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// Gets average word count per entry
+    /// </summary>
+    public async Task<int> GetAverageWordCountAsync()
+    {
+        try
+        {
+            var entries = await GetAllEntriesAsync();
+            
+            if (entries.Count == 0)
+                return 0;
+            
+            var totalWords = entries.Sum(e => e.WordCount);
+            return totalWords / entries.Count;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"GetAverageWordCountAsync Error: {ex.Message}");
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// Gets the most frequently used primary mood
+    /// </summary>
+    public async Task<string> GetMostFrequentMoodAsync()
+    {
+        try
+        {
+            var entries = await GetAllEntriesAsync();
+            
+            if (entries.Count == 0)
+                return string.Empty;
+            
+            var moodCounts = entries
+                .Where(e => !string.IsNullOrEmpty(e.PrimaryMood))
+                .GroupBy(e => e.PrimaryMood)
+                .OrderByDescending(g => g.Count())
+                .FirstOrDefault();
+            
+            return moodCounts?.Key ?? string.Empty;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"GetMostFrequentMoodAsync Error: {ex.Message}");
+            return string.Empty;
+        }
+    }
+
+    /// <summary>
+    /// Gets recent entries (ordered by created date, newest first)
+    /// </summary>
+    public async Task<List<JournalEntry>> GetRecentEntriesAsync(int count)
+    {
+        try
+        {
+            var allEntries = await GetAllEntriesAsync();
+            return allEntries.OrderByDescending(e => e.CreatedAt).Take(count).ToList();
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"GetRecentEntriesAsync Error: {ex.Message}");
+            return new List<JournalEntry>();
+        }
+    }
+
     #endregion
 
     #region Helper Methods
