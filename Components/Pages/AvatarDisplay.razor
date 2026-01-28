@@ -5,8 +5,22 @@
 
 @if (config != null)
 {
-    <div style="position: relative; width: @(Size)px; height: @(Size)px; overflow: visible;">
-        <div style="position: relative; width: 100%; height: 100%; transform: scale(@(Size / 400.0)); filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.18));">
+    <div style="
+        width: @(Size)px; 
+        height: @(Size)px;
+        overflow: visible;
+        position: relative;">
+        <div style="
+            position: absolute;
+            bottom: -@(Size * 0.4)px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 480px;
+            transform-origin: bottom center;
+            transform: translateX(-50%) scale(@(Size / 280.0));
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+            pointer-events: none;">
             @RenderAvatar()
         </div>
     </div>
@@ -35,11 +49,6 @@ else
             else
             {
                 config = await DatabaseService.GetUserAvatarAsync();
-            }
-            
-            if (config != null)
-            {
-                Console.WriteLine($"AvatarDisplay: Size={Size}px, Gender={config.Gender}");
             }
         }
         catch (Exception ex)

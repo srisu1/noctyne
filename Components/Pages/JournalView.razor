@@ -2,6 +2,7 @@
 @using MoodJournal.Models
 @using MoodJournal.Services.Interfaces
 @inject IJournalService JournalService
+@inject ITagService TagService
 @inject IMoodStickerService MoodStickerService
 @inject NavigationManager Navigation
 
@@ -17,7 +18,129 @@
             </button>
             <h1 class="page-title">All Journal Entries</h1>
         </div>
+        
+        <div class="header-right">
+            <button class="filter-toggle-btn @(showFilters ? "active" : "")" @onclick="ToggleFilters">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                Filters
+                @if (HasActiveFilters())
+                {
+                    <span class="filter-badge">@GetActiveFilterCount()</span>
+                }
+            </button>
+        </div>
     </div>
+    
+    <!-- FILTER PANEL -->
+    @if (showFilters)
+    {
+        <div class="filter-panel">
+            <div class="filter-row">
+                
+                <!-- DATE RANGE FILTER -->
+                <div class="filter-group">
+                    <label class="filter-label">Date Range</label>
+                    <div class="date-range-inputs">
+                        <input type="date" 
+                               class="filter-input date-input"
+                               value="@filterStartDate"
+                               max="@DateTime.Today.ToString("yyyy-MM-dd")"
+                               @onchange="OnStartDateChanged" />
+                        <span class="date-separator">to</span>
+                        <input type="date" 
+                               class="filter-input date-input"
+                               value="@filterEndDate"
+                               max="@DateTime.Today.ToString("yyyy-MM-dd")"
+                               @onchange="OnEndDateChanged" />
+                    </div>
+                </div>
+                
+                <!-- MOOD FILTER -->
+                <div class="filter-group">
+                    <label class="filter-label">Mood</label>
+                    <select class="filter-input filter-select" @onchange="OnMoodFilterChanged">
+                        <option value="">All Moods</option>
+                        @foreach (var mood in Moods.All)
+                        {
+                            <option value="@mood.Key" selected="@(filterMood == mood.Key)">
+                                @mood.Value.Emoji @mood.Value.Label
+                            </option>
+                        }
+                    </select>
+                </div>
+                
+                <!-- TAG FILTER -->
+                <div class="filter-group">
+                    <label class="filter-label">Tag</label>
+                    <select class="filter-input filter-select" @onchange="OnTagFilterChanged">
+                        <option value="">All Tags</option>
+                        @foreach (var tag in availableTags)
+                        {
+                            <option value="@tag.Name" selected="@(filterTag == tag.Name)">
+                                @tag.Name (@tag.UsageCount)
+                            </option>
+                        }
+                    </select>
+                </div>
+                
+                <!-- FILTER ACTIONS -->
+                <div class="filter-actions">
+                    <button class="apply-btn" @onclick="ApplyFilters">
+                        Apply Filters
+                    </button>
+                    @if (HasActiveFilters())
+                    {
+                        <button class="clear-btn" @onclick="ClearFilters">
+                            Clear All
+                        </button>
+                    }
+                </div>
+            </div>
+            
+            <!-- ACTIVE FILTERS DISPLAY -->
+            @if (HasActiveFilters())
+            {
+                <div class="active-filters">
+                    <span class="active-filters-label">Active:</span>
+                    @if (!string.IsNullOrEmpty(appliedStartDate) || !string.IsNullOrEmpty(appliedEndDate))
+                    {
+                        <span class="filter-chip date-chip">
+                            📅 @GetDateRangeText()
+                            <button class="chip-remove" @onclick="ClearDateFilter">×</button>
+                        </span>
+                    }
+                    @if (!string.IsNullOrEmpty(appliedMood))
+                    {
+                        <span class="filter-chip mood-chip">
+                            @(Moods.All.ContainsKey(appliedMood) ? Moods.All[appliedMood].Emoji : "") @appliedMood
+                            <button class="chip-remove" @onclick="ClearMoodFilter">×</button>
+                        </span>
+                    }
+                    @if (!string.IsNullOrEmpty(appliedTag))
+                    {
+                        <span class="filter-chip tag-chip">
+                            🏷️ @appliedTag
+                            <button class="chip-remove" @onclick="ClearTagFilter">×</button>
+                        </span>
+                    }
+                </div>
+            }
+        </div>
+    }
+    
+    <!-- RESULTS COUNT -->
+    @if (!isLoading && filteredEntries.Count > 0)
+    {
+        <div class="results-info">
+            Showing @filteredEntries.Count @(filteredEntries.Count == 1 ? "entry" : "entries")
+            @if (HasActiveFilters())
+            {
+                <span class="filtered-text">(filtered)</span>
+            }
+        </div>
+    }
     
     <!-- ENTRIES LIST -->
     <div class="entries-section">
@@ -56,8 +179,24 @@
                             @GetContentPreview(entry.Content)
                         </div>
                         
+                        <!-- SHOW TAGS ON CARD -->
+                        @if (entryTagsCache.ContainsKey(entry.Id) && entryTagsCache[entry.Id].Count > 0)
+                        {
+                            <div class="entry-tags-display">
+                                @foreach (var tag in entryTagsCache[entry.Id].Take(3))
+                                {
+                                    <span class="entry-tag">@tag</span>
+                                }
+                                @if (entryTagsCache[entry.Id].Count > 3)
+                                {
+                                    <span class="entry-tag more-tags">+@(entryTagsCache[entry.Id].Count - 3)</span>
+                                }
+                            </div>
+                        }
+                        
                         <div class="entry-meta-display">
                             <span class="word-count">@GetWordCount(entry.Content) words</span>
+                            <span class="mood-label">@entry.PrimaryMood</span>
                         </div>
                     </div>
                 }
@@ -85,30 +224,74 @@
         else
         {
             <div class="empty-state">
-                <div class="empty-icon">📝</div>
-                <div class="empty-text">No journal entries yet</div>
-                <div class="empty-hint">Start writing to see your entries here!</div>
-                <button class="create-btn" @onclick='() => Navigation.NavigateTo("/create-entry")'>
-                    Create First Entry
-                </button>
+                @if (HasActiveFilters())
+                {
+                    <div class="empty-icon">🔍</div>
+                    <div class="empty-text">No entries match your filters</div>
+                    <div class="empty-hint">Try adjusting your filter criteria</div>
+                    <button class="create-btn" @onclick="ClearFilters">
+                        Clear Filters
+                    </button>
+                }
+                else
+                {
+                    <div class="empty-icon">📝</div>
+                    <div class="empty-text">No journal entries yet</div>
+                    <div class="empty-hint">Start writing to see your entries here!</div>
+                    <button class="create-btn" @onclick='() => Navigation.NavigateTo("/create-entry")'>
+                        Create First Entry
+                    </button>
+                }
             </div>
         }
     </div>
 </div>
 
 @code {
+    // Data
     private List<JournalEntry> allEntries = new();
+    private List<JournalEntry> filteredEntries = new();
     private List<JournalEntry> pagedEntries = new();
     private Dictionary<int, string> entrySvgCache = new();
+    private Dictionary<int, List<string>> entryTagsCache = new();
+    private List<Tag> availableTags = new();
     private bool isLoading = true;
     
+    // Pagination
     private int currentPage = 1;
     private int entriesPerPage = 10;
     private int totalPages = 1;
     
+    // Filter UI state
+    private bool showFilters = false;
+    private string filterStartDate = "";
+    private string filterEndDate = "";
+    private string filterMood = "";
+    private string filterTag = "";
+    
+    // Applied filters (used after clicking Apply)
+    private string appliedStartDate = "";
+    private string appliedEndDate = "";
+    private string appliedMood = "";
+    private string appliedTag = "";
+    
     protected override async Task OnInitializedAsync()
     {
+        await LoadTags();
         await LoadEntries();
+    }
+    
+    private async Task LoadTags()
+    {
+        try
+        {
+            availableTags = await TagService.GetAllTagsAsync();
+            availableTags = availableTags.OrderByDescending(t => t.UsageCount).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading tags: {ex.Message}");
+        }
     }
     
     private async Task LoadEntries()
@@ -127,21 +310,17 @@
                 .ThenByDescending(e => e.CreatedAt)
                 .ToList();
             
-            // Calculate pagination
-            totalPages = (int)Math.Ceiling((double)allEntries.Count / entriesPerPage);
-            if (totalPages == 0) totalPages = 1;
+            // Load tags for all entries
+            await LoadTagsForEntries();
             
-            // Load first page
-            LoadPage(1);
-            
-            // Load mood stickers for paged entries
-            await LoadMoodStickersForEntries();
+            // Apply filters
+            ApplyFiltersInternal();
             
             Console.WriteLine($"Loaded {allEntries.Count} entries, {totalPages} pages");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($" Error loading entries: {ex.Message}");
+            Console.WriteLine($"Error loading entries: {ex.Message}");
         }
         finally
         {
@@ -150,15 +329,82 @@
         }
     }
     
-    private void LoadPage(int page)
+    private async Task LoadTagsForEntries()
+    {
+        entryTagsCache.Clear();
+        
+        foreach (var entry in allEntries)
+        {
+            try
+            {
+                var tags = await JournalService.GetTagsForEntryAsync(entry.Id);
+                entryTagsCache[entry.Id] = tags.Select(t => t.Name).ToList();
+            }
+            catch
+            {
+                entryTagsCache[entry.Id] = new List<string>();
+            }
+        }
+    }
+    
+    private void ApplyFiltersInternal()
+    {
+        // Start with all entries
+        filteredEntries = allEntries.ToList();
+        
+        // Filter by date range
+        if (!string.IsNullOrEmpty(appliedStartDate))
+        {
+            filteredEntries = filteredEntries
+                .Where(e => string.Compare(e.EntryDate, appliedStartDate) >= 0)
+                .ToList();
+        }
+        
+        if (!string.IsNullOrEmpty(appliedEndDate))
+        {
+            filteredEntries = filteredEntries
+                .Where(e => string.Compare(e.EntryDate, appliedEndDate) <= 0)
+                .ToList();
+        }
+        
+        // Filter by mood (check primary or secondary moods)
+        if (!string.IsNullOrEmpty(appliedMood))
+        {
+            filteredEntries = filteredEntries
+                .Where(e => e.PrimaryMood == appliedMood || 
+                           (e.SecondaryMoods != null && e.SecondaryMoods.Contains(appliedMood)))
+                .ToList();
+        }
+        
+        // Filter by tag
+        if (!string.IsNullOrEmpty(appliedTag))
+        {
+            filteredEntries = filteredEntries
+                .Where(e => entryTagsCache.ContainsKey(e.Id) && 
+                           entryTagsCache[e.Id].Contains(appliedTag))
+                .ToList();
+        }
+        
+        // Calculate pagination based on filtered results
+        totalPages = (int)Math.Ceiling((double)filteredEntries.Count / entriesPerPage);
+        if (totalPages == 0) totalPages = 1;
+        
+        // Reset to first page when filters change
+        LoadPage(1);
+    }
+    
+    private async Task LoadPage(int page)
     {
         currentPage = Math.Max(1, Math.Min(page, totalPages));
         
         var skip = (currentPage - 1) * entriesPerPage;
-        pagedEntries = allEntries
+        pagedEntries = filteredEntries
             .Skip(skip)
             .Take(entriesPerPage)
             .ToList();
+        
+        // Load mood stickers for paged entries
+        await LoadMoodStickersForEntries();
         
         Console.WriteLine($"Loaded page {currentPage}/{totalPages} ({pagedEntries.Count} entries)");
     }
@@ -186,12 +432,133 @@
         }
     }
     
+    // Filter UI handlers
+    private void ToggleFilters()
+    {
+        showFilters = !showFilters;
+    }
+    
+    private void OnStartDateChanged(ChangeEventArgs e)
+    {
+        filterStartDate = e.Value?.ToString() ?? "";
+    }
+    
+    private void OnEndDateChanged(ChangeEventArgs e)
+    {
+        filterEndDate = e.Value?.ToString() ?? "";
+    }
+    
+    private void OnMoodFilterChanged(ChangeEventArgs e)
+    {
+        filterMood = e.Value?.ToString() ?? "";
+    }
+    
+    private void OnTagFilterChanged(ChangeEventArgs e)
+    {
+        filterTag = e.Value?.ToString() ?? "";
+    }
+    
+    private async Task ApplyFilters()
+    {
+        appliedStartDate = filterStartDate;
+        appliedEndDate = filterEndDate;
+        appliedMood = filterMood;
+        appliedTag = filterTag;
+        
+        ApplyFiltersInternal();
+        await LoadMoodStickersForEntries();
+        StateHasChanged();
+    }
+    
+    private async Task ClearFilters()
+    {
+        filterStartDate = "";
+        filterEndDate = "";
+        filterMood = "";
+        filterTag = "";
+        appliedStartDate = "";
+        appliedEndDate = "";
+        appliedMood = "";
+        appliedTag = "";
+        
+        ApplyFiltersInternal();
+        await LoadMoodStickersForEntries();
+        StateHasChanged();
+    }
+    
+    private async Task ClearDateFilter()
+    {
+        filterStartDate = "";
+        filterEndDate = "";
+        appliedStartDate = "";
+        appliedEndDate = "";
+        await ApplyFilters();
+    }
+    
+    private async Task ClearMoodFilter()
+    {
+        filterMood = "";
+        appliedMood = "";
+        await ApplyFilters();
+    }
+    
+    private async Task ClearTagFilter()
+    {
+        filterTag = "";
+        appliedTag = "";
+        await ApplyFilters();
+    }
+    
+    private bool HasActiveFilters()
+    {
+        return !string.IsNullOrEmpty(appliedStartDate) ||
+               !string.IsNullOrEmpty(appliedEndDate) ||
+               !string.IsNullOrEmpty(appliedMood) ||
+               !string.IsNullOrEmpty(appliedTag);
+    }
+    
+    private int GetActiveFilterCount()
+    {
+        int count = 0;
+        if (!string.IsNullOrEmpty(appliedStartDate) || !string.IsNullOrEmpty(appliedEndDate)) count++;
+        if (!string.IsNullOrEmpty(appliedMood)) count++;
+        if (!string.IsNullOrEmpty(appliedTag)) count++;
+        return count;
+    }
+    
+    private string GetDateRangeText()
+    {
+        if (!string.IsNullOrEmpty(appliedStartDate) && !string.IsNullOrEmpty(appliedEndDate))
+        {
+            return $"{FormatShortDate(appliedStartDate)} - {FormatShortDate(appliedEndDate)}";
+        }
+        else if (!string.IsNullOrEmpty(appliedStartDate))
+        {
+            return $"From {FormatShortDate(appliedStartDate)}";
+        }
+        else if (!string.IsNullOrEmpty(appliedEndDate))
+        {
+            return $"Until {FormatShortDate(appliedEndDate)}";
+        }
+        return "";
+    }
+    
+    private string FormatShortDate(string dateString)
+    {
+        if (DateTime.TryParse(dateString, out var date))
+        {
+            return date.ToString("MMM dd");
+        }
+        return dateString;
+    }
+    
+    // Pagination
     private async Task PreviousPage()
     {
         if (currentPage > 1)
         {
-            LoadPage(currentPage - 1);
-            await LoadMoodStickersForEntries();
+            await LoadPage(currentPage - 1);
+            StateHasChanged();
         }
     }
     
@@ -199,8 +566,8 @@
     {
         if (currentPage < totalPages)
         {
-            LoadPage(currentPage + 1);
-            await LoadMoodStickersForEntries();
+            await LoadPage(currentPage + 1);
+            StateHasChanged();
         }
     }
     

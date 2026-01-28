@@ -2117,6 +2117,10 @@
       "PackagePath": "staticwebassets/assets/avatar/male/nose/nose10.png"
     },
     {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/20.svg",
+      "PackagePath": "staticwebassets/assets/icons/20.svg"
+    },
+    {
       "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/accessories-icon.png",
       "PackagePath": "staticwebassets/assets/icons/accessories-icon.png"
     },
@@ -2137,16 +2141,32 @@
       "PackagePath": "staticwebassets/assets/icons/beard-icon.png"
     },
     {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/cake.svg",
+      "PackagePath": "staticwebassets/assets/icons/cake.svg"
+    },
+    {
       "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/clothes-icon.png",
       "PackagePath": "staticwebassets/assets/icons/clothes-icon.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/crown.svg",
+      "PackagePath": "staticwebassets/assets/icons/crown.svg"
     },
     {
       "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/eyes-icon.png",
       "PackagePath": "staticwebassets/assets/icons/eyes-icon.png"
     },
     {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/graph.svg",
+      "PackagePath": "staticwebassets/assets/icons/graph.svg"
+    },
+    {
       "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/hair-icon.png",
       "PackagePath": "staticwebassets/assets/icons/hair-icon.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/heart.svg",
+      "PackagePath": "staticwebassets/assets/icons/heart.svg"
     },
     {
       "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/mouth-icon.png",
@@ -2155,6 +2175,26 @@
     {
       "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/nose-icon.png",
       "PackagePath": "staticwebassets/assets/icons/nose-icon.png"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/present.svg",
+      "PackagePath": "staticwebassets/assets/icons/present.svg"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/star.svg",
+      "PackagePath": "staticwebassets/assets/icons/star.svg"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/sun.svg",
+      "PackagePath": "staticwebassets/assets/icons/sun.svg"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/tag.svg",
+      "PackagePath": "staticwebassets/assets/icons/tag.svg"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/icons/zoom-in.svg",
+      "PackagePath": "staticwebassets/assets/icons/zoom-in.svg"
     },
     {
       "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/assets/images/onboarding/Login.svg",
@@ -2193,6 +2233,10 @@
       "PackagePath": "staticwebassets/css/SecuritySetup.css"
     },
     {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/css/app-theme.css",
+      "PackagePath": "staticwebassets/css/app-theme.css"
+    },
+    {
       "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/css/app.css",
       "PackagePath": "staticwebassets/css/app.css"
     },
@@ -2211,6 +2255,10 @@
     {
       "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/js/quill-interop.js",
       "PackagePath": "staticwebassets/js/quill-interop.js"
+    },
+    {
+      "Id": "/Users/srisukarki/RiderProjects/MoodJournal/wwwroot/js/theme.js",
+      "PackagePath": "staticwebassets/js/theme.js"
     },
     {
       "Id": "obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/staticwebassets/msbuild.MoodJournal.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

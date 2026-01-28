@@ -10,31 +10,38 @@
 
 <div class="dashboard">
     
-   
-    <!-- TOP BAR -->
-    <div class="top-bar">
-        <div class="greeting">Hi, @userName</div>
-        <button class="profile-btn" @onclick="GoToSettings">
-            @if (avatarConfigId.HasValue)
-            {
-                <AvatarDisplay Size="100" AvatarConfigId="@avatarConfigId.Value" />
-            }
-            else
-            {
-                <div class="avatar-placeholder" style="width:90px; height:90px;">👤</div>
-            }
-        </button>
-
-    </div>
-
-
-    <!-- SEARCH BAR -->
-    <div class="search-container">
-        <div class="search-wrapper">
-            <span class="search-icon">🔍</span>
-            <input type="text" class="search-bar" placeholder="Search your journal entries..." 
-                   @bind="searchQuery" @bind:event="oninput" @onkeyup="HandleSearchKeyPress">
+    <!-- TOP SECTION - Grid layout with avatar in separate column -->
+    <div class="top-section">
+        
+        <!-- Left column: greeting + search stacked -->
+        <div class="left-column">
+            <div class="top-bar">
+                <div class="greeting">Hi, @userName</div>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <img src="assets/icons/zoom-in.svg" class="search-icon" alt="search" />
+                    <input type="text" class="search-bar"  
+                           @bind="searchQuery" @bind:event="oninput" @onkeyup="HandleSearchKeyPress">
+                </div>
+            </div>
         </div>
+        
+        <!-- Right column: avatar -->
+        <div class="avatar-column">
+            <button class="profile-btn" @onclick="GoToSettings">
+                @if (avatarConfigId.HasValue)
+                {
+                    <AvatarDisplay Size="90" AvatarConfigId="@avatarConfigId.Value" />
+                }
+                else
+                {
+                    <div class="avatar-placeholder">👤</div>
+                }
+            </button>
+        </div>
+        
     </div>
 
     <!-- STATS GRID -->
@@ -99,7 +106,11 @@
         else
         {
             <div class="empty-state">
-                <div class="empty-icon">📝</div>
+                <div class="empty-icon">
+                    <img src="assets/icons/20.svg" alt="icon">
+                    📝
+                </div>
+
                 <div class="empty-text">No entries yet</div>
                 <div class="empty-hint">Click the + button to create your first entry!</div>
             </div>
@@ -153,7 +164,7 @@
         <div class="quick-stats-title">
             Quick Stats
             <a class="analytics-link" @onclick='() => Navigation.NavigateTo("/analytics")'>
-                📊 View Analytics
+                View Analytics
             </a>
         </div>
 
@@ -185,7 +196,11 @@
             <span class="stat-item-value">
                 @if (!string.IsNullOrEmpty(topTag))
                 {
-                    <span>🏷️ @topTag</span>
+                    <span class="tag-label">
+                        <img src="assets/icons/tag.svg" alt="tag">
+                        @topTag
+                    </span>
+
                 }
                 else
                 {
@@ -197,11 +212,10 @@
 
 </div>
 
+    <!-- FLOATING ACTION BUTTON -->
+    <button class="fab" @onclick="CreateNewEntry">+</button>
 
 </div>
-
-<!-- FLOATING ACTION BUTTON -->
-<button class="fab" @onclick="CreateNewEntry">+</button>
 
 @code {
     
@@ -280,7 +294,7 @@
         try
         {
             // Load tiny mood stickers for mini calendar (20x20)
-            moodStickers = await MoodStickerService.GenerateAllMoodStickersAsync(20, 20);
+            moodStickers = await MoodStickerService.GenerateAllMoodStickersAsync(60, 60);
             Console.WriteLine($"Loaded {moodStickers.Count} mood stickers");
         }
         catch (Exception ex)
@@ -573,7 +587,7 @@
 
     private void GoToSettings()
     {
-        Console.WriteLine("🔧 Navigating to Settings");
+        Console.WriteLine("Navigating to Settings");
         Navigation.NavigateTo("/settings");
     }
 
@@ -581,7 +595,7 @@
     {
         if (e.Key == "Enter" && !string.IsNullOrWhiteSpace(searchQuery))
         {
-            Console.WriteLine($"🔍 Searching for: {searchQuery}");
+            Console.WriteLine($" Searching for: {searchQuery}");
             Navigation.NavigateTo($"/search?q={Uri.EscapeDataString(searchQuery)}");
         }
     }

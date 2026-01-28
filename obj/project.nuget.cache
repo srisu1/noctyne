@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pODfKR4bIsE=",
+  "dgSpecHash": "X4KcxywzvQ4=",
   "success": true,
   "projectFilePath": "/Users/srisukarki/RiderProjects/MoodJournal/MoodJournal.csproj",
   "expectedPackageFiles": [
@@ -42,7 +42,7 @@
     "/Users/srisukarki/.nuget/packages/microsoft.maui.graphics/9.0.120/microsoft.maui.graphics.9.0.120.nupkg.sha512",
     "/Users/srisukarki/.nuget/packages/microsoft.maui.resizetizer/9.0.120/microsoft.maui.resizetizer.9.0.120.nupkg.sha512",
     "/Users/srisukarki/.nuget/packages/microsoft.net.illink.tasks/9.0.9/microsoft.net.illink.tasks.9.0.9.nupkg.sha512",
-    "/Users/srisukarki/.nuget/packages/questpdf/2025.12.3/questpdf.2025.12.3.nupkg.sha512",
+    "/Users/srisukarki/.nuget/packages/pdfsharp/6.2.4/pdfsharp.6.2.4.nupkg.sha512",
     "/Users/srisukarki/.nuget/packages/sqlite-net-pcl/1.9.172/sqlite-net-pcl.1.9.172.nupkg.sha512",
     "/Users/srisukarki/.nuget/packages/sqlitepclraw.bundle_green/2.1.11/sqlitepclraw.bundle_green.2.1.11.nupkg.sha512",
     "/Users/srisukarki/.nuget/packages/sqlitepclraw.core/2.1.11/sqlitepclraw.core.2.1.11.nupkg.sha512",
@@ -54,6 +54,7 @@
     "/Users/srisukarki/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
     "/Users/srisukarki/.nuget/packages/system.runtime.compilerservices.unsafe/4.5.2/system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
     "/Users/srisukarki/.nuget/packages/system.runtime.interopservices.nfloat.internal/6.0.1/system.runtime.interopservices.nfloat.internal.6.0.1.nupkg.sha512",
+    "/Users/srisukarki/.nuget/packages/system.security.cryptography.pkcs/8.0.1/system.security.cryptography.pkcs.8.0.1.nupkg.sha512",
     "/Users/srisukarki/.nuget/packages/xamarin.android.glide/4.16.0.12/xamarin.android.glide.4.16.0.12.nupkg.sha512",
     "/Users/srisukarki/.nuget/packages/xamarin.android.glide.annotations/4.16.0.12/xamarin.android.glide.annotations.4.16.0.12.nupkg.sha512",
     "/Users/srisukarki/.nuget/packages/xamarin.android.glide.disklrucache/4.16.0.12/xamarin.android.glide.disklrucache.4.16.0.12.nupkg.sha512",

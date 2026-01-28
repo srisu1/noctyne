@@ -62,57 +62,171 @@
                             <span class="mood-count">@mood.Value entries (@percentage.ToString("F1")%)</span>
                         </div>
                         <div class="mood-bar-track">
-                            <div class="mood-bar-fill" style="width: @percentage%"></div>
+                            <div class="mood-bar-fill @(IsPositiveMood(mood.Key) ? "positive" : "negative")" style="width: @percentage%"></div>
                         </div>
                     </div>
                 }
             </div>
         </div>
         
-        <!-- MOOD TRENDS - LINE GRAPH -->
+        <!-- MOOD TRENDS - DUAL LINE GRAPH -->
         <div class="analytics-card">
             <h2 class="card-title">Mood Trends Over Time</h2>
+            
+            <!-- LEGEND -->
+            <div class="trend-legend">
+                <div class="legend-item">
+                    <div class="legend-line positive"></div>
+                    <span>Positive Moods</span>
+                    <span class="legend-moods">(happy, excited, calm, grateful)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line negative"></div>
+                    <span>Negative Moods</span>
+                    <span class="legend-moods">(sad, anxious, angry, tired)</span>
+                </div>
+            </div>
+            
             <div class="mood-trends">
-                @if (moodTrendData.Any())
+                @if (dualTrendData.Any())
                 {
-                    <div class="trend-chart">
-                        <svg class="trend-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
-                            @{
-                                var maxCountForPath = moodTrendData.Max(p => p.Count);
-                                var points = new List<string>();
-                                
-                                for (int i = 0; i < moodTrendData.Count; i++)
-                                {
-                                    var point = moodTrendData[i];
-                                    var x = (i * 1000.0 / (moodTrendData.Count - 1));
-                                    var heightPercent = maxCountForPath > 0 ? (point.Count * 100.0 / maxCountForPath) : 0;
-                                    var y = 300 - (heightPercent * 3);
-                                    points.Add($"{x},{y}");
-                                }
-                                var pathData = "M " + string.Join(" L ", points);
-                            }
-                            <path class="trend-path" d="@pathData" />
-                        </svg>
+                    <div class="dual-trend-chart">
+                        <!-- Y-AXIS LABELS -->
+                        <div class="y-axis">
+                            <span class="y-label">High</span>
+                            <span class="y-label">Mid</span>
+                            <span class="y-label">Low</span>
+                        </div>
                         
-                        <div class="trend-line-container">
-                            @{
-                                var maxCountForDots = moodTrendData.Max(p => p.Count);
-                            }
-                            @foreach (var point in moodTrendData)
-                            {
-                                var heightPercent = maxCountForDots > 0 ? (point.Count * 100.0 / maxCountForDots) : 0;
-                                
-                                <div class="trend-point" style="height: @heightPercent%">
-                                    <div class="trend-dot"></div>
-                                    @if (!string.IsNullOrEmpty(point.MoodSticker))
+                        <!-- CHART AREA -->
+                        <div class="chart-area">
+                            <!-- GRID LINES -->
+                            <div class="grid-lines">
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                            </div>
+                            
+                            <!-- SVG LINES -->
+                            <svg class="trend-svg" viewBox="0 0 1000 400" preserveAspectRatio="none">
+                                @{
+                                    var maxCount = Math.Max(
+                                        dualTrendData.Max(p => p.PositiveCount),
+                                        dualTrendData.Max(p => p.NegativeCount)
+                                    );
+                                    if (maxCount == 0) maxCount = 1;
+                                    
+                                    var positivePoints = new List<string>();
+                                    var negativePoints = new List<string>();
+                                    var pointSpacing = dualTrendData.Count > 1 ? 1000.0 / (dualTrendData.Count - 1) : 500;
+                                    
+                                    for (int i = 0; i < dualTrendData.Count; i++)
                                     {
-                                        <div class="trend-sticker" title="@point.Label (@point.Count entries)">
-                                            @((MarkupString)point.MoodSticker)
-                                        </div>
+                                        var point = dualTrendData[i];
+                                        var x = dualTrendData.Count > 1 ? i * pointSpacing : 500;
+                                        
+                                        var positiveY = 380 - (point.PositiveCount * 340.0 / maxCount);
+                                        var negativeY = 380 - (point.NegativeCount * 340.0 / maxCount);
+                                        
+                                        positivePoints.Add($"{x:F0},{positiveY:F0}");
+                                        negativePoints.Add($"{x:F0},{negativeY:F0}");
                                     }
-                                    <div class="trend-label">@point.Label</div>
-                                </div>
-                            }
+                                    
+                                    var positivePath = positivePoints.Count > 1 
+                                        ? "M " + string.Join(" L ", positivePoints)
+                                        : "";
+                                    var negativePath = negativePoints.Count > 1 
+                                        ? "M " + string.Join(" L ", negativePoints)
+                                        : "";
+                                }
+                                
+                                <!-- Positive line (green) -->
+                                @if (!string.IsNullOrEmpty(positivePath))
+                                {
+                                    <path class="trend-path positive-path" d="@positivePath" />
+                                }
+                                
+                                <!-- Negative line (pink) -->
+                                @if (!string.IsNullOrEmpty(negativePath))
+                                {
+                                    <path class="trend-path negative-path" d="@negativePath" />
+                                }
+                            </svg>
+                            
+                            <!-- DATA POINTS WITH STICKERS -->
+                            <div class="data-points-container">
+                                @{
+                                    var chartMaxCount = Math.Max(
+                                        dualTrendData.Max(p => p.PositiveCount),
+                                        dualTrendData.Max(p => p.NegativeCount)
+                                    );
+                                    if (chartMaxCount == 0) chartMaxCount = 1;
+                                }
+                                
+                                @foreach (var point in dualTrendData)
+                                {
+                                    var positivePercent = point.PositiveCount * 100.0 / chartMaxCount;
+                                    var negativePercent = point.NegativeCount * 100.0 / chartMaxCount;
+                                    
+                                    <div class="data-point-column">
+                                        <!-- Positive point -->
+                                        @if (point.PositiveCount > 0)
+                                        {
+                                            <div class="data-point positive-point" 
+                                                 style="bottom: @(positivePercent * 0.85)%"
+                                                 title="@point.Label: @point.PositiveCount positive">
+                                                @if (!string.IsNullOrEmpty(point.PositiveMoodSticker))
+                                                {
+                                                    <div class="point-sticker">
+                                                        @((MarkupString)point.PositiveMoodSticker)
+                                                    </div>
+                                                }
+                                                <div class="point-dot positive"></div>
+                                            </div>
+                                        }
+                                        
+                                        <!-- Negative point -->
+                                        @if (point.NegativeCount > 0)
+                                        {
+                                            <div class="data-point negative-point" 
+                                                 style="bottom: @(negativePercent * 0.85)%"
+                                                 title="@point.Label: @point.NegativeCount negative">
+                                                @if (!string.IsNullOrEmpty(point.NegativeMoodSticker))
+                                                {
+                                                    <div class="point-sticker">
+                                                        @((MarkupString)point.NegativeMoodSticker)
+                                                    </div>
+                                                }
+                                                <div class="point-dot negative"></div>
+                                            </div>
+                                        }
+                                        
+                                        <!-- X-axis label -->
+                                        <div class="x-label">@point.Label</div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- MOOD BALANCE SUMMARY -->
+                    <div class="mood-balance">
+                        <div class="balance-item positive">
+                            <span class="balance-icon">😊</span>
+                            <span class="balance-value">@totalPositiveMoods</span>
+                            <span class="balance-label">Positive Days</span>
+                        </div>
+                        <div class="balance-meter">
+                            <div class="balance-bar">
+                                <div class="balance-fill positive" style="width: @GetPositivePercentage()%"></div>
+                                <div class="balance-fill negative" style="width: @GetNegativePercentage()%"></div>
+                            </div>
+                            <div class="balance-ratio">@GetPositivePercentage().ToString("F0")% / @GetNegativePercentage().ToString("F0")%</div>
+                        </div>
+                        <div class="balance-item negative">
+                            <span class="balance-icon">😔</span>
+                            <span class="balance-value">@totalNegativeMoods</span>
+                            <span class="balance-label">Challenging Days</span>
                         </div>
                     </div>
                 }
@@ -182,13 +296,14 @@
                     <div class="word-trend-chart">
                         @{
                             var maxWords = wordCountTrend.Max(w => w.WordCount);
+                            if (maxWords == 0) maxWords = 1;
                         }
                         @foreach (var point in wordCountTrend)
                         {
-                            var heightPercent = maxWords > 0 ? (point.WordCount * 100.0 / maxWords) : 0;
+                            var heightPercent = point.WordCount * 100.0 / maxWords;
                             
-                            <div class="word-bar" style="height: @heightPercent%">
-                                <div class="word-bar-label">@point.Date</div>
+                            <div class="word-bar" style="height: @heightPercent%" title="@point.Date: @point.WordCount words">
+                                <span class="word-bar-label">@point.Date</span>
                             </div>
                         }
                     </div>
@@ -228,11 +343,16 @@
 </div>
 
 @code {
-    private class TrendPoint
+    // Dual trend data point
+    private class DualTrendPoint
     {
         public string Label { get; set; } = "";
-        public int Count { get; set; }
-        public string MoodSticker { get; set; } = "";
+        public int PositiveCount { get; set; }
+        public int NegativeCount { get; set; }
+        public string PositiveMoodSticker { get; set; } = "";
+        public string NegativeMoodSticker { get; set; } = "";
+        public string DominantPositiveMood { get; set; } = "";
+        public string DominantNegativeMood { get; set; } = "";
     }
     
     private class WordTrendPoint
@@ -241,12 +361,16 @@
         public int WordCount { get; set; }
     }
     
+    // Mood categories
+    private static readonly HashSet<string> PositiveMoods = new() { "happy", "excited", "calm", "grateful" };
+    private static readonly HashSet<string> NegativeMoods = new() { "sad", "anxious", "angry", "tired" };
+    
     private bool isLoading = true;
     private string timePeriod = "month";
     
     private Dictionary<string, int> moodStats = new();
     private Dictionary<string, string> moodStickers = new();
-    private List<TrendPoint> moodTrendData = new();
+    private List<DualTrendPoint> dualTrendData = new();
     private List<Tag> topTags = new();
     private List<WordTrendPoint> wordCountTrend = new();
     
@@ -256,10 +380,27 @@
     private int currentStreak = 0;
     private int longestStreak = 0;
     private int missedDays = 0;
+    private int totalPositiveMoods = 0;
+    private int totalNegativeMoods = 0;
     
     protected override async Task OnInitializedAsync()
     {
         await LoadAnalytics();
+    }
+    
+    private bool IsPositiveMood(string mood) => PositiveMoods.Contains(mood.ToLower());
+    private bool IsNegativeMood(string mood) => NegativeMoods.Contains(mood.ToLower());
+    
+    private double GetPositivePercentage()
+    {
+        var total = totalPositiveMoods + totalNegativeMoods;
+        return total > 0 ? (totalPositiveMoods * 100.0 / total) : 50;
+    }
+    
+    private double GetNegativePercentage()
+    {
+        var total = totalPositiveMoods + totalNegativeMoods;
+        return total > 0 ? (totalNegativeMoods * 100.0 / total) : 50;
     }
     
     private async Task SetTimePeriod(string period)
@@ -287,10 +428,25 @@
             var entries = await JournalService.GetEntriesByDateRangeAsync(startDate, endDate);
             totalEntries = entries.Count;
             
+            // Reset counters
+            totalPositiveMoods = 0;
+            totalNegativeMoods = 0;
+            
             if (totalEntries > 0)
             {
+                // Mood distribution stats
                 moodStats = entries.GroupBy(e => e.PrimaryMood).ToDictionary(g => g.Key, g => g.Count());
                 
+                // Count positive vs negative
+                foreach (var entry in entries)
+                {
+                    if (IsPositiveMood(entry.PrimaryMood))
+                        totalPositiveMoods++;
+                    else if (IsNegativeMood(entry.PrimaryMood))
+                        totalNegativeMoods++;
+                }
+                
+                // Load mood stickers
                 foreach (var mood in moodStats.Keys)
                 {
                     try
@@ -301,55 +457,122 @@
                     catch { }
                 }
                 
+                // Build dual trend data
                 var trendGroups = timePeriod == "week" || timePeriod == "month"
-                    ? entries.GroupBy(e => DateTime.Parse(e.EntryDate).ToString("MMM dd")).OrderBy(g => g.Key).Take(10).ToList()
-                    : entries.GroupBy(e => DateTime.Parse(e.EntryDate).ToString("MMM yyyy")).OrderBy(g => g.Key).Take(12).ToList();
+                    ? entries.GroupBy(e => DateTime.Parse(e.EntryDate).ToString("MMM dd"))
+                        .OrderBy(g => DateTime.Parse(g.First().EntryDate))
+                        .Take(14)
+                        .ToList()
+                    : entries.GroupBy(e => DateTime.Parse(e.EntryDate).ToString("MMM yyyy"))
+                        .OrderBy(g => DateTime.Parse(g.First().EntryDate))
+                        .Take(12)
+                        .ToList();
                 
-                moodTrendData = new List<TrendPoint>();
+                dualTrendData = new List<DualTrendPoint>();
                 
                 foreach (var group in trendGroups)
                 {
-                    try
+                    var positiveEntries = group.Where(e => IsPositiveMood(e.PrimaryMood)).ToList();
+                    var negativeEntries = group.Where(e => IsNegativeMood(e.PrimaryMood)).ToList();
+                    
+                    var point = new DualTrendPoint
                     {
-                        var mostCommonMood = group.GroupBy(e => e.PrimaryMood).OrderByDescending(mg => mg.Count()).First().Key;
-                        var sticker = await MoodStickerService.GenerateMoodStickerSvgAsync(mostCommonMood, 50, 50);
-                        moodTrendData.Add(new TrendPoint { Label = group.Key, Count = group.Count(), MoodSticker = sticker });
+                        Label = group.Key,
+                        PositiveCount = positiveEntries.Count,
+                        NegativeCount = negativeEntries.Count
+                    };
+                    
+                    // Get dominant positive mood sticker
+                    if (positiveEntries.Any())
+                    {
+                        var dominantPositive = positiveEntries
+                            .GroupBy(e => e.PrimaryMood)
+                            .OrderByDescending(g => g.Count())
+                            .First().Key;
+                        point.DominantPositiveMood = dominantPositive;
+                        try
+                        {
+                            point.PositiveMoodSticker = await MoodStickerService.GenerateMoodStickerSvgAsync(dominantPositive, 45, 45);
+                        }
+                        catch { }
                     }
-                    catch { }
+                    
+                    // Get dominant negative mood sticker
+                    if (negativeEntries.Any())
+                    {
+                        var dominantNegative = negativeEntries
+                            .GroupBy(e => e.PrimaryMood)
+                            .OrderByDescending(g => g.Count())
+                            .First().Key;
+                        point.DominantNegativeMood = dominantNegative;
+                        try
+                        {
+                            point.NegativeMoodSticker = await MoodStickerService.GenerateMoodStickerSvgAsync(dominantNegative, 45, 45);
+                        }
+                        catch { }
+                    }
+                    
+                    dualTrendData.Add(point);
                 }
                 
+                // Word count stats
                 totalWords = entries.Sum(e => e.WordCount);
                 avgWordCount = totalEntries > 0 ? totalWords / totalEntries : 0;
                 
-                wordCountTrend = entries.OrderBy(e => e.EntryDate).Take(20)
-                    .Select(e => new WordTrendPoint { Date = DateTime.Parse(e.EntryDate).ToString("MMM dd"), WordCount = e.WordCount })
+                wordCountTrend = entries
+                    .OrderBy(e => e.EntryDate)
+                    .Take(20)
+                    .Select(e => new WordTrendPoint 
+                    { 
+                        Date = DateTime.Parse(e.EntryDate).ToString("MMM dd"), 
+                        WordCount = e.WordCount 
+                    })
                     .ToList();
             }
             
+            // Load tags
             topTags = await TagService.GetMostUsedTagsAsync(10);
             
+            // Calculate streaks
             try
             {
                 var allEntries = await JournalService.GetAllEntriesAsync();
                 if (allEntries.Any())
                 {
-                    var sortedDates = allEntries.Select(e => DateTime.Parse(e.EntryDate)).OrderByDescending(d => d).ToList();
-                    currentStreak = 1;
+                    var sortedDates = allEntries
+                        .Select(e => DateTime.Parse(e.EntryDate))
+                        .OrderByDescending(d => d)
+                        .ToList();
+                    
+                    currentStreak = 0;
                     var checkDate = DateTime.Today;
                     
-                    if (sortedDates.Contains(checkDate) || sortedDates.Contains(checkDate.AddDays(-1)))
+                    if (sortedDates.Contains(checkDate))
                     {
-                        checkDate = sortedDates.Contains(checkDate) ? checkDate : checkDate.AddDays(-1);
-                        for (int i = 1; i < sortedDates.Count; i++)
+                        currentStreak = 1;
+                        for (int i = 1; i <= sortedDates.Count; i++)
                         {
-                            var prevDate = checkDate.AddDays(-i);
-                            if (sortedDates.Contains(prevDate)) currentStreak++;
-                            else break;
+                            if (sortedDates.Contains(checkDate.AddDays(-i)))
+                                currentStreak++;
+                            else
+                                break;
                         }
                     }
-                    else currentStreak = 0;
+                    else if (sortedDates.Contains(checkDate.AddDays(-1)))
+                    {
+                        currentStreak = 1;
+                        checkDate = checkDate.AddDays(-1);
+                        for (int i = 1; i <= sortedDates.Count; i++)
+                        {
+                            if (sortedDates.Contains(checkDate.AddDays(-i)))
+                                currentStreak++;
+                            else
+                                break;
+                        }
+                    }
                     
-                    longestStreak = currentStreak;
+                    // Calculate longest streak
+                    longestStreak = Math.Max(1, currentStreak);
                     var tempStreak = 1;
                     for (int i = 0; i < sortedDates.Count - 1; i++)
                     {
@@ -358,19 +581,23 @@
                             tempStreak++;
                             longestStreak = Math.Max(longestStreak, tempStreak);
                         }
-                        else tempStreak = 1;
+                        else
+                        {
+                            tempStreak = 1;
+                        }
                     }
                     
+                    // Calculate missed days
                     var firstEntry = sortedDates.Min();
                     var daysSinceFirst = (DateTime.Today - firstEntry).Days + 1;
-                    missedDays = daysSinceFirst - allEntries.Count;
+                    missedDays = Math.Max(0, daysSinceFirst - allEntries.Count);
                 }
             }
             catch { }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"ERROR: {ex.Message}");
+            Console.WriteLine($"Analytics Error: {ex.Message}");
         }
         finally
         {

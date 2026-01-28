@@ -1,67 +1,76 @@
-/* SecuritySetup.razor.css - Cute Pastel Theme */
+
+
 body {
-    font-family: 'Pogonia', sans-serif;
-    font-weight: 400;
+    font-family: 'Pogonia', -apple-system, sans-serif;
     background: #fef5e8;
     overflow: hidden;
 }
+
 .loginContainer {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(135deg, #fef5e8 0%, #fff0e0 100%);
-    background-image:
-            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px),
-            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px);
-    background-size: 50px 50px;
-    background-position: 0 0, 25px 25px;
+    /* OMBRE + PAW PATTERN - paw on top */
+    background:
+            radial-gradient(circle, rgba(168, 213, 163, 0.22) 4px, transparent 4px),
+            radial-gradient(circle, rgba(168, 213, 163, 0.22) 4px, transparent 4px),
+            linear-gradient(180deg, #e8f5e6 0%, #f0f8ee 30%, #f5faf3 60%, #fffcf9 100%);
+    background-size: 55px 55px, 55px 55px, 100% 100%;
+    background-position: 0 0, 27.5px 27.5px, 0 0;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-   
 }
+
+/* ==================== CLOSE BUTTON ==================== */
 
 .closeBtn {
     position: absolute;
-    top: 24px;
-    right: 24px;
-    width: 50px;
-    height: 50px;
-    background: white;
-    border: 3px solid #3d3d3d;
-    color: #3d3d3d;
-    font-size: 28px;
+    top: 32px;
+    right: 32px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #ff8a8a, #ff6b6b);
+    border: 4px solid #3d3d3d;
+    color: white;
+    font-size: 26px;
     cursor: pointer;
     border-radius: 50%;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 0 #3d3d3d;
     font-weight: 700;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+    font-family: 'Pogonia', sans-serif;
 }
 
 .closeBtn:hover {
-    background: #f490af;
-    color: white;
-    transform: rotate(90deg) scale(1.1);
+    background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+    transform: rotate(90deg) translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #3d3d3d;
 }
+
+/* ==================== MAIN CONTENT ==================== */
 
 .loginContent {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 100px;
+    padding: 40px 80px;
     gap: 100px;
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
-    animation: fadeIn 0.4s ease-out;
+    animation: fadeIn 0.5s ease-out;
 }
 
+/* ==================== ILLUSTRATION - BIG ==================== */
+
 .illustrationSide {
-    flex: 0 0 48%;
+    flex: 0 0 45%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,66 +78,78 @@ body {
 
 .illustration {
     width: 100%;
-    max-width: 700px;
+    max-width: 520px;
     height: auto;
-    filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.08));
+    filter: drop-shadow(6px 6px 0 rgba(61, 61, 61, 0.12));
+    animation: float 4s ease-in-out infinite;
 }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* ==================== FORM SIDE - BIG TEXT ==================== */
 
 .formSide {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    max-width: 500px;
+    max-width: 520px;
 }
 
 .loginTitle {
     font-family: 'Pogonia', sans-serif;
-    font-size: 52px;
+    font-size: 56px;
     font-weight: 700;
     color: #3d3d3d;
     margin-bottom: 16px;
-    line-height: 1.2;
-    text-align: center;
+    line-height: 1.05;
+    text-align: left;
 }
 
 .loginSubtitle {
-    font-size: 20px;
+    font-family: 'Pogonia', sans-serif;
+    font-size: 22px;
     color: #666;
-    line-height: 1.6;
-    text-align: center;
+    line-height: 1.5;
+    text-align: left;
     margin-bottom: 40px;
     font-weight: 600;
 }
 
+/* ==================== TAB SWITCHER ==================== */
+
 .tabSwitcher {
     display: flex;
     gap: 0;
-    background: white;
-    border-radius: 30px;
-    padding: 6px;
-    margin-bottom: 40px;
+    background: transparent;
+    border-radius: 50px;
+    padding: 0;
+    margin-bottom: 36px;
     border: 4px solid #3d3d3d;
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 0 #3d3d3d;
+    overflow: hidden;
 }
 
 .tabBtn {
-    padding: 16px 50px;
+    font-family: 'Pogonia', sans-serif;
+    padding: 18px 48px;
     border: none;
-    background: transparent;
-    color: #666;
+    background: white;
+    color: #888;
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
-    border-radius: 25px;
-    transition: all 0.2s;
-    font-family: 'Pogonia', sans-serif;
+    transition: all 0.2s ease;
 }
 
 .tabBtn.active {
-    background: #f490af;
+    background: linear-gradient(135deg, #a8d5a3, #8fc488);
     color: white;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .tabBtn:hover:not(.active) {
@@ -136,43 +157,48 @@ body {
     color: #3d3d3d;
 }
 
+/* ==================== PIN INPUT ==================== */
+
 .pinContainer {
     display: flex;
-    gap: 14px;
+    gap: 16px;
     margin-bottom: 28px;
-    justify-content: center;
 }
 
 .pinBox {
-    width: 64px;
-    height: 80px;
+    width: 68px;
+    height: 85px;
     border: 4px solid #3d3d3d;
-    border-radius: 20px;
-    font-size: 42px;
+    border-radius: 22px;
+    font-size: 40px;
     text-align: center;
     font-weight: 700;
     color: #3d3d3d;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
     background: white;
-    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 4px 4px 0 #3d3d3d;
+    font-family: 'Pogonia', sans-serif;
 }
 
 .pinBox:focus {
     outline: none;
-    border-color: #f490af;
-    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.3);
-    transform: scale(1.05);
+    border-color: #a8d5a3;
+    background: #f5fff5;
+    box-shadow: 4px 4px 0 #a8d5a3;
+    transform: translate(-2px, -2px);
 }
 
 .pinBox::placeholder {
-    color: #ccc;
+    color: #ddd;
 }
+
+/* ==================== PASSWORD INPUT ==================== */
 
 .passwordContainer {
     display: none;
     width: 100%;
-    max-width: 380px;
-    margin-bottom: 24px;
+    max-width: 440px;
+    margin-bottom: 28px;
 }
 
 .passwordContainer.active {
@@ -186,120 +212,129 @@ body {
 
 .passwordInput {
     width: 100%;
-    padding: 18px 60px 18px 20px;
+    padding: 22px 65px 22px 28px;
     border: 4px solid #3d3d3d;
-    border-radius: 25px;
-    font-size: 18px;
+    border-radius: 26px;
+    font-size: 20px;
     color: #3d3d3d;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
     background: white;
     font-weight: 600;
-    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 4px 4px 0 #3d3d3d;
+    font-family: 'Pogonia', sans-serif;
 }
 
 .passwordInput:focus {
     outline: none;
-    border-color: #f490af;
-    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.3);
+    border-color: #a8d5a3;
+    background: #f5fff5;
+    box-shadow: 4px 4px 0 #a8d5a3;
 }
 
 .togglePassword {
     position: absolute;
-    right: 16px;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 8px;
-    color: #666;
+    color: #888;
     font-size: 24px;
+    transition: all 0.2s ease;
+    border-radius: 8px;
 }
 
 .togglePassword:hover {
-    color: #f490af;
+    color: #a8d5a3;
 }
 
+/* ==================== HELPER & ERROR TEXT ==================== */
+
 .helperText {
-    font-size: 17px;
-    color: #666;
-    margin-bottom: 32px;
-    text-align: center;
+    font-family: 'Pogonia', sans-serif;
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 36px;
+    text-align: left;
     font-weight: 600;
 }
 
 .errorText {
+    font-family: 'Pogonia', sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
     font-size: 17px;
-    color: #e74c3c;
     margin-bottom: 28px;
     text-align: center;
     font-weight: 700;
-    background: #ffe8e8;
-    padding: 12px 20px;
+    padding: 16px 28px;
     border-radius: 20px;
-    border: 3px solid #e74c3c;
+    border: 4px solid #3d3d3d;
+    box-shadow: 4px 4px 0 #3d3d3d;
 }
+
+/* ==================== CONFIRM BUTTON ==================== */
 
 .confirmBtn {
-    padding: 20px 90px;
-    background: #a8d5a3;
+    font-family: 'Pogonia', sans-serif;
+    padding: 22px 80px;
+    background: linear-gradient(135deg, #a8d5a3, #8fc488);
     color: white;
     border: 4px solid #3d3d3d;
-    border-radius: 30px;
-    font-size: 20px;
+    border-radius: 50px;
+    font-size: 22px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
-    font-family: 'Pogonia', sans-serif;
-    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    box-shadow: 5px 5px 0 #3d3d3d;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.confirmBtn:hover {
-    background: #95c991;
-    transform: translateY(-3px);
-    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
+.confirmBtn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #95c991, #7ab875);
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 #3d3d3d;
 }
 
 .confirmBtn:disabled {
-    opacity: 0.4;
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
+/* ==================== ANIMATIONS ==================== */
+
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 1100px) {
+    .loginContent { gap: 60px; padding: 40px 50px; }
+    .illustration { max-width: 420px; }
+    .loginTitle { font-size: 48px; }
 }
 
 @media (max-width: 900px) {
-    .loginContent {
-        flex-direction: column;
-        padding: 80px 40px 40px;
-        gap: 40px;
-    }
+    .loginContent { flex-direction: column; padding: 80px 30px 50px; gap: 40px; }
+    .illustration { max-width: 320px; }
+    .formSide { max-width: 100%; align-items: center; }
+    .loginTitle { font-size: 42px; text-align: center; }
+    .loginSubtitle { font-size: 19px; text-align: center; }
+    .helperText { text-align: center; }
+    .tabBtn { padding: 15px 36px; font-size: 16px; }
+    .pinBox { width: 58px; height: 72px; font-size: 34px; }
+    .closeBtn { top: 20px; right: 20px; width: 52px; height: 52px; font-size: 22px; }
+}
 
-    .illustration {
-        max-width: 320px;
-        width: 80%;
-    }
-
-    .loginTitle {
-        font-size: 40px;
-    }
-
-    .loginSubtitle {
-        font-size: 18px;
-    }
-
-    .closeBtn {
-        top: 16px;
-        right: 16px;
-        width: 44px;
-        height: 44px;
-    }
+@media (max-width: 600px) {
+    .loginContent { padding: 70px 20px 40px; gap: 30px; }
+    .loginTitle { font-size: 34px; }
+    .tabBtn { padding: 13px 28px; font-size: 15px; }
+    .pinContainer { gap: 10px; }
+    .pinBox { width: 50px; height: 64px; font-size: 28px; border-radius: 18px; }
+    .confirmBtn { padding: 18px 60px; font-size: 19px; }
 }

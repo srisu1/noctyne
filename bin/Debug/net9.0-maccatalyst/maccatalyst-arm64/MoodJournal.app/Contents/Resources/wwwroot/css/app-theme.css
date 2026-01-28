@@ -1,0 +1,147 @@
+/* ============================================
+   GLOBAL THEME SYSTEM - app-theme.css
+   ONLY CSS VARIABLES - No component overrides!
+   Let component styles handle their own look
+   
+
+/* ============ ROOT VARIABLES (Light Theme Default) ============ */
+:root {
+    /* Backgrounds - Warm cream & peach tones */
+    --bg-base: #fef6ed;
+    --bg-page: linear-gradient(135deg, #fef6ed 0%, #fff0e0 100%);
+    --bg-card: #ffffff;
+    --bg-card-alt: #fef5e8;
+    --bg-input: #ffffff;
+    --bg-hover: #fff5f8;
+    --bg-secondary: #f9e5ef;
+
+    /* Text */
+    --text-primary: #3d3d3d;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --text-on-accent: #ffffff;
+
+    /* Accent Colors - Cute pastel palette */
+    --accent-pink: #f490af;
+    --accent-pink-light: #f8b4c9;
+    --accent-pink-dark: #e07a99;
+    --accent-green: #a8d5a3;
+    --accent-green-light: #c4e8c0;
+    --accent-green-dark: #8bc085;
+    --accent-yellow: #ffd93d;
+    --accent-red: #ff6b6b;
+    --accent-purple: #b8a0d8;
+
+    /* Borders & Shadows - Pixel-art style */
+    --border-color: #3d3d3d;
+    --border-light: #e0d5c8;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-strong: rgba(0, 0, 0, 0.15);
+
+    /* Patterns */
+    --dot-pattern: rgba(168, 213, 163, 0.12);
+}
+
+/* ============ DARK THEME - Cozy Cabin Vibes ============ */
+body.dark-theme,
+.dark-theme {
+    /* Warm chocolate & coffee tones */
+    --bg-base: #1a1410;
+    --bg-page: linear-gradient(135deg, #1a1410 0%, #241c16 100%);
+    --bg-card: #2a221a;
+    --bg-card-alt: #342820;
+    --bg-input: #3d3228;
+    --bg-hover: #453830;
+    --bg-secondary: #3a2e24;
+
+    /* Warm cream text - like candlelight */
+    --text-primary: #f5e8d8;
+    --text-secondary: #d4c4b0;
+    --text-muted: #a08870;
+    --text-on-accent: #ffffff;
+
+    /* Softer, warmer accent colors */
+    --accent-pink: #e8a0b8;
+    --accent-pink-light: #f0c0d0;
+    --accent-pink-dark: #c88098;
+    --accent-green: #90c888;
+    --accent-green-light: #b0d8a8;
+    --accent-green-dark: #70a868;
+    --accent-yellow: #d8b860;
+    --accent-red: #d87070;
+    --accent-purple: #a890c8;
+
+    /* Softer borders for dark mode - chocolate brown */
+    --border-color: #5a483a;
+    --border-light: #4a3a2a;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --shadow-strong: rgba(0, 0, 0, 0.6);
+
+    /* Subtle warm pattern */
+    --dot-pattern: rgba(232, 160, 184, 0.06);
+}
+
+/* ============ MINIMAL GLOBAL STYLES ============ */
+
+/* Apply theme colors to body - components handle their own styling */
+body {
+    background: var(--bg-base);
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ============ SCROLLBAR ============ */
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-pink);
+    border-radius: 6px;
+    border: 3px solid var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-pink-dark);
+}
+
+/* ============ UTILITY CLASSES ============ */
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-pink { color: var(--accent-pink); }
+.text-green { color: var(--accent-green); }
+
+.bg-base { background: var(--bg-base); }
+.bg-card { background: var(--bg-card); }
+.bg-pink { background: var(--accent-pink); }
+.bg-green { background: var(--accent-green); }
+
+/* ============ ANIMATIONS ============ */
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.animate-bounce { animation: bounce 2s ease-in-out infinite; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-pulse { animation: pulse 2s ease-in-out infinite; }

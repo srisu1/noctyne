@@ -312,7 +312,7 @@
     {
         try
         {
-            moodStickers = await MoodStickerService.GenerateAllMoodStickersAsync(200, 200);
+            moodStickers = await MoodStickerService.GenerateAllMoodStickersAsync(400, 400);
             Console.WriteLine($"Loaded {moodStickers.Count} mood stickers");
         }
         catch (Exception ex)

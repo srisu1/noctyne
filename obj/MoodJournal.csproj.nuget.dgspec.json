@@ -78,9 +78,9 @@
               "version": "[9.0.9, )",
               "autoReferenced": true
             },
-            "QuestPDF": {
+            "PDFsharp": {
               "target": "Package",
-              "version": "[2025.12.3, )"
+              "version": "[6.2.4, )"
             },
             "SQLitePCLRaw.bundle_green": {
               "target": "Package",
@@ -143,9 +143,9 @@
               "version": "[9.0.9, )",
               "autoReferenced": true
             },
-            "QuestPDF": {
+            "PDFsharp": {
               "target": "Package",
-              "version": "[2025.12.3, )"
+              "version": "[6.2.4, )"
             },
             "SQLitePCLRaw.bundle_green": {
               "target": "Package",
@@ -208,9 +208,9 @@
               "version": "[9.0.9, )",
               "autoReferenced": true
             },
-            "QuestPDF": {
+            "PDFsharp": {
               "target": "Package",
-              "version": "[2025.12.3, )"
+              "version": "[6.2.4, )"
             },
             "SQLitePCLRaw.bundle_green": {
               "target": "Package",

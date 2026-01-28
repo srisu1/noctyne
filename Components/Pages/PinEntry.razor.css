@@ -1,40 +1,46 @@
-/* PinEntry.razor.css - Cute Pastel Theme */
+/* ============================================
+   PinEntry.razor.css - COZY CUTE INDIE GAME
+   Ombre + paw pattern VISIBLE
+   ============================================ */
+
 body {
-    font-family: 'Pogonia', sans-serif;
-    font-weight: 400;
+    font-family: 'Pogonia', -apple-system, sans-serif;
     background: #fef5e8;
     overflow: hidden;
 }
+
 .loginContainer {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(135deg, #fef5e8 0%, #fff0e0 100%);
-    background-image:
-            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px),
-            radial-gradient(circle, rgba(244, 144, 175, 0.12) 2px, transparent 2px);
-    background-size: 50px 50px;
-    background-position: 0 0, 25px 25px;
+    /* OMBRE + PAW PATTERN - paw on top */
+    background:
+            radial-gradient(circle, rgba(244, 144, 175, 0.2) 4px, transparent 4px),
+            radial-gradient(circle, rgba(244, 144, 175, 0.2) 4px, transparent 4px),
+            linear-gradient(180deg, #ffe8d6 0%, #fef0e4 30%, #fef5e8 60%, #fff8f2 100%);
+    background-size: 55px 55px, 55px 55px, 100% 100%;
+    background-position: 0 0, 27.5px 27.5px, 0 0;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 
 .loginContent {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 100px;
+    padding: 40px 80px;
     gap: 100px;
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
-    animation: fadeIn 0.4s ease-out;
+    animation: fadeIn 0.5s ease-out;
 }
 
+/* ==================== ILLUSTRATION - BIG ==================== */
+
 .illustrationSide {
-    flex: 0 0 48%;
+    flex: 0 0 45%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,76 +48,90 @@ body {
 
 .illustration {
     width: 100%;
-    max-width: 700px;
+    max-width: 520px;
     height: auto;
-    filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.08));
+    filter: drop-shadow(6px 6px 0 rgba(61, 61, 61, 0.12));
+    animation: float 4s ease-in-out infinite;
 }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* ==================== FORM SIDE - BIG TEXT ==================== */
 
 .formSide {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    max-width: 500px;
+    max-width: 520px;
 }
 
 .loginTitle {
     font-family: 'Pogonia', sans-serif;
-    font-size: 52px;
+    font-size: 60px;
     font-weight: 700;
     color: #3d3d3d;
-    margin-bottom: 16px;
-    line-height: 1.2;
-    text-align: center;
+    margin-bottom: 18px;
+    line-height: 1.05;
+    text-align: left;
 }
 
 .loginSubtitle {
-    font-size: 20px;
+    font-family: 'Pogonia', sans-serif;
+    font-size: 24px;
     color: #666;
-    line-height: 1.6;
-    text-align: center;
-    margin-bottom: 40px;
+    line-height: 1.5;
+    text-align: left;
+    margin-bottom: 44px;
     font-weight: 600;
 }
 
+/* ==================== PIN INPUT ==================== */
+
 .pinContainer {
     display: flex;
-    gap: 14px;
+    gap: 16px;
     margin-bottom: 28px;
-    justify-content: center;
 }
 
 .pinBox {
-    width: 64px;
-    height: 80px;
+    width: 68px;
+    height: 85px;
     border: 4px solid #3d3d3d;
-    border-radius: 20px;
-    font-size: 42px;
+    border-radius: 22px;
+    font-size: 40px;
     text-align: center;
     font-weight: 700;
     color: #3d3d3d;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
     background: white;
-    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 4px 4px 0 #3d3d3d;
+    font-family: 'Pogonia', sans-serif;
 }
 
 .pinBox:focus {
     outline: none;
     border-color: #f490af;
-    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.3);
-    transform: scale(1.05);
+    background: #fff8fa;
+    box-shadow: 4px 4px 0 #f490af;
+    transform: translate(-2px, -2px);
 }
 
 .pinBox::placeholder {
-    color: #ccc;
+    color: #ddd;
 }
+
+/* ==================== PASSWORD INPUT ==================== */
 
 .passwordContainer {
     display: none;
     width: 100%;
-    max-width: 380px;
-    margin-bottom: 24px;
+    max-width: 440px;
+    margin-bottom: 28px;
 }
 
 .passwordContainer.active {
@@ -125,122 +145,137 @@ body {
 
 .passwordInput {
     width: 100%;
-    padding: 18px 20px;
+    padding: 22px 28px;
     border: 4px solid #3d3d3d;
-    border-radius: 25px;
-    font-size: 18px;
+    border-radius: 26px;
+    font-size: 20px;
     color: #3d3d3d;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
     background: white;
     font-weight: 600;
-    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 4px 4px 0 #3d3d3d;
+    font-family: 'Pogonia', sans-serif;
 }
 
 .passwordInput:focus {
     outline: none;
     border-color: #f490af;
-    box-shadow: 0 0 0 4px rgba(244, 144, 175, 0.3);
+    background: #fff8fa;
+    box-shadow: 4px 4px 0 #f490af;
 }
 
+/* ==================== HELPER & ERROR TEXT ==================== */
+
 .helperText {
-    font-size: 17px;
-    color: #666;
-    margin-bottom: 32px;
-    text-align: center;
+    font-family: 'Pogonia', sans-serif;
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 36px;
+    text-align: left;
     font-weight: 600;
 }
 
 .errorText {
+    font-family: 'Pogonia', sans-serif;
     color: white;
-    background: #e74c3c;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
     font-size: 17px;
     margin-bottom: 28px;
     text-align: center;
     font-weight: 700;
-    padding: 12px 24px;
+    padding: 16px 28px;
     border-radius: 20px;
-    border: 3px solid #3d3d3d;
+    border: 4px solid #3d3d3d;
+    box-shadow: 4px 4px 0 #3d3d3d;
 }
 
 .shake {
-    animation: shake 0.4s;
+    animation: shake 0.4s ease;
 }
 
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-8px); }
+    80% { transform: translateX(8px); }
 }
+
+/* ==================== BUTTONS ==================== */
 
 .confirmBtn {
-    padding: 20px 90px;
-    background: #f490af;
+    font-family: 'Pogonia', sans-serif;
+    padding: 22px 80px;
+    background: linear-gradient(135deg, #f490af, #f8b4c9);
     color: white;
     border: 4px solid #3d3d3d;
-    border-radius: 30px;
-    font-size: 20px;
+    border-radius: 50px;
+    font-size: 22px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
-    font-family: 'Pogonia', sans-serif;
-    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    box-shadow: 5px 5px 0 #3d3d3d;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.confirmBtn:hover {
-    background: #f4a9c1;
-    transform: translateY(-3px);
-    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
+.confirmBtn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #e87a99, #f490af);
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 #3d3d3d;
 }
 
 .confirmBtn:disabled {
-    opacity: 0.4;
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
 .forgotBtn {
-    margin-top: 20px;
+    font-family: 'Pogonia', sans-serif;
+    margin-top: 28px;
     background: transparent;
     border: none;
     color: #f490af;
-    font-size: 16px;
+    font-size: 17px;
     cursor: pointer;
-    text-decoration: underline;
-    padding: 8px;
+    padding: 10px 0;
     font-weight: 700;
+    transition: all 0.2s ease;
 }
 
 .forgotBtn:hover {
-    color: #f4a9c1;
+    color: #e87a99;
+    text-decoration: underline;
 }
 
+/* ==================== ANIMATIONS ==================== */
+
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 1100px) {
+    .loginContent { gap: 60px; padding: 40px 50px; }
+    .illustration { max-width: 420px; }
+    .loginTitle { font-size: 50px; }
 }
 
 @media (max-width: 900px) {
-    .loginContent {
-        flex-direction: column;
-        padding: 80px 40px 40px;
-        gap: 40px;
-    }
+    .loginContent { flex-direction: column; padding: 50px 30px; gap: 40px; }
+    .illustration { max-width: 320px; }
+    .formSide { max-width: 100%; align-items: center; }
+    .loginTitle { font-size: 44px; text-align: center; }
+    .loginSubtitle { font-size: 20px; text-align: center; }
+    .helperText { text-align: center; }
+    .pinBox { width: 58px; height: 72px; font-size: 34px; }
+}
 
-    .illustration {
-        max-width: 320px;
-        width: 80%;
-    }
-
-    .loginTitle {
-        font-size: 40px;
-    }
-
-    .loginSubtitle {
-        font-size: 18px;
-    }
+@media (max-width: 600px) {
+    .loginContent { padding: 40px 20px; gap: 30px; }
+    .loginTitle { font-size: 36px; }
+    .pinContainer { gap: 10px; }
+    .pinBox { width: 50px; height: 64px; font-size: 28px; border-radius: 18px; }
+    .confirmBtn { padding: 18px 60px; font-size: 19px; }
 }

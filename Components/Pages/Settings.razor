@@ -1,291 +1,627 @@
 @page "/settings"
 @using MoodJournal.Models
 @using MoodJournal.Services.Interfaces
+@using System.Text.RegularExpressions
+@using PdfSharp
+@using PdfSharp.Pdf
+@using PdfSharp.Drawing
+@using PdfSharp.Fonts
 @inject NavigationManager Navigation
 @inject IDatabaseService DatabaseService
-
+@inject IJournalService JournalService
+@inject IJSRuntime JSRuntime
+<style>
+    /* DARK THEME */
+    body.dark-theme .settings-container {
+        background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 50%, #1f1f1f 100%) !important;
+    }
+    body.dark-theme .settings-header,
+    body.dark-theme .settings-card {
+        background: #2d2d2d !important;
+        border-color: #555 !important;
+        box-shadow: 4px 4px 0 #333 !important;
+    }
+    body.dark-theme .card-body,
+    body.dark-theme .profile-body,
+    body.dark-theme .center-body {
+        background: #2d2d2d !important;
+    }
+    body.dark-theme .page-title,
+    body.dark-theme .theme-label,
+    body.dark-theme .detail-value,
+    body.dark-theme .card-header h2 {
+        color: #fff !important;
+    }
+    body.dark-theme .back-btn {
+        background: #3d3d3d !important;
+        color: #fff !important;
+        border-color: #555 !important;
+    }
+    body.dark-theme .detail-row,
+    body.dark-theme .theme-option,
+    body.dark-theme .date-field input,
+    body.dark-theme .quick-dates button,
+    body.dark-theme .option-check {
+        background: #3d3d3d !important;
+        border-color: #555 !important;
+        box-shadow: 2px 2px 0 #333 !important;
+    }
+    body.dark-theme .detail-row,
+    body.dark-theme .theme-option,
+    body.dark-theme .option-check span,
+    body.dark-theme .quick-dates button {
+        color: #fff !important;
+    }
+    body.dark-theme .detail-label,
+    body.dark-theme .theme-desc,
+    body.dark-theme .card-desc,
+    body.dark-theme .date-field label,
+    body.dark-theme .count-label {
+        color: #aaa !important;
+    }
+    body.dark-theme .entry-count-box {
+        background: #3a2a2f !important;
+    }
+    body.dark-theme .theme-option.selected {
+        border-color: #f490af !important;
+        box-shadow: 3px 3px 0 #f490af !important;
+        background: #4a3a40 !important;
+    }
+    body.dark-theme .modal-backdrop {
+        background: rgba(0,0,0,0.7) !important;
+    }
+    body.dark-theme .modal-box {
+        background: #2d2d2d !important;
+        border-color: #555 !important;
+    }
+    body.dark-theme .modal-box h3 { color: #fff !important; }
+    body.dark-theme .modal-box p { color: #aaa !important; }
+    body.dark-theme .modal-btn.cancel {
+        background: #3d3d3d !important;
+        color: #fff !important;
+    }
+</style>
 <div class="settings-container">
     
     <!-- HEADER -->
     <div class="settings-header">
-        <button class="back-btn" @onclick='() => Navigation.NavigateTo("/main")'>
-            ← Back
-        </button>
-        <h1 class="settings-title">Settings</h1>
+        <div class="header-left">
+            <button class="back-btn" @onclick="GoBack">← Back</button>
+            <h1 class="page-title">Settings</h1>
+        </div>
     </div>
 
-    <!-- CONTENT -->
-    <div class="settings-content">
+    <!-- MAIN CONTENT -->
+    <div class="settings-grid">
         
-        <!-- PROFILE SECTION -->
-        <div class="settings-card">
-            <h2 class="card-title">👤 Profile</h2>
-            <div class="profile-info">
-                
-                <!-- Avatar Preview - FIXED CLASS NAME AND SIZE -->
-                <div class="avatar-preview">
-                    @if (avatarConfigId.HasValue)
-                    {
-                        <AvatarDisplay Size="180" AvatarConfigId="@avatarConfigId.Value" />
-                    }
-                    else
-                    {
-                        <div class="avatar-placeholder">👤</div>
-                    }
+        <!-- LEFT COLUMN -->
+        <div class="settings-column">
+            
+            <!-- PROFILE CARD -->
+            <div class="settings-card">
+                <div class="card-header pink-header">
+                    <h2>Profile</h2>
                 </div>
-
-                <!-- User Info -->
-                <div class="user-info">
-                    <div class="info-row">
-                        <span class="label">Name:</span>
-                        <span class="value">@userName</span>
+                <div class="card-body profile-body">
+                    <div class="avatar-wrapper">
+                        @if (avatarConfigId.HasValue && avatarConfigId.Value > 0)
+                        {
+                            <AvatarDisplay Size="200" AvatarConfigId="@avatarConfigId.Value" />
+                        }
+                        else
+                        {
+                            <div class="avatar-placeholder">👤</div>
+                        }
                     </div>
-                    <div class="info-row">
-                        <span class="label">Gender:</span>
-                        <span class="value">@userGender</span>
+                    
+                  
+                    
+                    <button class="action-btn pink-btn" @onclick="EditAvatar">Edit Avatar</button>
+                </div>
+            </div>
+
+            <!-- THEME CARD -->
+            <div class="settings-card">
+                <div class="card-header green-header">
+                    <h2>🎨 Theme</h2>
+                </div>
+                <div class="card-body">
+                    <div class="theme-options">
+                        <button class="theme-option @(currentTheme == "light" ? "selected" : "")" 
+                                @onclick="SetLightTheme">
+                            <span class="theme-icon">☀️</span>
+                            <span class="theme-label">Light</span>
+                            <span class="theme-desc">Cute & Cozy</span>
+                        </button>
+                        
+                        <button class="theme-option @(currentTheme == "dark" ? "selected" : "")" 
+                                @onclick="SetDarkTheme">
+                            <span class="theme-icon">🌙</span>
+                            <span class="theme-label">Dark</span>
+                            <span class="theme-desc">Night Mode</span>
+                        </button>
                     </div>
                 </div>
-
-                <!-- Edit Button -->
-                <button class="edit-btn" @onclick="EditAvatar">
-                    ✏️ Edit Avatar
-                </button>
             </div>
         </div>
 
-        <!-- THEME CUSTOMIZATION (Feature 9) -->
-        <div class="settings-card">
-            <h2 class="card-title">🎨 Theme Customization</h2>
-            <div class="theme-section">
-                <div class="theme-option">
-                    <span class="theme-label">Theme Mode:</span>
-                    <select class="theme-selector" @onchange="ChangeTheme">
-                        <option value="light" selected="@(currentTheme == "light")">☀️ Light</option>
-                        <option value="dark" selected="@(currentTheme == "dark")">🌙 Dark</option>
-                        <option value="custom" selected="@(currentTheme == "custom")">🎨 Custom</option>
-                    </select>
+        <!-- RIGHT COLUMN -->
+        <div class="settings-column">
+            
+            <!-- EXPORT CARD -->
+            <div class="settings-card">
+                <div class="card-header pink-header">
+                    <h2> Export Journals</h2>
                 </div>
-                
-                @if (currentTheme == "custom")
-                {
-                    <div class="color-pickers">
-                        <div class="color-option">
-                            <span class="color-label">Accent Color:</span>
-                            <input type="color" class="color-input" value="#f490af" @onchange="ChangeAccentColor" />
+                <div class="card-body">
+                    <p class="card-desc">Export your journal entries as PDF</p>
+                    
+                    <div class="date-range-row">
+                        <div class="date-field">
+                            <label> From</label>
+                            <input type="date" value="@startDateStr" @onchange="OnStartDateChanged" />
                         </div>
-                        <div class="color-option">
-                            <span class="color-label">Background Color:</span>
-                            <input type="color" class="color-input" value="#fef5e8" @onchange="ChangeBackgroundColor" />
+                        <div class="date-field">
+                            <label> To</label>
+                            <input type="date" value="@endDateStr" @onchange="OnEndDateChanged" />
                         </div>
                     </div>
-                }
-                
-                <div class="theme-preview">
-                    <p class="preview-text">Theme preview will appear here</p>
+                    
+                    <div class="quick-dates">
+                        <button @onclick="SetLastWeek">Last Week</button>
+                        <button @onclick="SetLastMonth">Last Month</button>
+                        <button @onclick="SetLastYear">Last Year</button>
+                        <button @onclick="SetAllTime">All Time</button>
+                    </div>
+                    
+                    <div class="export-options">
+                        <label class="option-check">
+                            <input type="checkbox" checked="@includeMoods" @onchange="ToggleMoods" />
+                            <span>Include moods</span>
+                        </label>
+                    </div>
+                    
+                    <div class="entry-count-box">
+                        <span class="count-number">@entryCount</span>
+                        <span class="count-label">entries in range</span>
+                    </div>
+                    
+                    <button class="action-btn green-btn full-width" 
+                            @onclick="ExportToPdf" 
+                            disabled="@(isExporting || entryCount == 0)">
+                        @if (isExporting)
+                        {
+                            <span class="spinner"></span>
+                            <span>Exporting...</span>
+                        }
+                        else
+                        {
+                            <span> Export as PDF</span>
+                        }
+                    </button>
+                    
+                    @if (!string.IsNullOrEmpty(exportMessage))
+                    {
+                        <div class="export-result @(exportSuccess ? "success" : "error")">
+                            @(exportSuccess ? "✅" : "❌") @exportMessage
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- LOGOUT CARD -->
+            <div class="settings-card danger-card">
+                <div class="card-header danger-header">
+                    <h2> Account</h2>
+                </div>
+                <div class="card-body center-body">
+                    <p class="card-desc">Log out and return to PIN entry</p>
+                    <button class="action-btn danger-btn" @onclick="ShowLogoutModal"> Logout</button>
                 </div>
             </div>
         </div>
-
-        <!-- EXPORT JOURNALS (Feature 12) -->
-        <div class="settings-card">
-            <h2 class="card-title">📄 Export Journals</h2>
-            <div class="export-section">
-                <p class="section-description">Export your journal entries as a PDF document</p>
-                
-                <div class="date-range">
-                    <div class="date-input-group">
-                        <label class="date-label">From:</label>
-                        <input type="date" class="date-input" @bind="exportStartDate" />
-                    </div>
-                    <div class="date-input-group">
-                        <label class="date-label">To:</label>
-                        <input type="date" class="date-input" @bind="exportEndDate" />
-                    </div>
-                </div>
-                
-                <div class="export-options">
-                    <label class="checkbox-option">
-                        <input type="checkbox" @bind="includeMoods" />
-                        <span>Include mood information</span>
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" @bind="includeTags" />
-                        <span>Include tags</span>
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" @bind="includeImages" />
-                        <span>Include images (if any)</span>
-                    </label>
-                </div>
-                
-                <button class="export-btn" @onclick="ExportJournals" disabled="@isExporting">
-                    @if (isExporting)
-                    {
-                        <span>⏳ Exporting...</span>
-                    }
-                    else
-                    {
-                        <span>📥 Export as PDF</span>
-                    }
-                </button>
-                
-                @if (!string.IsNullOrEmpty(exportMessage))
-                {
-                    <div class="export-message @(exportSuccess ? "success" : "error")">
-                        @exportMessage
-                    </div>
-                }
-            </div>
-        </div>
-
-        <!-- SECURITY & PRIVACY (Feature 11) -->
-        <div class="settings-card">
-            <h2 class="card-title">🔒 Security & Privacy</h2>
-            <p class="coming-soon">Coming soon! (Feature 11)</p>
-        </div>
-
     </div>
-
+    
+    @if (showLogoutModal)
+    {
+        <div class="modal-backdrop" @onclick="HideLogoutModal">
+            <div class="modal-box" @onclick:stopPropagation="true">
+                <div class="modal-emoji">👋</div>
+                <h3>Leaving so soon?</h3>
+                <p>You'll need to enter your PIN to come back!</p>
+                <div class="modal-actions">
+                    <button class="modal-btn cancel" @onclick="HideLogoutModal">Stay</button>
+                    <button class="modal-btn confirm" @onclick="DoLogout">Logout</button>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 
 @code {
     private string userName = "User";
     private string userGender = "Unknown";
     private int? avatarConfigId = null;
-    
-    // Theme settings
     private string currentTheme = "light";
     
-    // Export settings
     private DateTime exportStartDate = DateTime.Now.AddMonths(-1);
     private DateTime exportEndDate = DateTime.Now;
+    private string startDateStr => exportStartDate.ToString("yyyy-MM-dd");
+    private string endDateStr => exportEndDate.ToString("yyyy-MM-dd");
+    
     private bool includeMoods = true;
-    private bool includeTags = true;
-    private bool includeImages = false;
     private bool isExporting = false;
     private string exportMessage = string.Empty;
     private bool exportSuccess = false;
+    private int entryCount = 0;
+    private bool showLogoutModal = false;
 
     protected override async Task OnInitializedAsync()
     {
-        await LoadUserProfile();
-        await LoadSettings();
+        Console.WriteLine("Settings: Initializing...");
+        
+        // Setup font resolver for PdfSharp
+        if (PdfSharp.Fonts.GlobalFontSettings.FontResolver == null)
+        {
+            PdfSharp.Fonts.GlobalFontSettings.FontResolver = new SimpleFontResolver();
+        }
+        
+        await LoadProfileAsync();
+        await LoadThemeAsync();
+        await CountEntriesAsync();
     }
 
-    private async Task LoadUserProfile()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Apply theme via JavaScript
+            await JSRuntime.InvokeVoidAsync("themeManager.setTheme", currentTheme);
+        }
+    }
+
+    private async Task LoadProfileAsync()
     {
         try
         {
             var profile = await DatabaseService.GetUserProfileAsync();
             if (profile != null)
             {
-                userName = profile.Name;
+                userName = profile.Name ?? "User";
                 avatarConfigId = profile.AvatarConfigId;
-
-                var avatarConfig = await DatabaseService.GetUserAvatarAsync();
-                if (avatarConfig != null)
-                {
-                    userGender = avatarConfig.Gender;
-                }
             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error loading profile: {ex.Message}");
-        }
-    }
 
-    private async Task LoadSettings()
-    {
-        try
-        {
-            var themeSetting = await DatabaseService.GetSettingAsync("Theme");
-            if (!string.IsNullOrEmpty(themeSetting))
+            var avatar = await DatabaseService.GetUserAvatarAsync();
+            if (avatar != null)
             {
-                currentTheme = themeSetting;
+                userGender = avatar.Gender ?? "Unknown";
+                if (!avatarConfigId.HasValue || avatarConfigId.Value == 0)
+                    avatarConfigId = avatar.Id;
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error loading settings: {ex.Message}");
+            Console.WriteLine($"LoadProfile error: {ex.Message}");
         }
     }
 
-    private void EditAvatar()
+    private async Task LoadThemeAsync()
     {
-        Navigation.NavigateTo("/avatar");
-    }
-
-    private async Task ChangeTheme(ChangeEventArgs e)
-    {
-        currentTheme = e.Value?.ToString() ?? "light";
         try
         {
-            await DatabaseService.SetSettingAsync("Theme", currentTheme);
-            Console.WriteLine($"Theme changed to: {currentTheme}");
+            var saved = await DatabaseService.GetSettingAsync("Theme");
+            if (!string.IsNullOrEmpty(saved))
+                currentTheme = saved;
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error saving theme: {ex.Message}");
+            Console.WriteLine($"LoadTheme error: {ex.Message}");
         }
     }
 
-    private async Task ChangeAccentColor(ChangeEventArgs e)
+    private void GoBack() => Navigation.NavigateTo("/main");
+    private void EditAvatar() => Navigation.NavigateTo("/avatar");
+
+    private async Task SetLightTheme()
     {
-        var color = e.Value?.ToString() ?? "#f490af";
+        Console.WriteLine("Setting LIGHT theme");
+        currentTheme = "light";
+        await DatabaseService.SetSettingAsync("Theme", "light");
+        await JSRuntime.InvokeVoidAsync("themeManager.setTheme", "light");
+        StateHasChanged();
+    }
+
+    private async Task SetDarkTheme()
+    {
+        Console.WriteLine("Setting DARK theme");
+        currentTheme = "dark";
+        await DatabaseService.SetSettingAsync("Theme", "dark");
+        await JSRuntime.InvokeVoidAsync("themeManager.setTheme", "dark");
+        StateHasChanged();
+    }
+
+    private async Task OnStartDateChanged(ChangeEventArgs e)
+    {
+        if (DateTime.TryParse(e.Value?.ToString(), out var date))
+        {
+            exportStartDate = date;
+            await CountEntriesAsync();
+        }
+    }
+
+    private async Task OnEndDateChanged(ChangeEventArgs e)
+    {
+        if (DateTime.TryParse(e.Value?.ToString(), out var date))
+        {
+            exportEndDate = date;
+            await CountEntriesAsync();
+        }
+    }
+
+    private async Task SetLastWeek() { exportStartDate = DateTime.Now.AddDays(-7); exportEndDate = DateTime.Now; await CountEntriesAsync(); }
+    private async Task SetLastMonth() { exportStartDate = DateTime.Now.AddMonths(-1); exportEndDate = DateTime.Now; await CountEntriesAsync(); }
+    private async Task SetLastYear() { exportStartDate = DateTime.Now.AddYears(-1); exportEndDate = DateTime.Now; await CountEntriesAsync(); }
+    private async Task SetAllTime() { exportStartDate = new DateTime(2020, 1, 1); exportEndDate = DateTime.Now; await CountEntriesAsync(); }
+
+    private void ToggleMoods(ChangeEventArgs e) => includeMoods = (bool)(e.Value ?? true);
+
+    private async Task CountEntriesAsync()
+    {
         try
         {
-            await DatabaseService.SetSettingAsync("AccentColor", color);
-            Console.WriteLine($"Accent color changed to: {color}");
+            var entries = await JournalService.GetEntriesByDateRangeAsync(startDateStr, endDateStr);
+            entryCount = entries?.Count ?? 0;
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error saving accent color: {ex.Message}");
-        }
+        catch { entryCount = 0; }
+        StateHasChanged();
     }
 
-    private async Task ChangeBackgroundColor(ChangeEventArgs e)
+    private async Task ExportToPdf()
     {
-        var color = e.Value?.ToString() ?? "#fef5e8";
-        try
-        {
-            await DatabaseService.SetSettingAsync("BackgroundColor", color);
-            Console.WriteLine($"Background color changed to: {color}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error saving background color: {ex.Message}");
-        }
-    }
-
-    private async Task ExportJournals()
-    {
+        Console.WriteLine("Starting PDF export...");
         isExporting = true;
-        exportMessage = string.Empty;
+        exportMessage = "";
+        exportSuccess = false;
         StateHasChanged();
 
         try
         {
-            // TODO: Implement actual PDF export using IExportService
-            // For now, simulate export
-            await Task.Delay(2000);
+            var entries = await JournalService.GetEntriesByDateRangeAsync(startDateStr, endDateStr);
             
-            exportMessage = $"Successfully exported journals from {exportStartDate:MMM dd, yyyy} to {exportEndDate:MMM dd, yyyy}";
+            if (entries == null || entries.Count == 0)
+            {
+                exportMessage = "No entries found";
+                return;
+            }
+
+            entries = entries.OrderBy(e => e.EntryDate).ToList();
+            Console.WriteLine($"Exporting {entries.Count} entries");
+
+            var docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var exportDir = Path.Combine(docs, "MoodJournal", "Exports");
+            Directory.CreateDirectory(exportDir);
+
+            var fileName = $"MoodJournal_{DateTime.Now:yyyyMMdd_HHmmss}.pdf";
+            var filePath = Path.Combine(exportDir, fileName);
+
+            // Ensure font resolver is set
+            if (PdfSharp.Fonts.GlobalFontSettings.FontResolver == null)
+            {
+                PdfSharp.Fonts.GlobalFontSettings.FontResolver = new SimpleFontResolver();
+            }
+
+            using (var document = new PdfDocument())
+            {
+                document.Info.Title = "MoodJournal Export";
+                document.Info.Author = userName;
+                
+                var titleFont = new XFont("Arial", 24, XFontStyleEx.Bold);
+                var headerFont = new XFont("Arial", 14, XFontStyleEx.Bold);
+                var bodyFont = new XFont("Arial", 11, XFontStyleEx.Regular);
+                var smallFont = new XFont("Arial", 9, XFontStyleEx.Regular);
+                
+                var pinkBrush = new XSolidBrush(XColor.FromArgb(244, 144, 175));
+                var greenBrush = new XSolidBrush(XColor.FromArgb(168, 213, 163));
+                var darkBrush = new XSolidBrush(XColor.FromArgb(61, 61, 61));
+                var grayBrush = new XSolidBrush(XColor.FromArgb(102, 102, 102));
+                var creamBrush = new XSolidBrush(XColor.FromArgb(254, 245, 232));
+                
+                double y = 50;
+                PdfPage page = document.AddPage();
+                page.Size = PdfSharp.PageSize.A4;
+                XGraphics gfx = XGraphics.FromPdfPage(page);
+                double pageH = page.Height.Point - 60;
+                double pageW = page.Width.Point;
+                
+                // Title
+                gfx.DrawString("MoodJournal Export", titleFont, pinkBrush, 50, y);
+                y += 30;
+                gfx.DrawString($"{FormatDate(startDateStr)} - {FormatDate(endDateStr)}", bodyFont, grayBrush, 50, y);
+                y += 15;
+                gfx.DrawString($"{entries.Count} journal entries", bodyFont, greenBrush, 50, y);
+                y += 40;
+
+                foreach (var entry in entries)
+                {
+                    if (y > pageH - 120)
+                    {
+                        page = document.AddPage();
+                        page.Size = PdfSharp.PageSize.A4;
+                        gfx = XGraphics.FromPdfPage(page);
+                        y = 50;
+                    }
+
+                    var content = StripHtml(entry.Content);
+                    if (content.Length > 250) content = content.Substring(0, 247) + "...";
+                    
+                    // Pink header bar
+                    gfx.DrawRectangle(pinkBrush, 50, y, pageW - 100, 28);
+                    gfx.DrawString(FormatDate(entry.EntryDate), headerFont, XBrushes.White, 60, y + 18);
+                    
+                    if (includeMoods && !string.IsNullOrEmpty(entry.PrimaryMood))
+                    {
+                        gfx.DrawString(entry.PrimaryMood, bodyFont, XBrushes.White, pageW - 140, y + 18);
+                    }
+                    y += 28;
+                    
+                    // Cream content area
+                    gfx.DrawRectangle(creamBrush, 50, y, pageW - 100, 65);
+                    
+                    double contentY = y + 18;
+                    if (!string.IsNullOrEmpty(entry.Title))
+                    {
+                        gfx.DrawString(entry.Title, headerFont, darkBrush, 60, contentY);
+                        contentY += 18;
+                    }
+                    
+                    // Wrap and draw content
+                    var lines = WrapText(content, bodyFont, gfx, pageW - 130);
+                    foreach (var line in lines.Take(2))
+                    {
+                        gfx.DrawString(line, bodyFont, darkBrush, 60, contentY);
+                        contentY += 14;
+                    }
+                    y += 65;
+                    
+                    // Footer
+                    gfx.DrawString($"{entry.WordCount} words", smallFont, grayBrush, 60, y + 12);
+                    y += 30;
+                }
+                
+                // Page numbers
+                for (int i = 0; i < document.PageCount; i++)
+                {
+                    var pg = document.Pages[i];
+                    using var pgGfx = XGraphics.FromPdfPage(pg);
+                    pgGfx.DrawString($"Page {i + 1} of {document.PageCount}", smallFont, grayBrush, 
+                        pg.Width.Point / 2 - 30, pg.Height.Point - 30);
+                }
+                
+                document.Save(filePath);
+            }
+
+            exportMessage = $"Saved to: {fileName}";
             exportSuccess = true;
-            
-            Console.WriteLine($"Exporting journals: {exportStartDate:yyyy-MM-dd} to {exportEndDate:yyyy-MM-dd}");
-            Console.WriteLine($"Include moods: {includeMoods}, Include tags: {includeTags}, Include images: {includeImages}");
+            Console.WriteLine($"PDF saved: {filePath}");
         }
         catch (Exception ex)
         {
-            exportMessage = $"Export failed: {ex.Message}";
+            exportMessage = $"Error: {ex.Message}";
             exportSuccess = false;
-            Console.WriteLine($"Error exporting: {ex.Message}");
+            Console.WriteLine($"PDF error: {ex.Message}");
         }
         finally
         {
             isExporting = false;
             StateHasChanged();
+        }
+    }
+
+    private List<string> WrapText(string text, XFont font, XGraphics gfx, double maxWidth)
+    {
+        var lines = new List<string>();
+        if (string.IsNullOrEmpty(text)) return lines;
+        
+        var words = text.Split(' ');
+        var currentLine = "";
+        
+        foreach (var word in words)
+        {
+            var test = string.IsNullOrEmpty(currentLine) ? word : $"{currentLine} {word}";
+            if (gfx.MeasureString(test, font).Width > maxWidth && !string.IsNullOrEmpty(currentLine))
+            {
+                lines.Add(currentLine);
+                currentLine = word;
+            }
+            else
+            {
+                currentLine = test;
+            }
+        }
+        if (!string.IsNullOrEmpty(currentLine)) lines.Add(currentLine);
+        return lines;
+    }
+
+    private string FormatDate(string d)
+    {
+        try { return DateTime.Parse(d).ToString("MMM d, yyyy"); }
+        catch { return d; }
+    }
+
+    private string StripHtml(string html)
+    {
+        if (string.IsNullOrEmpty(html)) return "";
+        var text = Regex.Replace(html, "<.*?>", " ");
+        text = System.Net.WebUtility.HtmlDecode(text);
+        return Regex.Replace(text, @"\s+", " ").Trim();
+    }
+
+    private void ShowLogoutModal() => showLogoutModal = true;
+    private void HideLogoutModal() => showLogoutModal = false;
+
+    private async Task DoLogout()
+    {
+        await DatabaseService.SetSettingAsync("IsLoggedIn", "false");
+        Navigation.NavigateTo("/pin-entry", true);
+    }
+
+    // Simple Font Resolver for PdfSharp on macOS
+    public class SimpleFontResolver : IFontResolver
+    {
+        public FontResolverInfo? ResolveTypeface(string familyName, bool isBold, bool isItalic)
+        {
+            // Map common fonts to system fonts
+            var name = familyName.ToLower();
+            
+            if (name.Contains("arial") || name.Contains("helvetica") || name.Contains("sans"))
+            {
+                if (isBold && isItalic) return new FontResolverInfo("Arial-BoldItalic");
+                if (isBold) return new FontResolverInfo("Arial-Bold");
+                if (isItalic) return new FontResolverInfo("Arial-Italic");
+                return new FontResolverInfo("Arial");
+            }
+            
+            // Default
+            if (isBold) return new FontResolverInfo("Arial-Bold");
+            return new FontResolverInfo("Arial");
+        }
+
+        public byte[]? GetFont(string faceName)
+        {
+            // Try to load from macOS system fonts
+            var fontPaths = new[]
+            {
+                "/System/Library/Fonts/Supplemental/Arial.ttf",
+                "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+                "/System/Library/Fonts/Supplemental/Arial Italic.ttf",
+                "/System/Library/Fonts/Supplemental/Arial Bold Italic.ttf",
+                "/Library/Fonts/Arial.ttf",
+                "/System/Library/Fonts/Helvetica.ttc",
+                "/System/Library/Fonts/SFNS.ttf"
+            };
+
+            string? fontPath = null;
+            
+            if (faceName.Contains("Bold") && faceName.Contains("Italic"))
+                fontPath = fontPaths.FirstOrDefault(p => p.Contains("Bold Italic") && File.Exists(p));
+            else if (faceName.Contains("Bold"))
+                fontPath = fontPaths.FirstOrDefault(p => p.Contains("Bold") && !p.Contains("Italic") && File.Exists(p));
+            else if (faceName.Contains("Italic"))
+                fontPath = fontPaths.FirstOrDefault(p => p.Contains("Italic") && !p.Contains("Bold") && File.Exists(p));
+            else
+                fontPath = fontPaths.FirstOrDefault(p => !p.Contains("Bold") && !p.Contains("Italic") && File.Exists(p));
+
+            if (fontPath == null)
+                fontPath = fontPaths.FirstOrDefault(File.Exists);
+
+            if (fontPath != null && File.Exists(fontPath))
+            {
+                Console.WriteLine($"Loading font: {fontPath}");
+                return File.ReadAllBytes(fontPath);
+            }
+
+            Console.WriteLine($"Font not found: {faceName}");
+            return null;
         }
     }
 }

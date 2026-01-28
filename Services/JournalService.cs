@@ -372,19 +372,19 @@ public class JournalService : IJournalService
         }
     }
 
-    // ===== NEW DASHBOARD METHODS =====
 
-    /// <summary>
-    /// Gets total number of entries (alias for GetEntryCountAsync)
-    /// </summary>
+
+
+    //Gets total number of entries (alias for GetEntryCountAsync)
+
     public async Task<int> GetTotalEntriesCountAsync()
     {
         return await GetEntryCountAsync();
     }
 
-    /// <summary>
-    /// Gets count of entries created this month
-    /// </summary>
+ 
+    // Gets count of entries created this month
+
     public async Task<int> GetEntriesCountThisMonthAsync()
     {
         try
@@ -425,9 +425,9 @@ public class JournalService : IJournalService
         }
     }
 
-    /// <summary>
-    /// Gets the most frequently used primary mood
-    /// </summary>
+  
+    // Gets the most frequently used primary mood
+
     public async Task<string> GetMostFrequentMoodAsync()
     {
         try
@@ -452,9 +452,9 @@ public class JournalService : IJournalService
         }
     }
 
-    /// <summary>
-    /// Gets recent entries (ordered by created date, newest first)
-    /// </summary>
+
+    // Gets recent entries (ordered by created date, newest first)
+ 
     public async Task<List<JournalEntry>> GetRecentEntriesAsync(int count)
     {
         try
@@ -473,10 +473,10 @@ public class JournalService : IJournalService
 
     #region Helper Methods
 
-    /// <summary>
-    /// Calculates word count from HTML content
-    /// Strips HTML tags and counts words
-    /// </summary>
+
+    // Calculates word count from HTML content
+    //Strips HTML tags and counts words
+
     private int CalculateWordCount(string htmlContent)
     {
         try
@@ -500,10 +500,10 @@ public class JournalService : IJournalService
         }
     }
 
-    /// <summary>
-    /// Calculates character count from HTML content
-    /// Strips HTML tags and counts characters (excluding whitespace)
-    /// </summary>
+
+    //Calculates character count from HTML content
+    //Strips HTML tags and counts characters (excluding whitespace)
+    
     private int CalculateCharacterCount(string htmlContent)
     {
         try
