@@ -11,7 +11,7 @@ public class AppSetting
     [PrimaryKey, AutoIncrement]
     public int Id { get; set; }
     
-    [Indexed, Unique, NotNull]
+    [Indexed(Unique = true), NotNull]
     public string SettingKey { get; set; } = string.Empty;
     
     public string? SettingValue { get; set; }

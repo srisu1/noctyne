@@ -10852,12 +10852,12 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>syayqv896p</Fingerprint>
-      <Integrity>/J1AmOptKtKI4r66HwfAgOm5tNuHp0jLkjKt7w6GMUE=</Integrity>
+      <Fingerprint>8yri0lrybo</Fingerprint>
+      <Integrity>AP4c8EUiT6HxaMvYZd1Bfrx4qOxlKSL2OYxoG2IQG40=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>1540</FileLength>
-      <LastWriteTime>Mon, 26 Jan 2026 20:57:15 GMT</LastWriteTime>
+      <FileLength>2048</FileLength>
+      <LastWriteTime>Wed, 28 Jan 2026 01:40:58 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\app.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Avatar.css'))">
@@ -11017,7 +11017,7 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <FileLength>1196</FileLength>
-      <LastWriteTime>Mon, 26 Jan 2026 13:54:04 GMT</LastWriteTime>
+      <LastWriteTime>Wed, 28 Jan 2026 00:57:39 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\index.html'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\quill-interop.js'))">
@@ -11052,12 +11052,12 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ApplicationBundle</AssetTraitValue>
-      <Fingerprint>a14zhl09ho</Fingerprint>
-      <Integrity>0ptCq9wFPV/iz4R09YoGcz+Rf3MVFY/8+NvKvTAj3m8=</Integrity>
+      <Fingerprint>tlv2x5i7f9</Fingerprint>
+      <Integrity>geEapGrYEWl/tsgEjJJluEEPjtnxv8Ze2w4PP5a71S4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>82781</FileLength>
-      <LastWriteTime>Tue, 27 Jan 2026 19:39:12 GMT</LastWriteTime>
+      <FileLength>82722</FileLength>
+      <LastWriteTime>Wed, 28 Jan 2026 01:25:49 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\MoodJournal.styles.css'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
